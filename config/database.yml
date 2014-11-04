@@ -1,4 +1,5 @@
 default: &default
+  adapter: mysql2
   database: rtg3
   pool: 5
   username: root
