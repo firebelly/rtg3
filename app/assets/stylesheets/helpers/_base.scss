@@ -1,0 +1,87 @@
+//base styles
+*, *::before, *::after {
+ box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background: $noise;
+}
+
+body {
+  height: 100%;
+  color: $black;
+	font-size: 16px; //Em base unit
+	font-size: 100%;
+  @include font-reg();
+	@include font-smoothing(antialiased);
+}
+
+a {
+	color: inherit;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+	max-width: 100%;
+}
+
+p {
+  font-size: 0.625em;
+}
+
+strong {
+  @include font-bold();
+}
+
+h1, h2, h3, h4 {
+  @include font-bold();
+}
+
+::selection {
+  color: $white;
+  background: $pink;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 12px;
+  position: relative;
+  @include clearfix();
+  transition: padding 0.2s ease-in-out;
+}
+
+// Utilities
+.hide {
+  display: none;
+}
+
+.screen-reader {
+  top: auto;
+  width: 1px;
+  height: 1px;
+  left: -999999px;
+  overflow: hidden;
+  position: absolute;
+}
+
+main {
+  padding: 0 0 12px;
+  transition: padding 0.2s ease-in-out;
+}
+
+@include min-screen($bpMed) {
+  p {
+    font-size: 1.125em;
+  }
+
+  .wrap {
+    padding: 0 25px;
+  }
+
+  main {
+    padding: 0 0 25px;
+  }
+}

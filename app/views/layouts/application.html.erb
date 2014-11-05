@@ -1,14 +1,45 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en" xmlns:fb="http://ogp.me/ns/fb#"> <!--<![endif]-->
 <head>
-  <title>Rtg3</title>
+  <title>Reason to Give : <%= yield :page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag 'modernizr.custom' %>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+  <!--[if lt IE 9]>
+    <script src="template/js/no-build/respond.min.js"></script>
+  <![endif]-->
+
+  <%= render :partial => "/shared/analytics" if Rails.env.production? -%>
+</head>
+<body class="<%= @body_class || '' -%>" id="<%= @body_id || '' -%>">
+
+  <%= render :partial => "/shared/header" -%>
+  <%= render :partial => "/shared/flash" -%>
+
+  <%= yield :featured %>
+
+  <section class="page <%= @page_class %>">
+    <main role="main">
+      <div class="wrap">
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <%= render :partial => "/shared/footer" -%>
+
+  <%= javascript_include_tag 'application' %>
+  <%= yield :javascripts -%>
 
 </body>
 </html>

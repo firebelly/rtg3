@@ -1,0 +1,141 @@
+// UI Elements
+
+.btn {
+  font-size: 1em;
+  line-height: 1em;
+  padding: 0.5em 1em;
+  @include font-bold();
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0);
+  transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+  &.-pink {
+    @include btn($pink, $white, solid);
+    &.-hollow {
+      @include btn($pink, $white, hollow);
+    }
+  }
+  &.-white {
+    @include btn($white, $pink, solid);
+    &.-hollow {
+      @include btn($white, $pink, hollow);
+    }
+  }
+  &.-wider {
+    padding: 0.5em 2.5em;
+  }
+}
+
+.plus-x {
+  height: 3px;
+  width: 15px;
+  display: block;
+  background: $pink;
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+  &::before {
+    top: -6px;
+    right: 6px;
+    width: 3px;
+    content: '';
+    height: 15px;
+    background: $pink;
+    position: absolute;
+    transition: right 0.2s ease-in-out, top 0.2s ease-in-out, background 0.2s ease-in-out;
+  }
+}
+.plus-x--hover {
+  transform: rotate(270deg);
+}
+
+.plus-arrow {
+  height: 3px;
+  width: 15px;
+  display: block;
+  margin-top: 6px;
+  background: $pink;
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+  &::before {
+    top: -6px;
+    right: 6px;
+    width: 3px;
+    content: '';
+    height: 15px;
+    background: $pink;
+    position: absolute;
+    transition: right 0.2s ease-in-out, top 0.2s ease-in-out;
+  }
+}
+.plus-arrow--hover {
+  margin-top: 3px;
+  transform: rotate(45deg);
+  &::before {
+    top: 0;
+    right: 0;
+  }
+}
+
+.down-arrow {
+  .icon-arrow {
+    width: 16px;
+    height: 16px;
+    stroke: $white;
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
+  &::before {
+    left: 6px;
+    width: 4px;
+    bottom: 6px;
+    content: '';
+    height: 22px;
+    border-radius: 2px;
+    background: $white;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease-in-out;
+  }
+}
+.down-arrow--hover {
+  &::before {
+    transform: scaleY(1);
+  }
+}
+
+// Flexslider button mods
+.flex-control-nav {
+  &.flex-control-paging {
+    li {
+      a {
+        width: 12px;
+        height: 12px;
+        box-shadow: none;
+        background: $sheer2;
+        transition: background 0.2s ease-in-out;
+        &.flex-active {
+          background: $pink;
+        }
+        &:hover, &:focus {
+          background: $lightPink;
+        }
+      }
+    }
+  }
+}
+
+// Radial Progress Bar Styles
+.progress-radial {
+  display: block;
+  position: relative;
+}
+
+.progress-radial-track {
+  fill: rgba(255,255,255,0.4); 
+}
+
+.progress-radial-bar {
+  fill: rgba(255,255,255,1);
+}

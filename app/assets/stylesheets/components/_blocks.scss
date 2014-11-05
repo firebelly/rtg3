@@ -1,0 +1,847 @@
+// Blocks
+
+.blocks {
+  margin-bottom: 12px;
+  @include clearfix();
+  &.-column {
+    padding: 0;
+    flex-direction: column;
+  }
+}
+.block {
+  width: 100%;
+  padding: 24px;
+  .block-content {
+    width: 100%;
+    h3 {
+      margin-top: 0;
+      font-size: 1.125em;
+      margin-bottom: 0.25em;
+      padding-bottom: 0.25em;
+      @include dots($black, 6px);
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        position: relative;
+        &::before {
+          left: 0;
+          content: '';
+          width: 0.4em;
+          height: 0.4em;
+          top: -0.2em;
+          background: $pink;
+          border-radius: 50%;
+          position: relative;
+          margin-right: 0.5em;
+          display: inline-block;
+        }
+      }
+    }
+    .social-link {
+      @include dots($white, 6px);
+    }
+    .icon {
+      height: 1em;
+      display: inline-block;
+    }
+    .twitter {
+      .icon-twitter {
+        width: 20px;
+      }
+    }
+    .facebook {
+      padding-left: 1px;
+      .icon-facebook {
+        width: 16px;
+        margin-right: 4px;
+      }
+    }
+    &.-center {
+      text-align: center;
+    }
+  }
+  // Full-width blocks
+  &.-full {
+    width: 100%;
+    display: block;
+  }
+  // Blocks that are split into vertical sections inside
+  &.-column {
+    padding: 0;
+    flex-direction: column;
+    .block-content {
+      margin: 0;
+      flex-grow: 1;
+      padding: 24px;
+      &.-image-cover {
+        width: 100%;
+        min-height: 200px;
+        background-size: cover;
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+          max-width: none;
+        }
+      }
+      &.-top-two-thirds {
+        min-height: 300px;
+      }
+      &.-bottom-third {
+        height: auto;
+      }
+      &.image-slide { 
+        padding: 0;
+        max-height: 350px;
+      }
+    }
+  }
+  // Blocks that are gray
+  &.-gray {
+    background: $sheer1;
+    .block-content {
+      h3 {
+        color: $pink;
+      }
+      p {
+        color: $black;
+      }
+      strong {
+        color: $pink;
+      }
+      .icon {
+        fill: $pink;
+      }
+    }
+  }
+  // Blocks that are pink
+  &.-pink {
+    background: $pink;
+    .block-content {
+      h3, h4, p {
+        color: $white;
+      }
+      .icon {
+        fill: $white;
+      }
+    }
+  }
+}
+
+
+// Blocks that are full-bleed image sliders
+.image-slide {
+  padding: 0;
+  margin: 0 auto;
+  .block-content {
+    margin: 0;
+    &.image-slide {
+      .slick-slider {
+        margin: 0;
+      }
+      .slick-list {
+        margin: 0;
+      }
+      .item {
+        position: relative;
+        img {
+          min-width: 100%;
+          max-width: none;
+        }
+      }
+      .slick-next, .slick-prev {
+        bottom: 33px;
+      }
+      .slider-caption {
+        bottom: 0;
+        z-index: 1;
+        width: 100%;
+        padding: 0 12px;
+        background: $pink;
+        position: absolute;
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+// Blocks that are sliders
+.block-slider {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  .block-content {
+    margin: 0 auto;
+    position: relative;
+    .block-content-slider {
+      position: static;
+      padding-bottom: 80px;
+      .slick-dots {
+        li {
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .slick-next,
+  .slick-prev {
+    top: auto;
+    bottom: 0;
+    margin: 0;
+    z-index: 1;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+    border: none;
+    line-height: 40px;
+    position: absolute;
+    background: $sheer2;
+    transition: background 0.2s ease-in-out;
+    &::before {
+      opacity: 1;
+      width: 16px;
+      height: 40px;
+    }
+  }
+  .slick-prev {
+    left: 0;
+    padding-left: 16px;
+    &::before {
+      content: '';
+      float: left;
+      background: image-url('arrow-left.svg') no-repeat;
+      background-position: center left;
+    }
+    &:hover, &:focus, &:active {
+      background: $sheer3;
+    }
+  }
+  .slick-next {
+    right: 0;
+    color: $white;
+    background: $pink;
+    padding-right: 16px;
+    &::before {
+      content: '';
+      float: right;
+      margin-left: 12px;
+      background: image-url('arrow-right.svg') no-repeat;
+      background-position: center right;
+    }
+    &:hover, &:focus {
+      background: $lightPink;
+    }
+  }
+  .slick-list {
+    margin: 0 24px;
+    position: static;
+  }
+  .slick-dots {
+    bottom: 14px;
+    li {
+      button {
+        &::before {
+          opacity: 1;
+          width: 12px;
+          content: '';
+          height: 12px;
+          border-radius: 50%;
+          background: $sheer2;
+          transition: background 0.2s ease-in-out;
+        }
+        &:hover {
+          &::before {
+            background: $sheer3;
+          }
+        }
+      }
+      &.slick-active {
+        button {
+          &::before {
+            background: $pink;
+          }
+        }
+      }
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+// Blocks that are also accordians
+.accordian {
+  padding: 0 50px;
+  max-height: 86px;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.4s ease-in-out, max-height 0.4s cubic-bezier(1, 0.5, 0, 1);
+  &.-last {
+    .accordian-trigger {
+      background: none;
+    }
+  }
+  &:hover, &:focus, &:active {
+    background: $sheer2;
+    .accordian-trigger {
+      .actions {
+        .plus-x {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &.active {
+    background: $pink;
+    max-height: 2000px;
+    .accordian-trigger {
+      @include dots($white, 6px);
+      h3 {
+        color: $white;
+      }
+      .actions {
+        .icon-mail {
+          stroke: $white;
+        }
+        .icon-document {
+          fill: $white;
+          stroke: $white;
+        }
+        .plus-x {
+          background: $white;
+          transform: rotate(225deg);
+          &::before {
+            background: $white;
+          }
+        }
+      }
+    }
+    .accordian-content {
+      opacity: 1;
+      max-height: 9000px;
+      > div {
+        padding: 25px 0 50px;
+        &.panes {
+          padding: 25px 0 100px;
+        }
+        &.full-bleed {
+          padding: 0;
+          img {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .accordian-trigger {
+    cursor: pointer;
+    padding: 25px 0;
+    @include clearfix();
+    @include dots($black, 6px);
+    h3 {
+      margin: 0;
+      padding: 0;
+      float: left;
+      line-height: 1em;
+      background: none;
+      transition: color 0.2s ease-in-out;
+    }
+    .actions {
+      float: right;
+      .icon-mail {
+        width: 18px;
+        height: 15px;
+        stroke: $pink;
+        stroke-width: 1.5;
+        margin: 2px 12px 0 0;
+        display: inline-block;
+        transition: stroke 0.2s ease-in-out;
+      }
+      .icon-document {
+        width: 18px;
+        fill: $pink;
+        height: 17px;
+        stroke: $pink;
+        stroke-width: 1.5;
+        margin: 0 12px 0 0;
+        transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+      }
+      .plus-x {
+        margin-bottom: 6px;
+        display: inline-block;
+      }
+    }
+  }
+  .accordian-content {
+    opacity: 0;
+    max-height: 0;
+    @include clearfix();
+    transition: max-height 0.4s cubic-bezier(1, 0.5, 0, 1), opacity 0.4s ease-in-out;
+    > div {
+      padding: 0;
+      transition: padding 0.4s ease-in-out;
+    }
+    p {
+      color: $white;
+      font-size: 0.8125em;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    form {
+      .submit {
+        margin-top: 25px;
+      }
+    }
+  }
+}
+
+// Reason blocks
+.reason-blocks {
+  margin-bottom: 0;
+  .reason-block {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    &:hover, &:focus, &:active {
+      img {
+        transform: scale(1);
+      }
+      a {
+        background: rgba(229, 76, 151, 0.75);
+      }
+      .block-content {
+        transform: scale(1.1);
+      }
+    }
+    a {
+      z-index: 1;
+      width: 100%;
+      display: block;
+      position: relative;
+      padding: 20% 25px;
+      background: rgba(0,0,0, 0.4);
+      transition: background 0.2s ease-in-out;
+    }
+    img {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 0;
+      width: auto;
+      max-width: none;
+      min-width: 100%;
+      min-height: 100%;
+      position: absolute;
+      transform: scale(1.1) translate(-2.5%);
+      transform-origin: top left;
+      transition: transform 3.5s ease-in-out;
+    }
+    .block-content {
+      color: $white;
+      margin: 0 auto;
+      max-width: 200px;
+      text-align: center;
+      transition: transform 3.5s ease-in-out;
+      h3 {
+        background: none;
+      }
+      p {
+        font-size: 1em;
+        margin: 1em auto 0;
+        display: inline-block;
+        @include dots($white, 6px);
+      }
+    }
+  }
+}
+
+// Blocks with Panes
+.panes {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100px;
+}
+.pane {
+  opacity: 0;
+  display: none;
+  @include clearfix();
+  transition: opacity 0.2s ease-in-out, left 0.2s cubic-bezier(1, 0.5, 0, 1);
+  &.active {
+    opacity: 1;
+    display: block;
+    @extend .animated;
+    animation-name: inRight;
+    animation-duration: 0.4s;
+  }
+  &.inactive {
+    @extend .animated;
+    animation-name: outLeft;
+    animation-duration: 0.4s;
+  }
+  .pane-devance {
+    width: 100%;
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+// Block lists
+.block-list {
+  padding: 0;
+  .block-content {
+    margin: 0;
+    width: 100%;
+    padding: 12px 0;
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      .list-item {
+        display: block;
+        padding: 0 24px;
+        background: rgba(0,0,0,0);
+        transition: background 0.2s ease-in-out;
+        &:hover, &:focus, &:active {
+          background: rgba(217,217,217,0.7);
+          .list-icon {
+            .plus-arrow {
+              @extend .plus-arrow--hover;
+            }
+            .down-arrow {
+              @extend .down-arrow--hover;
+            }
+          }
+        }
+        .list-wrap {
+          width: 100%;
+          display: flex;
+          padding: 12px 0;
+          position: relative;
+          @include dots($darkGray, 6px);
+        }
+      }
+    }
+  }
+  .list-number {
+    color: $pink;
+    margin-right: 1em;
+    font-size: 1.875em;
+    line-height: 0.75em;
+    vertical-align: top;
+    @include font-bold();
+  }
+  .list-text {
+    padding-right: 24px;
+    h4 {
+      margin: 0;
+      color: $pink;
+      font-size: 0.75em;
+    }
+    p {
+      margin: 0;
+      font-size: 0.625em;
+    }
+  }
+  .list-icon {
+    top: 50%;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    display: inline-block;
+    transform: translateY(-50%);
+  }
+  .last-item {     
+    .list-item { 
+      .list-wrap {
+        background: none;
+      }
+    }
+  }
+  .list-item-form {
+    .list-item {
+      &:hover, &:focus, &:active {
+        background: none;
+      }
+      .list-wrap {
+        display: block;
+      }
+    }
+    .list-number {
+      float: left;
+      margin-right: 0;
+    }
+    .list-text {
+      float: left;
+      padding-left: 22px;
+      h4 {
+        br {
+          display: none;
+        }
+      }
+    }
+    .form {
+      clear: left;
+      padding-left: 40px;
+    }
+    .donate {
+      margin-top: 3px;
+      input {
+        height: 37px;
+        max-width: 140px;
+      }
+    }
+  }
+  // Pink variation
+  &.-pink {
+    .block-content {
+      ol {
+        li {
+          .list-item {
+            &:hover, &:focus, &:active {
+              background: $lightPink;
+            }
+            .list-wrap {
+              @include dots($white, 6px);
+            }
+          }
+          &.last-item {
+            .list-item {
+              .list-wrap {
+                background: none;
+              }
+            }
+          }
+        }
+      }
+      .list-number {
+        color: $white;
+      }
+      .list-text {
+        h4 {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+  
+@include min-screen($bpMed) {
+  .blocks {
+    display: flex;
+    margin-bottom: 25px;
+    flex-direction: row; 
+  }
+  .block {
+    width: 50%;
+    padding: 50px 100px;
+    display: flex;
+    &.-full {
+      width: 100%;
+    }
+    &.-column {
+      .block-content {
+        padding: 50px;
+        overflow: hidden;
+      }
+      .image-slide {
+        padding: 0;
+      }
+    }
+    .block-content {
+      margin: auto;
+      h3 {
+        font-size: 2.25em;
+      }
+    }
+  }
+
+  .image-slide {
+    padding: 0;
+    .block-content {
+      &.image-slide {
+        .slick-next, .slick-prev {
+          bottom: 58px;
+        }
+      }
+    }
+  }
+
+  .block-slider {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    .block-content {
+      margin: 0 auto;
+    }
+    .slick-list {
+      margin: 0 50px;
+    }
+  }
+
+  // Blocks that are also accordians
+  .accordian {
+    padding: 0 100px;
+    .accordian-trigger {
+      .actions {
+        float: right;
+        .icon-mail {
+          width: 27px;
+          height: 18px;
+          margin-top: 8px;
+        }
+        .icon-document {
+          width: 23px;
+          height: 24px;
+          margin: 6px 12px 0 0;
+        }
+        .plus-x {
+          margin: 0 0 8px;
+        }
+      }
+    }
+    .accordian-content {
+      > div.one-half-left {
+        padding-right: 50px;
+      }
+      .one-half-right.full-bleed {
+        top: -25px;
+        width: calc(50% + 100px) !important;
+        height: calc(100% + 125px);
+      }
+      form {
+        .submit {
+          right: 0;
+          bottom: 0;
+          width: auto;
+          color: $pink;
+          border: none;
+          margin-top: 0;
+          position: absolute;
+          background: rgba(253, 239, 246, 1);
+          &:hover, &:focus, &:active {
+            background: rgba(253, 239, 246, 0.8);
+          }
+        }
+      }
+      .pane {
+        form {
+          .submit {
+            right: -100px;
+            bottom: -100px;
+          }
+        }
+      }
+    }
+  }
+
+  // Reason blocks
+  .reason-blocks {
+    margin-bottom: 25px;
+    justify-content: space-between;
+    .reason-block {
+      margin-left: 25px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+      .block-content {
+        h3 {
+          font-size: 1.125em;
+        }
+      }
+    }
+  }
+
+  // Panes
+  .panes {
+    .pane, .pane-form {
+      > .one-half-left {
+        padding-right: 50px;
+      }
+    }
+    .pane {
+      .pane-devance {
+        width: auto;
+        left: -100px;
+        border: none;
+        margin-top: 0;
+        bottom: -100px;
+        position: absolute;
+      }
+    }
+  }
+
+  .block-list {
+    padding: 0;
+    .block-content {
+      padding: 25px 0;
+    }
+    ol {
+      li {
+        .list-item {
+          padding: 0 50px;
+          .list-wrap {
+            padding: 25px 0;
+          }
+        }
+      }
+    }
+    .list-number {
+      font-size: 3.375em;
+    }
+    .list-text {
+      h4 {
+        font-size: 1.125em;
+      }
+      p {
+        font-size: 0.8125em;
+      }
+    }
+    .list-item-form {
+      .form {
+        padding-left: 54px;
+      }
+    }
+  }
+}
+
+@include min-screen(1375px) {
+  .block.block-list {
+    .list-item-form {
+      .list-item {
+        .list-wrap {
+          display: flex;
+        }
+      }
+      .list-number {
+        float: none;
+        margin-right: 1em;
+      }
+      .list-text {
+        float: none;
+        padding-left: 0;
+        h4 {
+          br {
+            display: block;
+          }
+        }
+      }
+      .donate {
+        input {
+          max-width: 200px;
+        }
+      }
+    }
+  }
+}

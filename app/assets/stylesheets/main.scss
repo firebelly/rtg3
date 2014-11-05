@@ -1,0 +1,36 @@
+@charset "UTF-8"; 
+
+// Reset
+@import "vendor/normalize";
+
+// Helpers and Variables
+@import "helpers/mixins";
+@import "helpers/variables";
+@import "helpers/typography";
+@import "helpers/animations";
+@import "helpers/grid";
+@import "helpers/base";
+
+// Vendor
+@import "vendor/flexslider";
+@import "vendor/owl";
+@import "vendor/slick";
+
+// Components
+@import "components/header";
+@import "components/feature";
+@import "components/blocks";
+@import "components/ui-elements";
+@import "components/forms";
+@import "components/video";
+@import "components/affiliates";
+@import "components/reasons-slider";
+@import "components/footer";
+
+// Pages
+@import "pages/home";
+@import "pages/educational-programs";
+@import "pages/get-involved";
+@import "pages/give";
+@import "pages/reason";
+@import "pages/success-stories";

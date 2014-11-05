@@ -1,0 +1,11 @@
+  <li class="success_story_listing <%= cycle('odd', 'even') -%> clearfix">
+    <div class="reason-thumb">
+      <% unless success_story.reason_images.blank? %>
+        <%= link_to image_tag(success_story.reason_images.first.image.url(:thumb)), success_story_path(success_story) %>
+      <% end -%>
+    </div>
+    <div class="reason-details">
+      <h2><%= link_to success_story.title, success_story_path(success_story) %></h2>
+      <%=raw success_story.success_excerpt %>
+    </div>
+  </li>

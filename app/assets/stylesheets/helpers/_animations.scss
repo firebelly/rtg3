@@ -1,0 +1,176 @@
+// Animations
+
+.animated {
+  transform: translateZ(0);
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes inDown {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes inDown {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.inDown {
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes tada {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes tada {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.tada {
+  animation-name: tada;
+}
+
+@-webkit-keyframes inRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes inRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.inRight {
+  animation-name: inRight;
+}
+
+
+@-webkit-keyframes outRight {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes outRight {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.outRight {
+  animation-name: outRight;
+}
+
+@-webkit-keyframes inLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes inLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.inLeft {
+  animation-name: inLeft;
+}
+
+
+@-webkit-keyframes outLeft {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes outLeft {
+  0% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.outLeft {
+  animation-name: outLeft;
+}

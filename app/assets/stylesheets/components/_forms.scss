@@ -1,0 +1,288 @@
+// Forms
+
+form {
+  @include clearfix();
+  input, textarea {
+    color: $white;
+    font-size: 1em;
+    border-radius: 0;
+    background: none;
+    line-height: 1em;
+    padding: 0.5em 1em;
+    display: inline-block;
+    border: 2px solid $white;
+    transition: background 0.2s ease-in-out;
+    &:focus, &:active {
+      outline: none;
+      background: rgba(255,255,255,0.3);
+    }
+    @include placeholder {
+      vertical-align: text-bottom;
+      color: rgba(255,255,255,0.5);
+    }
+  }
+  // Hide the webkit spinners for number inputs
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  input[type=text] {
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  label {
+    color: $white;
+    display: block;
+    white-space: nowrap;
+    padding-bottom: 0.5em;
+  }
+
+  // Custom Select Styling, take a deep breath!
+  .select-wrapper {
+    legend {
+      padding-bottom: 0.5em;
+    }
+  }
+
+  .custom-select {
+    padding:0;
+    display:block;
+    margin-top:0.5em;
+    position: relative;
+  }
+
+  // This is the native select, we're making everything but the text invisible so we can see the button styles in the wrapper
+  .custom-select select {
+    margin: 0;
+    width: 100%;
+    color: $white;
+    outline: none;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0;
+    background: none;
+    line-height: 1em;
+    padding: 0.5em 1em;
+    border: 2px solid $white;
+    transition: background 0.2s ease-in-out;
+    /* Remove select styling */
+    appearance: none;
+    -webkit-appearance: none;
+    &:focus, &:acitve {
+      background: rgba(255,255,255,0.3);
+    }
+  }
+
+  // Custom arrow sits on top of the select - could be an image, SVG, icon font, etc. or the arrow could just baked into the bg image on the select. Note this si a 2x image so it will look bad in browsers that don't support background-size. In production, you'd handle this resolution switch via media query but this is a demo.
+  .custom-select::after {
+    top: 50%;
+    right: 5px;
+    z-index: 2;
+    content: "";
+    width: 10px;
+    height: 18px;
+    position: absolute;
+    transform: translateY(-50%);
+    background-image: asset-url('arrow-select.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* This hack makes the select behind the arrow clickable in some browsers */
+    pointer-events:none;
+  }
+
+  // Hover style
+  .custom-select:hover {
+
+  }
+
+  // Set options to normal weight
+  .custom-select option {
+    font-weight:normal;
+  }
+
+  // START OF UGLY BROWSER-SPECIFIC HACKS
+
+  // OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple. Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7
+  x:-o-prefocus, .custom-select::after {
+    display:none;
+  }    
+
+   // IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance, IE 9 and earlier get a native select - targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting
+  // The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+    .custom-select select::-ms-expand {
+      display: none;
+    }
+    .custom-select select:focus::-ms-value {
+      background: transparent;
+      color: #222;
+    }
+  }  
+
+  // FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container. The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex. You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e
+  // Show only the native arrow */
+  @-moz-document url-prefix() { 
+    .custom-select {
+      overflow: hidden;
+    }
+    .custom-select select {
+      width: 120%;
+      width: -moz-calc(100% + 3em);
+      width: calc(100% + em);
+    }
+    
+  }
+
+  // Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring
+  .custom-select select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+
+  // END OF CUSTOM SELECT STYLES
+
+  // Custom Radio Button Styles, here we go again, this one's not as bad though
+  input[type=radio] {
+    display: none;
+  }
+  .custom-radio {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    &::after {
+      top: 4px;
+      content: '';
+      width: 12px;
+      right: -22px;
+      height: 12px;
+      color: $white;
+      font-size: 18px;
+      background: none;
+      line-height: 8px;
+      border-radius: 50%;
+      position: absolute;
+      text-align: center;
+      display: inline-block;
+      border: 2px solid $white;
+    }
+  }
+  input[type=radio]:checked + .custom-radio::after {
+    content: '\2022';
+  }
+
+  h4 {
+    color: $white;
+    margin-top: 0;
+    padding-bottom: 0.5em;
+    @include dots($white, 6px);
+  }
+  .instructions {
+    margin-bottom: 2em;
+    font-size: 0.8125em;
+    padding-bottom: 2em;
+    @include font-bold();
+    @include dots($white, 6px);
+  }
+
+  fieldset {
+    padding: 0;
+    border: none;
+    legend {
+      color: $white;
+      display: block;
+      white-space: nowrap;
+      padding-bottom: 1em;  
+    }
+    label {
+      margin: 0 12px 0 25px;
+      display: inline-block;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+    input {
+      width: auto;
+      display: inline-block;
+    }
+  }
+
+  .form-group {
+    margin-top: 25px;
+    @include clearfix();
+    div {
+      margin-top: 25px;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  &.-full {
+    input, textarea {
+      width: 100%;
+    }
+    fieldset {
+      input {
+        width: auto;
+      }
+    }
+  }
+
+  &.donate {
+    @include clearfix();
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+    input {
+      float: left;
+      height: 36px;
+      max-width: 160px;
+      &.text-input {
+        &:hover {
+          background: rgba(255,255,255,0.3);
+        }
+      }
+      &.submit {
+        margin-left: -2px;
+      }
+    }
+    &.-pink {
+      .text-input {
+        color: $pink;
+        border-color: $pink;
+        @include placeholder {
+          color: $midGray;
+        }
+        &:hover {
+          background: rgba(238,77,155,0.3);
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    h4 {
+      font-size: 1.125em;
+    }
+
+    .form-group {
+      div {
+        margin: 0;
+      }
+      .one-half-left, .one-third-left, .one-fourth-left {
+        padding-right: 50px;
+      }
+    }
+  }
+
+  @include min-screen($bpBig) {
+    &.donate {
+      input {
+        max-width: 180px;
+      }
+    }
+  }
+}

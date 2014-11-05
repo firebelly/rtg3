@@ -1,0 +1,80 @@
+// Affilates block
+
+.affiliates {
+  .block {
+    position: relative;
+    padding: 50px 25px 25px;
+    &:hover, &:focus {
+      background: rgba(217,217,217,0.7);
+      .plus-arrow {
+        @extend .plus-arrow--hover;
+      }
+    }
+    .block-content {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      h4 {
+        color: $pink;
+        margin: 0 auto;
+        max-width: 300px;
+        position: relative;
+        font-size: 1.125em;
+        &::before, &::after {
+          top: 50%;
+          width: 25%;
+          left: -12px;
+          content: '';
+          height: 1px;
+          position: absolute;
+          @include dots($darkGray, 6px);
+        }
+        &::after {
+          left: auto;
+          right: -12px;
+        }
+      }
+    }
+    .affiliates-link {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      padding-right: 25px;
+      .plus-arrow {
+        float: right;
+      }
+    }
+  }
+
+  .affiliates-slider {
+    max-width: 300px;
+    position: relative;
+    margin: 50px auto 25px;
+    &.affiliates-slider-w3 {
+      max-width: 500px;
+    }
+    a {
+      display: block;
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .block {
+      .block-content {
+        h4 {
+          &::before {
+            left: -25px;
+          }
+          &::after {
+            right: -25px;
+          }
+        }
+      }
+    }
+  }
+}

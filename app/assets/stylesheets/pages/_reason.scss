@@ -1,0 +1,29 @@
+// Reason page
+
+.reason {
+  &.banner-wrap {
+    .banner {
+      background-image: url('../images/RTG_give.jpg');
+    }
+  }
+
+  .support {
+    p {
+      @include font-bold();
+    }
+    form {
+      margin: 1em 0;
+    }
+    .share {
+      margin-top: 1em;
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .support {
+      .share {
+        margin-top: 50px;
+      }
+    }
+  }
+}

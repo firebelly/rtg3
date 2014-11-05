@@ -1,0 +1,43 @@
+// Get Involved Page
+
+.get-involved {
+  &.banner-wrap {
+    .banner {
+      background-image: url('../images/RTG_get-involved.jpg');
+    }
+  }
+
+  .intern-form {
+    .pane-1 {
+      .one-half-left {
+        min-height: 400px;
+        .btn {
+          margin-top: 50px;
+        }
+      }
+      .one-half-right {
+        height: 100%;
+        position: absolute;
+        background: url('../images/RTG_intern.jpg') no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+  .volunteer-form {
+    .pane-1 {
+      .one-half-left {
+        min-height: 400px;
+        .btn {
+          margin-top: 50px;
+        }
+      }
+      .one-half-right {
+        height: 100%;
+        position: absolute;
+        background: url('../images/RTG_volunteer.jpg') no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}

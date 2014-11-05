@@ -1,0 +1,21 @@
+// Grid
+
+.grid {
+  width: 100%;
+  display: block;
+  @include clearfix();
+}
+
+@include min-screen($bpMed) {
+  .one-half-left {display: inline-block; width: 50% !important; float: left;}
+  .one-half-right {display: inline-block; width: 50% !important; float: left; margin-top: 0;}
+  .one-third-left {display: inline-block; width: 33.3333333% !important; float: left;}
+  .two-thirds-right {display: inline-block; width: 66.6666667% !important; float: left; margin-top: 0;}
+  .one-third-middle {display: inline-block; width: 33.3333333% !important; float: left; margin-top: 0;}
+  .one-third-right {display: inline-block; width: 33.333333% !important; float: left; margin-top: 0;}
+  .two-thirds-left {display: inline-block; width: 66.6666667% !important; float: left;}
+  .one-fourth-left {display: inline-block; width: 25% !important; float: left;}
+  .one-fourth-right {display: inline-block; width: 25% !important; float: left; margin-top: 0;}
+  .three-fourths-left {display: inline-block; width: 75% !important; float: left; margin-top: 0;}
+  .three-fourths-right {display: inline-block; width: 75% !important; float: left; margin-top: 0;}
+}

@@ -1,6 +1,52 @@
 Rails.application.routes.draw do
+  #legacy URLs
+  get '/news-and-events', to: redirect('/news')
+  get '/news-and-events/:id', to: redirect('/news/%{id}')
+  get '/apply-spanish', to: redirect('/apply')
+  get '/about', to: redirect('/about-us')
+  get '/whats-the-point', to: redirect('/about-us')
+  get '/how-does-this-work', to: redirect('/about-us')
+  get '/testimonials', to: redirect('/about-us')
+  get '/humboldt-park', to: redirect('/about-us')
+  get '/history', to: redirect('/about-us')
+  get '/culture', to: redirect('/about-us')
+  get '/responsible-buying', to: redirect('/about-us')
+  get '/for-sponsors', to: redirect('/get-involved')
+  get '/press', to: redirect('/news')
+  get '/reasons/search', to: redirect('/give')
+
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  root :to => "pages#home"
+
+  resources :reasons, :only => [ :index, :show ]
+  resources :cart,
+            :only => [:index, :create, :update],
+            :as => :carts,
+            :controller => 'carts'
+  resources :donations, :only => [:destroy]
+
+  # cart/paypal
+  get "/add_to_cart", :to => "carts#edit"
+  get "/empty_cart", :to => "carts#empty", :as => 'empty_cart'
+  get "/checkout", :to => "orders#checkout", :as => 'checkout'
+
+  # custom pages
+  get '/education-programs' => 'pages#education_programs'
+  get '/get-involved' => 'pages#get_involved'
+  get '/apply' => 'pages#apply'
+  get '/about-us' => 'pages#about_us'
+  
+  # get '/press' => 'posts#press_index', :id => 'press'
+  # get '/press/:id' => 'posts#press_show', :as => 'press_post'
+
+  # get '/news' => 'posts#news_index', :as =>'news'
+  # get '/news/:id' => 'posts#news_show', :as =>'news_post'
+
+  # fall-through to pages
+  get '/:id(/:child_id)' => 'pages#show', :as => 'page'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

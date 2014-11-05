@@ -1,0 +1,46 @@
+// Popup Video
+
+.feature-video {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: none;
+  position: fixed;
+  .feature-video-background {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    background: rgba(0,0,0,0.75); 
+    transition: background 0.3s ease-in-out, opacity 1s ease-in-out;
+    &:hover, &:focus {
+      background: rgba(0,0,0,0.5);
+    }
+  }
+  .video-wrap {
+    top: 50%;
+    z-index: 1;
+    opacity: 0;
+    width: 80%;
+    height: auto;
+    margin: 25px auto;
+    position: relative;
+    transform: translateY(-50%);
+    transition: opacity 1s ease-in-out;
+  }
+  &.active {
+    display: block;
+    .feature-video-background {
+      opacity: 1;
+    }
+    .video-wrap {
+      opacity: 1;
+    }
+  }
+}
