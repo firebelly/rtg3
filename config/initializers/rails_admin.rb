@@ -24,8 +24,8 @@ RailsAdmin.config do |config|
   end
 
   # Hide these models from the navigation:
-  # [Cart, CartItem, Item, ReasonImage, PostType, OrderItem].each do |klass|
-  [ReasonImage, PostType].each do |klass|
+  [Cart, Donation, ReasonImage, PostType].each do |klass|
+  # [ReasonImage, PostType].each do |klass|
     config.model klass do
       visible false
     end

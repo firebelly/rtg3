@@ -1,0 +1,77 @@
+// Home
+
+.home {
+  .intro {
+    .-right {
+      .-image-cover {
+        background: url('../images/RTG_whatwedo.jpg');
+      }
+    }
+  }
+  .ways-to-get-involved {
+    .-left {
+      text-align: center;
+      background: url('../images/home_get-involved.jpg');
+      background-size: cover;
+      .block-content {
+        margin: 0 auto;
+      }
+      h3 {
+        background: none;
+        font-size: 1.875em;
+      }
+      a {
+        color: $white;
+        font-size: .75em;
+        @include font-bold();
+        display: inline-block;
+        padding-bottom: 0.25em;
+        @include dots($white, 6px);
+        border-bottom: 1px solid rgba(255,255,255,0);
+        transition: background 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        &:hover, &:focus, &:active {
+          border-color: $white;
+          background: none;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .intro {
+      .-right {
+        .block-content {
+          min-height: 245px;
+          &.-image-cover {
+            min-height: 250px;
+          }
+        }
+      }
+    }
+    .ways-to-get-involved {
+      .-left {
+        .block-content {
+          margin-top: 1em;
+        }
+        h3 {
+          font-size: 3.375em;
+        }
+        a {
+          font-size: 1.125em;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpBig) {
+    .intro {
+      .-right {
+        .block-content {
+          &.-image-cover {
+            min-height: 350px;
+          }
+        }
+      }
+    }
+  }
+}

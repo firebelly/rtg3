@@ -1,0 +1,110 @@
+// Educational Programs
+
+.educational-programs {
+  &.banner-wrap {
+    .banner {
+      background-image: url('../images/RTG_OurStory.jpg');
+    }
+  }
+
+  .success {
+    .-top {
+      position: relative;
+    }
+    .-bottom {
+      heigth: auto;
+    }
+    .progress-container {
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 110px;
+      height: 100px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      .progress-text {
+        top: 50%;
+        left: 50%;
+        width: 75%;
+        color: $white;
+        margin: 0 auto;
+        font-size: 0.75em;
+        text-align: center;
+        position: absolute;
+        @include font-bold();
+        transform: translate(-50%, -50%);
+        .-percentage {
+          font-size: 1.5em;
+        }
+      }
+      .progress-radial {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  }
+
+  .materialNeeds {
+    .-right {
+      .block-content {
+        &.-bottom {
+          height: auto;
+        }
+        p {
+          font-size: 1.125em;
+        }
+      }
+    }
+  }
+
+  .success {
+    .block-content {
+      &.-bottom {
+        p {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .success {
+      .progress-container {
+        width: 195px;
+        height: 195px;
+        .progress-text {
+          font-size: 1.125em;
+          .-percentage {
+            font-size: 2em;
+          }
+        }
+        .progress-radial {
+          width: 195px;
+          height: 195px;
+        }
+      }
+    }
+
+    .materialNeeds {
+      .-right {
+        .block-content {
+          &.-top {
+            min-height: 350px;
+          }
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpBig) {
+    .materialNeeds {
+      .-right {
+        .block-content {
+          p {
+            font-size: 2.25em;
+          }
+        }
+      }
+    }
+  }
+}

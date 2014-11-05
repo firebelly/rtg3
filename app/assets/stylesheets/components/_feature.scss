@@ -1,0 +1,229 @@
+// Feature slider
+
+.slider-wrap {
+  height: 100%;
+  padding: 12px;
+  max-height: 800px;
+  @include min-screen($bpMed) {
+    padding: 25px;
+    max-height: none;
+  }
+}
+
+.feature-slider {
+  height: 100%;
+  position: relative;
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+  .feature {
+    &.slick-active {
+      z-index: 1;
+      .feature-content {
+        opacity: 1;
+        .progress-bar {
+          .bar {
+            max-width: 70%;
+          }
+        }
+      }
+    }
+    .feature-content {
+      opacity: 0;
+    }
+  }
+
+  .slick-prev, .slick-next {
+    top: auto;
+    bottom: 0;
+    z-index: 1;
+    width: 48px;  
+    height: 42px; 
+    opacity: 0.7;
+    text-indent: 100%;
+    margin: -21px 0 0;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.15);
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+    &::before {
+      top: 11px;
+      left: 16px;
+      content: ''; 
+      width: 12px; 
+      height: 20px;
+      position: absolute;
+      background: image-url('arrow-left.svg'); 
+    }
+    &:hover {
+      background: #CD518D;
+      transform: scaleX(1.1);
+    }
+  }
+  .slick-prev {
+    left: 0;
+    transform-origin: left;
+  }
+  .slick-next {
+    right: 0;
+    transform-origin: right;
+    &::before {
+      left: auto;
+      right: 16px;
+      content: ''; 
+      background: image-url('arrow-right.svg');       
+    }
+  }
+}
+
+.feature {
+  height: 100%;
+  position: relative;
+  .feature-image {
+    top: 0;
+    left: -25%;
+    z-index: 0;
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    img {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: -25%;
+      z-index: 0;
+      width: auto;
+      height: 100%;
+      min-width: 50%;
+      max-width: none;
+      max-height: 800px;
+      position: absolute;
+    }
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      content: '';
+      position: absolute;
+      background: rgba(0,0,0,0.35);
+    }
+  }
+  .feature-content-wrap {
+    height: 100%;
+    display: flex;
+  }
+  .feature-content {
+    z-index: 1;
+    margin: auto;
+    padding: 12px;
+    position: relative;
+    text-align: center;
+    transition: opacity 1s ease-in-out;
+    h2 {
+      width: 100%;
+      color: $white;
+      margin: 0 auto;
+      max-width: 800px;
+      font-size: 1.875em;
+    }
+    p {
+      color: $white;
+      max-width: 300px;
+      font-size: .75em;
+      margin: 1.5em auto 0;
+    }
+    .video-toggle {
+      margin: 2em auto 0;
+      display: inline-block;
+      &:hover, &:focus {
+        .icon {
+          transform: scale(1.05);
+        }
+      }
+      .icon {
+        width: 70px;
+        height: 70px;
+        transition: transform 0.5s ease-in-out;
+      }
+    }
+    .progress-bar {
+      height: 45px;
+      overflow: hidden;
+      max-width: 400px;
+      margin: 2em auto 0;
+      position: relative;
+      border: 3px solid $white;
+      background: rgba(255,255,255,0.15);
+      .progress-text {
+        margin: 0;
+        z-index: 1;
+        height: 100%;
+        max-width: 100%;
+        text-align: left;
+        position: relative;
+        vertical-align: middle;
+        padding: 12px 0 12px 12px;
+      }
+      .bar {
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        max-width: 0;
+        height: 100%;
+        color: $white;
+        background: $pink;
+        position: absolute;
+        transition: max-width 1.5s cubic-bezier(1,0.5,0.5,1);
+      }
+    }   
+  }
+}
+
+@include min-screen($bpMed) {
+  .feature-slider {
+    .slick-next,
+    .slick-prev {
+      top: 50%;
+      bottom: auto;
+    }
+  }
+
+  .feature {
+    .feature-image {
+      img {
+        left: 0;
+        height: auto;
+        min-height: 50%;
+        max-height: none;
+      }
+    }
+    .feature-content {
+      h2 {
+        font-size: 4.5em;
+      }
+      p {
+        font-size: 1.125em;
+      }
+      .progress-bar {
+        .progress-text {
+          padding: 9px 0 9px 9px;
+        }
+      }
+    }
+  }
+}
+
+@include min-screen($bpBig) {
+  .feature {
+    .feature-image {
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}

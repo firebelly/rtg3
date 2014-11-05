@@ -1,0 +1,20 @@
+  <li class="reason_listing <%= cycle('odd', 'even') -%> clearfix">
+    <div class="reason-thumb">
+      <% unless reason.image.blank? %>
+        <%= link_to image_tag(reason.image.url(:thumb)), reason %>
+      <% end -%>
+    </div>
+    <div class="reason-details">
+      <h2><%= link_to reason.title, reason %></h2>
+      <%=raw reason.excerpt unless reason.excerpt.blank? %>
+      <div class="amt_given clearfix">
+        <p class="percent"><span><%= reason.round_percent(@cart) %>%</span> given</p>
+        <div class="graph">
+          <div class="graph_container">
+            <div style="width: <%= (reason.percent(@cart) / 100 * 182).round.to_i %>px;" class="graph_fill"></div>
+          </div>
+        </div>
+        <p class="give_now"><%= link_to 'Give Now', reason %></p>
+      </div>
+    </div>
+  </li>
