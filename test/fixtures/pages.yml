@@ -3,5 +3,29 @@
 one:
   title: Home
   slug: home
-  content: Testing!
+  content: Homepage!
+  published: true
+
+two:
+  title: Educational Programs
+  slug: educational-programs
+  content: Educational Programs!
+  published: true
+
+three:
+  title: Get Involved
+  slug: get-involved
+  content: Get Involved!
+  published: true
+
+four:
+  title: Apply
+  slug: apply
+  content: Apply!
+  published: true
+
+five:
+  title: About Us
+  slug: about-us
+  content: About Us!
   published: true

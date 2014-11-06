@@ -1,0 +1,17 @@
+<%= content_for :page_title, @page.title %>
+
+<div class="blocks intro">
+  <div class="block -left -gray">
+    <article class="block-content">
+      <h1><%= @page.title %></h1>
+      <%= @page.content %>
+    </article>
+  </div>
+  <div class="block -right -column -pink support-us">
+    <div class="block-content -top-half -center">
+      <%= render :partial => "/shared/generic_donation" -%>
+    </div>
+    <div class="block-content -bottom-half -image-cover -center">
+    </div>
+  </div>
+</div>
