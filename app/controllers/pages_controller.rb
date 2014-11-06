@@ -4,17 +4,17 @@ class PagesController < ApplicationController
 
   def give
     @body_class = 'reasons'
-    @page = Page.find('give')
+    @page = Page.friendly.find('give')
     @reasons = Reason.published.unfulfilled.order('post_date DESC')
   end
 
   def for_sponsors
-    @page = Page.find('for-sponsors')
+    @page = Page.friendly.find('for-sponsors')
   end
 
   def success_stories
     @body_class = 'success_stories'
-    @page = Page.find('success-stories')
+    @page = Page.friendly.find('success-stories')
     @successes = Reason.published.is_success.order('post_date DESC')
   end
 
@@ -34,24 +34,14 @@ class PagesController < ApplicationController
   end
 
   def show
-    # make sure page is not a child
-    parent = Page.find(params[:id])
-    child = (params[:child_id]) ? Page.find(params[:child_id]) : nil
-
-    # make sure parent is actually a parent
-    if (parent.parent)
-      redirect_to page_path(parent.parent, parent)
-      return
-    end
-
-    @page = child || parent
+    @page = Page.friendly.find(params[:id])
   end
 
   private
 
   def get_defaults
     @body_class = "#{request.path.gsub(/\/?([^\/]+)(.*)/,'\\1')}"
-    @sidebar_promotion = Page.find('sidebar-promotion')
+    @sidebar_promotion = Page.friendly.find('sidebar-promotion')
   rescue ActiveRecord::RecordNotFound => e
     @sidebar_promotion = nil
   end
