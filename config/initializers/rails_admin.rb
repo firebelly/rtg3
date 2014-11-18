@@ -37,6 +37,13 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Page do
+    list do
+      field :title
+      field :published
+    end
+  end
+
   config.model Post do
     list do
       sort_by :post_date
@@ -62,6 +69,8 @@ RailsAdmin.config do |config|
     list do
       sort_by :post_date
       field :title
+      field :total_donated
+      field :total_needed
       field :is_success
       field :fulfilled
       field :post_date
@@ -77,6 +86,8 @@ RailsAdmin.config do |config|
           end
         end
       end
+      field :total_donated
+      field :total_needed
       field :published
       field :promoted do
         help 'Will stick Reason to top of homepage'
