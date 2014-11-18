@@ -1,0 +1,33 @@
+<%= content_for :page_title, @reason.title %>
+
+<%= content_for :featured do %>
+<div class="wrap slider-wrap">
+  <ul class="feature-slider">
+    <%= render :partial => "/reasons/reason", locals: { reason: @reason } -%>
+    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+  </ul>
+</div>
+<% end %>
+
+
+<div class="blocks intro">
+  <div class="support block -left -pink -column">
+    <article class="block-content">
+    <div class="block-content -top-half -center">
+      <p><strong>Why not support Madeline<br> by giving whatever you can:</strong></p>
+      <%= render :partial => "/shared/donation_form", locals: { reason: @reason } -%>
+      <div class="share">
+        <p>Help us spread the word by sharing this cause:</p>
+        <p><a href="https://twitter.com/reasontogive" class="social-link twitter"><svg class="icon icon-twitter" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-twitter"></use></svg> @reasontogive</a></p>
+        <p><a href="https://www.facebook.com/reasontogive" class="social-link facebook"><svg class="icon icon-facebook" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg> /reasontogive</a></p>
+      </div>
+    </div>
+    </article>
+  </div>
+  <div class="block-content -bottom-half -image-cover -center"></div>
+  <div class="block -right -gray">
+    <div class="block-content">
+    <%= raw @reason.content %>
+    </div>
+  </div>
+</div>

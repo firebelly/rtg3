@@ -21,16 +21,12 @@ Rails.application.routes.draw do
   root :to => "pages#home"
 
   resources :reasons, :only => [ :index, :show ]
-  resources :cart,
-            :only => [:index, :create, :update],
-            :as => :carts,
-            :controller => 'carts'
-  resources :donations, :only => [:destroy]
 
-  # cart/paypal
-  get "/add_to_cart", :to => "carts#edit"
-  get "/empty_cart", :to => "carts#empty", :as => 'empty_cart'
-  get "/checkout", :to => "orders#checkout", :as => 'checkout'
+  resource :cart, only: [:show] do
+    post 'add', to: 'carts#add', as: :add_to
+    get 'remove/:donation_id', to: 'carts#remove', as: :remove_from
+    get 'count', to: 'carts#count', as: :count
+  end
 
   # custom pages
   get '/education-programs' => 'pages#education_programs'

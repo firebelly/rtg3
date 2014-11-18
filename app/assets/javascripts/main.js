@@ -1,5 +1,31 @@
 var Main = (function ($) {
 	return {
+    cartInit: function () {
+      // add to cart links
+      $('.cart-form').on('ajax:success', function(e, data) {
+        $('#cart').html(data);
+        var cart_count = $('#cart').find('li').length;
+        Main.setCartCount(cart_count);
+        Main.showCart();
+      });
+      // delete cart item links
+      $('#cart').on('ajax:success', '.cart-delete', function(e, data) {
+        $(this).closest('li').slideUp();
+        Main.setCartCount(data);
+      });
+      // initial cart count (maybe only call this if cookie is set, which is stored when adding to cart?)
+      $.get('/cart/count', function(data) {
+        Main.setCartCount(data);
+      });
+    },
+    showCart: function() {
+      $('#cart').addClass('active');
+    },
+    setCartCount: function(cart_count) {
+      $('.cart-item-count').text(cart_count);
+      $('.cart-item-count').toggleClass('active', cart_count > 0);
+    },
+
 		mainNav: function () {
       $('.menu-toggle').on('click', function() {
         $(this).toggleClass('menu-open');
@@ -205,6 +231,7 @@ var Main = (function ($) {
     },
 		initMain: function () {
 			$(document).ready(function () {
+        Main.cartInit();
 				Main.mainNav();
         Main.stickyHeader();
         Main.smoothScrolling();

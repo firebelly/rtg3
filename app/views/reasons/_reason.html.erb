@@ -1,20 +1,15 @@
-  <li class="reason_listing <%= cycle('odd', 'even') -%> clearfix">
-    <div class="reason-thumb">
-      <% unless reason.image.blank? %>
-        <%= link_to image_tag(reason.image.url(:thumb)), reason %>
-      <% end -%>
-    </div>
-    <div class="reason-details">
-      <h2><%= link_to reason.title, reason %></h2>
-      <%=raw reason.excerpt unless reason.excerpt.blank? %>
-      <div class="amt_given clearfix">
-        <p class="percent"><span><%= reason.round_percent(@cart) %>%</span> given</p>
-        <div class="graph">
-          <div class="graph_container">
-            <div style="width: <%= (reason.percent(@cart) / 100 * 182).round.to_i %>px;" class="graph_fill"></div>
+    <div class="feature">
+      <a href="<%= reason_path(reason) %>">
+        <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
+        <div class="feature-content-wrap">
+          <div class="feature-content">
+            <h2><%= reason.title %></h2>
+            <p class="description"><%= raw reason.excerpt %></p>
+            <div class="progress-bar">
+              <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+              <div class="bar" style="width: <%= reason.percent_fulfilled %>%"></div>
+            </div>
           </div>
         </div>
-        <p class="give_now"><%= link_to 'Give Now', reason %></p>
-      </div>
+      </a>
     </div>
-  </li>

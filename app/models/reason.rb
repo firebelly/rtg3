@@ -23,6 +23,10 @@ class Reason < ActiveRecord::Base
   scope :fulfilled, -> { where("total_donated >= total_needed") }
   scope :unfulfilled, -> { where("total_donated < total_needed") }
 
+  def percent_fulfilled
+    (total_donated / total_needed * 100).round(2)
+  end
+
   private
 
   def set_post_date_to_now

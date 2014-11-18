@@ -1,0 +1,9 @@
+<% unless @cart.donations.empty? %>
+  <ul class="cart">
+  <% @cart.donations.each do |donation| %>
+    <li><%= donation.amount %> - <%= donation.reason.nil? ? 'Generic Donation' : donation.reason.title %> <%= link_to 'X', remove_from_cart_path(donation.id), remote: true, class: 'cart-delete' %></li>
+  <% end -%>
+  </ul>
+<% else %>
+  <p>Your cart is currently empty</p>
+<% end %>

@@ -4,12 +4,13 @@
   <div class="block -left -gray">
     <article class="block-content">
       <h1><%= @page.title %></h1>
-      <%= @page.content %>
+      <%= raw @page.content %>
     </article>
   </div>
   <div class="block -right -column -pink support-us">
     <div class="block-content -top-half -center">
-      <%= render :partial => "/shared/generic_donation" -%>
+      <p><strong>Why not support what we do<br> by giving whatever you can:</strong></p>
+      <%= render :partial => "/shared/donation_form" -%>
     </div>
     <div class="block-content -bottom-half -image-cover -center">
     </div>

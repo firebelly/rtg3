@@ -2,39 +2,10 @@
 
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
-  <div class="feature-slider">
-    <div class="feature">
-      <a href="reason1">
-        <div class="feature-image"><img src="/assets/RTG_Feature.jpg" alt="Eerie School"></div>
-        <div class="feature-content-wrap">
-          <div class="feature-content">
-            <h2>Eerie School Needs Your Help</h2>
-            <p class="description">Erie Charter School in Humboldt Park gets a Makeover.</p>
-            <div class="progress-bar">
-              <p class="progress-text">$120 of $170 Raised</p>
-              <div class="bar"></div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="feature">
-      <a href="#">
-        <div class="feature-image"><img src="/assets/RTG_Feature2.jpg" alt="Eerie School"></div>
-        <div class="feature-content-wrap">
-          <div class="feature-content">
-            <h2>Another School Needs Your Help</h2>
-            <p class="description">Erie Charter School in Humboldt Park gets a Makeover.</p>
-            <div class="progress-bar">
-              <p class="progress-text">$60 of $160 Raised</p>
-              <div class="bar"></div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
+  <ul class="feature-slider">
+    <%= render @reasons %>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
-  </div>
+  </ul>
 </div>
 <% end %>
 
@@ -48,7 +19,8 @@
   </div>
   <div class="block -right -column -pink support-us">
     <div class="block-content -top-half -center">
-      <%= render :partial => "/shared/generic_donation" -%>
+      <p><strong>Why not support what we do<br> by giving whatever you can:</strong></p>
+      <%= render :partial => "/shared/donation_form" -%>
     </div>
     <div class="block-content -bottom-half -image-cover -center">
     </div>

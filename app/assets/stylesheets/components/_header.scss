@@ -184,6 +184,12 @@
             color: $pink;
             background: $white;
             left: calc(50% + 12px);
+
+            display:none;
+            &.active {
+              display: block;
+            }
+
           }
         }
       }
