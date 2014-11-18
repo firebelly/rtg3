@@ -38,6 +38,7 @@
   <%= render :partial => "/shared/footer" -%>
 
   <%= javascript_include_tag 'application' %>
+  <%= yield :javascripts -%>
   <div id="cart"><%= render :partial => "carts/show" -%></div>
 </body>
 </html>
