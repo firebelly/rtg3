@@ -42,6 +42,12 @@ RailsAdmin.config do |config|
       field :title
       field :published
     end
+    edit do
+      field :title
+      field :published
+      field :image
+      field :content, :ck_editor
+    end
   end
 
   config.model Post do

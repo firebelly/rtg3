@@ -1,0 +1,14 @@
+<%= content_for :page_title, @page.title %>
+
+<%= content_for :featured do %>
+<div class="wrap banner-wrap get-involved">
+  <div class="banner">
+    <div class="banner-content">
+      <h2>A Bit About Us</h2>
+    </div>
+    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+  </div>
+</div>
+<% end %>
+
+<%= render :partial => "/shared/affiliates", locals: { affiliates: ["partners", "sponsors", "featured"]} -%>

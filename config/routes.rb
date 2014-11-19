@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   end
 
   # custom pages
-  get '/education-programs' => 'pages#education_programs'
-  get '/get-involved' => 'pages#get_involved'
-  get '/apply' => 'pages#apply'
-  get '/about-us' => 'pages#about_us'
+  get '/educational-programs' => 'pages#educational_programs', id: 'educational-programs'
+  get '/get-involved' => 'pages#get_involved', id: 'get-involved'
+  get '/apply' => 'pages#apply', id: 'apply'
+  get '/about-us' => 'pages#about_us', id: 'about-us'
   
   # get '/press' => 'posts#press_index', :id => 'press'
   # get '/press/:id' => 'posts#press_show', :as => 'press_post'

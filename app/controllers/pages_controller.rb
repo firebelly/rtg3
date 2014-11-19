@@ -4,17 +4,20 @@ class PagesController < ApplicationController
 
   def give
     @body_class = 'reasons'
-    @page = Page.friendly.find('give')
     @reasons = Reason.published.unfulfilled.order('post_date DESC')
   end
 
-  def for_sponsors
-    @page = Page.friendly.find('for-sponsors')
+  def educational_programs
+  end
+
+  def get_involved
+  end
+
+  def apply
   end
 
   def success_stories
     @body_class = 'success_stories'
-    @page = Page.friendly.find('success-stories')
     @successes = Reason.published.is_success.order('post_date DESC')
   end
 
@@ -34,12 +37,12 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.friendly.find(params[:id])
   end
 
   private
 
   def get_defaults
+    @page = Page.friendly.find(params[:id])
     @body_class = "#{request.path.gsub(/\/?([^\/]+)(.*)/,'\\1')}"
     @sidebar_promotion = Page.friendly.find('sidebar-promotion')
   rescue ActiveRecord::RecordNotFound => e
