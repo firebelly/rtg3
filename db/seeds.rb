@@ -6,5 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!([{email: 'developer@firebellydesign.com', password: 'c0ff33bar'}])
-User.create!([{email: 'shannon@firebellyfoundation.org', password: 'gigglesmcwhiskey'}])
+User.create!([{email: 'developer@firebellydesign.com', password: 'changeme'}])
+User.create!([{email: 'shannon@firebellyfoundation.org', password: 'changeme'}])
+
+['Home', 'Educational Programs', 'Get Involved', 'Give', 'Success Stories', 'Apply', 'About Us', 'News'].each do |page|
+	unless Page.where({title: page}).exists?
+		Page.create({title: page, content: "#{page.titleize}!", published: true})
+	end
+end
