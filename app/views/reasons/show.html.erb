@@ -2,10 +2,10 @@
 
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
-  <ul class="feature-slider">
+  <div class="feature-slider">
     <%= render :partial => "/reasons/reason", locals: { reason: @reason } -%>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
-  </ul>
+  </div>
 </div>
 <% end %>
 
