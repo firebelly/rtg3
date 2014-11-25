@@ -11,4 +11,327 @@
 </div>
 <% end %>
 
+<div class="blocks">
+  <div class="block -left -gray">
+    <div class="block-content">
+	    <%= raw @page.content %>
+    </div>
+  </div>
+  <div class="block -right -pink block-slider image-slide">
+    <div class="block-content image-slide">
+      <div class="block-image-slider0">
+        <div class="item">
+          <img src="/assets/RTG_live-and-learn-graduation.jpg" alt="Educational Needs">
+          <div class="slider-caption">
+            <p>Graduation of the Live and Learn class 2014</p>
+          </div>
+        </div>  
+        <div class="item">
+          <img src="/assets/RTG_lending-a-hand.jpg" alt="Educational Needs">
+          <div class="slider-caption">
+            <p>Another project</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blocks -column">
+  <div class="block intern-form accordian -full -gray">
+    <div class="block-content">
+      <div class="accordian-trigger">
+        <h3>Educational Program Application</h3>
+        <div class="actions" aria-hidden="true">
+          <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
+          <span class="plus-x"></span>
+        </div>
+      </div>
+      <div class="accordian-content">
+        <div class="panes">
+          <div class="pane pane-1 active">
+            <div class="one-half-left">
+              <p>Reason to Give offers corporations several sponsorship opportunities throughout the year.  We have partnership packages for various levels of support from our Title Sponsor who sponsors an entire class to our Bronze Sponsor which sponsors multiple students. Reason to Give offers our sponsors numerous options to increase exposure, reach unique audiences, and promote corporate responsibility and diversity. Employees are also encouraged to volunteer at any of our community events or participate in our classes.</p>
+              <p>Reason to Give also has several event sponsorship opportunities, where corporations receive recognition and employees can join in on the fun.</p>
+              <a href="#" class="pane-advance btn -white -hollow -wider">Apply</a>
+            </div>
+            <div class="one-half-right full-bleed">
+            </div>
+          </div>
+          <div class="pane pane-2">
+            <form action="" class="-full pane-form">
+              <div class="one-half-left">
+                <h4>Contact Information</h4>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internFirstName">First Name*</label>
+                    <input type="text" name="internFirstName" id="internFirstName" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internLastName">Last Name*</label>
+                    <input type="text" name="internLastName" id="internLastName" required="true">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internCell">Cell Phone*</label>
+                    <input type="tel" name="internCell" id="internCell" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internPhone">Home Phone</label>
+                    <input type="text" name="internPhone" id="internPhone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="internEmail">Email Address*</label>
+                  <input type="email" name="internEmail" id="internEmail" required="true">
+                </div>
+                <div class="form-group">
+                  <label for="internAddress">Street Address (Include Apt #)*</label>
+                  <input type="email" name="internEmail" id="internEmail" required="true">
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internCityState">City & State*</label>
+                    <input type="text" name="internCityState" id="internCityState" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internZip">Zip Code*</label>
+                    <input type="number" name="internZip" id="internZip" required="true">
+                  </div>
+                </div>
+              </div>
+              <div class="one-half-right">
+              <h4>Demographic Information</h4>
+              <p class="instructions">All answers will be used for statistical purposes only and will not affect your acceptance into the program</p>
+                <div class="form-group">
+                  <div class="one-fourth-left">
+                    <label for="internAge">Age*</label>
+                    <input type="number" name="internAge" id="internAge" required="true">
+                  </div>
+                  <div class="three-fourths-right">
+                    <fieldset>
+                      <legend>Gender*</legend>
+                      <input type="radio" name="internGender" id="internGenderMale" value="male" required>
+                      <label class="custom-radio" for="internGenderMale">Male</label>
+                      <input type="radio" name="internGender" id="internGenderFemale" value="female" required>
+                      <label class="custom-radio" for="internGenderFemale">Female</label>
+                      <input type="radio" name="internGender" id="internGenderNeutral" value="neutral" required>
+                      <label class="custom-radio" for="internGenderNeutral">Gender Neutral</label>
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internMaritialStatus" class="select-wrapper">
+                      <legend>Maritial Status*</legend>
+                      <div class="button custom-select ff-hack">
+                      <select name="internMaritialStatus" id="internMaritialStatus">
+                        <option value="null"></option>
+                        <option value="maritialSingle">Single</option>
+                        <option value="maritialMarried">Married</option>
+                      </select>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internEthnicity" class="select-wrapper">
+                      <legend>Ethnicity*</legend>
+                      <div class="button custom-select ff-hack">
+                      <select name="internEthnicity" id="internEthnicity">
+                        <option value="null"></option>
+                        <option value="ethnicityAfrican">African</option>
+                        <option value="ethnicityAsian">Asian</option>
+                        <option value="ethnicityEuropean">European</option>
+                        <option value="ethnicityNativeAmerican">Native American</option>
+                        <option value="ethnicityLatino">Latino</option>
+                        <option value="ethnicityOther">Other</option>
+                      </select>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internIncome">Annual Household Income*</label>
+                    <input type="number" name="internIncome" id="internIncome" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internEmploymentStatus">Current Employment Status*</label>
+                    <input type="text" name="internEmploymentStatus" id="internEmploymentStatus">
+                  </div>
+                </div>
+                <div class="form-group">                            
+                  <label for="internEducation" class="select-wrapper">
+                    <legend>Highest Level of Education Completed*</legend>
+                    <div class="button custom-select ff-hack">
+                    <select name="internEducation" id="internEducation">
+                      <option value="null"></option>
+                      <option value="educationPrimary">Primary School</option>
+                      <option value="educationHighSchool">High School or GED</option>
+                      <option value="educationBachelors">Bachelor's Degree</option>
+                      <option value="educationMasters">Master's Degree</option>
+                      <option value="educationDoctorate">Doctorate</option>
+                    </select>
+                    </div>
+                  </label>
+                </div>
+                <input type="submit" value="submit" class="btn -white submit">
+              </div>
+            </form>
+            <a href="#" class="pane-devance btn -white -hollow">back</a>
+          </div>
+        </div>                  
+      </div>
+    </div>
+  </div>
+  <div class="block volunteer-form accordian -last -full -gray">
+    <div class="block-content">
+      <div class="accordian-trigger">
+        <h3>Business, School or Organization</h3>
+        <div class="actions" aria-hidden="true">
+          <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
+          <span class="plus-x"></span>
+        </div>
+      </div>
+      <div class="accordian-content">
+        <div class="panes">
+          <div class="pane pane-1 active">
+            <div class="one-half-left">
+              <p>Reason to Give offers corporations several sponsorship opportunities throughout the year.  We have partnership packages for various levels of support from our Title Sponsor who sponsors an entire class to our Bronze Sponsor which sponsors multiple students. Reason to Give offers our sponsors numerous options to increase exposure, reach unique audiences, and promote corporate responsibility and diversity. Employees are also encouraged to volunteer at any of our community events or participate in our classes.</p>
+              <p>Reason to Give also has several event sponsorship opportunities, where corporations receive recognition and employees can join in on the fun.</p>
+              <a href="#" class="pane-advance btn -white -hollow -wider">Apply</a>
+            </div>
+            <div class="one-half-right full-bleed">
+            </div>
+          </div>
+          <div class="pane pane-2">
+            <form action="" class="-full pane-form">
+              <div class="one-half-left">
+                <h4>Contact Information</h4>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="volunteerFirstName">First Name*</label>
+                    <input type="text" name="volunteerFirstName" id="volunteerFirstName" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="volunteerLastName">Last Name*</label>
+                    <input type="text" name="volunteerLastName" id="volunteerLastName" required="true">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="volunteerCell">Cell Phone*</label>
+                    <input type="tel" name="volunteerCell" id="volunteerCell" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="volunteerPhone">Home Phone</label>
+                    <input type="text" name="volunteerPhone" id="volunteerPhone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="volunteerEmail">Email Address*</label>
+                  <input type="email" name="volunteerEmail" id="volunteerEmail" required="true">
+                </div>
+                <div class="form-group">
+                  <label for="volunteerAddress">Street Address (Include Apt #)*</label>
+                  <input type="email" name="volunteerEmail" id="volunteerEmail" required="true">
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="volunteerCityState">City & State*</label>
+                    <input type="text" name="volunteerCityState" id="volunteerCityState" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="volunteerZip">Zip Code*</label>
+                    <input type="number" name="volunteerZip" id="volunteerZip" required="true">
+                  </div>
+                </div>
+              </div>
+              <div class="one-half-right">
+              <h4>Demographic Information</h4>
+              <p class="instructions">All answers will be used for statistical purposes only and will not affect your acceptance into the program</p>
+                <div class="form-group">
+                  <div class="one-fourth-left">
+                    <label for="volunteerAge">Age*</label>
+                    <input type="number" name="volunteerAge" id="volunteerAge" required="true">
+                  </div>
+                  <div class="three-fourths-right">
+                    <fieldset>
+                      <legend>Gender*</legend>
+                      <input type="radio" name="volunteerGender" id="volunteerGenderMale" value="male" required>
+                      <label class="custom-radio" for="volunteerGenderMale">Male</label>
+                      <input type="radio" name="volunteerGender" id="volunteerGenderFemale" value="female" required>
+                      <label class="custom-radio" for="volunteerGenderFemale">Female</label>
+                      <input type="radio" name="volunteerGender" id="volunteerGenderNeutral" value="neutral" required>
+                      <label class="custom-radio" for="volunteerGenderNeutral">Gender Neutral</label>
+                    </fieldset>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="volunteerMaritialStatus" class="select-wrapper">
+                      <legend>Maritial Status*</legend>
+                      <div class="button custom-select ff-hack">
+                      <select name="volunteerMaritialStatus" id="volunteerMaritialStatus">
+                        <option value="null"></option>
+                        <option value="maritialSingle">Single</option>
+                        <option value="maritialMarried">Married</option>
+                      </select>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="one-half-right">
+                    <label for="volunteerEthnicity" class="select-wrapper">
+                      <legend>Ethnicity*</legend>
+                      <div class="button custom-select ff-hack">
+                      <select name="volunteerEthnicity" id="volunteerEthnicity">
+                        <option value="null"></option>
+                        <option value="ethnicityAfrican">African</option>
+                        <option value="ethnicityAsian">Asian</option>
+                        <option value="ethnicityEuropean">European</option>
+                        <option value="ethnicityNativeAmerican">Native American</option>
+                        <option value="ethnicityLatino">Latino</option>
+                        <option value="ethnicityOther">Other</option>
+                      </select>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="volunteerIncome">Annual Household Income*</label>
+                    <input type="number" name="volunteerIncome" id="volunteerIncome" required="true">
+                  </div>
+                  <div class="one-half-right">
+                    <label for="volunteerEmploymentStatus">Current Employment Status*</label>
+                    <input type="text" name="volunteerEmploymentStatus" id="volunteerEmploymentStatus">
+                  </div>
+                </div>
+                <div class="form-group">                            
+                  <label for="volunteerEducation" class="select-wrapper">
+                    <legend>Highest Level of Education Completed*</legend>
+                    <div class="button custom-select ff-hack">
+                    <select name="volunteerEducation" id="volunteerEducation">
+                      <option value="null"></option>
+                      <option value="educationPrimary">Primary School</option>
+                      <option value="educationHighSchool">High School or GED</option>
+                      <option value="educationBachelors">Bachelor's Degree</option>
+                      <option value="educationMasters">Master's Degree</option>
+                      <option value="educationDoctorate">Doctorate</option>
+                    </select>
+                    </div>
+                  </label>
+                </div>
+                <input type="submit" value="submit" class="btn -white submit">
+              </div>
+            </form>
+            <a href="#" class="pane-devance btn -white -hollow">back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= render :partial => "/shared/affiliates", locals: { affiliates: ["partners", "sponsors", "featured"]} -%>

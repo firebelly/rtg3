@@ -6,19 +6,36 @@
 <head>
   <title>Reason to Give : <%= yield :page_title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= include_gon %>
   <%= csrf_meta_tags %>
+  <link rel="canonical" href="http://reasontogive.com" />
+  <meta name="description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand." />
+  <meta name="keywords" content="giving, humboldt park, chicago, donations, programs, education, helping, social justice, neighborhood, community" />
+  <meta property="og:title" content="Reason to Give" />
+  <meta property="og:description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand." />
+  <meta name="twitter:card" content="Reason To Give is a nonprofit started by @dawnhancock + connects people who give a damn with people who need a hand. 7 years strong!">
+  <meta name="twitter:site" content="@reasontogive">
+  <meta name="twitter:creator" content="@reasontogive">
+  <meta name="twitter:title" content="Reason to Give">
+  <meta name="twitter:description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand.">
+  <meta name="twitter:image" content="favicon.png">
+  <link rel="shortcut icon" type="image/ico" href="<%= image_url('favicon.png') %>">
+  <link rel="image_src" href="<%= image_url('reason-to-give_og.jpg') %>">
 
   <%= javascript_include_tag 'modernizr.custom' %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <!--[if lt IE 9]>
-    <script src="template/js/no-build/respond.min.js"></script>
+    <%= javascript_include_tag 'svg4everybody.ie8.min' %>
+    <%= javascript_include_tag 'respond.min' %>
   <![endif]-->
 
   <%= render :partial => "/shared/analytics" if Rails.env.production? -%>
 </head>
 <body class="<%= @body_class -%>" id="<%= @body_id -%>">
+  <span class="hide defs"><%= render partial: '/shared/svg.defs.txt' -%></span>
+  <div class="body-wrap">
 
   <%= render :partial => "/shared/header" -%>
   <%= render :partial => "/shared/flash" -%>
@@ -36,9 +53,11 @@
   </section>
 
   <%= render :partial => "/shared/footer" -%>
+  </div><!-- END .body-wrap -->
 
-  <%= javascript_include_tag 'application' %>
   <%= yield :javascripts -%>
-  <div id="cart"><%= render :partial => "carts/show" -%></div>
+  <%= javascript_include_tag 'application' %>
+
+  <%= render :partial => "/shared/cart" -%>
 </body>
 </html>

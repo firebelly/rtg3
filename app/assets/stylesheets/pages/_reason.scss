@@ -3,7 +3,7 @@
 .reason {
   &.banner-wrap {
     .banner {
-      background-image: url('../images/RTG_give.jpg');
+      background-image: image-url('RTG_give.jpg');
     }
   }
 
@@ -16,6 +16,9 @@
     }
     .share {
       margin-top: 1em;
+    }
+    .block-content.-image-cover {
+      max-height: none;
     }
   }
 

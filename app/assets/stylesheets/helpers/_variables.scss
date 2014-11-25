@@ -4,13 +4,18 @@
 $black: #000;
 $white: #fff;
 $gray: #D9D9D9;
+$lightGray: #ECECEC;
 $midGray: #808080;
 $darkGray: #404040;
 $pink: #E54C97;
 $lightPink: #ED68A8;
-$sheer1: rgba(241,241,241,.5);
+$sheer1: rgba(241,241,241,.5); // Used for semi-transparent blocks
 $sheer2: rgba(217,217,217,0.7);
 $sheer3: rgba(150,150,150,0.7);
+
+// Color Assignments
+$brand-main: $pink; // The main highlight color
+$brand-main-lite: $lightPink; // Used in variations or alternate states for $brand-main
 
 // Color classes
 .black {color: $black}

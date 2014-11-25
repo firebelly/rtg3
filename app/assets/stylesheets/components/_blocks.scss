@@ -11,6 +11,10 @@
 .block {
   width: 100%;
   padding: 24px;
+  // Abort Flex!
+  &.-noflex {
+    display: block;
+  }
   .block-content {
     width: 100%;
     h3 {
@@ -32,7 +36,7 @@
           width: 0.4em;
           height: 0.4em;
           top: -0.2em;
-          background: $pink;
+          background: $brand-main;
           border-radius: 50%;
           position: relative;
           margin-right: 0.5em;
@@ -62,11 +66,38 @@
     &.-center {
       text-align: center;
     }
+    &.-full {
+      width: 100%;
+      display: block;
+    }
   }
   // Full-width blocks
   &.-full {
     width: 100%;
     display: block;
+  }
+  // Callout blocks with big bold title and link to action
+  &.-callout {
+    .block-content {
+      h3 {
+        background: none;
+        font-size: 1.875em;
+      }
+      h4 {
+        color: $white;
+        font-size: .75em;
+        position: relative;
+        @include font-bold();
+        display: inline-block;
+        padding-bottom: 0.25em;
+        @include dots($white, 6px);
+      }
+    }
+  }
+  // Blocks with full-width/height images
+  &.-image-cover {
+    padding: 0;
+    min-height: 300px;
   }
   // Blocks that are split into vertical sections inside
   &.-column {
@@ -77,6 +108,7 @@
       flex-grow: 1;
       padding: 24px;
       &.-image-cover {
+        padding: 0;
         width: 100%;
         min-height: 200px;
         background-size: cover;
@@ -87,15 +119,27 @@
           max-width: none;
         }
       }
-      &.-top-two-thirds {
-        min-height: 300px;
-      }
       &.-bottom-third {
+        z-index: 1;
         height: auto;
+        position: relative;
+        h4 {
+          margin-top: 0;
+        }
+        &.-pink {
+          background: $brand-main;
+        }
       }
       &.image-slide { 
         padding: 0;
         max-height: 350px;
+      }
+    }
+    // No padding for accordians in column-style blocks
+    .accordian {
+      .block-content {
+        padding: 0;
+        margin: 0 auto;
       }
     }
   }
@@ -104,22 +148,22 @@
     background: $sheer1;
     .block-content {
       h3 {
-        color: $pink;
+        color: $brand-main;
       }
       p {
         color: $black;
       }
       strong {
-        color: $pink;
+        color: $brand-main;
       }
       .icon {
-        fill: $pink;
+        fill: $brand-main;
       }
     }
   }
   // Blocks that are pink
   &.-pink {
-    background: $pink;
+    background: $brand-main;
     .block-content {
       h3, h4, p {
         color: $white;
@@ -130,7 +174,6 @@
     }
   }
 }
-
 
 // Blocks that are full-bleed image sliders
 .image-slide {
@@ -148,8 +191,7 @@
       .item {
         position: relative;
         img {
-          min-width: 100%;
-          max-width: none;
+          width: 100%;
         }
       }
       .slick-next, .slick-prev {
@@ -160,7 +202,7 @@
         z-index: 1;
         width: 100%;
         padding: 0 12px;
-        background: $pink;
+        background: $brand-main;
         position: absolute;
         p {
           text-align: center;
@@ -203,7 +245,7 @@
     line-height: 40px;
     position: absolute;
     background: $sheer2;
-    transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-out;
     &::before {
       opacity: 1;
       width: 16px;
@@ -216,7 +258,7 @@
     &::before {
       content: '';
       float: left;
-      background: image-url('arrow-left.svg') no-repeat;
+      background: asset-url('arrow-left.svg') no-repeat;
       background-position: center left;
     }
     &:hover, &:focus, &:active {
@@ -226,13 +268,13 @@
   .slick-next {
     right: 0;
     color: $white;
-    background: $pink;
+    background: $brand-main;
     padding-right: 16px;
     &::before {
       content: '';
       float: right;
       margin-left: 12px;
-      background: image-url('arrow-right.svg') no-repeat;
+      background: asset-url('arrow-right.svg') no-repeat;
       background-position: center right;
     }
     &:hover, &:focus {
@@ -254,7 +296,7 @@
           height: 12px;
           border-radius: 50%;
           background: $sheer2;
-          transition: background 0.2s ease-in-out;
+          transition: background 0.2s ease-out;
         }
         &:hover {
           &::before {
@@ -265,7 +307,7 @@
       &.slick-active {
         button {
           &::before {
-            background: $pink;
+            background: $brand-main;
           }
         }
       }
@@ -282,7 +324,7 @@
   max-height: 86px;
   overflow: hidden;
   position: relative;
-  transition: background 0.4s ease-in-out, max-height 0.4s cubic-bezier(1, 0.5, 0, 1);
+  transition: background 0.4s ease-out, max-height 0.4s cubic-bezier(1, 0.5, 0, 1);
   &.-last {
     .accordian-trigger {
       background: none;
@@ -299,10 +341,17 @@
     }
   }
   &.active {
-    background: $pink;
+    background: $brand-main;
     max-height: 2000px;
     .accordian-trigger {
       @include dots($white, 6px);
+      &:hover, &:focus, &:active {
+        .actions {
+          .plus-x {
+            transform: rotate(-315deg) scale(1.1);
+          }
+        }
+      }
       h3 {
         color: $white;
       }
@@ -316,7 +365,7 @@
         }
         .plus-x {
           background: $white;
-          transform: rotate(225deg);
+          transform: rotate(495deg);
           &::before {
             background: $white;
           }
@@ -351,27 +400,45 @@
       float: left;
       line-height: 1em;
       background: none;
-      transition: color 0.2s ease-in-out;
+      transition: color 0.2s ease-out;
     }
     .actions {
       float: right;
       .icon-mail {
         width: 18px;
         height: 15px;
-        stroke: $pink;
+        stroke: $brand-main;
         stroke-width: 1.5;
         margin: 2px 12px 0 0;
         display: inline-block;
-        transition: stroke 0.2s ease-in-out;
+        transition: stroke 0.2s ease-out;
       }
       .icon-document {
         width: 18px;
-        fill: $pink;
+        fill: $brand-main;
         height: 17px;
-        stroke: $pink;
+        stroke: $brand-main;
         stroke-width: 1.5;
         margin: 0 12px 0 0;
-        transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+        transition: stroke 0.2s ease-out, fill 0.2s ease-out;
+      }
+      .icon-bars {
+        width: 26px;
+        height: 15px;
+        fill: $brand-main;
+        margin: 0 12px 0 0;
+        transition: fill 0.2s ease-out;
+      }
+      .icon-play {
+        top: 2px;
+        width: 23px;
+        height: 24px;
+        stroke-width: 5px;
+        fill: $brand-main;
+        position: relative;
+        stroke: $brand-main;
+        margin: 0  12px 0 0;
+        transition: fill 0.2s ease-out;
       }
       .plus-x {
         margin-bottom: 6px;
@@ -379,14 +446,18 @@
       }
     }
   }
+  .block-content {
+    padding: 0;
+    margin: 0 auto;
+  }
   .accordian-content {
     opacity: 0;
     max-height: 0;
     @include clearfix();
-    transition: max-height 0.4s cubic-bezier(1, 0.5, 0, 1), opacity 0.4s ease-in-out;
+    transition: max-height 0.4s cubic-bezier(1, 0.5, 0, 1), opacity 0.4s ease-out;
     > div {
       padding: 0;
-      transition: padding 0.4s ease-in-out;
+      transition: padding 0.4s ease-out;
     }
     p {
       color: $white;
@@ -399,6 +470,32 @@
       .submit {
         margin-top: 25px;
       }
+    }
+  }
+
+  // Pink variation
+  &.-pink {
+    &:hover, &:focus, &:active {
+      background: $brand-main-lite;
+    }
+    .accordian-trigger {
+      @include dots($white, 6px);
+      .actions {
+        .icon-mail {
+          stroke: $white;
+        }
+        .icon-document {
+          fill: $white;
+          stroke: $white;
+        }
+        .icon-bars {
+          fill: $white;
+        }
+        .icon-play {
+          fill: $white;
+          stroke: $white;
+        }
+      }   
     }
   }
 }
@@ -429,7 +526,7 @@
       position: relative;
       padding: 20% 25px;
       background: rgba(0,0,0, 0.4);
-      transition: background 0.2s ease-in-out;
+      transition: background 0.2s ease-out;
     }
     img {
       top: 0;
@@ -441,16 +538,16 @@
       min-width: 100%;
       min-height: 100%;
       position: absolute;
+      transition: transform 4.5s ease-out;
       transform: scale(1.1) translate(-2.5%);
       transform-origin: top left;
-      transition: transform 3.5s ease-in-out;
     }
     .block-content {
       color: $white;
       margin: 0 auto;
       max-width: 200px;
       text-align: center;
-      transition: transform 3.5s ease-in-out;
+      transition: transform 3.5s ease-out;
       h3 {
         background: none;
       }
@@ -474,7 +571,7 @@
   opacity: 0;
   display: none;
   @include clearfix();
-  transition: opacity 0.2s ease-in-out, left 0.2s cubic-bezier(1, 0.5, 0, 1);
+  transition: opacity 0.2s ease-out, left 0.2s cubic-bezier(1, 0.5, 0, 1);
   &.active {
     opacity: 1;
     display: block;
@@ -502,7 +599,7 @@
     width: 100%;
     padding: 12px 0;
   }
-  ol {
+  ol, ul {
     margin: 0;
     padding: 0;
     li {
@@ -511,7 +608,7 @@
         display: block;
         padding: 0 24px;
         background: rgba(0,0,0,0);
-        transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-out;
         &:hover, &:focus, &:active {
           background: rgba(217,217,217,0.7);
           .list-icon {
@@ -534,7 +631,7 @@
     }
   }
   .list-number {
-    color: $pink;
+    color: $brand-main;
     margin-right: 1em;
     font-size: 1.875em;
     line-height: 0.75em;
@@ -545,7 +642,7 @@
     padding-right: 24px;
     h4 {
       margin: 0;
-      color: $pink;
+      color: $brand-main;
       font-size: 0.75em;
     }
     p {
@@ -650,10 +747,23 @@
     &.-full {
       width: 100%;
     }
+    &.-callout {
+      .block-content {
+        h3 {
+          font-size: 3.375em;
+        }
+        h4 {
+          font-size: 1.125em;
+        }
+      }
+    }
     &.-column {
       .block-content {
         padding: 50px;
         overflow: hidden;
+        &.-top-two-thirds {
+          min-height: 300px;
+        }
       }
       .image-slide {
         padding: 0;
@@ -673,6 +783,13 @@
       &.image-slide {
         .slick-next, .slick-prev {
           bottom: 58px;
+        }
+        .item {
+          img {
+            width: auto;
+            min-width: 100%;
+            max-width: none;
+          }
         }
       }
     }
@@ -694,8 +811,12 @@
   .accordian {
     padding: 0 100px;
     .accordian-trigger {
+      position: relative;
       .actions {
-        float: right;
+        top: 50%;
+        right: 0;
+        position: absolute;
+        transform: translateY(-50%);
         .icon-mail {
           width: 27px;
           height: 18px;
@@ -725,7 +846,7 @@
           right: 0;
           bottom: 0;
           width: auto;
-          color: $pink;
+          color: $brand-main;
           border: none;
           margin-top: 0;
           position: absolute;

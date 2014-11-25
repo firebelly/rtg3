@@ -3,7 +3,11 @@
 .success-stories {
   &.banner-wrap {
     .banner {
-      background-image: url('../images/RTG_reason4.jpg');
+      background-image: image-url('RTG_reason4.jpg');
+      .story-link {
+        width: 100%;
+        height: 100%;;
+      }
     }
   }
 }

@@ -7,17 +7,17 @@
   @include font-bold();
   display: inline-block;
   border: 2px solid rgba(255,255,255,0);
-  transition: border-color 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-out, background 0.2s ease-out, color 0.2s ease-out;
   &.-pink {
-    @include btn($pink, $white, solid);
+    @include btn($brand-main, $white, solid);
     &.-hollow {
-      @include btn($pink, $white, hollow);
+      @include btn($brand-main, $white, hollow);
     }
   }
   &.-white {
-    @include btn($white, $pink, solid);
+    @include btn($white, $brand-main, solid);
     &.-hollow {
-      @include btn($white, $pink, hollow);
+      @include btn($white, $brand-main, hollow);
     }
   }
   &.-wider {
@@ -25,23 +25,56 @@
   }
 }
 
-.plus-x {
+.x {
   height: 3px;
   width: 15px;
   display: block;
-  background: $pink;
   position: relative;
+  background: $brand-main;
+  transform: rotate(45deg);
   transform-origin: center;
-  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: transform 0.2s ease-out, background 0.2s ease-out;
   &::before {
     top: -6px;
     right: 6px;
     width: 3px;
     content: '';
     height: 15px;
-    background: $pink;
     position: absolute;
-    transition: right 0.2s ease-in-out, top 0.2s ease-in-out, background 0.2s ease-in-out;
+    background: $brand-main;
+    transition: right 0.2s ease-out, top 0.2s ease-out, background 0.2s ease-out;
+  }
+  &.-white {
+    background: $white;
+    &::before {
+      background: $white;
+    }
+  } 
+}
+
+.plus-x {
+  height: 3px;
+  width: 15px;
+  display: block;
+  position: relative;
+  background: $brand-main;
+  transform-origin: center;
+  transition: transform 0.2s ease-out, background 0.2s ease-out;
+  &::before {
+    top: -6px;
+    right: 6px;
+    width: 3px;
+    content: '';
+    height: 15px;
+    position: absolute;
+    background: $brand-main;
+    transition: right 0.2s ease-out, top 0.2s ease-out, background 0.2s ease-out;
+  }
+  &.-white {
+    background: $white;
+    &::before {
+      background: $white;
+    }
   }
 }
 .plus-x--hover {
@@ -53,19 +86,19 @@
   width: 15px;
   display: block;
   margin-top: 6px;
-  background: $pink;
   position: relative;
+  background: $brand-main;
   transform-origin: center;
-  transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+  transition: transform 0.1s ease-out, margin 0.1s ease-out;
   &::before {
     top: -6px;
     right: 6px;
     width: 3px;
     content: '';
     height: 15px;
-    background: $pink;
     position: absolute;
-    transition: right 0.2s ease-in-out, top 0.2s ease-in-out;
+    background: $brand-main;
+    transition: right 0.1s ease-out, top 0.1s ease-out;
   }
 }
 .plus-arrow--hover {
@@ -96,7 +129,7 @@
     position: absolute;
     transform: scaleY(0);
     transform-origin: bottom;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-out;
   }
 }
 .down-arrow--hover {
@@ -114,9 +147,9 @@
         height: 12px;
         box-shadow: none;
         background: $sheer2;
-        transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-out;
         &.flex-active {
-          background: $pink;
+          background: $brand-main;
         }
         &:hover, &:focus {
           background: $lightPink;

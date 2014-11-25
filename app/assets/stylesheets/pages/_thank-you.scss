@@ -1,0 +1,67 @@
+// Thank You
+
+.thank-you {
+  .share {
+    p {
+      max-width: 360px;
+    }
+    .links a {
+      padding-bottom: 0.25em;
+      @include dots($white, 6px);
+    }
+    .icon {
+      fill: $white;
+      display: inline;
+      line-height: 1em;
+      vertical-align: text-bottom;
+    }
+    .twitter {
+      .icon-twitter {
+        width: 14px;
+        height: 1em;
+      }
+    }
+    .facebook {
+      padding-left: 1px;
+      .icon-facebook {
+        width: 11px;
+        height: 1em;
+        margin-right: 4px;
+      }
+    }
+  }
+  
+  .feature-slider {
+    .feature {
+      &.slick-active {
+        .feature-content {
+          .progress-bar {
+            .bar {
+              &::after {
+                left: 100%;
+                width: 10%;
+                content: '';
+                height: 100%;
+                display: block;
+                position: absolute;
+                background: $brand-main-lite;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  @include min-screen($bpMed) {
+    .share {
+      .links {
+        display: inline-block;
+        .facebook {
+          margin-left: 2em;
+        }
+      }
+    }
+  }
+}

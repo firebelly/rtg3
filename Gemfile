@@ -28,3 +28,5 @@ gem 'paperclip', '~> 4.2'
 
 gem 'createsend'
 gem 'randumb'
+gem 'figaro'
+gem 'gon', '~> 5.1.2'

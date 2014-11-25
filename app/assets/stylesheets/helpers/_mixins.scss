@@ -42,7 +42,7 @@
   @if $style == "solid" {
     color: $color;
     background: $background;
-    &:hover, &:focus, &:active {
+    &:hover {
       color: $background;
       background: $color;
       border-color: $background;
@@ -52,7 +52,7 @@
     background: none;
     color: $background;
     border: 2px solid $background; // The thickness should correspond with the thickness set above
-    &:hover, &:focus, &:active {
+    &:hover {
       color: $color;
       background: $background;
     }
@@ -126,11 +126,11 @@
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 
 @mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
-  background-image: url('../images/' + $image_name + $extention);
+  background-image: image-url('' + $image_name + $extention);
   $x2img : $image_name + '@2x' + $extention;
 
   @media all and (-webkit-min-device-pixel-ratio : 1.5) {
-    background-image: url('../images/' + $x2img);
+    background-image: image-url('' + $x2img);
     background-size: $w auto;
   }
 }

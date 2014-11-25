@@ -3,7 +3,7 @@
 .header_main {
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   padding: 0 12px;
   position: absolute;
@@ -16,12 +16,12 @@
       width: 100%;
       fill: $white;
       height: 28px;
-      transition: fill 0.2s ease-in-out;
+      transition: fill 0.2s ease-out;
     }
     a {
       &:hover, &:focus, &:active {
         .icon {
-          fill: $pink;
+          fill: $brand-main;
         }
       }
     }
@@ -50,7 +50,7 @@
         background: $white;
         border-radius: 2px;
         white-space: nowrap;
-        transition: background 0.3s ease-in-out;
+        transition: background 0.3s ease-out;
       }
       &::before, &::after {
         left: 0;
@@ -61,7 +61,7 @@
         border-radius: 2px;
         position: absolute;
         transform-origin: center center;
-        transition: width 0.2s ease-in-out, background 0.2s ease-in-out, transform 0.2s ease-in-out, top 0.2s ease-in-out, bottom 0.2s ease-in-out, left 0.2s ease-in-out, right 0.2s ease-in-out;
+        transition: width 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out, top 0.2s ease-out, bottom 0.2s ease-out, left 0.2s ease-out, right 0.2s ease-out;
       }
       &::before {
         top: 0;
@@ -124,13 +124,13 @@
         }
         &::before, &::after {
           width: 18px;
-          background: $pink;
+          background: $brand-main;
         }
       }
       .cart-item-count {
         top: -12px;
         right: -12px;
-        transition: opacity 0.2s ease-in-out;
+        transition: opacity 0.2s ease-out;
       }
     }
     .menu {
@@ -139,11 +139,11 @@
       margin: 0;
       z-index: 1;
       width: 100%;
-      background: $pink;
-      padding: 3em 0 2em;
+      background: $brand-main;
+      padding: 65px 0 2em;
       position: absolute;
       transform: translateY(-100%);
-      transition: transform 0.3s cubic-bezier(1,0.5,0,1);
+      transition: transform 0.2s cubic-bezier(1,0.5,0,1);
       &.active {
         transform: translateY(12px);
       }
@@ -151,7 +151,7 @@
         list-style: none;
         position: relative;
         a {
-          padding: 1em;
+          padding: 0.5em;
           color: $white;
           display: block;
           background: none;
@@ -159,7 +159,7 @@
           font-size: 1.125em;
           text-align: center;
           @include font-bold();
-          transition: background 0.2s ease-in-out;
+          transition: background 0.2s ease-out;
           span {
             border-bottom: 1px dotted $white;
           }
@@ -181,15 +181,9 @@
           }
           .cart-item-count {
             top: 1em;
-            color: $pink;
+            color: $brand-main;
             background: $white;
             left: calc(50% + 12px);
-
-            display:none;
-            &.active {
-              display: block;
-            }
-
           }
         }
       }
@@ -199,7 +193,7 @@
       height: 12px;
       color: $white;
       font-size: 8px;
-      background: $pink;
+      background: $brand-main;
       text-align: center;
       border-radius: 50%;
       position: absolute;
@@ -244,7 +238,7 @@
       box-shadow: 0 3px 4px rgba(0,0,0,0.1);
       .logo {
         .icon {
-          fill: $pink;
+          fill: $brand-main;
         }
         &:hover, &:focus, &:active {
           .icon {
@@ -253,18 +247,19 @@
         }
       }
       .nav_main {
+        top: 3px;
         .menu {
           li {
             a {
               color: $black;
-              transition: color 0.2s ease-in-out;
+              transition: color 0.2s ease-out;
               span {
                 border-bottom: 1px solid rgba(255,255,255,0);
               }
               &:hover, &:focus, &:active, &.active {
-                color: $pink;
+                color: $brand-main;
                 span {
-                  border-bottom: 1px solid $pink;
+                  border-bottom: 1px solid $brand-main;
                 }
               }
               .icon-cart {
@@ -317,19 +312,19 @@
               right: 0;
               left: auto;
               color: $white;
-              background: $pink;
+              background: $brand-main;
             }
           }
         }
         .shopping-cart {
           a {
             .icon-cart {
-              transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+              transition: stroke 0.2s ease-out, fill 0.2s ease-out;
             }
             &:hover, &:focus, &:active {
               .icon-cart {
-                fill: $pink;
-                stroke: $pink;
+                fill: $brand-main;
+                stroke: $brand-main;
               }
             }
           }
@@ -354,7 +349,6 @@
     display: flex;
     position: relative;
     background-size: cover;
-    background-attachment: fixed;
     &::before {
       top: 0;
       left: 0;
@@ -376,6 +370,7 @@
       margin: 0 auto;
       max-width: 800px;
       font-size: 1.875em;
+      text-align: center;
     }
     p {
       color: $white;
@@ -404,11 +399,11 @@
   width: 40px;
   height: 50px;
   bottom: -12px;
-  background: $pink;
   position: absolute;
+  background: $brand-main;
   transform-origin: bottom center;
   transform: translateX(-50%) scaleY(1);
-  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: transform 0.2s ease-out, background 0.2s ease-out;
   &:hover, &:focus, &:active {
     background: #ED68A8;
     transform: translateX(-50%) scaleY(1.1);

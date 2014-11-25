@@ -11,7 +11,7 @@ form {
     padding: 0.5em 1em;
     display: inline-block;
     border: 2px solid $white;
-    transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-out;
     &:focus, &:active {
       outline: none;
       background: rgba(255,255,255,0.3);
@@ -21,6 +21,25 @@ form {
       color: rgba(255,255,255,0.5);
     }
   }
+
+  label {
+    color: $white;
+    display: block;
+    white-space: nowrap;
+    padding-bottom: 0.5em;
+  }
+
+  // Pink variation
+  &.-pink {
+    input, textarea {
+      color: $brand-main;
+      border-color: $brand-main;
+    }
+    label {
+      color: $brand-main;
+    }
+  }
+
   // Hide the webkit spinners for number inputs
   input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { 
@@ -30,12 +49,6 @@ form {
   input[type=text] {
     border-radius: 0;
     -webkit-appearance: none;
-  }
-  label {
-    color: $white;
-    display: block;
-    white-space: nowrap;
-    padding-bottom: 0.5em;
   }
 
   // Custom Select Styling, take a deep breath!
@@ -65,7 +78,7 @@ form {
     line-height: 1em;
     padding: 0.5em 1em;
     border: 2px solid $white;
-    transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-out;
     /* Remove select styling */
     appearance: none;
     -webkit-appearance: none;
@@ -140,13 +153,24 @@ form {
     text-shadow: 0 0 0 #000;
   }
 
+  // Pink variation
+  &.-pink {
+    .custom-select select {
+      color: $brand-main;
+      border-color: $brand-main;
+    }
+    .custom-select::after {
+      background-image: asset-url('arrow-select-pink.svg');
+    }
+  }
+
   // END OF CUSTOM SELECT STYLES
 
-  // Custom Radio Button Styles, here we go again, this one's not as bad though
-  input[type=radio] {
+  // Custom Radio Button/Checkbox Styles, here we go again, this one's not as bad though
+  input[type=radio], input[type=checkbox] {
     display: none;
   }
-  .custom-radio {
+  .custom-radio, .custom-checkbox {
     cursor: pointer;
     position: relative;
     display: inline-block;
@@ -167,9 +191,20 @@ form {
       border: 2px solid $white;
     }
   }
-  input[type=radio]:checked + .custom-radio::after {
+  input[type=radio]:checked + .custom-radio::after,
+  input[type=checkbox]:checked + .custom-checkbox::after {
     content: '\2022';
   }
+
+  // Pink variation
+  &.-pink {
+    .custom-radio::after,
+    .custom-checkbox::after {
+      color: $brand-main;
+      border-color: $brand-main;
+    }
+  }
+  // END OF CUSTOM RADIO/CHECKBOX STYLES
 
   h4 {
     color: $white;
@@ -191,7 +226,6 @@ form {
     legend {
       color: $white;
       display: block;
-      white-space: nowrap;
       padding-bottom: 1em;  
     }
     label {
@@ -233,26 +267,29 @@ form {
   }
 
   &.donate {
+    max-width: 100%;
     @include clearfix();
     display: inline-block;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-out;
     input {
       float: left;
       height: 36px;
-      max-width: 160px;
+      max-width: 80px;
       &.text-input {
         &:hover {
           background: rgba(255,255,255,0.3);
         }
       }
       &.submit {
+        width: auto;
+        max-width: none;
         margin-left: -2px;
       }
     }
     &.-pink {
       .text-input {
-        color: $pink;
-        border-color: $pink;
+        color: $brand-main;
+        border-color: $brand-main;
         @include placeholder {
           color: $midGray;
         }
@@ -261,6 +298,15 @@ form {
         }
       }
     }
+  }
+
+  // Form error styling
+  input.error {
+
+  }
+  label.error {
+    padding: 0.5em;
+    background: $sheer1;
   }
 
   @include min-screen($bpMed) {
@@ -274,6 +320,12 @@ form {
       }
       .one-half-left, .one-third-left, .one-fourth-left {
         padding-right: 50px;
+      }
+    }
+
+    &.donate {
+      input {
+        max-width: 160px;
       }
     }
   }

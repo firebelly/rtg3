@@ -1,0 +1,151 @@
+// News
+
+.news {
+  &.banner-wrap {
+    .banner {
+      background-image: image-url('RTG_news.jpg');
+    }
+  }
+
+  .mediaInquiries {
+    .-right {
+      h4 {
+        a {
+          margin-top: 1em;
+          display: inline-block;
+          padding-bottom: 0.25em;
+          @include dots($white, 6px);
+        }
+      }
+    }
+  }
+
+  .news-lists {
+    .block-title {
+      h3 {
+        background: none;
+      }
+      h4 {
+        margin: 0 auto;
+        display: inline-block;
+        padding-bottom: 0.25em;
+      }
+    }
+    .accordian {
+      max-height: none;
+      h4 {
+        margin: 0;
+        width: 75%;
+        float: left;
+      }
+      .accordian-content {
+        p {
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+      &.active {
+        background: none;
+      }
+
+      // Gray variation
+      &.-gray {
+        &:hover, &:focus, &:active {
+          background: $sheer2;
+        }
+        .block-content {
+          h4 {
+            color: $brand-main;
+          }
+        }
+        &.active {
+          .accordian-trigger {
+            @include dots($black, 6px);
+            .actions {
+              .icon-mail {
+                stroke: $brand-main;
+              }
+              .icon-document {
+                fill: $brand-main;
+                stroke: $brand-main;
+              }
+              .icon-bars {
+                fill: $brand-main;
+              }
+              .icon-play {
+                fill: $brand-main;
+                stroke: $brand-main;
+              }
+              .plus-x {
+                background: $brand-main;
+                &::before {
+                  background: $brand-main;
+                }
+              }
+            } 
+          }
+        }
+      }
+    }
+
+    // Pink/gray variantions
+    .-pink {
+      &.active {
+        &:hover, &:focus, &:active {
+          background: $brand-main-lite;
+        }
+      }
+      .block-title {
+        h4 {
+          @include dots($white, 6px);
+        }
+      }
+      .accordian-content {
+        @include dots($white, 6px);
+      } 
+    }
+    .-gray {
+      &.active {
+        &:hover, &:focus, &:active {
+          background: $sheer2;
+        }
+      }
+      .block-title {
+        h4 {
+          color: $pink;
+          @include dots($black, 6px);
+        }
+      }
+      .accordian-content {
+        @include dots($black, 6px);
+      }
+    }
+  }
+
+  .news-list {
+    .news-items {
+      >div:first-of-type {
+        .block-content {
+          @include dots($white, 6px);
+          background-position: top;
+        }
+      }
+    }
+  }
+
+  .press-list {
+    .news-items {
+      >div:first-of-type {
+        .block-content {
+          @include dots($black, 6px);
+          background-position: top;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+
+  }
+}

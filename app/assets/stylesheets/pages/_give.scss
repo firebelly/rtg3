@@ -3,7 +3,11 @@
 .give {
   &.banner-wrap {
     .banner {
-      background-image: url('../images/RTG_give.jpg');
+      background-image: image-url('RTG_give.jpg');
+      .reason-link {
+        width: 100%;
+        height: 100%;;
+      }
     }
   }
 }

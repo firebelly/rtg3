@@ -4,34 +4,30 @@
   .intro {
     .-right {
       .-image-cover {
-        background: url('../images/RTG_whatwedo.jpg');
+        background: image-url('RTG_whatwedo.jpg');
+        background-size: cover;
       }
     }
   }
   .ways-to-get-involved {
     .-left {
       text-align: center;
-      background: url('../images/home_get-involved.jpg');
+      background: image-url('home_get-involved.jpg');
       background-size: cover;
       .block-content {
         margin: 0 auto;
       }
-      h3 {
-        background: none;
-        font-size: 1.875em;
-      }
-      a {
-        color: $white;
-        font-size: .75em;
-        @include font-bold();
-        display: inline-block;
-        padding-bottom: 0.25em;
-        @include dots($white, 6px);
-        border-bottom: 1px solid rgba(255,255,255,0);
-        transition: background 0.2s ease-in-out, border-color 0.2s ease-in-out;
-        &:hover, &:focus, &:active {
-          border-color: $white;
-          background: none;
+    }
+
+    .form {
+      .donate {
+        .text-input {
+          width: 100%;
+          max-width: none;
+        }
+        .submit {
+          margin-left: 0;
+          margin-top: -2px;
         }
       }
     }
@@ -48,16 +44,19 @@
         }
       }
     }
+  }
+
+  @include min-screen(960px) {
     .ways-to-get-involved {
-      .-left {
-        .block-content {
-          margin-top: 1em;
-        }
-        h3 {
-          font-size: 3.375em;
-        }
-        a {
-          font-size: 1.125em;
+      .form {
+        .donate {
+          .text-input {
+            max-width: 180px;
+          }
+          .submit {
+            margin-top: 0;
+            margin-left: -2px;
+          }
         }
       }
     }

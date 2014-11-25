@@ -45,7 +45,7 @@
     margin: -21px 0 0;
     white-space: nowrap;
     background: rgba(0,0,0,0.15);
-    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
     &::before {
       top: 11px;
       left: 16px;
@@ -53,7 +53,7 @@
       width: 12px; 
       height: 20px;
       position: absolute;
-      background: image-url('arrow-left.svg'); 
+      background: asset-url('arrow-left.svg'); 
     }
     &:hover {
       background: #CD518D;
@@ -70,8 +70,8 @@
     &::before {
       left: auto;
       right: 16px;
-      content: ''; 
-      background: image-url('arrow-right.svg');       
+      content: '';
+      background: asset-url('arrow-right.svg');       
     }
   }
 }
@@ -120,7 +120,7 @@
     padding: 12px;
     position: relative;
     text-align: center;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-out;
     h2 {
       width: 100%;
       color: $white;
@@ -139,13 +139,18 @@
       display: inline-block;
       &:hover, &:focus {
         .icon {
+          fill: $brand-main;
+          stroke: $brand-main;
           transform: scale(1.05);
         }
       }
       .icon {
         width: 70px;
         height: 70px;
-        transition: transform 0.5s ease-in-out;
+        fill: $white;
+        stroke: $white;
+        stroke-width: 3px;
+        transition: transform 0.5s ease-out, stroke 0.2s ease-out, fill 0.2s ease-out;
       }
     }
     .progress-bar {
@@ -174,7 +179,7 @@
         max-width: 0;
         height: 100%;
         color: $white;
-        background: $pink;
+        background: $brand-main;
         position: absolute;
         transition: max-width 1.5s cubic-bezier(1,0.5,0.5,1);
       }

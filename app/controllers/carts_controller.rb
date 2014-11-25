@@ -18,13 +18,17 @@ class CartsController < ApplicationController
   end
   
   def remove
-    donation = @cart.donations.find(params[:donation_id])
+    donation = Donation.find(params[:donation_id])
     @cart.donations.delete(donation)
     render text: @cart.donations.count, status: 200
   end
 
   def count
-    render text: @cart.donations.count, status: 200
+    render text: @cart.count, status: 200
+  end
+
+  def total
+    render text: @cart.total, status: 200
   end
 
 end

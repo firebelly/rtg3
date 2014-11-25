@@ -3,7 +3,18 @@
 .get-involved {
   &.banner-wrap {
     .banner {
-      background-image: url('../images/RTG_get-involved.jpg');
+      background-image: image-url('RTG_get-involved.jpg');
+    }
+  }
+  
+  // Page-specific accordian block styles
+  .accordian {
+    .block-content {
+      .accordian-content {
+        p {
+          color: $white;
+        }
+      }
     }
   }
 
@@ -16,9 +27,8 @@
         }
       }
       .one-half-right {
-        height: 100%;
         position: absolute;
-        background: url('../images/RTG_intern.jpg') no-repeat;
+        background: image-url('RTG_intern.jpg') no-repeat;
         background-size: cover;
       }
     }
@@ -33,9 +43,8 @@
         }
       }
       .one-half-right {
-        height: 100%;
         position: absolute;
-        background: url('../images/RTG_volunteer.jpg') no-repeat;
+        background: image-url('RTG_volunteer.jpg') no-repeat;
         background-size: cover;
       }
     }

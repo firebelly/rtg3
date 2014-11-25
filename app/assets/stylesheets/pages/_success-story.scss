@@ -1,0 +1,32 @@
+// Success Story page
+
+.success-story {
+  &.banner-wrap {
+    .banner {
+      background-image: image-url('RTG_give.jpg');
+    }
+  }
+
+  .support {
+    p {
+      @include font-bold();
+    }
+    form {
+      margin: 1em 0;
+    }
+    .share {
+      margin-top: 1em;
+    }
+    .block-content.-image-cover {
+      max-height: none;
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .support {
+      .share {
+        margin-top: 50px;
+      }
+    }
+  }
+}

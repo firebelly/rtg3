@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     post 'add', to: 'carts#add', as: :add_to
     get 'remove/:donation_id', to: 'carts#remove', as: :remove_from
     get 'count', to: 'carts#count', as: :count
+    get 'total', to: 'carts#total', as: :total
   end
 
   # custom pages

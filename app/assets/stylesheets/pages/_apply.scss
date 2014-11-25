@@ -1,0 +1,52 @@
+// Apply Page
+
+.apply {
+  &.banner-wrap {
+    .banner {
+      background-image: image-url('RTG_apply.jpg');
+    }
+  }
+  
+  // Page-specific accordian block styles
+  .accordian {
+    .block-content {
+      .accordian-content {
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+  
+  .intern-form {
+    .pane-1 {
+      .one-half-left {
+        min-height: 400px;
+        .btn {
+          margin-top: 50px;
+        }
+      }
+      .one-half-right {
+        position: absolute;
+        background: image-url('RTG_intern.jpg') no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+  .volunteer-form {
+    .pane-1 {
+      .one-half-left {
+        min-height: 400px;
+        .btn {
+          margin-top: 50px;
+        }
+      }
+      .one-half-right {
+        position: absolute;
+        background: image-url('RTG_volunteer.jpg') no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}

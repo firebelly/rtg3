@@ -11,7 +11,7 @@
     }
   }
   h3 {
-    color: $pink;
+    color: $brand-main;
     margin: 0 0 0.5em;
     font-size: 1.125em;
   }
@@ -23,10 +23,10 @@
     margin: 0 0 0.5em;
   }
   a {
-    transition: border-color 0.2s ease-in-out;
+    transition: border-color 0.2s ease-out;
     border-bottom: 1px solid rgba(255,255,255,0);
     &:hover, &:focus, &:active {
-      border-color: $pink;
+      border-color: $brand-main;
     }
   }
   address {
@@ -46,7 +46,7 @@
     display: inline-block;
     @include at2x('FBF', 110px, 79px);
     background-size: cover;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-out;
     &:hover, &:focus, &:active {
       opacity: 1;
     }
@@ -54,9 +54,9 @@
   .follow-us {
     a {
       padding: 2px 0;
-      display: block;
+      display: inline-block;
       .icon {
-        fill: $pink;
+        fill: $brand-main;
         display: inline;
         line-height: 1em;
         vertical-align: text-bottom;

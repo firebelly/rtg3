@@ -1,7 +1,11 @@
 <% unless @cart.donations.empty? %>
-  <ul class="cart">
+  <ul class="cart-items">
   <% @cart.donations.each do |donation| %>
-    <li><%= donation.amount %> - <%= donation.reason.nil? ? 'Generic Donation' : donation.reason.title %> <%= link_to 'X', remove_from_cart_path(donation.id), remote: true, class: 'cart-delete' %></li>
+	  <li class="cart-item">
+	    <a href="reason1" class="item-title"><%= donation.reason.nil? ? 'Generic Donation' : donation.reason.title %></a>
+	    <div class="item-amount">Amount: $<input type="number" class="amount" value="<%= number_with_precision(donation.amount, precision: 0) %>"></div>
+	    <%= link_to raw('<span class="screen-reader">Remove Item</span><span class="x -white"></span>'), remove_from_cart_path(donation.id), remote: true, class: 'item-remove' %>
+	  </li>
   <% end -%>
   </ul>
 <% else %>

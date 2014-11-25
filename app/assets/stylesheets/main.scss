@@ -12,8 +12,6 @@
 @import "helpers/base";
 
 // Vendor
-@import "vendor/flexslider";
-@import "vendor/owl";
 @import "vendor/slick";
 
 // Components
@@ -25,7 +23,9 @@
 @import "components/video";
 @import "components/affiliates";
 @import "components/reasons-slider";
+@import "components/cart";
 @import "components/footer";
+@import "components/styleguide";
 
 // Pages
 @import "pages/home";
@@ -34,3 +34,9 @@
 @import "pages/give";
 @import "pages/reason";
 @import "pages/success-stories";
+@import "pages/success-story";
+@import "pages/apply";
+@import "pages/about-us";
+@import "pages/news";
+@import "pages/supporters";
+@import "pages/thank-you";

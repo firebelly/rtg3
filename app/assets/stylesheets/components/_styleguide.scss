@@ -1,0 +1,67 @@
+// Styleguide + Pattern Library
+
+.styleguide {
+  .blocks {
+    .block-content {
+      h3 {
+        margin-bottom: 1em;
+      }
+      .subheader {
+        float: right;
+        color: $black;
+        line-height: 3em;
+        font-size: 0.5em;
+      }
+      code {
+        display: block;
+        padding: 0.25em;
+        margin-top: 1em;
+        font-size: .8125em;
+        border: 1px solid $sheer2;
+        background: rgba(255,255,255,0.5);
+      }
+    }
+  }
+
+  .item {
+    width: 100%;
+    margin-top: 1em;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .box {
+    width: 100%;
+    padding: 1em;
+    color: $black;
+    display: inline-block;
+    p {
+      margin: 0;
+    }
+    &.-primary {
+      background: $brand-main;
+    }
+    &.-primary-lite {
+      background: $brand-main-lite;
+    }
+    &.-sheer1 {
+      background: $sheer1;
+    }
+    &.-sheer2 {
+      background: $sheer2;
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .item {
+      width: 25%;
+      float: left;
+      margin-top: 0;
+    }
+
+    .box {
+      min-height: 200px;
+    }
+  }
+}
