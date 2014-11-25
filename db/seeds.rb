@@ -14,3 +14,6 @@ User.create!([{email: 'shannon@firebellyfoundation.org', password: 'changeme'}])
 		Page.create({title: page, content: "#{page.titleize}!", published: true})
 	end
 end
+
+PostType.create([{title: 'News'},{title: 'Press'}])
+SupporterType.create([{title: 'Sponsors'},{title: 'Partners'},{title: 'Featured'}])

@@ -27,14 +27,14 @@ class Reason < ActiveRecord::Base
     (total_donated / total_needed * 100).round(2)
   end
 
+  def fulfilled
+    total_donated >= total_needed
+  end
+
   private
 
   def set_post_date_to_now
     self.post_date = Time.now if self.post_date.nil?
-  end
-
-  def fulfilled
-    self.total_donated >= self.total_needed
   end
 
 end

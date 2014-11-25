@@ -6,6 +6,6 @@ class CreatePostTypes < ActiveRecord::Migration
 
       t.timestamps
     end
-	  add_index :post_types, :slug, :unique => true
+    add_index :post_types, :slug, :unique => true
   end
 end

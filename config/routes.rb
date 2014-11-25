@@ -29,9 +29,12 @@ Rails.application.routes.draw do
     get 'total', to: 'carts#total', as: :total
   end
 
+  resources :payment_records, only: [:new, :create]
+
   # custom pages
   get '/educational-programs' => 'pages#educational_programs', id: 'educational-programs'
   get '/get-involved' => 'pages#get_involved', id: 'get-involved'
+  get '/success-stories' => 'pages#success_stories', id: 'success-stories'
   get '/apply' => 'pages#apply', id: 'apply'
   get '/about-us' => 'pages#about_us', id: 'about-us'
   

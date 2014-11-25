@@ -69,7 +69,10 @@ var RTG = (function ($) {
     });
     // hide cart when clicking on body and (X) buttons
     $('html').on('click', '.body-wrap.unfocus', _hideCart);
-    $('.cart-close').on('click', _hideCart);
+    $('.cart-close').on('click', function(e) {
+      e.preventDefault();
+      _hideCart();
+    });
 
     // Form input formatting
     $('.cc-num').payment('formatCardNumber');

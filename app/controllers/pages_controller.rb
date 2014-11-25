@@ -11,9 +11,16 @@ class PagesController < ApplicationController
   end
 
   def get_involved
+    @affiliates = ["partners", "sponsors"]
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
   end
 
   def apply
+  end
+
+  def about_us
+    @body_class = 'about_us'
   end
 
   def success_stories
@@ -23,17 +30,14 @@ class PagesController < ApplicationController
 
   def home
     @body_id = 'homepage'
-    # @news_type = PostType.where(:slug => 'news').first
-    # unless @news_type.nil?
-    #     @news_posts = @news_type.posts.published.limit(2)
-    # else
-    #   @news_posts = []
-    # end
     @reasons = Reason.published.unfulfilled.promoted
+    @affiliates = ["partners", "sponsors", "featured"]
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
+    @featured_supporters = SupporterType.friendly.find('featured').supporters
     if @reasons.count < 3
       @reasons = @reasons + Reason.published.unfulfilled.random(3 - @reasons.count)
     end
-    # @successes = Reason.published.is_success.order('post_date DESC').limit(5)
   end
 
   def show

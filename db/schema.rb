@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119191059) do
+ActiveRecord::Schema.define(version: 20141125205014) do
 
   create_table "carts", force: true do |t|
     t.integer  "session_id"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20141119191059) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "title_override"
+    t.string   "banner_title"
   end
 
   create_table "payment_records", force: true do |t|
@@ -136,6 +138,27 @@ ActiveRecord::Schema.define(version: 20141119191059) do
   end
 
   add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree
+
+  create_table "supporter_types", force: true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "supporter_types", ["slug"], name: "index_supporter_types_on_slug", unique: true, using: :btree
+
+  create_table "supporters", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "supporter_type_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

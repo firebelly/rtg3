@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   private
 
   def get_cart
-  	@cart = Cart.where(session_id: request.session_options[:id]).first_or_create
+    @cart = Cart.where(session_id: request.session_options[:id]).first_or_create
   end
 
   def init_common_values 
-	  body_id = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
-	  body_id = body_id.gsub(/\-page/, '')
-	  @body_id = "#{body_id}-page"
-	  @body_class = ''
+    body_id = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
+    body_id = body_id.gsub(/\-page/, '')
+    @body_id = "#{body_id}-page"
+    @body_class = ''
   end
 end

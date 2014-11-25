@@ -50,6 +50,26 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model SupporterType do
+    edit do
+      field :title
+    end
+  end
+
+  config.model Supporter do
+    list do
+      field :title
+      field :supporter_type
+      field :url
+    end
+    edit do
+      field :title
+      field :url
+      field :logo
+      field :supporter_type
+    end
+  end
+
   config.model Post do
     list do
       sort_by :post_date
