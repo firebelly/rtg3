@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  before_filter :get_defaults
+  before_filter :get_page
 
   def give
     @body_class = 'reasons'
@@ -45,12 +45,8 @@ class PagesController < ApplicationController
 
   private
 
-  def get_defaults
+  def get_page
     @page = Page.friendly.find(params[:id])
-    @body_class = "#{request.path.gsub(/\/?([^\/]+)(.*)/,'\\1')}"
-    @sidebar_promotion = Page.friendly.find('sidebar-promotion')
-  rescue ActiveRecord::RecordNotFound => e
-    @sidebar_promotion = nil
   end
 
 end
