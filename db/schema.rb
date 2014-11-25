@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125205014) do
+ActiveRecord::Schema.define(version: 20141125230603) do
 
   create_table "carts", force: true do |t|
     t.integer  "session_id"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20141125205014) do
     t.integer  "post_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree

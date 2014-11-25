@@ -1,0 +1,58 @@
+<%= content_for :page_title, @page.title %>
+
+<%= content_for :featured do %>
+<div class="wrap banner-wrap news">
+  <div class="banner">
+    <div class="banner-content">
+      <h2>The Latest News</h2>
+    </div>
+    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+  </div>
+</div>
+<% end %>
+
+
+<div class="blocks mediaInquiries">
+  <div class="block -gray -left">
+    <div class="block-content">
+      <%= raw @page.content %>
+    </div>
+  </div>
+  <div class="block -pink -right">
+    <div class="block-content -center">
+      <h4>For more information please download our PDF and feel free to email us at:<br><a href="mailto:press@firebellydesign.com">press@firebellydesign.com</a></h4>                
+      <a href="educational-programs" class="btn -white -hollow -wider">Download Full PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="blocks news-lists">
+  <div class="block -left -pink -column news-list -noflex">
+    <div class="block-content block-title -center">
+      <h3>Our News</h3>
+      <h4>What's New &amp; Upcoming</h4>
+    </div>
+    <div class="news-items">
+      <%= render :partial => "news", :collection => @news %>
+    </div>
+
+    <div class="block-content show-more -center">
+      <a href="#" class="btn -white -hollow">Show More</a>
+    </div>
+  </div>
+
+  <div class="block -right -gray -column press-list -noflex">
+    <div class="block-content block-title -center">
+      <h3>Our Press</h3>
+      <h4>What Other People Are Saying About Us</h4>
+    </div>
+    <div class="news-items">
+      <%= render :partial => "news", :collection => @press %>
+    </div>
+
+    <div class="block-content show-more -center">
+      <a href="#" class="btn -pink -hollow">Show More</a>
+    </div>
+  </div>
+</div>
+

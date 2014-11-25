@@ -75,16 +75,19 @@ RailsAdmin.config do |config|
       sort_by :post_date
       sort_reverse true
       field :title
+      field :post_type
       field :post_date
       field :published
-      field :post_type
     end
     edit do
       field :title
       field :post_type
+      field :published
+      field :icon, :enum do
+        default_value 'text'
+      end
       field :post_date
       field :content, :ck_editor
-      field :published
     end
   end
 

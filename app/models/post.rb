@@ -13,6 +13,19 @@ class Post < ActiveRecord::Base
 
 	before_create :set_post_date_to_now
 
+	# default to News post type for new records
+	after_initialize do
+	  if new_record?
+	    self.post_type ||= PostType.friendly.find('news')
+	    self.published ||= true
+	  end
+	end
+
+	# icon select list
+	def icon_enum
+	  ['text', 'audio', 'video']
+	end
+
 	private
 
 	def set_post_date_to_now
