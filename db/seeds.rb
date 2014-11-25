@@ -15,5 +15,5 @@ User.create!([{email: 'shannon@firebellyfoundation.org', password: 'changeme'}])
 	end
 end
 
-PostType.create([{title: 'News'},{title: 'Press'}])
+PostType.create([{name: 'News'},{name: 'Press'}])
 SupporterType.create([{title: 'Sponsors'},{title: 'Partners'},{title: 'Featured'}])

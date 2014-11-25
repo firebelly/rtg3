@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @body_id = 'homepage'
+    @body_class = 'home'
     @reasons = Reason.published.unfulfilled.promoted
     @affiliates = ["partners", "sponsors", "featured"]
     @partnered_supporters = SupporterType.friendly.find('partners').supporters
