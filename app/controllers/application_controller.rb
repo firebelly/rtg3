@@ -11,9 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def init_common_values 
-    body_id = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
-    body_id = body_id.gsub(/\-page/, '')
-    @body_id = "#{body_id}-page"
-    @body_class = ''
+    body_class = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
+    body_class = body_class.gsub(/\-page/, '')
+    @body_class = "{body_class}"
   end
 end

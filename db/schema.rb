@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 20141125230603) do
     t.date     "post_date"
     t.text     "excerpt"
     t.text     "content"
-    t.decimal  "total_needed",                 precision: 8, scale: 2, default: 0.0
-    t.decimal  "total_donated",                precision: 8, scale: 2, default: 0.0
+    t.decimal  "total_needed",                 precision: 10, scale: 2, default: 0.0
+    t.decimal  "total_donated",                precision: 10, scale: 2, default: 0.0
     t.boolean  "published"
     t.boolean  "promoted"
     t.boolean  "is_success"
