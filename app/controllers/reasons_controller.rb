@@ -4,7 +4,8 @@ class ReasonsController < ApplicationController
 
   def index
   	@page = Page.friendly.find('give')
-  	@reasons = Reason.published.unfulfilled.promoted
+  	@promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
+  	@reasons = Reason.published.unfulfilled - @promoted_reason
   end
 
   def show
