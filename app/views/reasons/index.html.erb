@@ -1,0 +1,16 @@
+<%= content_for :page_title, @page.title %>
+
+<%= content_for :featured do %>
+  <div class="wrap banner-wrap give">
+    <div class="banner">
+      <%= render @reasons %>
+      <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="blocks reason-blocks">
+  <%= render :partial => "reasons/list", :collection => @reasons %>
+</div>
+

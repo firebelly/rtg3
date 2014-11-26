@@ -1,0 +1,9 @@
+  <div class="block reason-block">
+	  <%= image_tag list.image.url(:thumb) unless list.image.nil? %>
+    <a href="<%= reason_path(list) %>">
+      <div class="block-content">
+          <h3><%= list.title %></h3>
+          <p class="reason-block-progress"><%= number_to_currency(list.total_donated, precision: 0) %> of <%= number_to_currency(list.total_needed, precision: 0) %> Raised</p>
+      </div>
+    </a>
+  </div>

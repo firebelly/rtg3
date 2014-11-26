@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   # get '/press' => 'posts#press_index', :id => 'press'
   # get '/press/:id' => 'posts#press_show', :as => 'press_post'
 
+  get '/give' => 'reasons#index'
+
   get '/news' => 'posts#index', :as =>'news'
   # get '/news/:id' => 'posts#news_show', :as =>'news_post'
 
