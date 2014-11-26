@@ -4,7 +4,7 @@
         <div class="feature-content-wrap">
           <div class="feature-content">
             <h2><%= reason.title %></h2>
-            <p class="description"><%= raw reason.excerpt %></p>
+            <div class="description"><%= raw reason.excerpt %></div>
             <div class="progress-bar">
               <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
               <div class="bar" style="width: <%= reason.percent_fulfilled %>%"></div>
