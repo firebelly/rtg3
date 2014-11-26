@@ -20,7 +20,7 @@ var RTG = (function ($) {
     _tweetIt();
 
     // About Us page
-    if ($('.about_us').length>0) {
+    if ($('.about-us').length>0) {
       _googleMap();
     }
   };
