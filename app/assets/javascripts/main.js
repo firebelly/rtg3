@@ -171,12 +171,21 @@ var RTG = (function ($) {
   function _featureSlider() {
     $('.feature-slider').slick({
       autoplay: true,
-      autoplaySpeed: 5000
+      autoplaySpeed: 5000,
+      onInit: function(slider) {
+        animateBar();
+      },
+      onAfterChange: function(slider) {
+        animateBar();
+      }
     }); 
 
     // Animate the first slide's progress bar. The rest is handled with CSS baby!
-    $('.slick-active .progress-bar .bar').hide().delay(500).animate({width:'toggle'}, 1500, 'easeInOutCubic');
-    $('.banner-content.feature .progress-bar .bar').hide().delay(500).animate({width:'toggle'}, 1500, 'easeInOutCubic');
+    function animateBar() {
+      $('.progress-bar .bar').hide();
+      $('.slick-active .progress-bar .bar').animate({width:'toggle'}, 1000, 'easeInOutCubic');
+    }
+    $('.banner-content.feature .progress-bar .bar').hide().delay(250).animate({width:'toggle'}, 1000, 'easeInOutCubic');
   };
 
   function _affiliatesSlider() {
