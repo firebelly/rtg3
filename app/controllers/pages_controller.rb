@@ -34,9 +34,6 @@ class PagesController < ApplicationController
     @partnered_supporters = SupporterType.friendly.find('partners').supporters
     @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
     @featured_supporters = SupporterType.friendly.find('featured').supporters
-    if @reasons.count < 3
-      @reasons = @reasons + Reason.published.unfulfilled.random(3 - @reasons.count)
-    end
   end
 
   def show
