@@ -20,7 +20,6 @@ class PagesController < ApplicationController
   end
 
   def about_us
-    @body_class = 'about_us'
   end
 
   def success_stories
