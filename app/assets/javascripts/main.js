@@ -31,12 +31,21 @@ var RTG = (function ($) {
   };
 
   function _cartInit() {
+    // for now just nullify the checkout form submit action
+    $('.checkout').on('submit', function(e) {
+      return false;
+    });
+
     // add to cart links
     $('.cart-form').on('ajax:success', function(e, data) {
       $('.cart-items-wrap').html(data);
       var cartCount = $('#cart').find('li').length;
       _setCartCount(cartCount);
       _showCart();
+    });
+    // update cart item amounts
+    $('.checkout').on('ajax:success', '.update', function(e, data) {
+      $('.cart-items-wrap').html(data);
     });
     // delete cart item links
     $('#cart').on('ajax:success', '.item-remove', function(e, data) {
@@ -87,6 +96,13 @@ var RTG = (function ($) {
     $('.cart').toggleClass('active cart-stage');
     $('.body-wrap').toggleClass('unfocus');
     $('.cart-review').addClass('active-stage');
+    // kill enter key in cart amount fields
+    $('.cart-item .amount').keyup(function (e) {
+      if (e.keyCode == 13) {
+        e.preventDefault();
+        this.blur();
+      }
+    });
   };
 
   function _setCartCount(cartCount) {

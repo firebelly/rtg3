@@ -17,6 +17,14 @@ class CartsController < ApplicationController
     render partial: 'carts/show'
   end
   
+  def update
+    donation = Donation.find(params[:donation_id])
+    if donation
+      donation.update(amount: params[:amount].to_f)
+    end
+    render partial: 'carts/show'
+  end
+  
   def remove
     donation = Donation.find(params[:donation_id])
     @cart.donations.delete(donation)

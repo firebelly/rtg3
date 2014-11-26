@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show] do
     post 'add', to: 'carts#add', as: :add_to
+    put 'update/:donation_id', to: 'carts#update', as: :update
     get 'remove/:donation_id', to: 'carts#remove', as: :remove_from
     get 'count', to: 'carts#count', as: :count
     get 'total', to: 'carts#total', as: :total
