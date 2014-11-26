@@ -1,9 +1,9 @@
 <%= content_for :page_title, @page.title %>
 
 <%= content_for :featured do %>
-  <div class="wrap banner-wrap give">
-    <div class="banner">
-      <%= render @reasons %>
+  <div class="wrap slider-wrap">
+    <div class="feature-slider">
+      <%= render :partial => "reason", locals: { reason: @reasons.first } -%>
       <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
     </div>
   </div>
@@ -11,6 +11,5 @@
 
 
 <div class="blocks reason-blocks">
-  <%= render :partial => "reasons/list", :collection => @reasons %>
+  <%= render :partial => "reasons/list", :collection => @reasons[1..-1] %>
 </div>
-
