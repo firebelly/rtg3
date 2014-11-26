@@ -869,11 +869,13 @@
 
   // Reason blocks
   .reason-blocks {
-    margin-bottom: 25px;
-    justify-content: space-between;
+    display: block;
     .reason-block {
+      float: left;
+      width: calc(33.33% - 16.666666667px);
       margin-left: 25px;
-      &:first-of-type {
+      margin-bottom: 25px;
+      &:nth-child(3n+1) {
         margin-left: 0;
       }
       .block-content {
