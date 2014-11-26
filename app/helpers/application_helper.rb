@@ -2,7 +2,8 @@ module ApplicationHelper
   def get_videos(html)
     videos = []
 
-    videos.concat(parse_videos(html, 'youtube'))
+    videos.concat(parse_videos(html, 'youtube_short'))
+    # videos.concat(parse_videos(html, 'youtube')) # need to make sure this isn't in a <a href="youtube.com/blah"> link
     videos.concat(parse_videos(html, 'vimeo'))
   end
 
@@ -11,10 +12,10 @@ module ApplicationHelper
 
     videos.each do |v|
       case v['type']
-      when 'youtube'
-        embed = '<iframe src="http://www.youtube.com/embed/' + v['id'] + '?controls=0" width="' + width.to_s + '" height="' + height.to_s + '" frameborder="0" allowfullscreen></iframe>'
+      when 'youtube', 'youtube_short'
+        embed = '<iframe src="https://www.youtube.com/embed/' + v['id'] + '?controls=0" width="' + width.to_s + '" height="' + height.to_s + '" frameborder="0" allowfullscreen></iframe>'
       when 'vimeo'
-        embed = '<iframe src="http://player.vimeo.com/video/' + v['id'] + '" width="' + width.to_s + '" height="' + height.to_s + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
+        embed = '<iframe src="https://player.vimeo.com/video/' + v['id'] + '" width="' + width.to_s + '" height="' + height.to_s + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       end
 
       embed = '<div class="video-wrap">' + embed + '</div>' if embed
@@ -39,8 +40,10 @@ module ApplicationHelper
     videos = []
 
     case type
-    when 'youtube'
+    when 'youtube_short'
       regex = /\s*(https?:\/\/youtu.be\/([a-zA-Z0-9\-_]+))/i
+    when 'youtube'
+      regex = /\s*(https?:\/\/www.youtube.com\/watch\?v=([a-zA-Z0-9\-_]+))/i
     when 'vimeo'
       regex = /\s*(https?:\/\/vimeo.com\/([a-zA-Z0-9\-_]+))/i
     end
