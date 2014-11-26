@@ -24,7 +24,6 @@
         opacity: 1;
         .progress-bar {
           .bar {
-            max-width: 70%;
           }
         }
       }
@@ -155,8 +154,9 @@
     }
     .progress-bar {
       height: 45px;
+      width: 320px;
+      max-width: 100%;
       overflow: hidden;
-      max-width: 400px;
       margin: 2em auto 0;
       position: relative;
       border: 3px solid $white;
