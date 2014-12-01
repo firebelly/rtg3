@@ -144,9 +144,10 @@ var RTG = (function ($) {
   function _checkoutSubmit() {
     // remove name attributes for security
     $('.cc-num,.cc-cvc,.cc-exp').removeAttr('name');
+
     braintreeClient.tokenizeCard({
-      number: $('.cc-num').val(), 
-      expirationDate: $('.cc-exp').val(),
+      number: $('.cc-num').val().replace(/ /g,''), 
+      expirationDate: $('.cc-exp').val().replace(/ /g,''),
       cvv: $('.cc-cvc').val(),
       billingAddress: {
         postalCode: $('.cc-zip').val()
@@ -156,7 +157,7 @@ var RTG = (function ($) {
         alert('There was a transaction error: ' + err);
       } else {
         $('#payment_method_nonce').val(nonce);
-        $('#checkout').submit();
+        $('#checkout')[0].submit();
       }
     });
 }
