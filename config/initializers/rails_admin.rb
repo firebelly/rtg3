@@ -117,6 +117,9 @@ RailsAdmin.config do |config|
       end
       field :total_donated
       field :total_needed
+      field :donation_prompt do
+        # help "e.g. Why not support Madeline by giving whatever you can"
+      end
       field :published
       field :promoted do
         help 'Will stick Reason to top of homepage'

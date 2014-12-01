@@ -11,6 +11,7 @@ class Reason < ActiveRecord::Base
   before_validation { self.secondary_image.clear if self.delete_secondary_image == '1' }
 
   validates :title, presence: true
+  validates :donation_prompt, presence: true
   validates :content, presence: true
 
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
@@ -22,6 +23,15 @@ class Reason < ActiveRecord::Base
   scope :is_success, -> { where(is_success: true) }
   scope :fulfilled, -> { where("total_donated >= total_needed") }
   scope :unfulfilled, -> { where("total_donated < total_needed") }
+
+  # default values for new records
+  after_initialize do
+    if new_record?
+      self.content = "<h1>My Story</h1><p>Lorem ipsum</p><h1>My Goals</h1><p>Lorem ipsum</p><h1>How You Can Help</h1><p>Lorem ipsum</p>"
+      self.success_content = "<h1>My Story</h1><p>Lorem ipsum</p><h1>My Goals</h1><p>Lorem ipsum</p><h1>How You Helped</h1><p>Lorem ipsum</p>"
+      self.donation_prompt = "Why not support ____ by giving whatever you can"
+    end
+  end
 
   def percent_fulfilled
     (total_donated / total_needed * 100).round(2)

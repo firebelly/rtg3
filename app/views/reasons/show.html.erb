@@ -14,7 +14,7 @@
   <div class="support block -left -pink -column">
     <article class="block-content">
     <div class="block-content -top-half -center">
-      <p><strong>Why not support Madeline<br> by giving whatever you can:</strong></p>
+      <p><strong><%= @reason.donation_prompt %></strong></p>
       <%= render :partial => "/shared/donation_form", locals: { reason: @reason } -%>
       <div class="share">
         <p>Help us spread the word by sharing this cause:</p>

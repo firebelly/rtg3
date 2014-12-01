@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125230603) do
+ActiveRecord::Schema.define(version: 20141201160738) do
 
   create_table "carts", force: true do |t|
     t.integer  "session_id"
@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 20141125230603) do
     t.date     "post_date"
     t.text     "excerpt"
     t.text     "content"
-    t.decimal  "total_needed",                 precision: 10, scale: 2, default: 0.0
-    t.decimal  "total_donated",                precision: 10, scale: 2, default: 0.0
+    t.decimal  "total_needed",                 precision: 8, scale: 2, default: 0.0
+    t.decimal  "total_donated",                precision: 8, scale: 2, default: 0.0
     t.boolean  "published"
     t.boolean  "promoted"
     t.boolean  "is_success"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20141125230603) do
     t.string   "secondary_image_content_type"
     t.integer  "secondary_image_file_size"
     t.datetime "secondary_image_updated_at"
+    t.string   "donation_prompt"
   end
 
   add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree
