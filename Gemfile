@@ -30,5 +30,6 @@ gem 'paperclip', '~> 4.2'
 
 gem 'createsend'
 gem 'randumb'
+gem 'braintree', '~> 2.33.1'
 gem 'figaro'
 gem 'gon', '~> 5.1.2'

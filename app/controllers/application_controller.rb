@@ -12,5 +12,11 @@ class ApplicationController < ActionController::Base
 
   def init_common_values 
     @body_class = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
+    gon.client_token = generate_client_token
+  end
+
+  private
+  def generate_client_token
+    Braintree::ClientToken.generate
   end
 end

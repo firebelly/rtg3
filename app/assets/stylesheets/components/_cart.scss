@@ -39,10 +39,17 @@
         @include dots($black, 6px);
       }
     }
-    &.active-stage {
-      .cart-close {
-        display: block;
-      }
+  }
+
+  &.empty .cart-review .stage-submit {
+    display: none;
+  }
+
+  &.review-stage .cart-review,
+  &.checkout-stage .cart-checkout,
+  &.payment-stage .cart-payment {
+    .cart-close {
+      display: block;
     }
   }
 

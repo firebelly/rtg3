@@ -1,19 +1,19 @@
-<div class="cart" id="cart">
+<div class="cart <%= @cart.count == 0 ? 'empty' : '' %>" id="cart">
 
-  <form action="" class="checkout -pink">
+  <form action="" class="checkout -pink" id="checkout">
   
-    <div class="cart-review cart-stage -pink">
+    <div class="cart-review cart-stage -pink" data-stage="review">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x -white"></a>
       <h3>Your Cart</h3>
       <div class="cart-items-wrap">
         <%= render :partial => "carts/show" -%>
       </div>
       <div class="actions">
-        <a href="#checkout" class="btn -white -hollow stage-submit checkout-toggle">Checkout</a>
+        <a href="#checkout" data-original-text="Checkout" class="btn -white -hollow stage-submit checkout-toggle">Checkout</a>
       </div>
     </div>
 
-    <div class="cart-checkout cart-stage -gray">
+    <div class="cart-checkout cart-stage -gray" data-stage="checkout">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Contact Information</h3>
       <div class="form-group">
@@ -52,31 +52,31 @@
         </fieldset>
       </div>
       <div class="actions">
-        <a href="#payment" class="btn -pink -hollow stage-submit payment-toggle">Payment</a>
+        <a href="#payment" data-original-text="Payment" class="btn -pink -hollow stage-submit payment-toggle">Payment</a>
       </div>
     </div>
 
-    <div class="cart-payment cart-stage -gray">
+    <div class="cart-payment cart-stage -gray" data-stage="payment">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Payment</h3>
       <div class="form-group">
         <label for="checkoutCCNum">Card Number*</label>
-        <input type="text" class="cc-num" name="checkoutCCNum" id="checkoutCCNum" placeholder="#### #### #### ####" required="true">
+        <input data-braintree-name="number" type="text" class="cc-num" name="checkoutCCNum" id="checkoutCCNum" placeholder="#### #### #### ####" required="true">
       </div>
       <div class="form-group">
         <label for="checkoutCCExp">Expiration Date*</label>
-        <input type="text" class="cc-exp" name="checkoutCCExp" id="checkoutCCExp" placeholder="MM / YY" required="true">
+        <input data-braintree-name="expiration_date" type="text" class="cc-exp" name="checkoutCCExp" id="checkoutCCExp" placeholder="MM / YY" required="true">
       </div>
       <div class="form-group">
         <label for="checkoutCCCvc">CVC*</label>
-        <input type="text" class="cc-cvc" name="checkoutCCCvc" id="checkoutCCCvc" placeholder="###" required="true">
+        <input data-braintree-name="cvv" type="text" class="cc-cvc" name="checkoutCCCvc" id="checkoutCCCvc" placeholder="###" required="true">
       </div>
       <div class="form-group">
         <label for="checkoutCCZip">Zip/Postal Code*</label>
-        <input type="text" class="cc-zip" name="checkoutCCZip" id="checkoutCCZip" placeholder="#####" required="true">
+        <input data-braintree-name="postal_code" type="text" class="cc-zip" name="checkoutCCZip" id="checkoutCCZip" placeholder="#####" required="true">
       </div>
       <div class="actions">
-        <input type="submit" class="submit cart-submit btn -pink -hollow" value="Donate">
+        <input type="submit" data-original-text="Donate" class="submit cart-submit btn -pink -hollow" value="Donate">
       </div>
     </div>
 

@@ -54,12 +54,8 @@ var RTG = (function ($) {
       thisItem.addClass('-removed');
       setTimeout(function () {
         thisItem.velocity(
-          { 
-            height: 0
-          },
-          {
-            duration: 150
-          }
+          { height: 0 },
+          { duration: 150 }
         );
       }, 250);
       setTimeout(function () {
@@ -76,7 +72,8 @@ var RTG = (function ($) {
       e.stopPropagation();
       _showCart();
     });
-    // hide cart when clicking on body and (X) buttons
+
+    // Hide cart when clicking on body and (X) buttons
     $('html').on('click', '.body-wrap.unfocus', _hideCart);
     $('.cart-close').on('click', function(e) {
       e.preventDefault();
@@ -88,15 +85,51 @@ var RTG = (function ($) {
     $('.cc-exp').payment('formatCardExpiry');
     $('.cc-cvc').payment('formatCardCVC');
     $('.cc-zip').payment('restrictNumeric');
-  };
 
+    // Buttons to step through various checkout stages on desktop
+    $('.stage-submit').each(function () {
+      $(this).on('click', function (e) {
+        e.preventDefault();
+        // determine current stage
+        var stage = $(this).closest('.cart-stage');
+        var stageClass = stage.data('stage') + '-stage';
+        // this stage is current, let's move on to the next
+        if ($('.cart').hasClass(stageClass)) {
+          stage = stage.next('.cart-stage');
+          stageClass = stage.data('stage') + '-stage';
+        }
+        // set stage class for .cart
+        $('.cart').attr('class','cart active').addClass(stageClass);
+        _resetCartButtons();
+        // set all prev stage buttons to "Edit"
+        stage.prevAll('.cart-stage').find('.btn').text('Edit');
+      });
+    });
+
+    if (typeof gon !== 'undefined') {
+      braintree.setup(gon.client_token, 'custom', {id: 'checkout'});
+    }
+
+    $('.cart-submit').click(function(e) {
+      e.preventDefault();
+    });
+
+  }; // end _cartInit()
+
+  // Sets all cart stage buttons to data-original-text
+  function _resetCartButtons() {
+    $('.cart .btn').each(function() {
+      $(this).text( $(this).data('original-text') );
+    });
+  }
+
+  // Here, cart!
   function _showCart() {
     $('.menu.active').removeClass('active');
     $('.menu-toggle').removeClass('menu-open');
-    $('.cart').toggleClass('active cart-stage');
-    $('.body-wrap').toggleClass('unfocus');
-    $('.cart-review').addClass('active-stage');
-    // kill enter key in cart amount fields
+    $('.cart').addClass('active cart-stage review-stage');
+    $('.body-wrap').addClass('unfocus');
+    // kill Enter key in cart amount fields
     $('.cart-item .amount').keyup(function (e) {
       if (e.keyCode == 13) {
         e.preventDefault();
@@ -105,62 +138,25 @@ var RTG = (function ($) {
     });
   };
 
+  // Set (cart count)
   function _setCartCount(cartCount) {
     $('.cart-item-count').text(cartCount);
     $('.cart-item-count').toggleClass('active', cartCount > 0);
     if (cartCount==0) {
       var emptyCartTxt = $('<p>Your cart is currently empty</p>').hide().appendTo('.cart-items-wrap');
       setTimeout(function() {emptyCartTxt.fadeIn()}, 250);
+      $('.cart').attr('class', 'cart active review-stage empty');
+    } else {
+      $('.cart').removeClass('empty');
     }
   };
 
+  // Bad cart, lay down
   function _hideCart() {
     $('.body-wrap').removeClass('unfocus');
-    $('.stage-submit').removeClass('stage-edit');
-    $('.cart').removeClass('active checkout-stage payment-stage');
-    $('.cart-stage').removeClass('active-stage');
-    $('.cart-review .stage-submit').text('Checkout');
-    $('.cart-checkout .stage-submit').text('Payment');       
+    $('.cart').attr('class', 'cart');
+    _resetCartButtons();
   };
-
-  // // Toggle the checkout stage
-  // $('.checkout-toggle').on('click', function (e) {
-  //   e.preventDefault();
-  //   if ($(this).hasClass('stage-edit')) {
-  //     $('.cart').removeClass('checkout-stage payment-stage');
-  //     $('.stage-submit').not(this).removeClass('stage-edit');
-  //     $('.cart-checkout .stage-submit').text('Payment');
-  //   } else {
-  //     $('.cart').removeClass('payment-stage').toggleClass('checkout-stage');          
-  //   }
-  // });
-
-  // // Toggle the payment stage
-  // $('.payment-toggle').on('click', function (e) {
-  //   e.preventDefault();
-  //   $('.cart').toggleClass('checkout-stage').toggleClass('payment-stage');
-  // });
-
-  // // Change unactive stages buttons' text to "Edit", change next stage to active, reverse
-  // $('.stage-submit').each(function () {
-  //   var originalText;
-  //   $(this).on('click', function (e) {
-  //     e.preventDefault();
-  //     thisStage = $(this).closest('.cart-stage');
-  //     nextStage = thisStage.next('.cart-stage');
-  //     thisStage.toggleClass('active-stage');
-  //     if ($(this).hasClass('stage-edit')) {
-  //       $('.cart-stage').not(thisStage).removeClass('active-stage');
-  //       $(this).text(originalText).removeClass('stage-edit');
-  //     } else if(!$(this).hasClass('stage-edit')) {
-  //       originalText = $(this).text();
-  //       $(this).text('Edit').addClass('stage-edit');
-  //       nextStage.toggleClass('active-stage');
-  //     }
-  //   });
-  // });
-
-
 
   function _mainNav() {
     $('.menu-toggle').on('click', function() {
@@ -655,12 +651,12 @@ var RTG = (function ($) {
 
   // public functions
   return {
-      init: _init,
-      resize: _resize,
-      showCart: _showCart,
-      hideCart: _hideCart,
-      initVideo: _initVideo,
-      onPlayerReady: _onPlayerReady
+    init: _init,
+    resize: _resize,
+    showCart: _showCart,
+    hideCart: _hideCart,
+    initVideo: _initVideo,
+    onPlayerReady: _onPlayerReady
   };
 
 })(jQuery);

@@ -197,6 +197,10 @@
       text-align: center;
       border-radius: 50%;
       position: absolute;
+      display: none;
+      &.active {
+        display: block;
+      }
     }
   }
 
