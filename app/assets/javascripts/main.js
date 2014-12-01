@@ -1,5 +1,6 @@
 var RTG = (function ($) {
   var headerH,
+      braintreeClient,
       youtubePlayer;
 
   function _init() {
@@ -86,6 +87,30 @@ var RTG = (function ($) {
     $('.cc-cvc').payment('formatCardCVC');
     $('.cc-zip').payment('restrictNumeric');
 
+    // Custom jquery.validate rules for credit card validating
+    jQuery.validator.addMethod("cardNumber", $.payment.validateCardNumber, "Please enter a valid card number");
+    jQuery.validator.addMethod("cardCVC", $.payment.validateCardCVC, "Please enter a valid security code");
+    jQuery.validator.addMethod("cardExpiry", function() {
+      var expiry = $('.cc-exp').payment('cardExpiryVal');
+      return $.payment.validateCardExpiry(expiry.month,expiry.year)
+    }, "Please enter a valid expiration");
+
+    // Custom jquery.validate 
+    $("#checkout").unbind('submit').validate({
+        submitHandler: RTG.checkoutSubmit,
+        rules: {
+            "cc-cvc" : {
+                cardCVC: true,
+                required: true
+            },
+            "cc-num" : {
+                cardNumber: true,
+                required: true
+            },
+            "cc-exp" : "cardExpiry" // we don't validate month separately
+        }
+    });
+
     // Buttons to step through various checkout stages on desktop
     $('.stage-submit').each(function () {
       $(this).on('click', function (e) {
@@ -106,15 +131,35 @@ var RTG = (function ($) {
       });
     });
 
+    // init braintree
     if (typeof gon !== 'undefined') {
-      braintree.setup(gon.client_token, 'custom', {id: 'checkout'});
+      braintreeClient = new braintree.api.Client({clientToken: gon.client_token});
     }
 
-    $('.cart-submit').click(function(e) {
-      e.preventDefault();
-    });
+    // add name attributes for jquery.validate
+    $.each(['cc-num','cc-cvc','cc-exp'], function(i,k) { $('.'+k).attr('name', k) });
 
   }; // end _cartInit()
+
+  function _checkoutSubmit() {
+    // remove name attributes for security
+    $('.cc-num,.cc-cvc,.cc-exp').removeAttr('name');
+    braintreeClient.tokenizeCard({
+      number: $('.cc-num').val(), 
+      expirationDate: $('.cc-exp').val(),
+      cvv: $('.cc-cvc').val(),
+      billingAddress: {
+        postalCode: $('.cc-zip').val()
+      }
+    }, function (err, nonce) {
+      if (err) {
+        alert('There was a transaction error: ' + err);
+      } else {
+        $('#payment_method_nonce').val(nonce);
+        $('#checkout').submit();
+      }
+    });
+}
 
   // Sets all cart stage buttons to data-original-text
   function _resetCartButtons() {
@@ -656,6 +701,7 @@ var RTG = (function ($) {
     showCart: _showCart,
     hideCart: _hideCart,
     initVideo: _initVideo,
+    checkoutSubmit: _checkoutSubmit,
     onPlayerReady: _onPlayerReady
   };
 

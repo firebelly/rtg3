@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     get 'total', to: 'carts#total', as: :total
   end
 
-  resources :payment_records, only: [:new, :create]
+  resources :orders, :only => [ :create ]
+  resources :payment_records, only: [ :create ]
 
   # custom pages
   get '/educational-programs' => 'pages#educational_programs', id: 'educational-programs'
@@ -40,15 +41,16 @@ Rails.application.routes.draw do
   get '/about-us' => 'pages#about_us', id: 'about-us'
   
   # get '/press' => 'posts#press_index', :id => 'press'
-  # get '/press/:id' => 'posts#press_show', :as => 'press_post'
+  # get '/press/:id' => 'posts#press_show', as: 'press_post'
 
   get '/give' => 'reasons#index'
+  get '/thanks/:order_id' => 'reasons#thanks', as: 'thanks'
 
-  get '/news' => 'posts#index', :as =>'news'
-  # get '/news/:id' => 'posts#news_show', :as =>'news_post'
+  get '/news' => 'posts#index', as: 'news'
+  # get '/news/:id' => 'posts#news_show', as:'news_post'
 
   # fall-through to pages
-  get '/:id(/:child_id)' => 'pages#show', :as => 'page'
+  get '/:id(/:child_id)' => 'pages#show', as: 'page'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

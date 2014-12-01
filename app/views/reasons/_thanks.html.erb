@@ -1,0 +1,18 @@
+    <div class="feature">
+      <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
+      <div class="feature-content-wrap">
+        <div class="feature-content">
+          <h2>Thank You So Much For Your Contribution!</h2>
+          <p class="description"><%= reason.title %></p>
+          <div class="progress-bar">
+            <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+            <div class="bar" style="max-width: <%= reason.percent_fulfilled %>%"></div>
+          </div>
+          <div class="share">
+            <p>Share us to help spread the word:</p>
+            <p class="links"><a href="https://twitter.com/share?text=I%20just%20found%20my%20reason%20to%20give:&via=ReasonToGive" class="twitter tweet-it"><svg class="icon icon-twitter" role="img"><use xlink:href="#icon-twitter"></use></svg> @reasontogive</a></p>
+            <p class="links"><a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=#url" class="facebook"><svg class="icon icon-facebook" role="img"><use xlink:href="#icon-facebook"></use></svg> /reasontogive</a></p>
+          </div>
+        </div>
+      </div>
+    </div>

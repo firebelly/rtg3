@@ -12,6 +12,11 @@ class ReasonsController < ApplicationController
     @reason = Reason.friendly.find(params[:id])
   end
 
+  def thanks
+    @order = Order.find(params[:order_id])
+    @reasons = Reason.where(id: @order.cart.donations.select(:reason_id))
+  end
+
   private
 
   def set_defaults

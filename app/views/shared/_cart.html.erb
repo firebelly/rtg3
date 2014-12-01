@@ -1,7 +1,8 @@
 <div class="cart <%= @cart.count == 0 ? 'empty' : '' %>" id="cart">
 
-  <form action="" class="checkout -pink" id="checkout">
-  
+  <%= form_tag(orders_path, method: 'post', class: 'checkout -pink', id: 'checkout') do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :payment_method_nonce, '' %>
     <div class="cart-review cart-stage -pink" data-stage="review">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x -white"></a>
       <h3>Your Cart</h3>
@@ -18,15 +19,15 @@
       <h3>Contact Information</h3>
       <div class="form-group">
         <label for="checkoutFirstName">First Name*</label>
-        <input type="text" name="checkoutFirstName" id="checkoutFirstName" required="true">
+        <input type="text" name="checkoutFirstName" id="checkoutFirstName" required>
       </div>
       <div class="form-group">
         <label for="checkoutLastName">Last Name*</label>
-        <input type="text" name="checkoutLastName" id="checkoutLastName" required="true">
+        <input type="text" name="checkoutLastName" id="checkoutLastName" required>
       </div>
       <div class="form-group">
         <label for="checkoutEmail">Email Address*</label>
-        <input type="email" name="checkoutEmail" id="checkoutEmail" required="true">
+        <input type="email" name="checkoutEmail" id="checkoutEmail" required>
       </div>
       <div class="form-group">
         <label for="checkoutSource" class="select-wrapper">
@@ -61,24 +62,24 @@
       <h3>Payment</h3>
       <div class="form-group">
         <label for="checkoutCCNum">Card Number*</label>
-        <input data-braintree-name="number" type="text" class="cc-num" name="checkoutCCNum" id="checkoutCCNum" placeholder="#### #### #### ####" required="true">
+        <input data-braintree-name="number" type="text" class="cc-num" id="checkoutCCNum" placeholder="#### #### #### ####" pattern="\d*" autocomplete="cc-number" required>
       </div>
       <div class="form-group">
         <label for="checkoutCCExp">Expiration Date*</label>
-        <input data-braintree-name="expiration_date" type="text" class="cc-exp" name="checkoutCCExp" id="checkoutCCExp" placeholder="MM / YY" required="true">
+        <input data-braintree-name="expiration_date" type="text" class="cc-exp" id="checkoutCCExp" placeholder="MM / YY" required>
       </div>
       <div class="form-group">
         <label for="checkoutCCCvc">CVC*</label>
-        <input data-braintree-name="cvv" type="text" class="cc-cvc" name="checkoutCCCvc" id="checkoutCCCvc" placeholder="###" required="true">
+        <input data-braintree-name="cvv" type="text" class="cc-cvc" id="checkoutCCCvc" placeholder="###" pattern="\d*" autocomplete="off" required>
       </div>
       <div class="form-group">
         <label for="checkoutCCZip">Zip/Postal Code*</label>
-        <input data-braintree-name="postal_code" type="text" class="cc-zip" name="checkoutCCZip" id="checkoutCCZip" placeholder="#####" required="true">
+        <input data-braintree-name="postal_code" type="text" class="cc-zip" id="checkoutCCZip" placeholder="#####" required>
       </div>
       <div class="actions">
-        <input type="submit" data-original-text="Donate" class="submit cart-submit btn -pink -hollow" value="Donate">
+        <%= submit_tag 'Donate', class: 'submit cart-submit btn -pink -hollow', data: { original_text: "Donate"} %>
       </div>
     </div>
 
-  </form>
+  <% end %>
 </div>
