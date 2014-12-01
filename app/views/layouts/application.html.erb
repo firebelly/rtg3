@@ -31,14 +31,14 @@
     <%= javascript_include_tag 'respond.min' %>
   <![endif]-->
 
-  <%= render :partial => "/shared/analytics" if Rails.env.production? -%>
+  <%= render partial: "/shared/analytics" if Rails.env.production? -%>
 </head>
 <body class="<%= @body_class -%>" id="<%= @body_id -%>">
   <span class="hide defs"><%= render partial: '/shared/svg.defs.txt' -%></span>
   <div class="body-wrap">
 
-  <%= render :partial => "/shared/header" -%>
-  <%= render :partial => "/shared/flash" -%>
+  <%= render partial: "/shared/header" -%>
+  <%= render partial: "/shared/flash" -%>
 
   <%= yield :featured %>
 
@@ -52,13 +52,13 @@
     </main>
   </section>
 
-  <%= render :partial => "/shared/footer" -%>
+  <%= render partial: "/shared/footer" -%>
   </div><!-- END .body-wrap -->
 
   <%= yield :javascripts -%>
   <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js' %>
   <%= javascript_include_tag 'application' %>
 
-  <%= render :partial => "/shared/cart" -%>
+  <%= render partial: "/shared/cart" -%>
 </body>
 </html>

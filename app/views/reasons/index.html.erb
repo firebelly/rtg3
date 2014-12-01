@@ -4,7 +4,7 @@
   <%= content_for :featured do %>
     <div class="wrap slider-wrap">
       <div class="feature-slider">
-        <%= render :partial => "reason", locals: { reason: @promoted_reason[0] } -%>
+        <%= render partial: "reason", locals: { reason: @promoted_reason[0] } -%>
         <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
       </div>
     </div>
@@ -12,5 +12,5 @@
 <% end %>
 
 <div class="blocks reason-blocks">
-  <%= render :partial => "reasons/list", :collection => @reasons %>
+  <%= render partial: "reasons/list", collection: @reasons, as: :reason %>
 </div>
