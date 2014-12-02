@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     if result.success?
       @order = Order.create(
         cart: @cart,
+        total: @cart.total,
         first_name: params[:checkoutFirstName],
         last_name: params[:checkoutLastName],
         zip: params[:checkoutLastName],
