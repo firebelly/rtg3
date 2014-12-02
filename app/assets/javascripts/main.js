@@ -95,7 +95,7 @@ var RTG = (function ($) {
       return $.payment.validateCardExpiry(expiry.month,expiry.year)
     }, "Please enter a valid expiration");
 
-    // Custom jquery.validate 
+    // Custom jquery.validate for checkout form
     $("#checkout").unbind('submit').validate({
         submitHandler: RTG.checkoutSubmit,
         rules: {
@@ -134,10 +134,18 @@ var RTG = (function ($) {
     // init braintree
     if (typeof gon !== 'undefined') {
       braintreeClient = new braintree.api.Client({clientToken: gon.client_token});
+      braintree.setup(gon.client_token, "paypal", {
+        container: "paypal-button"
+      });
     }
 
     // add name attributes for jquery.validate
     $.each(['cc-num','cc-cvc','cc-exp'], function(i,k) { $('.'+k).attr('name', k) });
+
+    // check if paypal has been selected & logged-in, disable CC fields if so
+    $('.cart-submit').click(function() {
+      $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', $('#braintree-paypal-loggedin').is(':visible'));
+    });
 
   }; // end _cartInit()
 
