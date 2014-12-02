@@ -1,4 +1,4 @@
-<%= content_for :page_title, @page.title %>
+<%= content_for :title, raw(@page.title_override || @page.title) %>
 
 <%= content_for :featured do %>
 <div class="wrap banner-wrap get-involved">

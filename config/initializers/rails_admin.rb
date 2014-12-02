@@ -46,7 +46,18 @@ RailsAdmin.config do |config|
       field :title
       field :published
       field :image
+      field :banner_title do
+        help "Used for text in middle of featured image"
+      end
       field :content, :ck_editor
+      group :advanced do
+        field :title_override do
+          help "Optional override for SEO page title and Facebook sharing"
+        end
+        field :description do
+          help "Used for SEO description tag and Facebook sharing"
+        end
+      end
     end
   end
 

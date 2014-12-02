@@ -1,4 +1,4 @@
-<%= content_for :page_title, "A storefront of Humboldt Park's basic needs" %>
+<%= content_for :title, raw(@page.title_override || @page.title) %>
 
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">

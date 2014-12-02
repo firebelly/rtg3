@@ -10,6 +10,8 @@ class ReasonsController < ApplicationController
 
   def show
     @reason = Reason.friendly.find(params[:id])
+    @og_description = @reason.excerpt || @reason.content
+    @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
   end
 
   def thanks
