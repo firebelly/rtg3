@@ -14,6 +14,10 @@
     left: 0;
   }
 
+  .disabled {
+    opacity: .5;
+  }
+
   h3 {
     margin-bottom: 0.5em;
     padding-bottom: 0.25em;
@@ -214,7 +218,7 @@
       }
     }
   }
-  
+
   #braintree-paypal-loggedin,
   #braintree-paypal-button {
     margin: 10px auto;

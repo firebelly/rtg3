@@ -135,7 +135,31 @@ var RTG = (function ($) {
     if (typeof gon !== 'undefined') {
       braintreeClient = new braintree.api.Client({clientToken: gon.client_token});
       braintree.setup(gon.client_token, "paypal", {
-        container: "paypal-button"
+        container: "paypal-button",
+        enableShippingAddress: true,
+        paymentMethodNonceInputField: 'payment_method_nonce',
+        onSuccess: function(nonce, email, shippingObject) {
+          // hide CC fields
+          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true).addClass('disabled');
+
+          $('#checkoutEmail').val(email);
+          // fill out address fields if available
+          if (shippingObject) {
+            var fullName = shippingObject.recipient_name.split(' '),
+                firstName = fullName[0],
+                lastName = fullName[fullName.length - 1];
+            $('#checkoutFirstName').val(firstName);
+            $('#checkoutLastName').val(lastName);
+            // $('#checkoutAddress').val(shippingObject.street_address);
+            // $('#checkoutCity').val(shippingObject.locality);
+            // $('#checkoutState').val(shippingObject.region);
+            $('#checkoutCCZip').val(shippingObject.postal_code);
+          }
+        },
+        onCancelled: function() {
+          // show CC fields
+          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false).removeClass('disabled');
+        }
       });
     }
 
@@ -150,24 +174,30 @@ var RTG = (function ($) {
   }; // end _cartInit()
 
   function _checkoutSubmit() {
-    // remove name attributes for security
-    $('.cc-num,.cc-cvc,.cc-exp').removeAttr('name');
+    // if using paypal, just submit form
+    if ($('#braintree-paypal-loggedin').is(':visible')) {
+      $('#checkout')[0].submit();
+    } else {
+      // tokenize CC card info and put payment_method_nonce in form
+      braintreeClient.tokenizeCard({
+        number: $('.cc-num').val().replace(/ /g,''), 
+        expirationDate: $('.cc-exp').val().replace(/ /g,''),
+        cvv: $('.cc-cvc').val(),
+        billingAddress: {
+          postalCode: $('.cc-zip').val()
+        }
+      }, function (err, nonce) {
+        if (err) {
+          alert('There was a transaction error: ' + err);
+        } else {
+          // remove name attributes for security
+          $('.cc-num,.cc-cvc,.cc-exp').removeAttr('name');
 
-    braintreeClient.tokenizeCard({
-      number: $('.cc-num').val().replace(/ /g,''), 
-      expirationDate: $('.cc-exp').val().replace(/ /g,''),
-      cvv: $('.cc-cvc').val(),
-      billingAddress: {
-        postalCode: $('.cc-zip').val()
-      }
-    }, function (err, nonce) {
-      if (err) {
-        alert('There was a transaction error: ' + err);
-      } else {
-        $('#payment_method_nonce').val(nonce);
-        $('#checkout')[0].submit();
-      }
-    });
+          $('#payment_method_nonce').val(nonce);
+          $('#checkout')[0].submit();
+        }
+      });
+    }
 }
 
   // Sets all cart stage buttons to data-original-text
