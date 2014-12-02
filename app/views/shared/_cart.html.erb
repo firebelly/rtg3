@@ -17,7 +17,7 @@
     <div class="cart-checkout cart-stage -gray" data-stage="checkout">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Contact Information</h3>
-      <div class="form-group">
+      <div class="form-group -first">
         <label for="checkoutFirstName">First Name*</label>
         <input type="text" name="checkoutFirstName" id="checkoutFirstName" required>
       </div>
@@ -45,9 +45,11 @@
           </select>
           </div>
         </label>
+        <label for="checkoutSourceOtherSource" class="hide">What was the other source?</label>
+        <input id="checkoutSourceOtherSource" name="checkoutSourceOtherSource" type="text" placeholder="Other Source" />
       </div>
       <div class="form-group">
-        <fieldset>
+        <fieldset class="custom-checkbox-wrap">
           <input type="checkbox" name="checkoutNewsletter" id="checkoutNewsletter" value="subscribeToNewsletter">
           <label class="custom-checkbox" for="checkoutNewsletter">Would you like to recieve our newsletter?</label>
         </fieldset>
@@ -60,7 +62,7 @@
     <div class="cart-payment cart-stage -gray" data-stage="payment">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Payment</h3>
-      <div class="form-group">
+      <div class="form-group -first">
         <label for="checkoutCCNum">Card Number*</label>
         <input data-braintree-name="number" type="text" class="cc-num" id="checkoutCCNum" placeholder="#### #### #### ####" pattern="\d*" autocomplete="cc-number" required>
       </div>

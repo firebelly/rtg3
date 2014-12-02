@@ -111,6 +111,17 @@ var RTG = (function ($) {
         }
     });
 
+    //initially hide the textbox
+    $("#checkoutSourceOtherSource").hide();
+    // Add text input if "Other" selected as option to how you found out Q
+    $('#checkoutSource').change(function() {
+      if($(this).find('option:selected').val() == "checkoutSourceOther"){
+        $("#checkoutSourceOtherSource").show().focus();
+      }else{
+        $("#checkoutSourceOtherSource").hide();
+      }
+    });
+
     // Buttons to step through various checkout stages on desktop
     $('.stage-submit').each(function () {
       $(this).on('click', function (e) {
@@ -118,16 +129,21 @@ var RTG = (function ($) {
         // determine current stage
         var stage = $(this).closest('.cart-stage');
         var stageClass = stage.data('stage') + '-stage';
+        var nextStage = stage.next('.cart-stage');
         // this stage is current, let's move on to the next
         if ($('.cart').hasClass(stageClass)) {
           stage = stage.next('.cart-stage');
           stageClass = stage.data('stage') + '-stage';
+          // focus first input in next stage
+          stage.find('.-first input').focus();
         }
         // set stage class for .cart
         $('.cart').attr('class','cart active').addClass(stageClass);
         _resetCartButtons();
         // set all prev stage buttons to "Edit"
         stage.prevAll('.cart-stage').find('.btn').text('Edit');
+        // focus first input in next stage
+        stage.find('.-first input').focus();
       });
     });
 

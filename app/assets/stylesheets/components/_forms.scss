@@ -4,10 +4,10 @@ form {
   @include clearfix();
   input, textarea {
     color: $white;
-    font-size: 1em;
     border-radius: 0;
     background: none;
     line-height: 1em;
+    font-size: 0.75em;
     padding: 0.5em 1em;
     display: inline-block;
     border: 2px solid $white;
@@ -19,6 +19,9 @@ form {
     @include placeholder {
       vertical-align: text-bottom;
       color: rgba(255,255,255,0.5);
+    }
+    &.submit {
+      font-size: 0.75em;
     }
   }
 
@@ -82,7 +85,7 @@ form {
     /* Remove select styling */
     appearance: none;
     -webkit-appearance: none;
-    &:focus, &:acitve {
+    &:focus, &:active {
       background: rgba(255,255,255,0.3);
     }
   }
@@ -168,8 +171,28 @@ form {
 
   // Custom Radio Button/Checkbox Styles, here we go again, this one's not as bad though
   input[type=radio], input[type=checkbox] {
-    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
+
+  .custom-checkbox-wrap {
+    input {
+      &:focus {
+        ~ label {
+          outline: none;
+          background: rgba(255,255,255,0.3);
+        }
+      }
+    }
+    label {    
+      padding: 0.5em;
+      margin-top: -1em;
+      margin-left: -0.5em;
+      width: calc(100% + 1em);
+    }
+  }
+
   .custom-radio, .custom-checkbox {
     cursor: pointer;
     position: relative;
@@ -305,11 +328,22 @@ form {
 
   }
   label.error {
+    color: #eee;
     padding: 0.5em;
-    background: $sheer1;
+    background: $pink;
+    animation-name: flipInX;
+    animation-duration: 0.8s;
+    animation-direction: alternate;
   }
 
   @include min-screen($bpMed) {
+    input, textarea {
+      font-size: 1em;
+      &.submit {
+        font-size: 1em;
+      }
+    }
+
     h4 {
       font-size: 1.125em;
     }
