@@ -71,10 +71,17 @@
     }
     input {
       padding: 0.25em 0.5em;
+      &:focus, &:active {
+        background: rgba(255,255,255,0.8);
+      }
       @include placeholder {
         color: $sheer3;
         line-height: 1.5em;
         vertical-align: text-bottom;
+      }
+      &.btn {
+        font-size: 1em;
+        padding: 0.5em 1em;
       }
     }
 
@@ -91,6 +98,37 @@
       }
       .custom-select select {
         color: $black;
+      }
+    }
+
+    .custom-select select {
+      &:focus, &:active {
+        background: rgba(255,255,255,0.8);
+      }
+    }
+
+    .custom-checkbox-wrap {
+      input {
+        &:focus {
+          ~ label {
+            background: rgba(255,255,255,0.8);
+          }
+        }
+      }
+      label {    
+        padding: 0.5em;
+        max-width: none;
+        margin-top: -1em;
+        margin-left: -0.5em;
+        width: calc(100% + 1em);
+      }
+    }
+  
+    .custom-checkbox {
+      padding-right: 12px;
+      &::after {
+        top: 0.5em;
+        right: 0.5em;
       }
     }
   }
