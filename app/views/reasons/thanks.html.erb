@@ -4,13 +4,14 @@
   <% if @reasons.blank? %>
     <div class="wrap slider-wrap thank-you generic">
       <div class="feature-slider">
-        <!-- generic thanks message -->
+        <%= render :partial => "/shared/general_donation" -%>
       </div>
     </div>
   <% else %>
     <div class="wrap slider-wrap thank-you">
       <div class="feature-slider">
         <%= render partial: "reasons/thanks", collection: @reasons, as: :reason -%>
+        <%= render partial: "reasons/general_donation" unless @general_donation.nil? -%>
       </div>
     </div>
   <% end %>
