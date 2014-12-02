@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201160738) do
+ActiveRecord::Schema.define(version: 20141202155906) do
 
   create_table "carts", force: true do |t|
-    t.integer  "session_id"
+    t.string   "session_id"
     t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
