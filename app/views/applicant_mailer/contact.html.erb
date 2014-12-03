@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New contact email for: <%= @applicant.form %></h1>
+    <p><%= @applicant.first_name %>
+    <p><%= @applicant.email %></p>
+    <p><%= @applicant.phone %></p>
+    <p></p>
+    <%= simple_format @applicant.params %>
+  </body>
+</html>

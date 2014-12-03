@@ -14,6 +14,18 @@ class ApplicantsController < ApplicationController
     redirect_to :back
   end
 
+  def contact
+    @applicant = Applicant.create(
+      first_name: params[:first_name],
+      email: params[:email],
+      form: params[:form],
+      params: params.except(:first_name, :email, :form, :authenticity_token, :utf8, :action, :controller)
+      )
+    ApplicantMailer.contact(@applicant).deliver
+    flash[:notice] = 'Your email has been sent.'
+    redirect_to :back
+  end
+
   def show
     @applicant = Applicant.find(params[:id])
   end

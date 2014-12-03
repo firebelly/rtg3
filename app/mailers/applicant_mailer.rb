@@ -5,4 +5,9 @@ class ApplicantMailer < ActionMailer::Base
     mail(subject: "New Applicant for %s" % @applicant.form)
   end
 
+  def contact(applicant)
+    @applicant = applicant
+    mail(subject: "New Contact Email for %s" % @applicant.form)
+  end
+
 end

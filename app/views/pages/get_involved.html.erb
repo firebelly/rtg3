@@ -53,27 +53,28 @@
           <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
         </div>
         <div class="one-half-right">
-          <form action="" class="-full">
+          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+          <%= hidden_field_tag('form', 'Corporations') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="businessName">Business Name*</label>
-                <input type="text" name="corporationName" id="corporationName" required="true">
+                <input type="text" name="first_name" id="corporationName" required="true">
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="corporationEmail">Email Address*</label>
-                <input type="email" name="corporationEmail" id="corporationEmail" required="true">
+                <input type="email" name="email" id="corporationEmail" required="true">
               </div>
             </div>
             <div class="form-group">
               <label for="corporationSubject">Subject*</label>
-              <input type="text" name="corporationSubect" id="corporationSubject" required="true">
+              <input type="text" name="subject" id="corporationSubject" required="true">
             </div>
             <div class="form-group">
               <label for="corporationMessage">Message*</label>
-              <textarea name="corporationMessage" id="corporationMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="corporationMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
@@ -93,27 +94,28 @@
           <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
         </div>
         <div class="one-half-right">
-          <form action="" class="-full">
+        <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+        <%= hidden_field_tag('form', 'Small Business') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="businessName">Business Name*</label>
-                <input type="text" name="businessName" id="businessName" required="true">
+                <input type="text" name="first_name" id="businessName" required="true">
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="businessEmail">Email Address*</label>
-                <input type="email" name="businessEmail" id="businessEmail" required="true">
+                <input type="email" name="email" id="businessEmail" required="true">
               </div>
             </div>
             <div class="form-group">
               <label for="businessSubject">Subject*</label>
-              <input type="text" name="businessSubect" id="businessSubject" required="true">
+              <input type="text" name="subject" id="businessSubject" required="true">
             </div>
             <div class="form-group">
               <label for="businessMessage">Message*</label>
-              <textarea name="businessMessage" id="businessMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="businessMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
@@ -133,27 +135,28 @@
           <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
         </div>
         <div class="one-half-right">
-          <form action="" class="-full">
+          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+          <%= hidden_field_tag('form', 'Foundations') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="foundationName">Foundation Name*</label>
-                <input type="text" name="foundationName" id="foundationName" required="true">
+                <input type="text" name="first_name" id="foundationName" required="true">
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="foundationEmail">Email Address*</label>
-                <input type="email" name="foundationEmail" id="foundationEmail" required="true">
+                <input type="email" name="email" id="foundationEmail" required="true">
               </div>
             </div>
             <div class="form-group">
               <label for="foundationSubject">Subject*</label>
-              <input type="text" name="foundationSubect" id="foundationSubject" required="true">
+              <input type="text" name="subject" id="foundationSubject" required="true">
             </div>
             <div class="form-group">
               <label for="foundationMessage">Message*</label>
-              <textarea name="foundationMessage" id="foundationMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="foundationMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
-          </form>
+          <% end %>
         </div>                  
       </div>
     </div>
@@ -173,27 +176,28 @@
           <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
         </div>
         <div class="one-half-right">
-          <form action="" class="-full">
+          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+          <%= hidden_field_tag('form', 'Community Partners') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="communityPartnerName">Partnership Name*</label>
-                <input type="text" name="communityPartnerName" id="communityPartnerName" required="true">
+                <input type="text" name="first_name" id="communityPartnerName" required="true">
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="communityPartnerEmail">Email Address*</label>
-                <input type="email" name="communityPartnerEmail" id="communityPartnerEmail" required="true">
+                <input type="email" name="email" id="communityPartnerEmail" required="true">
               </div>
             </div>
             <div class="form-group">
               <label for="communityPartnerSubject">Subject*</label>
-              <input type="text" name="communityPartnerSubect" id="communityPartnerSubject" required="true">
+              <input type="text" name="subject" id="communityPartnerSubject" required="true">
             </div>
             <div class="form-group">
               <label for="communityPartnerMessage">Message*</label>
-              <textarea name="communityPartnerMessage" id="communityPartnerMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="communityPartnerMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
-          </form>
+          <% end %>
         </div>                  
       </div>
     </div>
@@ -213,27 +217,28 @@
           <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
         </div>
         <div class="one-half-right">
-          <form action="" class="-full">
+          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+          <%= hidden_field_tag('form', 'Individuals') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="individualName">Name*</label>
-                <input type="text" name="individualName" id="individualName" required="true">
+                <input type="text" name="first_name" id="individualName" required="true">
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="individualEmail">Email Address*</label>
-                <input type="email" name="individualEmail" id="individualEmail" required="true">
+                <input type="email" name="email" id="individualEmail" required="true">
               </div>
             </div>
             <div class="form-group">
               <label for="individualSubject">Subject*</label>
-              <input type="text" name="individualSubect" id="individualSubject" required="true">
+              <input type="text" name="subject" id="individualSubject" required="true">
             </div>
             <div class="form-group">
               <label for="individualMessage">Message*</label>
-              <textarea name="individualMessage" id="individualMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="individualMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
-          </form>
+          <% end %>
         </div>                  
       </div>
     </div>
@@ -262,23 +267,24 @@
             </div>
           </div>
           <div class="pane pane-2">
-            <form action="" class="-full pane-form">
+            <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+            <%= hidden_field_tag('form', 'Educational Program Application') %>
               <div class="one-half-left">
                 <h4>Contact Information</h4>
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="internFirstName">First Name*</label>
-                    <input type="text" name="internFirstName" id="internFirstName" required="true">
+                    <input type="text" name="first_name" id="internFirstName" required="true">
                   </div>
                   <div class="one-half-right">
                     <label for="internLastName">Last Name*</label>
-                    <input type="text" name="internLastName" id="internLastName" required="true">
+                    <input type="text" name="last_name" id="internLastName" required="true">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="internCell">Cell Phone*</label>
-                    <input type="tel" name="internCell" id="internCell" required="true">
+                    <input type="tel" name="phone" id="internCell" required="true">
                   </div>
                   <div class="one-half-right">
                     <label for="internPhone">Home Phone</label>
@@ -287,20 +293,20 @@
                 </div>
                 <div class="form-group">
                   <label for="internEmail">Email Address*</label>
-                  <input type="email" name="internEmail" id="internEmail" required="true">
+                  <input type="email" name="email" id="internEmail" required="true">
                 </div>
                 <div class="form-group">
                   <label for="internAddress">Street Address (Include Apt #)*</label>
-                  <input type="email" name="internEmail" id="internEmail" required="true">
+                  <input type="text" name="address" id="internAddress" required="true">
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="internCityState">City & State*</label>
-                    <input type="text" name="internCityState" id="internCityState" required="true">
+                    <label for="internCityState">City &amp; State*</label>
+                    <input type="text" name="city" id="internCityState" required="true">
                   </div>
                   <div class="one-half-right">
-                    <label for="internZip">Zip Code*</label>
-                    <input type="number" name="internZip" id="internZip" required="true">
+                    <label for="internZipCode">Zip Code*</label>
+                    <input type="text" name="zip_code" id="internZipCode" required="true">
                   </div>
                 </div>
               </div>
@@ -310,29 +316,29 @@
                 <div class="form-group">
                   <div class="one-fourth-left">
                     <label for="internAge">Age*</label>
-                    <input type="number" name="internAge" id="internAge" required="true">
+                    <input type="number" name="age" id="internAge" required="true">
                   </div>
                   <div class="three-fourths-right">
                     <fieldset>
                       <legend>Gender*</legend>
-                      <input type="radio" name="internGender" id="internGenderMale" value="male" required>
+                      <input type="radio" name="gender" id="internGenderMale" value="male" required>
                       <label class="custom-radio" for="internGenderMale">Male</label>
-                      <input type="radio" name="internGender" id="internGenderFemale" value="female" required>
+                      <input type="radio" name="gender" id="internGenderFemale" value="female" required>
                       <label class="custom-radio" for="internGenderFemale">Female</label>
-                      <input type="radio" name="internGender" id="internGenderNeutral" value="neutral" required>
+                      <input type="radio" name="gender" id="internGenderNeutral" value="neutral" required>
                       <label class="custom-radio" for="internGenderNeutral">Gender Neutral</label>
                     </fieldset>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="internMaritialStatus" class="select-wrapper">
-                      <legend>Maritial Status*</legend>
+                    <label for="internMaritalStatus" class="select-wrapper">
+                      <legend>Marital Status*</legend>
                       <div class="button custom-select ff-hack">
-                      <select name="internMaritialStatus" id="internMaritialStatus">
+                      <select name="marital_status" id="internMaritalStatus">
                         <option value="null"></option>
-                        <option value="maritialSingle">Single</option>
-                        <option value="maritialMarried">Married</option>
+                        <option value="maritalSingle">Single</option>
+                        <option value="maritalMarried">Married</option>
                       </select>
                       </div>
                     </label>
@@ -341,14 +347,14 @@
                     <label for="internEthnicity" class="select-wrapper">
                       <legend>Ethnicity*</legend>
                       <div class="button custom-select ff-hack">
-                      <select name="internEthnicity" id="internEthnicity">
+                      <select name="ethnicity" id="internEthnicity">
                         <option value="null"></option>
-                        <option value="ethnicityAfrican">African</option>
-                        <option value="ethnicityAsian">Asian</option>
-                        <option value="ethnicityEuropean">European</option>
-                        <option value="ethnicityNativeAmerican">Native American</option>
-                        <option value="ethnicityLatino">Latino</option>
-                        <option value="ethnicityOther">Other</option>
+                        <option value="African">African</option>
+                        <option value="Asian">Asian</option>
+                        <option value="European">European</option>
+                        <option value="NativeAmerican">Native American</option>
+                        <option value="Latino">Latino</option>
+                        <option value="Other">Other</option>
                       </select>
                       </div>
                     </label>
@@ -357,31 +363,31 @@
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="internIncome">Annual Household Income*</label>
-                    <input type="number" name="internIncome" id="internIncome" required="true">
+                    <input type="number" name="income" id="internIncome" required="true">
                   </div>
                   <div class="one-half-right">
                     <label for="internEmploymentStatus">Current Employment Status*</label>
-                    <input type="text" name="internEmploymentStatus" id="internEmploymentStatus">
+                    <input type="text" name="employment_status" id="internEmploymentStatus">
                   </div>
                 </div>
                 <div class="form-group">                            
                   <label for="internEducation" class="select-wrapper">
                     <legend>Highest Level of Education Completed*</legend>
                     <div class="button custom-select ff-hack">
-                    <select name="internEducation" id="internEducation">
+                    <select name="education" id="internEducation">
                       <option value="null"></option>
-                      <option value="educationPrimary">Primary School</option>
-                      <option value="educationHighSchool">High School or GED</option>
-                      <option value="educationBachelors">Bachelor's Degree</option>
-                      <option value="educationMasters">Master's Degree</option>
-                      <option value="educationDoctorate">Doctorate</option>
+                      <option value="Primary">Primary School</option>
+                      <option value="HighSchool">High School or GED</option>
+                      <option value="Bachelors">Bachelor's Degree</option>
+                      <option value="Masters">Master's Degree</option>
+                      <option value="Doctorate">Doctorate</option>
                     </select>
                     </div>
                   </label>
                 </div>
                 <input type="submit" value="submit" class="btn -white submit">
               </div>
-            </form>
+            <% end %>
             <a href="#" class="pane-devance btn -white -hollow">back</a>
           </div>
         </div>                  
@@ -409,23 +415,24 @@
             </div>
           </div>
           <div class="pane pane-2">
-            <form action="" class="-full pane-form">
+            <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+            <%= hidden_field_tag('form', 'Business, School or Organization') %>
               <div class="one-half-left">
                 <h4>Contact Information</h4>
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="volunteerFirstName">First Name*</label>
-                    <input type="text" name="volunteerFirstName" id="volunteerFirstName" required="true">
+                    <input type="text" name="first_name" id="volunteerFirstName" required="true">
                   </div>
                   <div class="one-half-right">
                     <label for="volunteerLastName">Last Name*</label>
-                    <input type="text" name="volunteerLastName" id="volunteerLastName" required="true">
+                    <input type="text" name="last_name" id="volunteerLastName" required="true">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="volunteerCell">Cell Phone*</label>
-                    <input type="tel" name="volunteerCell" id="volunteerCell" required="true">
+                    <input type="tel" name="phone" id="volunteerCell" required="true">
                   </div>
                   <div class="one-half-right">
                     <label for="volunteerPhone">Home Phone</label>
@@ -434,20 +441,20 @@
                 </div>
                 <div class="form-group">
                   <label for="volunteerEmail">Email Address*</label>
-                  <input type="email" name="volunteerEmail" id="volunteerEmail" required="true">
+                  <input type="email" name="email" id="volunteerEmail" required="true">
                 </div>
                 <div class="form-group">
                   <label for="volunteerAddress">Street Address (Include Apt #)*</label>
-                  <input type="email" name="volunteerEmail" id="volunteerEmail" required="true">
+                  <input type="text" name="address" id="volunteerAddress" required="true">
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="volunteerCityState">City & State*</label>
-                    <input type="text" name="volunteerCityState" id="volunteerCityState" required="true">
+                    <label for="volunteerCityState">City &amp; State*</label>
+                    <input type="text" name="city_state" id="volunteerCityState" required="true">
                   </div>
                   <div class="one-half-right">
-                    <label for="volunteerZip">Zip Code*</label>
-                    <input type="number" name="volunteerZip" id="volunteerZip" required="true">
+                    <label for="volunteerZipCode">Zip Code*</label>
+                    <input type="text" name="zip_code" id="volunteerZipCode" required="true">
                   </div>
                 </div>
               </div>
@@ -462,24 +469,24 @@
                   <div class="three-fourths-right">
                     <fieldset>
                       <legend>Gender*</legend>
-                      <input type="radio" name="volunteerGender" id="volunteerGenderMale" value="male" required>
+                      <input type="radio" name="gender" id="volunteerGenderMale" value="male" required>
                       <label class="custom-radio" for="volunteerGenderMale">Male</label>
-                      <input type="radio" name="volunteerGender" id="volunteerGenderFemale" value="female" required>
+                      <input type="radio" name="gender" id="volunteerGenderFemale" value="female" required>
                       <label class="custom-radio" for="volunteerGenderFemale">Female</label>
-                      <input type="radio" name="volunteerGender" id="volunteerGenderNeutral" value="neutral" required>
+                      <input type="radio" name="gender" id="volunteerGenderNeutral" value="neutral" required>
                       <label class="custom-radio" for="volunteerGenderNeutral">Gender Neutral</label>
                     </fieldset>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="volunteerMaritialStatus" class="select-wrapper">
-                      <legend>Maritial Status*</legend>
+                    <label for="volunteerMaritalStatus" class="select-wrapper">
+                      <legend>Marital Status*</legend>
                       <div class="button custom-select ff-hack">
-                      <select name="volunteerMaritialStatus" id="volunteerMaritialStatus">
+                      <select name="volunteerMaritalStatus" id="volunteerMaritalStatus">
                         <option value="null"></option>
-                        <option value="maritialSingle">Single</option>
-                        <option value="maritialMarried">Married</option>
+                        <option value="maritalSingle">Single</option>
+                        <option value="maritalMarried">Married</option>
                       </select>
                       </div>
                     </label>
@@ -528,7 +535,7 @@
                 </div>
                 <input type="submit" value="submit" class="btn -white submit">
               </div>
-            </form>
+            <% end %>
             <a href="#" class="pane-devance btn -white -hollow">back</a>
           </div>
         </div>

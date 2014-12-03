@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   end
 
   resources :applicants, :only => [ :create, :show ]
+  post '/applicants/contact', to: 'applicants#contact', as: :applicants_contact
+
   resources :orders, :only => [ :create ]
   resources :payment_records, only: [ :create ]
 
