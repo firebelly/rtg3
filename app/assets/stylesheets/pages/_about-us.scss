@@ -12,6 +12,45 @@
       background-image: image-url('RTG_how-we-help.jpg');
       background-size: cover;
     }
+
+    .-right {
+      h3 {
+        text-align: left;
+        font-size: 0.8125em;
+      }
+      .slick-slide {
+        > div {
+          margin-top: 25px;
+          text-align: center;
+          &:first-of-type {
+            margin-top: 0;
+          }
+          p {
+            color: $brand-main;
+          }
+        }
+      }
+    }
+    .stat-wrap {
+      margin: 1em auto;
+      @include clearfix();
+    }
+    p.stat-figure {
+      font-size: 1.875em;
+      vertical-align: top;
+      @include font-bold();
+      margin: 0 25px 25px 0;
+      display: inline-block;
+      border-bottom: 3px solid $brand-main;
+    }
+    .amount-raised {
+      p.stat-figure {
+        margin: 0 0 12px;
+      }
+    }
+    .description {
+      margin-top: 0;
+    }
     .icon-people {
       width: 72px;
       height: 84px;
@@ -39,7 +78,7 @@
       width: 100%;
       min-height: 200px;
     }
-    // Hid Google terms of service/logo....yikes!
+    // Hide Google terms of service/logo....yikes!
     a[href^="http://maps.google.com/maps"]{display:none !important}
 
     .gmnoprint a, .gmnoprint span {
@@ -114,6 +153,10 @@
       }
     }
     .ourBoard {
+      top: 100%;
+      margin-top: -12px;
+      position: absolute;
+      background: $brand-main;
       span {
         margin-left: 1em;
         font-size: 1.125em;
@@ -125,16 +168,78 @@
         }
       }
     }
+
+    &.-bottom {
+      position: relative;
+      margin-bottom: 200px;
+    }
+
+    .block.-column .block-content.-image-cover {
+      min-height: 300px;
+    }
+
+    .dawn {
+      background: image-url('dh_converted.jpg');
+    }
+    .shannon {
+      background: image-url('sm_converted.jpg');
+    }
   }
 
   @include min-screen($bpMed) {
+    .how-we-help {
+      .-right {
+        .slick-slide {
+          > div {
+            margin-top: 0;
+            text-align: left;
+          }
+        }
+      }
+      p.stat-figure {
+        float: left;
+        font-size: 3.375em;
+      }
+      .amount-raised {
+        p.stat-figure {
+          margin-bottom: 0;
+          margin-right: 25px;
+        }
+      }
+      .description{
+        float: left;
+        margin: 20px 0 0;
+        font-size: 0.8125em;
+        display: inline-block;
+      }
+    }
+
     .praises {
       #map {
         min-height: 400px;
       }
     }
+  
+    .theTeam {
+      .ourBoard {
+        top: auto;
+        margin: 0;
+        position: relative;
+      }
+
+      &.-bottom {
+        margin-bottom: 0;
+      }
+    }
   }
 
+
+
   @include min-screen($bpBig) {
+    .theTeam {
+      .block.-column .block-content.-image-cover {
+        min-height: 400px;
+      }
+    }
   }
 }
