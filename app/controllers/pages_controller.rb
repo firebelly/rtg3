@@ -43,6 +43,8 @@ class PagesController < ApplicationController
 
   def get_page
     @page = Page.friendly.find(params[:id])
+    @og_image = view_context.image_url(@page.image) unless @page.image.blank?
+    @og_description = @page.description unless @page.description.blank?
   end
 
 end

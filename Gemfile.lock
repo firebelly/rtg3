@@ -199,6 +199,7 @@ DEPENDENCIES
   friendly_id (~> 5.0.0)
   gon (~> 5.1.2)
   jquery-rails
+  kaminari
   mysql2
   paperclip (~> 4.2)
   rails (= 4.1.6)
