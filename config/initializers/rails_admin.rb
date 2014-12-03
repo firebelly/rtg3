@@ -102,6 +102,15 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Applicant do
+    list do
+      field :first_name
+      field :last_name
+      field :phone
+      field :email
+      field :form
+    end
+  end
 
   config.model Reason do
     weight -1
