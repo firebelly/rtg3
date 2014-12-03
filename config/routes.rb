@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'total', to: 'carts#total', as: :total
   end
 
+  resources :applicants, :only => [ :create, :show ]
   resources :orders, :only => [ :create ]
   resources :payment_records, only: [ :create ]
 
