@@ -8,8 +8,20 @@
   }
 
   .how-we-help {
-    background-image: image-url('RTG_how-we-help.jpg');
-    background-size: cover;
+    .-left {
+      background-image: image-url('RTG_how-we-help.jpg');
+      background-size: cover;
+    }
+    .icon-people {
+      width: 72px;
+      height: 84px;
+      stroke: $brand-main;
+    }
+    .icon-building {
+      width: 98px;
+      height: 85px;
+      stroke: $brand-main;
+    }
   }
 
   .praises {
