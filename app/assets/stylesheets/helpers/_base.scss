@@ -67,6 +67,27 @@ h1, h2, h3, h4 {
   position: absolute;
 }
 
+.flash {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  position: fixed;
+  min-height: 85px;
+  text-align: center;
+  background: $brand-main;
+  animation-name: flipInX;
+  animation-duration: 0.8s;
+  box-shadow: 0 3px 4px rgba(0,0,0,0.1);
+  p {
+    width: 100%;
+    margin: auto;
+    padding: 12px;
+    font-size: 1em;
+  }
+}
+
 main {
   padding: 0 0 12px;
   transition: padding 0.2s ease-out;
