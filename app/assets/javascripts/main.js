@@ -20,6 +20,7 @@ var RTG = (function ($) {
     _panes();
     _video();
     _tweetIt();
+    _animatedCharts();
 
     // About Us page
     if ($('.about-us').length>0) {
@@ -293,11 +294,12 @@ var RTG = (function ($) {
       }
     }); 
 
-    // Animate the first slide's progress bar. The rest is handled with CSS baby!
+    // Animate the slide's progress bar
     function animateBar() {
       $('.progress-bar .bar').hide();
       $('.slick-active .progress-bar .bar').animate({width:'toggle'}, 1000, 'easeInOutCubic');
     }
+    // Animate reason's progress bars too
     $('.banner-content.feature .progress-bar .bar').hide().delay(250).animate({width:'toggle'}, 1000, 'easeInOutCubic');
   };
 
@@ -764,6 +766,23 @@ var RTG = (function ($) {
       var turl = $(this).attr('href');
       popitup(turl);
     });
+  };
+
+  function _animatedCharts() {
+    $('.charts-slider').slick({
+      autoplay: false,
+      onInit: function(slider) {
+        animateBar();
+      },
+      onAfterChange: function(slider) {
+        animateBar();
+      }
+    }); 
+
+    function animateBar() {
+      $('.bar-chart .bar-fill').hide();
+      $('.slick-active .bar-chart .bar-fill').animate({width:'toggle'}, 1000, 'easeInOutCubic');
+    }
   };
 
   // public functions

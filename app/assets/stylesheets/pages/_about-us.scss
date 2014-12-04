@@ -61,6 +61,53 @@
       height: 85px;
       stroke: $brand-main;
     }
+
+    .demographics {
+      h3 {
+        margin-bottom: 25px;
+      }
+      &.age {
+        margin-bottom: 20px;
+      }
+    }
+
+    // Bar graphs
+    .bar-chart {
+      width: 100%;
+      color: $brand-main;
+      font-size: 0.625em;
+      th {
+        width: 40px;
+        text-align: right;
+        white-space: nowrap;
+        padding: 3px 6px 3px 0;
+        vertical-align: baseline;
+        border-right: 1px solid $black;
+      }
+      td {
+        padding: 3px 0;
+      }
+      .bar {
+        float: left;
+        width: 500px;
+        height: 12px;
+        margin: 0 12px 0 6px;
+        .bar-fill {
+          float: left;
+          width: 100%;
+          max-width: 0;
+          height: 12px;
+          display: block;
+          margin-right: 6px;
+          background: $brand-main;
+          transition: max-width 0.2s ease-out;
+        }
+        .bar-figure {
+          float: left;
+          display: inline-block;
+        }
+      }
+    }
   }
 
   .praises {
