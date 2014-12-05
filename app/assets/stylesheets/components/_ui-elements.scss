@@ -172,3 +172,51 @@
 .progress-radial-bar {
   fill: rgba(255,255,255,1);
 }
+
+// Circle Graph Styles
+// .circle-graph-wrapper {
+//   width: 100px;
+//   height: 100px;
+//   position: relative;
+//   div {
+//     animation-iteration-count: 1;  /* Only run once */
+//     animation-fill-mode: forwards; /* Hold the last keyframe */
+//     animation-timing-function:linear; /* Linear animation */
+//   }
+//   &.activated { // Is in active slide
+//     .circle-graph {
+//       animation-name: close-wrapper;
+//     }
+//     .circle {
+//       &.-left {
+//         animation-name: left-spin;
+//       }
+//       &.-right {
+//         animation-name: right-spin;
+//       }
+//     }
+//   }
+// }
+// .circle-graph {
+//   width: 100px;
+//   height: 100px;
+//   position: absolute;
+//   clip: rect(0px, 100px, 100px, 50px);
+//   animation-duration: 0.01s; /* Complete keyframes asap */
+//   animation-delay: 3s; /* Wait half of the animation */
+// }
+// .circle {
+//   width: 80px;
+//   height: 80px;
+//   position: absolute;
+//   border-radius: 50%;
+//   border: 10px solid $brand-main;
+//   clip: rect(0px, 50px, 100px, 0px);
+//   &.-left {
+//     animation-duration: 6s; /* Full animation time */
+//   }
+//   &.-right {
+//     animation-duration: 3s; /* Full animation time */
+//     animation-name: right-spin;
+//   }
+// }

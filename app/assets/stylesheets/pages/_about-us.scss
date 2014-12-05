@@ -8,7 +8,7 @@
   }
 
   .how-we-help {
-    .-left {
+    .block.-left {
       background-image: image-url('RTG_how-we-help.jpg');
       background-size: cover;
     }
@@ -71,6 +71,14 @@
       }
     }
 
+    .income {
+      .bar-chart {
+        .bar {
+          width: 200px;
+        }
+      }
+    }
+
     // Bar graphs
     .bar-chart {
       width: 100%;
@@ -106,6 +114,35 @@
           float: left;
           display: inline-block;
         }
+      }
+    }
+
+    // Circle Graphs
+    .circle-graphs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .circle-graph {
+      width: 100px;
+      height: 100px;
+      flex-basis: 125px;
+      text-align: center;
+      position: relative;
+      margin-bottom: 25px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+      div {
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        color: $brand-main;
+        font-size: 0.6875em;
+        @include font-bold();
+        transform: translateY(-50%);
       }
     }
   }
@@ -258,6 +295,14 @@
         margin: 20px 0 0;
         font-size: 0.8125em;
         display: inline-block;
+      }
+
+      .income {
+        .bar-chart {
+          .bar {
+            width: 500px;
+          }
+        }
       }
     }
 

@@ -157,3 +157,29 @@
           backface-visibility: visible !important;
           animation-name: flipInX;
 }
+
+// Circle graph animations
+/* Rotate the right side of the progress bar from 0 to 180 degrees */
+@keyframes right-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+/* Rotate the left side of the progress bar from 0 to 360 degrees */
+@keyframes left-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Set the wrapper clip to auto, effectively removing the clip */
+@keyframes close-wrapper {
+  to {
+    clip: rect(auto, auto, auto, auto);
+  }
+}

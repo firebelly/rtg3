@@ -776,13 +776,29 @@ var RTG = (function ($) {
       },
       onAfterChange: function(slider) {
         animateBar();
+        $('.circle-graph').hide().show().circleProgress('redraw');
       }
-    }); 
+    });
 
     function animateBar() {
       $('.bar-chart .bar-fill').hide();
       $('.slick-active .bar-chart .bar-fill').animate({width:'toggle'}, 1000, 'easeInOutCubic');
     }
+
+    $('.circle-graph').each(function () {
+      var percentage = $(this).find('.percentage').text().replace('%', '');
+      var percentage = parseFloat(percentage);
+      var pValue = percentage / 100;
+      $(this).circleProgress({
+          value: pValue,
+          fill: { color: '#E54C97' },
+          emptyFill: 'rgb(231, 173, 202)',
+          startAngle: -Math.PI / 4 * 2,
+      }).on('circle-animation-progress', function(event, progress, stepValue) {
+        $(this).find('span').text(String((stepValue * 100).toFixed(1)) + '%');
+      });
+    });
+
   };
 
   // public functions
