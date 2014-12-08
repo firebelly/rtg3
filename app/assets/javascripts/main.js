@@ -57,9 +57,15 @@ var RTG = (function ($) {
       var cartCount = $('#cart').find('li').length;
       _setCartCount(cartCount);
       _showCart();
+    }).submit(function(e) {
+      if (!$('input[name=amount]').val() || parseInt($('input[name=amount]').val())<=0) {
+        alert('Please enter an amount.');
+        e.preventDefault();
+        e.stopPropagation();
+      }
     });
     // update cart item amounts
-    $('.checkout').on('ajax:success', '.update', function(e, data) {
+    $('.checkout').on('ajax:success', '.item-amount', function(e, data) {
       $('.cart-items-wrap').html(data);
     });
     // delete cart item links
@@ -75,8 +81,9 @@ var RTG = (function ($) {
       }, 250);
       setTimeout(function () {
         thisItem.remove();
+        _setCartCount(data);
+        _setCartTotal();
       }, 400);
-      _setCartCount(data);
     });
     // initial cart count (maybe only call this if cookie is set, which is stored when adding to cart? this would allow full caching of page)
     // $.get('/cart/count', function(data) {
@@ -264,6 +271,19 @@ var RTG = (function ($) {
       $('.cart').removeClass('empty');
     }
   };
+
+  // Update cart total
+  function _setCartTotal() {
+    var cartTotal = 0;
+    if ($('#checkout input.amount').length>0) {
+      $('#checkout input.amount').each(function() {
+        cartTotal += 1*$(this).val();
+      });
+      $('.cart-total strong').text(cartTotal);
+    } else {
+      $('.cart-total').hide();
+    }
+  }
 
   // Bad cart, lay down
   function _hideCart() {

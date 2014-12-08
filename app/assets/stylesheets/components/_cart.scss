@@ -165,6 +165,7 @@
     margin: 0;
     padding: 0;
     font-size: 0.8125em;
+    .cart-total,
     .cart-item {
       opacity: 1;
       list-style: none;
@@ -203,6 +204,9 @@
         max-width: 60px;
         display: inline-block;
         padding: 0.25em;
+        &:focus {
+          color: $brand-main;
+        }
       }
     }
   }
