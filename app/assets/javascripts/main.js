@@ -21,6 +21,7 @@ var RTG = (function ($) {
     _video();
     _tweetIt();
     _animatedCharts();
+    _flash();
 
     // About Us page
     if ($('.about-us').length>0) {
@@ -28,6 +29,17 @@ var RTG = (function ($) {
     }
   };
 
+  function _flash() {
+    $('.flash').each(function() {
+      var $this = $(this);
+      $('body').addClass('has-flash');
+      $('<a class="close"><span class="x -white"></span></a>').appendTo($this).click(function(e) {
+        e.preventDefault();
+        $this.fadeOut();
+        $('body').removeClass('has-flash');
+      });
+    });
+  }
   function _resize() {
     // Set header height for offset
     headerH = $('.header_main').outerHeight();

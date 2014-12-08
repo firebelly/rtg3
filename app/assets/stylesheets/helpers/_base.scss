@@ -16,6 +16,10 @@ body {
   overflow-x: hidden;
   @include font-reg();
 	@include font-smoothing(antialiased);
+  transition: margin-top .5s;
+  &.has-flash {
+    margin-top: 85px;
+  }
 }
 
 a {
@@ -85,6 +89,12 @@ h1, h2, h3, h4 {
     margin: auto;
     padding: 12px;
     font-size: 1em;
+    color: #fff;
+  }
+  .close {
+    position: absolute;
+    top: 40px;
+    right: 30px;
   }
 }
 
