@@ -21,25 +21,49 @@ var RTG = (function ($) {
     _video();
     _tweetIt();
     _animatedCharts();
-    _flash();
+    _flashInit();
 
     // About Us page
     if ($('.about-us').length>0) {
       _googleMap();
     }
+
+    // Some general Esc handlers
+    $(document).keyup(function(e) {
+      if (e.keyCode == 27) {
+        _hideFlash();
+        if ($('#cart').hasClass('review-stage')) _hideCart();
+      }
+    });
+
   };
 
-  function _flash() {
+  function _flashInit() {
     $('.flash').each(function() {
       var $this = $(this);
       $('body').addClass('has-flash');
-      $('<a class="close"><span class="x -white"></span></a>').appendTo($this).click(function(e) {
+      $('<a href="#" class="close"><span class="x -white"></span></a>').appendTo($this).click(function(e) {
         e.preventDefault();
-        $this.fadeOut();
-        $('body').removeClass('has-flash');
+        _hideFlash();
       });
     });
   }
+
+  function _hideFlash() {
+    $('.flash').fadeOut();
+    $('body').removeClass('has-flash');
+  }
+
+  function _flashAlert(message) {
+    if ($('.flash').length>0) {
+      $('.flash').find('p').html(message).end().show();
+      $('body').addClass('has-flash');
+    } else {
+      $('<div class="flash"><p class="alert">' + message + '</p></div>').insertAfter('.header_main');
+    }
+    _flashInit();
+  }
+
   function _resize() {
     // Set header height for offset
     headerH = $('.header_main').outerHeight();
@@ -54,12 +78,14 @@ var RTG = (function ($) {
     // add to cart links
     $('.cart-form').on('ajax:success', function(e, data) {
       $('.cart-items-wrap').html(data);
+      // hide any flash messages from previous errors
+      _hideFlash();
       var cartCount = $('#cart').find('li').length;
       _setCartCount(cartCount);
       _showCart();
     }).submit(function(e) {
       if (!$('input[name=amount]').val() || parseInt($('input[name=amount]').val())<=0) {
-        alert('Please enter an amount.');
+        _flashAlert('Please enter an amount.');
         e.preventDefault();
         e.stopPropagation();
       }
@@ -275,8 +301,8 @@ var RTG = (function ($) {
   // Update cart total
   function _setCartTotal() {
     var cartTotal = 0;
-    if ($('#checkout input.amount').length>0) {
-      $('#checkout input.amount').each(function() {
+    if ($('#cart input.amount').length>0) {
+      $('#cart input.amount').each(function() {
         cartTotal += 1*$(this).val();
       });
       $('.cart-total strong').text(cartTotal);
