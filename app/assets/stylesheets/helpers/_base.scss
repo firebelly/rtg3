@@ -141,3 +141,10 @@ main {
     padding: 0 0 25px;
   }
 }
+
+.edit-bug {
+  display: none;
+  &.active {
+    display: block;
+  }
+}

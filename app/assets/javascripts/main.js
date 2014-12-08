@@ -36,6 +36,12 @@ var RTG = (function ($) {
       }
     });
 
+    // "admin_status" cookie is set by Warden in devise.rb on login
+    admin_status = $.cookie('admin_status');
+    if (admin_status) {
+      $('.edit-bug').addClass('active');
+    }
+
   };
 
   function _flashInit() {

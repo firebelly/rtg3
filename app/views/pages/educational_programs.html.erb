@@ -1,8 +1,12 @@
 <%= content_for :title, raw(@page.title_override || @page.title) %>
 
+<%= content_for :edit_link do %>
+  <%= render :partial => '/shared/edit_bug', :locals => { :obj => @page, :edit_path => rails_admin.edit_path(model_name: 'page', id: @page.id) }%>
+<% end %>
+
 <%= content_for :featured do %>
 <div class="wrap banner-wrap educational-programs">
-  <div class="banner">
+  <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:wallpaper)) %>')"<% end %>>
     <div class="banner-content">
       <h2>Our Reason To<br> Give Program</h2>
     </div>

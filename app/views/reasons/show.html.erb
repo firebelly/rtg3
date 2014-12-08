@@ -1,5 +1,9 @@
 <%= content_for :title, raw(@reason.title) %>
 
+<%= content_for :edit_link do %>
+  <%= render :partial => '/shared/edit_bug', :locals => { :obj => @reason, :edit_path => rails_admin.edit_path(model_name: 'reason', id: @reason.id) }%>
+<% end %>
+
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
   <div class="feature-slider">
@@ -8,7 +12,6 @@
   </div>
 </div>
 <% end %>
-
 
 <div class="blocks intro">
   <div class="support block -left -pink -column">
