@@ -322,7 +322,7 @@ var RTG = (function ($) {
   // Bad cart, lay down
   function _hideCart() {
     $('.body-wrap').removeClass('unfocus');
-    $('.cart').attr('class', 'cart');
+    $('.cart').removeClass('active payment-stage checkout-stage');
     _resetCartButtons();
   };
 
