@@ -18,4 +18,6 @@ class ReasonImage < ActiveRecord::Base
 
   validates :image, :presence => true
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  attr_accessor :delete_image
+  before_validation { self.image.clear if self.delete_image == '1' }
 end

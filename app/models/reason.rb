@@ -7,6 +7,8 @@ class Reason < ActiveRecord::Base
   has_many :reason_images
   has_many :donations
 
+  attr_accessor :delete_image
+  before_validation { self.image.clear if self.delete_image == '1' }
   attr_accessor :delete_secondary_image
   before_validation { self.secondary_image.clear if self.delete_secondary_image == '1' }
 

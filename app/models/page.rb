@@ -19,4 +19,6 @@ class Page < ActiveRecord::Base
   validates_attachment_content_type [:image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates :title, presence: true
   validates :content, presence: true
+  attr_accessor :delete_image
+  before_validation { self.image.clear if self.delete_image == '1' }
 end
