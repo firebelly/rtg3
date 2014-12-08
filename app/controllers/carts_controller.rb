@@ -9,7 +9,7 @@ class CartsController < ApplicationController
       donation.update(amount: donation.amount + params[:amount].to_f)
     else
       donation = Donation.new(
-        amount: params[:amount].to_f,
+        amount: params[:amount].gsub('$','').to_f,
         reason_id: params[:reason_id]
         )
       @cart.donations << donation
