@@ -189,8 +189,6 @@ var RTG = (function ($) {
         if ($('.cart').hasClass(stageClass)) {
           stage = stage.next('.cart-stage');
           stageClass = stage.data('stage') + '-stage';
-          // focus first input in next stage
-          stage.find('.-first input').focus();
         }
         // set stage class for .cart
         $('.cart').attr('class','cart active').addClass(stageClass);
