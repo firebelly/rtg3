@@ -91,8 +91,10 @@ var RTG = (function ($) {
       }
     });
     // update cart item amounts
-    $('.checkout').on('ajax:success', '.item-amount', function(e, data) {
+    $('#cart').on('ajax:success', '.item-amount', function(e, data) {
       $('.cart-items-wrap').html(data);
+    }).on('click', 'input.amount', function() {
+      this.select();
     });
     // delete cart item links
     $('#cart').on('ajax:success', '.item-remove', function(e, data) {
