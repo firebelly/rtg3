@@ -4,7 +4,7 @@ var RTG = (function ($) {
       youtubePlayer;
 
   function _init() {
-    _resize(); // init vars like headerH
+    _resize();
     _cartInit();
     _mainNav();
     _stickyHeader();
@@ -71,8 +71,6 @@ var RTG = (function ($) {
   }
 
   function _resize() {
-    // Set header height for offset
-    headerH = $('.header_main').outerHeight();
   };
 
   function _cartInit() {
@@ -332,9 +330,10 @@ var RTG = (function ($) {
   };
 
   function _stickyHeader() {
-    $('.header_main').waypoint(function() {        
-      $(this).toggleClass('sticky');
-    }, { offset: -headerH });
+    $('.header_main').waypoint('sticky', {
+      offset: -$('.header_main').outerHeight(),
+      stuckClass: 'sticky'
+    });
   };
 
   function _smoothScrolling() {
@@ -342,7 +341,7 @@ var RTG = (function ($) {
       speed: 500,
       easing: 'easeOutCubic',
       updateURL: false,
-      offset: headerH,
+      offset: $('.header_main').outerHeight()
     });
   };
 
