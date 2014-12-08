@@ -24,16 +24,9 @@ RailsAdmin.config do |config|
   end
 
   # Hide these models from the navigation:
-  [Cart, Donation, ReasonImage, PostType].each do |klass|
-  # [ReasonImage, PostType].each do |klass|
+  [Cart, Donation, ReasonImage, PostType, SupporterType].each do |klass|
     config.model klass do
       visible false
-    end
-  end
-
-  config.model PostType do
-    edit do
-      field :name
     end
   end
 
@@ -61,12 +54,6 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model SupporterType do
-    edit do
-      field :title
-    end
-  end
-
   config.model Supporter do
     list do
       field :title
@@ -77,7 +64,10 @@ RailsAdmin.config do |config|
       field :title
       field :url
       field :logo
-      field :supporter_type
+      field :supporter_type do
+        inline_add false
+        inline_edit false
+      end
     end
   end
 
@@ -92,7 +82,10 @@ RailsAdmin.config do |config|
     end
     edit do
       field :title
-      field :post_type
+      field :post_type do
+        inline_add false
+        inline_edit false
+      end
       field :published
       field :icon, :enum do
         default_value 'text'
