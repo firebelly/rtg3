@@ -86,7 +86,7 @@ var RTG = (function ($) {
       $('.cart-items-wrap').html(data);
       // hide any flash messages from previous errors
       _hideFlash();
-      var cartCount = $('#cart').find('li').length;
+      var cartCount = $('#cart .cart-item').length;
       _setCartCount(cartCount);
       _showCart();
     }).submit(function(e) {
