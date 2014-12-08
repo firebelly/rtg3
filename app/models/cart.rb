@@ -10,4 +10,7 @@ class Cart < ActiveRecord::Base
     donations.sum(:amount)
   end
 
+  def self.cleanup
+  	self.where("created_at < ? AND order_id IS NULL", 14.days.ago).delete_all
+  end
 end
