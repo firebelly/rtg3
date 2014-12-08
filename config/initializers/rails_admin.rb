@@ -105,6 +105,18 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Order do
+    list do
+      field :first_name
+      field :last_name
+      field :email
+      field :found_text do
+        label 'Found via'
+      end
+      field :donated_to
+    end
+  end
+
   config.model Reason do
     weight -1
 

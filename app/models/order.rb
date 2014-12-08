@@ -16,20 +16,18 @@ class Order < ActiveRecord::Base
   # payment went through, adjust each reason's donated amount
   def finalize_order_items
     cart.donations.each do |donation|
-      donation.reason.update_attributes(:total_donated => donation.reason.total_donated + donation.price)
+      unless donation.reason.nil?
+        donation.reason.update_attributes(:total_donated => donation.reason.total_donated + donation.price)
+      end
     end
-  end
-
-  def billing_name
-    [billing_first_name, billing_last_name].join(' ')
-  end
-
-  def shipping_name
-    [shipping_first_name, shipping_last_name].join(' ')
   end
 
   def found_text
     found == 'other' ? found_other : found
+  end
+
+  def donated_to
+    cart.donations.collect{|d| d }.join(', ')
   end
 
 end
