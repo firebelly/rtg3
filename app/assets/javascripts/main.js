@@ -14,7 +14,6 @@ var RTG = (function ($) {
     _blockSliders();
     _formFunctions();
     _radialProgress();
-    _countUp();
     _accordions();
     _panes();
     _video();
@@ -492,22 +491,6 @@ var RTG = (function ($) {
         drawProgress(progress);
       }, 10);        
     }, { offset: '50%', triggerOnce: true });
-  };
-
-  function _countUp() {
-    $('.countup').waypoint(function() {        
-      $(this).countTo({
-        speed: 1000,
-        formatter: function (value, options) {
-          value = value.toFixed(options.decimals);
-          value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-          return value;
-        }
-      });
-    }, { 
-      offset: '85%',
-      triggerOnce: true
-    });
   };
 
   function _accordions() {

@@ -68,6 +68,9 @@
       }
       &.age {
         margin-bottom: 20px;
+        > div {
+          width: 100%;
+        }
       }
     }
 
@@ -325,7 +328,18 @@
     }
   }
 
-
+  @include min-screen(1150px) {
+    .how-we-help {
+      .demographics {
+        &.age {
+          > div {
+            width: 50%;
+            float: left;
+          }
+        }
+      }
+    }
+  }
 
   @include min-screen($bpBig) {
     .theTeam {
