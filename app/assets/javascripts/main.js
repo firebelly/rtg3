@@ -65,8 +65,8 @@ var RTG = (function ($) {
       $('body').addClass('has-flash');
     } else {
       $('<div class="flash"><p class="alert">' + message + '</p></div>').insertAfter('.header_main');
+      _flashInit();
     }
-    _flashInit();
   }
 
   function _resize() {
