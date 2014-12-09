@@ -17,9 +17,8 @@
 </div>
 <% end %>
 
-<div class="blocks intro">
+<div class="blocks">
   <div class="support block -left -pink -column">
-    <article class="block-content">
     <div class="block-content -top-half -center">
       <p><strong><%= @reason.donation_prompt %></strong></p>
       <%= render partial: "/shared/donation_form", locals: { reason: @reason } -%>
@@ -29,9 +28,23 @@
         <p><a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=#url" class="social-link facebook"><svg class="icon icon-facebook" role="img"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-facebook"></use></svg> /reasontogive</a></p>
       </div>
     </div>
-    </article>
+    <div class="block-content -bottom-half -image-cover image-slide">
+      <div class="block-image-slider-static">
+        <% if @reason.is_success? and !@reason.reason_images.blank? %>
+          <% for slideshow_image in @reason.reason_images %>
+            <div class="item">
+              <%= image_tag slideshow_image.image.url(:medium) %>
+            </div>
+          <% end %>
+        <% elsif !@reason.secondary_image.blank? %>
+          <div class="item">
+            <%= image_tag @reason.secondary_image.url(:medium) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="block-content -bottom-half -image-cover -center"></div>
+
   <div class="block -right -gray">
     <div class="block-content">
     <% if @reason.is_success? %>
@@ -42,3 +55,9 @@
     </div>
   </div>
 </div>
+
+<% unless @slider_reasons.blank? %>
+  <div class="reasons-slider blocks reason-blocks">
+    <%= render partial: "reasons/list", collection: @slider_reasons, as: :reason %>
+  </div>
+<% end %>
