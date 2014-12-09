@@ -74,12 +74,15 @@ var RTG = (function ($) {
   };
 
   function _cartInit() {
-    // for now just nullify the checkout form submit action
-    $('.checkout').on('submit', function(e) {
-      return false;
-    });
-
     // add to cart links
+    $('.cart-form').submit(function(e) {
+      // make sure a value is present
+      if (!$('input[name=amount]').val() || parseInt($('input[name=amount]').val())<=0) {
+        _flashAlert('Please enter an amount.');
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
     $('.cart-form').on('ajax:success', function(e, data) {
       $('.cart-items-wrap').html(data);
       // hide any flash messages from previous errors
@@ -87,12 +90,6 @@ var RTG = (function ($) {
       var cartCount = $('#cart .cart-item').length;
       _setCartCount(cartCount);
       _showCart();
-    }).submit(function(e) {
-      if (!$('input[name=amount]').val() || parseInt($('input[name=amount]').val())<=0) {
-        _flashAlert('Please enter an amount.');
-        e.preventDefault();
-        e.stopPropagation();
-      }
     });
     // update cart item amounts
     $('#cart').on('ajax:success', '.item-amount', function(e, data) {
@@ -280,13 +277,6 @@ var RTG = (function ($) {
     $('.menu-toggle').removeClass('menu-open');
     $('.cart').addClass('active cart-stage review-stage');
     $('.body-wrap').addClass('unfocus');
-    // kill Enter key in cart amount fields
-    $('.cart-item .amount').keyup(function (e) {
-      if (e.keyCode == 13) {
-        e.preventDefault();
-        this.blur();
-      }
-    });
   };
 
   // Set (cart count)
