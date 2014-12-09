@@ -14,7 +14,7 @@ var RTG = (function ($) {
     _blockSliders();
     _formFunctions();
     _radialProgress();
-    _accordians();
+    _accordions();
     _panes();
     _video();
     _tweetIt();
