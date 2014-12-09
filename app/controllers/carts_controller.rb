@@ -5,11 +5,12 @@ class CartsController < ApplicationController
 
   def add
     donation = @cart.donations.where(reason_id: params[:reason_id]).first
+    amount = params[:amount].gsub(/[^\d]/,'').to_f
     if donation
-      donation.update(amount: donation.amount + params[:amount].to_f)
+      donation.update(amount: donation.amount + amount)
     else
       donation = Donation.new(
-        amount: params[:amount].gsub('$','').to_f,
+        amount: amount,
         reason_id: params[:reason_id]
         )
       @cart.donations << donation
