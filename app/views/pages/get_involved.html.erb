@@ -8,7 +8,9 @@
 <div class="wrap banner-wrap get-involved">
   <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:wallpaper)) %>')"<% end %>>
     <div class="banner-content">
-      <h2>How You Can<br> Get Involved</h2>
+      <% unless @page.banner_title.blank? %>
+        <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
+      <% end %>
     </div>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>
@@ -127,47 +129,6 @@
   <div class="block accordion -full -gray">
     <div class="block-content">
       <div class="accordion-trigger">
-        <h3>Foundations</h3>
-        <div class="actions" aria-hidden="true">
-          <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
-          <span class="plus-x"></span>
-        </div>
-      </div>
-      <div class="accordion-content">
-        <div class="one-half-left">
-          <p>Reason to Give offers small businesses an exciting opportunity to give back to the community and get your employees involved. Small business partners sponsor a student for each class and receive personal thank yous and updates on each students progress. Employees can then serve as a mentor to the sponsored student or facilitate one of our classes.</p>
-          <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
-        </div>
-        <div class="one-half-right">
-          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
-          <%= hidden_field_tag('form', 'Foundations') %>
-            <div class="form-group">
-              <div class="one-half-left">
-                <label for="foundationName">Foundation Name*</label>
-                <input type="text" name="first_name" id="foundationName" required="true">
-              </div>
-              <div class="one-half-right">
-                <label class="one-half-right" for="foundationEmail">Email Address*</label>
-                <input type="email" name="email" id="foundationEmail" required="true">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="foundationSubject">Subject*</label>
-              <input type="text" name="subject" id="foundationSubject" required="true">
-            </div>
-            <div class="form-group">
-              <label for="foundationMessage">Message*</label>
-              <textarea name="message" id="foundationMessage" cols="30" rows="10" required="true"></textarea>
-            </div>
-            <input type="submit" class="btn -white -hollow submit" value="Send">
-          <% end %>
-        </div>                  
-      </div>
-    </div>
-  </div>
-  <div class="block accordion -full -gray">
-    <div class="block-content">
-      <div class="accordion-trigger">
         <h3>Community Partners</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
@@ -199,47 +160,6 @@
             <div class="form-group">
               <label for="communityPartnerMessage">Message*</label>
               <textarea name="message" id="communityPartnerMessage" cols="30" rows="10" required="true"></textarea>
-            </div>
-            <input type="submit" class="btn -white -hollow submit" value="Send">
-          <% end %>
-        </div>                  
-      </div>
-    </div>
-  </div>
-  <div class="block accordion -last -full -gray">
-    <div class="block-content">
-      <div class="accordion-trigger">
-        <h3>Individuals</h3>
-        <div class="actions" aria-hidden="true">
-          <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
-          <span class="plus-x"></span>
-        </div>
-      </div>
-      <div class="accordion-content">
-        <div class="one-half-left">
-          <p>Reason to Give offers small businesses an exciting opportunity to give back to the community and get your employees involved. Small business partners sponsor a student for each class and receive personal thank yous and updates on each students progress. Employees can then serve as a mentor to the sponsored student or facilitate one of our classes.</p>
-          <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
-        </div>
-        <div class="one-half-right">
-          <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
-          <%= hidden_field_tag('form', 'Individuals') %>
-            <div class="form-group">
-              <div class="one-half-left">
-                <label for="individualName">Name*</label>
-                <input type="text" name="first_name" id="individualName" required="true">
-              </div>
-              <div class="one-half-right">
-                <label class="one-half-right" for="individualEmail">Email Address*</label>
-                <input type="email" name="email" id="individualEmail" required="true">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="individualSubject">Subject*</label>
-              <input type="text" name="subject" id="individualSubject" required="true">
-            </div>
-            <div class="form-group">
-              <label for="individualMessage">Message*</label>
-              <textarea name="message" id="individualMessage" cols="30" rows="10" required="true"></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
           <% end %>

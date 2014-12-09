@@ -8,7 +8,9 @@
 <div class="wrap banner-wrap get-involved">
   <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:wallpaper)) %>')"<% end %>>
     <div class="banner-content">
-      <h2>Looking To Apply?</h2>
+      <% unless @page.banner_title.blank? %>
+        <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
+      <% end %>
     </div>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>
