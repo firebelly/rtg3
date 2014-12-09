@@ -3,9 +3,16 @@ class ReasonsController < ApplicationController
   before_filter :set_defaults
 
   def index
-  	@page = Page.friendly.find('give')
-  	@promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
-  	@reasons = Reason.published.unfulfilled - @promoted_reason
+    @page = Page.friendly.find('give')
+    @promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
+    @reasons = Reason.published.unfulfilled - @promoted_reason
+  end
+
+  def success_stories
+    @page = Page.friendly.find('success-stories')
+    @promoted_success = Reason.published.is_success.promoted.limit(1)
+    @successes = Reason.published.is_success - @promoted_success
+    render 'reasons/success_stories'
   end
 
   def show

@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   # custom pages
   get '/educational-programs' => 'pages#educational_programs', id: 'educational-programs'
   get '/get-involved' => 'pages#get_involved', id: 'get-involved'
-  get '/success-stories' => 'pages#success_stories', id: 'success-stories'
   get '/apply' => 'pages#apply', id: 'apply'
   get '/about-us' => 'pages#about_us', id: 'about-us'
   
@@ -47,6 +46,7 @@ Rails.application.routes.draw do
   # get '/press/:id' => 'posts#press_show', as: 'press_post'
 
   get '/give' => 'reasons#index'
+  get '/success-stories' => 'reasons#success_stories'
   get '/thanks/:order_id' => 'reasons#thanks', as: 'thanks'
 
   get '/news' => 'posts#index', as: 'news'

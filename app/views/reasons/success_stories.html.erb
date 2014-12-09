@@ -1,0 +1,16 @@
+<%= content_for :title, raw(@page.title_override || @page.title) %>
+
+<% unless @promoted_success.blank? %>
+  <%= content_for :featured do %>
+    <div class="wrap slider-wrap">
+      <div class="feature-slider">
+        <%= render partial: "reason", locals: { reason: @promoted_success[0] } -%>
+        <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="blocks reason-blocks">
+  <%= render partial: "reasons/list", collection: @successes, as: :reason %>
+</div>
