@@ -31,14 +31,14 @@
         padding-bottom: 0.25em;
       }
     }
-    .accordian {
+    .accordion {
       max-height: none;
       h4 {
         margin: 0;
         width: 75%;
         float: left;
       }
-      .accordian-content {
+      .accordion-content {
         p {
           a {
             text-decoration: underline;
@@ -60,7 +60,7 @@
           }
         }
         &.active {
-          .accordian-trigger {
+          .accordion-trigger {
             @include dots($black, 6px);
             .actions {
               .icon-mail {
@@ -101,7 +101,7 @@
           @include dots($white, 6px);
         }
       }
-      .accordian-content {
+      .accordion-content {
         @include dots($white, 6px);
       } 
     }
@@ -117,7 +117,7 @@
           @include dots($black, 6px);
         }
       }
-      .accordian-content {
+      .accordion-content {
         @include dots($black, 6px);
       }
     }

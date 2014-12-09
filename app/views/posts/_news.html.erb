@@ -1,13 +1,13 @@
-<div class="accordian -<%= news.post_type.slug=="news" ? "pink" : "gray" %>">
+<div class="accordion -<%= news.post_type.slug=="news" ? "pink" : "gray" %>">
   <div class="block-content">
-    <div class="accordian-trigger">
+    <div class="accordion-trigger">
       <h4><%= news.title %></h4>
       <div class="actions" aria-hidden="true">
         <svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg>
         <span class="plus-x -white"></span>
       </div>
     </div>
-    <div class="accordian-content">
+    <div class="accordion-content">
       <div>
         <%= raw video_embeds(news.content) %>
       </div>

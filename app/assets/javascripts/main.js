@@ -1,6 +1,5 @@
 var RTG = (function ($) {
-  var headerH,
-      braintreeClient,
+  var braintreeClient,
       youtubePlayer;
 
   function _init() {
@@ -16,7 +15,7 @@ var RTG = (function ($) {
     _formFunctions();
     _radialProgress();
     _countUp();
-    _accordians();
+    _accordions();
     _panes();
     _video();
     _tweetIt();
@@ -511,12 +510,12 @@ var RTG = (function ($) {
     });
   };
 
-  function _accordians() {
-    $('.accordian-trigger').on('click', function () {
-      $('html,body').animate({scrollTop: $(this).offset().top - headerH}, 500, 'easeInOutCubic');
+  function _accordions() {
+    $('.accordion-trigger').on('click', function () {
+      $('html,body').animate({scrollTop: $(this).offset().top - $('.header_main').outerHeight()}, 500, 'easeInOutCubic');
 
-      var tP = $(this).closest('.accordian');
-      $('.accordian.active').not(tP).removeClass('active');
+      var tP = $(this).closest('.accordion');
+      $('.accordion.active').not(tP).removeClass('active');
       tP.toggleClass('active');
     });
   };
