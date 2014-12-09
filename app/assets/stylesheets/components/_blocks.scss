@@ -234,8 +234,7 @@
   }
   .slick-next,
   .slick-prev {
-    top: auto;
-    bottom: 0;
+    top: 50%;
     margin: 0;
     z-index: 1;
     opacity: 1;
@@ -245,6 +244,7 @@
     line-height: 40px;
     position: absolute;
     background: $sheer2;
+    transform: translateY(-50%);
     transition: background 0.2s ease-out;
     &::before {
       opacity: 1;
@@ -253,7 +253,7 @@
     }
   }
   .slick-prev {
-    left: 0;
+    left: -12px;
     padding-left: 16px;
     &::before {
       content: '';
@@ -266,7 +266,7 @@
     }
   }
   .slick-next {
-    right: 0;
+    right: -12px;
     color: $white;
     background: $brand-main;
     padding-right: 16px;
@@ -282,7 +282,7 @@
     }
   }
   .slick-list {
-    margin: 0 24px;
+    margin: 0 50px;
     position: static;
   }
   .slick-dots {
@@ -802,8 +802,17 @@
     .block-content {
       margin: 0 auto;
     }
-    .slick-list {
-      margin: 0 50px;
+    .slick-next,
+    .slick-prev {
+      top: auto;
+      bottom: 0;
+      transform: translateY(0);
+    }
+    .slick-prev {
+      left: 0;
+    }
+    .slick-next {
+      right: 0;
     }
   }
 
