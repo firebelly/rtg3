@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203162311) do
+ActiveRecord::Schema.define(version: 20141209001343) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20141203162311) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "caption"
   end
 
   create_table "reasons", force: true do |t|

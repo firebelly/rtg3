@@ -117,6 +117,13 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model ReasonImage do
+    edit do
+      field :image
+      field :caption
+    end
+  end
+
   config.model Reason do
     weight -1
 
