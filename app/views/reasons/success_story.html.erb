@@ -7,11 +7,7 @@
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
   <div class="feature-slider">
-    <% if @reason.is_success? %>
-      <%= render partial: "/reasons/success_story", locals: { success_story: @reason } -%>
-    <% else %>
-      <%= render partial: "/reasons/reason", locals: { reason: @reason } -%>
-    <% end %>
+    <%= render partial: "/reasons/success_story", locals: { reason: @reason } -%>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>
 </div>
@@ -34,11 +30,7 @@
   <div class="block-content -bottom-half -image-cover -center"></div>
   <div class="block -right -gray">
     <div class="block-content">
-    <% if @reason.is_success? %>
-      <%= raw @reason.success_content %>
-    <% else %>
-      <%= raw @reason.content %>
-    <% end %>
+    <%= raw @reason.content %>
     </div>
   </div>
 </div>

@@ -31,6 +31,7 @@ RailsAdmin.config do |config|
   end
 
   config.model Page do
+    configure :banner_title, :text
     list do
       field :title
       field :published
@@ -40,6 +41,7 @@ RailsAdmin.config do |config|
       field :published
       field :image
       field :banner_title do
+        html_attributes rows: 3, cols: 40
         help "Used for text in middle of featured image"
       end
       field :content, :ck_editor

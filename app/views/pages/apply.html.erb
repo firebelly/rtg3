@@ -8,7 +8,9 @@
 <div class="wrap banner-wrap get-involved">
   <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:wallpaper)) %>')"<% end %>>
     <div class="banner-content">
-      <h2>Looking To Apply?</h2>
+      <% unless @page.banner_title.blank? %>
+        <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
+      <% end %>
     </div>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>
@@ -42,16 +44,16 @@
 </div>
 
 <div class="blocks -column">
-  <div class="block intern-form accordian -full -gray">
+  <div class="block intern-form accordion -full -gray">
     <div class="block-content">
-      <div class="accordian-trigger">
+      <div class="accordion-trigger">
         <h3>Educational Program Application</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
           <span class="plus-x"></span>
         </div>
       </div>
-      <div class="accordian-content">
+      <div class="accordion-content">
         <div class="panes">
           <div class="pane pane-1 active">
             <div class="one-half-left">
@@ -190,16 +192,16 @@
       </div>
     </div>
   </div>
-  <div class="block volunteer-form accordian -last -full -gray">
+  <div class="block volunteer-form accordion -last -full -gray">
     <div class="block-content">
-      <div class="accordian-trigger">
+      <div class="accordion-trigger">
         <h3>Business, School or Organization</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
           <span class="plus-x"></span>
         </div>
       </div>
-      <div class="accordian-content">
+      <div class="accordion-content">
         <div class="panes">
           <div class="pane pane-1 active">
             <div class="one-half-left">

@@ -135,8 +135,8 @@
         max-height: 350px;
       }
     }
-    // No padding for accordians in column-style blocks
-    .accordian {
+    // No padding for accordions in column-style blocks
+    .accordion {
       .block-content {
         padding: 0;
         margin: 0 auto;
@@ -318,21 +318,21 @@
   }
 }
 
-// Blocks that are also accordians
-.accordian {
+// Blocks that are also accordions
+.accordion {
   padding: 0 50px;
   max-height: 86px;
   overflow: hidden;
   position: relative;
   transition: background 0.4s ease-out, max-height 0.4s cubic-bezier(1, 0.5, 0, 1);
   &.-last {
-    .accordian-trigger {
+    .accordion-trigger {
       background: none;
     }
   }
   &:hover, &:focus, &:active {
     background: $sheer2;
-    .accordian-trigger {
+    .accordion-trigger {
       .actions {
         .plus-x {
           transform: rotate(180deg);
@@ -343,7 +343,7 @@
   &.active {
     background: $brand-main;
     max-height: 2000px;
-    .accordian-trigger {
+    .accordion-trigger {
       @include dots($white, 6px);
       &:hover, &:focus, &:active {
         .actions {
@@ -372,7 +372,7 @@
         }
       }
     }
-    .accordian-content {
+    .accordion-content {
       opacity: 1;
       max-height: 9000px;
       > div {
@@ -389,7 +389,7 @@
       }
     }
   }
-  .accordian-trigger {
+  .accordion-trigger {
     cursor: pointer;
     padding: 25px 0;
     @include clearfix();
@@ -450,7 +450,7 @@
     padding: 0;
     margin: 0 auto;
   }
-  .accordian-content {
+  .accordion-content {
     opacity: 0;
     max-height: 0;
     @include clearfix();
@@ -478,7 +478,7 @@
     &:hover, &:focus, &:active {
       background: $brand-main-lite;
     }
-    .accordian-trigger {
+    .accordion-trigger {
       @include dots($white, 6px);
       .actions {
         .icon-mail {
@@ -816,10 +816,10 @@
     }
   }
 
-  // Blocks that are also accordians
-  .accordian {
+  // Blocks that are also accordions
+  .accordion {
     padding: 0 100px;
-    .accordian-trigger {
+    .accordion-trigger {
       position: relative;
       .actions {
         top: 50%;
@@ -841,7 +841,7 @@
         }
       }
     }
-    .accordian-content {
+    .accordion-content {
       > div.one-half-left {
         padding-right: 50px;
       }
