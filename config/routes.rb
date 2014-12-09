@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/for-sponsors', to: redirect('/get-involved')
   get '/press', to: redirect('/news')
   get '/reasons/search', to: redirect('/give')
+  get '/success_stories', to: redirect('/success-stories')
+  get '/success_stories/:id', to: redirect('/success-stories/%{id}')
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -46,8 +48,10 @@ Rails.application.routes.draw do
   # get '/press/:id' => 'posts#press_show', as: 'press_post'
 
   get '/give' => 'reasons#index'
-  get '/success-stories' => 'reasons#success_stories'
   get '/thanks/:order_id' => 'reasons#thanks', as: 'thanks'
+
+  get '/success-stories' => 'reasons#success_stories'
+  get '/success-stories/:id' => 'reasons#success_story', :as =>'success_story'
 
   get '/news' => 'posts#index', as: 'news'
   # get '/news/:id' => 'posts#news_show', as:'news_post'

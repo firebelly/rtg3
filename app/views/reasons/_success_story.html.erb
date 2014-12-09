@@ -1,11 +1,15 @@
-  <li class="success_story_listing <%= cycle('odd', 'even') -%> clearfix">
-    <div class="reason-thumb">
-      <% unless success_story.reason_images.blank? %>
-        <%= link_to image_tag(success_story.reason_images.first.image.url(:thumb)), success_story_path(success_story) %>
-      <% end -%>
+    <div class="feature">
+      <a href="<%= success_story_path(success_story) %>">
+        <div class="feature-image"><%= image_tag success_story.image.url(:large) unless success_story.image.nil? %></div>
+        <div class="feature-content-wrap">
+          <div class="feature-content">
+            <h2><%= success_story.title %></h2>
+            <div class="description"><%= raw success_story.success_excerpt %></div>
+            <div class="progress-bar">
+              <p class="progress-text"><%= number_to_currency(success_story.total_donated, precision: 0) %> Raised</p>
+              <div class="bar" style="max-width: <%= success_story.percent_fulfilled %>%"></div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="reason-details">
-      <h2><%= link_to success_story.title, success_story_path(success_story) %></h2>
-      <%=raw success_story.success_excerpt %>
-    </div>
-  </li>

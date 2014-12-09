@@ -1,9 +1,13 @@
   <div class="block reason-block">
-	  <%= image_tag reason.image.url(:thumb) unless reason.image.nil? %>
-    <a href="<%= reason_path(reason) %>">
+    <%= image_tag reason.image.url(:thumb) unless reason.image.nil? %>
+    <a href="<%= reason.is_success? ? success_story_path(reason) : reason_path(reason) %>">
       <div class="block-content">
           <h3><%= reason.title %></h3>
-          <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+          <% if reason.is_success? %>
+            <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
+          <% else %>
+            <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+          <% end %>
       </div>
     </a>
   </div>
