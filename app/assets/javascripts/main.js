@@ -203,6 +203,8 @@ var RTG = (function ($) {
         onSuccess: function(nonce, email, shippingObject) {
           // hide CC fields
           $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true).addClass('disabled');
+          $('.payment-toggle').hide().prop('disabled', true);
+          $('.paypal-submit').show().prop('disabled', false);
 
           $('#checkoutEmail').val(email);
           // fill out address fields if available
@@ -212,10 +214,10 @@ var RTG = (function ($) {
                 lastName = fullName[fullName.length - 1];
             $('#checkoutFirstName').val(firstName);
             $('#checkoutLastName').val(lastName);
-            // $('#checkoutAddress').val(shippingObject.street_address);
-            // $('#checkoutCity').val(shippingObject.locality);
-            // $('#checkoutState').val(shippingObject.region);
-            $('#checkoutCCZip').val(shippingObject.postal_code);
+            $('#checkoutAddress').val(shippingObject.street_address);
+            $('#checkoutCity').val(shippingObject.locality);
+            $('#checkoutState').val(shippingObject.region);
+            $('#checkoutZipCode').val(shippingObject.postal_code);
           }
         },
         onCancelled: function() {
