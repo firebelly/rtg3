@@ -74,7 +74,13 @@
 
   form {
     height: 100%;
-    input, label, legend {
+    input, label {
+      width: 100%;
+      max-width: 100%;
+      white-space: normal;
+      font-size: 0.8125em;
+    }
+    legend {
       width: 100%;
       max-width: 100%;
       white-space: normal;
@@ -142,7 +148,7 @@
   
     .custom-checkbox {
       &::after {
-        top: 0.5em;
+        top: 0.6em;
         left: 0.5em;
       }
     }
@@ -295,7 +301,7 @@
       }
 
       .form-group {
-        margin-top: 25px;
+        margin-top: 16px;
         &:first-of-type {
           margin-top: 0;
         }

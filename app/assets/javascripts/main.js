@@ -134,6 +134,7 @@ var RTG = (function ($) {
     $('.cc-exp').payment('formatCardExpiry');
     $('.cc-cvc').payment('formatCardCVC');
     $('.cc-zip').payment('restrictNumeric');
+    $('#checkoutZipCode').payment('restrictNumeric');
 
     // Custom jquery.validate rules for credit card validating
     jQuery.validator.addMethod("cardNumber", $.payment.validateCardNumber, "Please enter a valid card number");
