@@ -14,7 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-.gems
+/.gems
 public/system
 
 # Ignore application configuration
