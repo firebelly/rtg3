@@ -29,8 +29,8 @@ class Reason < ActiveRecord::Base
   # default values for new records
   after_initialize do
     if new_record?
-      self.content = "<h1>My Story</h1><p>Lorem ipsum</p><h1>My Goals</h1><p>Lorem ipsum</p><h1>How You Can Help</h1><p>Lorem ipsum</p>"
-      self.success_content = "<h1>My Story</h1><p>Lorem ipsum</p><h1>My Goals</h1><p>Lorem ipsum</p><h1>How You Helped</h1><p>Lorem ipsum</p>"
+      self.content = "<h3>My Story</h3><p>Lorem ipsum</p><h3>My Goals</h3><p>Lorem ipsum</p><h3>How You Can Help</h3><p>Lorem ipsum</p>"
+      self.success_content = "<h3>My Story</h3><p>Lorem ipsum</p><h3>My Goals</h3><p>Lorem ipsum</p><h3>How You Helped</h3><p>Lorem ipsum</p>"
       self.donation_prompt = "Why not support ____ by giving whatever you can"
     end
   end

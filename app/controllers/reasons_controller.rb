@@ -17,6 +17,7 @@ class ReasonsController < ApplicationController
 
   def success_story
     @reason = Reason.friendly.find(params[:id])
+    @slider_reasons = Reason.published.is_success.where('id != ?', @reason.id)
     @og_description = @reason.success_excerpt || @reason.content
     @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
     render 'reasons/show'
@@ -24,6 +25,7 @@ class ReasonsController < ApplicationController
 
   def show
     @reason = Reason.friendly.find(params[:id])
+    @slider_reasons = Reason.published.unfulfilled.where('id != ?', @reason.id)
     @og_description = @reason.excerpt || @reason.content
     @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
   end

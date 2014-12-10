@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
       @order = Order.create(
         cart: @cart,
         total: @cart.total,
+        found: params[:checkoutSource],
+        found_other: params[:checkoutSourceOtherSource],
         first_name: params[:checkoutFirstName],
         last_name: params[:checkoutLastName],
         zip: params[:checkoutLastName],
