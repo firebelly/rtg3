@@ -17,42 +17,44 @@
     <div class="cart-checkout cart-stage -gray" data-stage="checkout">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Contact Information</h3>
-      <div class="form-group -first">
-        <label for="checkoutFirstName">First Name*</label>
-        <input type="text" name="checkoutFirstName" id="checkoutFirstName" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutLastName">Last Name*</label>
-        <input type="text" name="checkoutLastName" id="checkoutLastName" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutEmail">Email Address*</label>
-        <input type="email" name="checkoutEmail" id="checkoutEmail" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutSource" class="select-wrapper">
-          <legend>How did you find out about Reason To Give?</legend>
-          <div class="button custom-select ff-hack">
-          <select name="checkoutSource" id="checkoutSource">
-            <option value="null"></option>
-            <option value="checkoutSourceLink">Link From Another Site</option>
-            <option value="checkoutSourceBlog">Blog Post</option>
-            <option value="checkoutSourceFlyer">Flyer</option>
-            <option value="checkoutSourceRadio">Radio Spot</option>
-            <option value="checkoutSourceArticle">Article</option>
-            <option value="checkoutSourceFriend">From A Friend</option>
-            <option value="checkoutSourceOther">Other</option>
-          </select>
-          </div>
-        </label>
-        <label for="checkoutSourceOtherSource" class="hide">What was the other source?</label>
-        <input id="checkoutSourceOtherSource" name="checkoutSourceOtherSource" type="text" placeholder="Other Source" />
-      </div>
-      <div class="form-group">
-        <fieldset class="custom-checkbox-wrap">
-          <input type="checkbox" name="checkoutNewsletter" id="checkoutNewsletter" value="subscribeToNewsletter">
-          <label class="custom-checkbox" for="checkoutNewsletter">Would you like to receive our newsletter?</label>
-        </fieldset>
+      <div class="form-content">
+        <div class="form-group -first">
+          <label for="checkoutFirstName">First Name*</label>
+          <input type="text" name="checkoutFirstName" id="checkoutFirstName" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutLastName">Last Name*</label>
+          <input type="text" name="checkoutLastName" id="checkoutLastName" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutEmail">Email Address*</label>
+          <input type="email" name="checkoutEmail" id="checkoutEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutSource" class="select-wrapper">
+            <legend>How did you find out about Reason To Give?</legend>
+            <div class="button custom-select ff-hack">
+            <select name="checkoutSource" id="checkoutSource">
+              <option value="null"></option>
+              <option value="checkoutSourceLink">Link From Another Site</option>
+              <option value="checkoutSourceBlog">Blog Post</option>
+              <option value="checkoutSourceFlyer">Flyer</option>
+              <option value="checkoutSourceRadio">Radio Spot</option>
+              <option value="checkoutSourceArticle">Article</option>
+              <option value="checkoutSourceFriend">From A Friend</option>
+              <option value="checkoutSourceOther">Other</option>
+            </select>
+            </div>
+          </label>
+          <label for="checkoutSourceOtherSource" class="hide">What was the other source?</label>
+          <input id="checkoutSourceOtherSource" name="checkoutSourceOtherSource" type="text" placeholder="Other Source" />
+        </div>
+        <div class="form-group">
+          <fieldset class="custom-checkbox-wrap">
+            <input type="checkbox" name="checkoutNewsletter" id="checkoutNewsletter" value="subscribeToNewsletter">
+            <label class="custom-checkbox" for="checkoutNewsletter">Would you like to receive our newsletter?</label>
+          </fieldset>
+        </div>
       </div>
       <div class="actions">
         <a href="#payment" data-original-text="Payment" class="btn -pink -hollow stage-submit payment-toggle">Payment</a>
@@ -62,21 +64,23 @@
     <div class="cart-payment cart-stage -gray" data-stage="payment">
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Payment</h3>
-      <div class="form-group -first">
-        <label for="checkoutCCNum">Card Number*</label>
-        <input data-braintree-name="number" type="text" class="cc-num" id="checkoutCCNum" placeholder="#### #### #### ####" pattern="\d*" autocomplete="cc-number" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutCCExp">Expiration Date*</label>
-        <input data-braintree-name="expiration_date" type="text" class="cc-exp" id="checkoutCCExp" placeholder="MM / YY" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutCCCvc">CVC*</label>
-        <input data-braintree-name="cvv" type="text" class="cc-cvc" id="checkoutCCCvc" placeholder="###" pattern="\d*" autocomplete="off" required>
-      </div>
-      <div class="form-group">
-        <label for="checkoutCCZip">Zip/Postal Code*</label>
-        <input data-braintree-name="postal_code" type="text" class="cc-zip" id="checkoutCCZip" placeholder="#####" required>
+      <div class="form-content">
+        <div class="form-group -first">
+          <label for="checkoutCCNum">Card Number*</label>
+          <input data-braintree-name="number" type="text" class="cc-num" id="checkoutCCNum" placeholder="#### #### #### ####" pattern="\d*" autocomplete="cc-number" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutCCExp">Expiration Date*</label>
+          <input data-braintree-name="expiration_date" type="text" class="cc-exp" id="checkoutCCExp" placeholder="MM / YY" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutCCCvc">CVC*</label>
+          <input data-braintree-name="cvv" type="text" class="cc-cvc" id="checkoutCCCvc" placeholder="###" pattern="\d*" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+          <label for="checkoutCCZip">Zip/Postal Code*</label>
+          <input data-braintree-name="postal_code" type="text" class="cc-zip" id="checkoutCCZip" placeholder="#####" required>
+        </div>
       </div>
       <div class="actions">
         <div id="paypal-button"></div>
