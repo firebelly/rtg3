@@ -20,6 +20,7 @@ var RTG = (function ($) {
     _tweetIt();
     _animatedCharts();
     _flashInit();
+    _newsletterInit();
 
     // About Us page
     if ($('.about-us').length>0) {
@@ -41,6 +42,35 @@ var RTG = (function ($) {
     }
 
   };
+
+  function _newsletterInit() {
+    // ajaxify all the newsletter signup forms
+    $('form.newsletter').each(function() {
+      var $form = $(this);
+      $form.on('submit', function(e) {
+        e.preventDefault();
+        if ($form.find('input[name=EMAIL]').val()=='') {
+          _flashAlert('Please enter an email.');
+        } else {
+          $.getJSON($form.attr('action'), $form.serialize())
+            .done(function(data) {
+              if (data.result != "success") {
+                if (data.msg.match(/already subscribed/)) {
+                  _flashAlert('You are already subscribed to our newsletter.');
+                } else {
+                  _flashAlert('There was an error subscribing: ' + data.msg);
+                }
+              } else {
+                _flashAlert(data.msg);
+              }
+            })
+            .fail(function() {
+              _flashAlert('There was an error subscribing. Please try again.');
+            });
+        }
+      });
+    });
+  }
 
   function _flashInit() {
     $('.flash').each(function() {
