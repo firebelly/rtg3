@@ -100,6 +100,12 @@
       &:first-of-type {
         margin-top: 0;
       }
+      .one-half-left {
+        padding-right: 25px;
+      }
+      .one-half-right {
+        padding-left: 25px;
+      }
     }
 
     &.-pink {
@@ -285,7 +291,6 @@
 
     form {
       input {
-        width: auto;
         padding: 0.5em 1em;
       }
 
@@ -301,5 +306,16 @@
   #braintree-paypal-loggedin,
   #braintree-paypal-button {
     margin: 10px auto;
+    border: none !important;
+  }
+  #braintree-paypal-loggedin {
+    margin: 0 auto 25px;
+    padding: 0 !important;
+  }
+  span#bt-pp-email {
+    color: $white !important;
+  }
+  button#bt-pp-cancel {
+    color: $black !important;
   }
 }
