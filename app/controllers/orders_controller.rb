@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
               amount: @cart.total,
               payment_method_nonce: params[:payment_method_nonce])
 
-    # todo: store payment_transaction regardless of status?
     if result.success?
       @order = Order.create(
         cart: @cart,
@@ -19,6 +18,10 @@ class OrdersController < ApplicationController
         payment_type: result.transaction.payment_instrument_type,
         payment_status: result.transaction.status
       )
+      if !params[:checkoutNewsletter].blank?
+        mailchimp = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
+        mailchimp.lists.subscribe(ENV['MAILCHIMP_LIST_ID'], params[:checkoutEmail])
+      end
       # @payment = PaymentRecord.create(
       #   order_id: @order.id,
       #   params: result.params
