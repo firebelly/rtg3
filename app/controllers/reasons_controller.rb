@@ -20,7 +20,12 @@ class ReasonsController < ApplicationController
     @slider_reasons = Reason.published.is_success.where('id != ?', @reason.id)
     @og_description = @reason.success_excerpt || @reason.content
     @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
-    render 'reasons/show'
+    # has the title changed? redirect to new URL
+    if request.path != success_story_path(@reason)
+      redirect_to success_story_path(@reason), status: :moved_permanently
+    else
+      render 'reasons/show'
+    end
   end
 
   def show
@@ -28,6 +33,14 @@ class ReasonsController < ApplicationController
     @slider_reasons = Reason.published.unfulfilled.where('id != ?', @reason.id)
     @og_description = @reason.excerpt || @reason.content
     @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
+    
+    if @reason.is_success?
+      # is this now a success? redirect to proper URL
+      redirect_to success_story_path(@reason), status: :moved_permanently
+    elsif request.path != reason_path(@reason)
+      # maybe the title has just changed, redirect to proper URL
+      redirect_to @reason, status: :moved_permanently
+    end
   end
 
   def thanks

@@ -1,6 +1,6 @@
 class Reason < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :history]
   has_attached_file :image, styles: { large: "1800x", medium: "900x575", thumb: "600x380#" }
   has_attached_file :secondary_image, styles: { medium: "900x575" }
   validates_attachment_content_type [:image,:secondary_image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -25,6 +25,10 @@ class Reason < ActiveRecord::Base
   scope :is_success, -> { where(is_success: true) }
   scope :fulfilled, -> { where("total_donated >= total_needed") }
   scope :unfulfilled, -> { where("total_donated < total_needed") }
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 
   # default values for new records
   after_initialize do
