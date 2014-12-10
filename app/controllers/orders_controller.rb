@@ -13,14 +13,21 @@ class OrdersController < ApplicationController
         found_other: params[:checkoutSourceOtherSource],
         first_name: params[:checkoutFirstName],
         last_name: params[:checkoutLastName],
-        zip: params[:checkoutLastName],
+        zip: params[:zip_code],
         email: params[:checkoutEmail],
         payment_type: result.transaction.payment_instrument_type,
         payment_status: result.transaction.status
       )
       if !params[:checkoutNewsletter].blank?
         mailchimp = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
-        mailchimp.lists.subscribe(ENV['MAILCHIMP_LIST_ID'], params[:checkoutEmail])
+        mailchimp.lists.subscribe( ENV['MAILCHIMP_LIST_ID'], 
+          { email: params[:checkoutEmail] },
+          merge_vars: {
+            FIRSTNAME: params[:checkoutFirstName],
+            LASTNAME: params[:checkoutLastName]
+          },
+          double_optin: false
+        )
       end
       # @payment = PaymentRecord.create(
       #   order_id: @order.id,
