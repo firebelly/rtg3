@@ -6,7 +6,7 @@
 
 <%= content_for :featured do %>
 <div class="wrap banner-wrap get-involved">
-  <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:wallpaper)) %>')"<% end %>>
+  <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:large)) %>')"<% end %>>
     <div class="banner-content">
       <% unless @page.banner_title.blank? %>
         <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>

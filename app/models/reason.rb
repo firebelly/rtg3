@@ -1,11 +1,14 @@
 class Reason < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
+  has_many :reason_images
+  has_many :donations
+  accepts_nested_attributes_for :reason_images, :allow_destroy => true 
+  before_create :set_post_date_to_now
+
   has_attached_file :image, styles: { large: "1800x", medium: "900x575", thumb: "600x380#" }
   has_attached_file :secondary_image, styles: { medium: "900x575" }
   validates_attachment_content_type [:image,:secondary_image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  has_many :reason_images
-  has_many :donations
 
   attr_accessor :delete_image
   before_validation { self.image.clear if self.delete_image == '1' }
@@ -15,10 +18,6 @@ class Reason < ActiveRecord::Base
   validates :title, presence: true
   validates :donation_prompt, presence: true
   validates :content, presence: true
-
-  accepts_nested_attributes_for :reason_images, :allow_destroy => true 
-
-  before_create :set_post_date_to_now
 
   scope :published, -> { where(published: true) }
   scope :promoted, -> { where(promoted: true) }
