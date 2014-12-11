@@ -1,0 +1,8 @@
+<div class="item">
+  <%= image_tag slideshow_image.image.url(:medium) %>
+  <% unless slideshow_image.caption.blank? %>
+    <div class="slider-caption">
+      <p><%= slideshow_image.caption %></p>
+    </div>
+  <% end %>
+</div>

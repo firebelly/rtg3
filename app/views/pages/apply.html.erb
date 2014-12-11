@@ -26,18 +26,7 @@
   <div class="block -right -pink block-slider image-slide">
     <div class="block-content image-slide">
       <div class="block-image-slider0">
-        <div class="item">
-          <img src="/assets/RTG_live-and-learn-graduation.jpg" alt="Educational Needs">
-          <div class="slider-caption">
-            <p>Graduation of the Live and Learn class 2014</p>
-          </div>
-        </div>  
-        <div class="item">
-          <img src="/assets/RTG_lending-a-hand.jpg" alt="Educational Needs">
-          <div class="slider-caption">
-            <p>Another project</p>
-          </div>
-        </div>
+        <%= render partial: "shared/slideshow_image", collection: @page.page_images, as: :slideshow_image -%>
       </div>
     </div>
   </div>
