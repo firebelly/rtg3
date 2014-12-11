@@ -18,6 +18,15 @@
     opacity: .5;
   }
 
+  #checkout.working {
+    input,
+    .stage-submit,
+    .form-content {
+      transition: opacity 1s;
+      opacity: .5;
+    }
+  }
+
   h3 {
     margin: 0 50px 0.5em;
     padding-bottom: 0.25em;
