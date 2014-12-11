@@ -44,7 +44,7 @@ var RTG = (function ($) {
   };
 
   function _newsletterInit() {
-    // ajaxify all the newsletter signup forms
+    // ajaxify all newsletter signup forms
     $('form.newsletter').each(function() {
       var $form = $(this);
       $form.on('submit', function(e) {
@@ -99,6 +99,7 @@ var RTG = (function ($) {
   }
 
   function _resize() {
+    // this is called rapid-fire as the window is resized
   };
 
   function _cartInit() {
@@ -254,6 +255,8 @@ var RTG = (function ($) {
         onCancelled: function() {
           // show CC fields
           $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false).removeClass('disabled');
+          $('.payment-toggle').show().prop('disabled', false);
+          $('.paypal-submit').hide().prop('disabled', true);
         }
       });
     }
