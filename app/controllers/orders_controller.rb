@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
 
   def create
+    if @cart.total == 0
+      flash[:alert] = "You have nothing in your cart."
+      return redirect_to :back
+    elsif params[:payment_method_nonce].blank?
+      flash[:alert] = "There was a transaction error. Please try again."
+      return redirect_to :back
+    end
+
     result = Braintree::Transaction.sale(
               amount: @cart.total,
               payment_method_nonce: params[:payment_method_nonce])
@@ -18,15 +26,15 @@ class OrdersController < ApplicationController
         payment_type: result.transaction.payment_instrument_type,
         payment_status: result.transaction.status
       )
-      if !params[:checkoutNewsletter].blank?
+      # user wants to subscribe to newsletter?
+      unless params[:checkoutNewsletter].blank?
         mailchimp = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
         mailchimp.lists.subscribe( ENV['MAILCHIMP_LIST_ID'], 
           { email: params[:checkoutEmail] },
-          merge_vars: {
-            FIRSTNAME: params[:checkoutFirstName],
-            LASTNAME: params[:checkoutLastName]
-          },
-          double_optin: false
+          {
+            FNAME: params[:checkoutFirstName],
+            LNAME: params[:checkoutLastName]
+          }, 'html', false
         )
       end
       # @payment = PaymentRecord.create(
