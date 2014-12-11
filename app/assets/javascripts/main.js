@@ -167,7 +167,7 @@ var RTG = (function ($) {
     $('.cc-zip').payment('restrictNumeric');
     $('#checkoutZipCode').payment('restrictNumeric');
 
-    // Custom jquery.validate rules for credit card validating
+    // Custom jquery.validate rules for credit card validating (using Stripe's js library)
     jQuery.validator.addMethod("cardNumber", $.payment.validateCardNumber, "Please enter a valid card number");
     jQuery.validator.addMethod("cardCVC", $.payment.validateCardCVC, "Please enter a valid security code");
     jQuery.validator.addMethod("cardExpiry", function() {
@@ -191,13 +191,13 @@ var RTG = (function ($) {
         }
     });
 
-    //initially hide the textbox
+    // Initially hide the "Other" input
     $("#checkoutSourceOtherSource").hide();
     // Add text input if "Other" selected as option to how you found out Q
     $('#checkoutSource').change(function() {
-      if($(this).find('option:selected').val() == "checkoutSourceOther"){
+      if ($(this).find('option:selected').val() == "checkoutSourceOther") {
         $("#checkoutSourceOtherSource").show().focus();
-      }else{
+      } else {
         $("#checkoutSourceOtherSource").hide();
       }
     });
@@ -225,7 +225,7 @@ var RTG = (function ($) {
       });
     });
 
-    // init braintree
+    // Init Braintree (uses gon gem which injects server-side vars into js, see app.html)
     if (typeof gon !== 'undefined') {
       braintreeClient = new braintree.api.Client({clientToken: gon.client_token});
       braintree.setup(gon.client_token, "paypal", {
@@ -234,7 +234,7 @@ var RTG = (function ($) {
         paymentMethodNonceInputField: 'payment_method_nonce',
         onSuccess: function(nonce, email, shippingObject) {
           // hide CC fields
-          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true).addClass('disabled');
+          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
           $('.payment-toggle').hide().prop('disabled', true);
           $('.paypal-submit').show().prop('disabled', false);
 
@@ -250,11 +250,12 @@ var RTG = (function ($) {
             $('#checkoutCity').val(shippingObject.locality);
             $('#checkoutState').val(shippingObject.region);
             $('#checkoutZipCode').val(shippingObject.postal_code);
+            $('.cart').removeClass('payment-stage').addClass('checkout-stage');
           }
         },
         onCancelled: function() {
           // show CC fields
-          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false).removeClass('disabled');
+          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
           $('.payment-toggle').show().prop('disabled', false);
           $('.paypal-submit').hide().prop('disabled', true);
         }
@@ -264,17 +265,13 @@ var RTG = (function ($) {
     // add name attributes for jquery.validate
     $.each(['cc-num','cc-cvc','cc-exp'], function(i,k) { $('.'+k).attr('name', k) });
 
-    // check if paypal has been selected & logged-in, disable CC fields if so
-    $('.cart-submit').click(function() {
-      $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', $('#braintree-paypal-loggedin').is(':visible'));
-    });
-
   }; // end _cartInit()
 
   function _checkoutSubmit() {
     // if using paypal, just submit form
     if ($('#braintree-paypal-loggedin').is(':visible')) {
-      $('#checkout')[0].submit();
+      $('.cart-submit').val('Please Wait...');
+      $('#checkout').addClass('working').get(0).submit();
     } else {
       // tokenize CC card info and put payment_method_nonce in form
       braintreeClient.tokenizeCard({
@@ -292,7 +289,8 @@ var RTG = (function ($) {
           $('.cc-num,.cc-cvc,.cc-exp').removeAttr('name');
 
           $('#payment_method_nonce').val(nonce);
-          $('#checkout')[0].submit();
+          $('.cart-submit').val('Please Wait...');
+          $('#checkout').addClass('working').get(0).submit();
         }
       });
     }
