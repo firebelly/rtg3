@@ -29,13 +29,17 @@ class OrdersController < ApplicationController
       # user wants to subscribe to newsletter?
       unless params[:checkoutNewsletter].blank?
         mailchimp = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
-        mailchimp.lists.subscribe( ENV['MAILCHIMP_LIST_ID'], 
-          { email: params[:checkoutEmail] },
-          {
-            FNAME: params[:checkoutFirstName],
-            LNAME: params[:checkoutLastName]
-          }, 'html', false
-        )
+        begin
+          mailchimp.lists.subscribe( ENV['MAILCHIMP_LIST_ID'], 
+            { email: params[:checkoutEmail] },
+            {
+              FNAME: params[:checkoutFirstName],
+              LNAME: params[:checkoutLastName]
+            }, 'html', false
+          )
+        rescue Mailchimp::Error
+          # errors --> ether
+        end
       end
       # @payment = PaymentRecord.create(
       #   order_id: @order.id,
