@@ -39,7 +39,9 @@ RailsAdmin.config do |config|
     edit do
       field :title
       field :published
-      field :image
+      field :image do
+        label 'Banner Image'
+      end
       field :banner_title do
         html_attributes rows: 3, cols: 40
         help "Used for text in middle of featured image"
