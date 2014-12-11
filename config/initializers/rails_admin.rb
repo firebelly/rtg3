@@ -24,7 +24,7 @@ RailsAdmin.config do |config|
   end
 
   # Hide these models from the navigation:
-  [Cart, Donation, ReasonImage, PostType, SupporterType].each do |klass|
+  [Cart, Donation, PostType, SupporterType].each do |klass|
     config.model klass do
       visible false
     end
@@ -51,6 +51,16 @@ RailsAdmin.config do |config|
         end
         field :description do
           help "Used for SEO description tag and Facebook sharing"
+        end
+        field :page_images do
+          active true
+          associated_collection_scope do
+            Proc.new { |scope|
+              scope = scope.order('position ASC')
+            }
+          end
+          label 'Slideshow Images'
+          help 'Only used on select pages. Drag images into desired order.'
         end
       end
     end
@@ -120,9 +130,24 @@ RailsAdmin.config do |config|
   end
 
   config.model ReasonImage do
+    visible false
     edit do
       field :image
       field :caption
+      field :position, :hidden do
+        help '' # no caption
+      end
+    end
+  end
+
+  config.model PageImage do
+    visible false
+    edit do
+      field :image
+      field :caption
+      field :position, :hidden do
+        help '' # no caption
+      end
     end
   end
 
@@ -177,26 +202,23 @@ RailsAdmin.config do |config|
           help + ' To embed YouTube videos, just paste the short share link (e.g. https://youtu.be/yYNC5kvihnk).'
         end
       end
-      configure :reason_images do
-        active true
-        associated_collection_scope do
-          Proc.new { |scope|
-            scope = scope.order('position ASC')
-          }
-        end
-      end
-
       group :success_story do
-       active do
-         bindings[:object].is_success == true
-       end
-       label 'Success Story'
-       field :is_success
+        active do
+          bindings[:object].is_success == true
+        end
+        label 'Success Story'
+        field :is_success
        
-       field :reason_images do
-         label 'Slideshow Images'
-         help 'Drag images into desired order.'
-       end
+        field :reason_images do
+          active true
+          associated_collection_scope do
+            Proc.new { |scope|
+              scope = scope.order('position ASC')
+            }
+          end
+          label 'Slideshow Images'
+          help 'Drag images into desired order.'
+        end
        
        field :success_excerpt, :ck_editor do
          help do

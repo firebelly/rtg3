@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
   extend FriendlyId
+  has_many :page_images
+  accepts_nested_attributes_for :page_images, :allow_destroy => true 
   friendly_id :title, use: :slugged
 
   has_attached_file :image, 

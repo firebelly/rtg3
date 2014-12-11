@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209001343) do
+ActiveRecord::Schema.define(version: 20141211212435) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20141209001343) do
     t.string   "found"
     t.string   "found_other"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "page_images", force: true do |t|
+    t.integer  "page_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "caption"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
