@@ -6,8 +6,8 @@ class Reason < ActiveRecord::Base
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
   before_create :set_post_date_to_now
 
-  has_attached_file :image, styles: { large: "1800x", medium: "900x575", thumb: "600x380#" }
-  has_attached_file :secondary_image, styles: { medium: "900x575" }
+  has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
+  has_attached_file :secondary_image, styles: { medium: "900x570#" }
   validates_attachment_content_type [:image,:secondary_image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   attr_accessor :delete_image

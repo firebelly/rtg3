@@ -4,8 +4,8 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :page_images, :allow_destroy => true 
   friendly_id :title, use: :slugged
 
-  has_attached_file :image, styles: { large: "1800x", medium: "900x575", thumb: "600x380#" }
-  validates_attachment_content_type [:image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :title, presence: true
   validates :content, presence: true
