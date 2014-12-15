@@ -5,10 +5,12 @@
   padding: 12px;
   overflow: hidden;
   max-height: 800px;
+  min-height: 400px;
   @include min-screen($bpMed) {
     padding: 25px;
     max-height: none;
     overflow: hidden;
+    min-height: 600px;
   }
 }
 
