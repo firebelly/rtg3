@@ -39,6 +39,10 @@ var RTG = (function ($) {
         // on Show More clicks, slide out more posts
         $newsBlock.find('.show-more.btn').click(function(e) {
           e.preventDefault();
+          $('.news-items').each(function() {
+            var at = $(this).find('li:visible:last').index();
+            $(this).find('li:lt(' + (at+5) + ')').slideDown();
+          });
           _checkNewsBlocks();
         });
       });
@@ -62,10 +66,6 @@ var RTG = (function ($) {
   };
 
   function _checkNewsBlocks() {
-    $('.news-items').each(function() {
-      var at = $(this).find('li:visible:last').index();
-      $(this).find('li:lt(' + (at+5) + ')').slideDown();
-    });
     // if no more hidden posts (in either News or Press), show Next Page buttons
     if ($('.news-items li:hidden').length==0) {
       $('.show-more.btn').hide();
