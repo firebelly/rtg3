@@ -1,5 +1,5 @@
     <div class="feature">
-      <a href="<%= success_story_path(success_story) %>">
+      <% unless local_assigns.has_key? :is_single %><a href="<%= success_story_path(success_story) %>"><% end %>
         <div class="feature-image"><%= image_tag success_story.image.url(:large) unless success_story.image.nil? %></div>
         <div class="feature-content-wrap">
           <div class="feature-content">
@@ -11,5 +11,5 @@
             </div>
           </div>
         </div>
-      </a>
+      <% unless local_assigns.has_key? :is_single %></a><% end %>
     </div>
