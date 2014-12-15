@@ -38,12 +38,13 @@
       <h3>Our News</h3>
       <h4>What's New &amp; Upcoming</h4>
     </div>
-    <div class="news-items">
+    <ul class="news-items">
       <%= render partial: "news", :collection => @news %>
-    </div>
+    </ul>
 
     <div class="block-content show-more -center">
-      <%= link_to_next_page @news, 'Show More', class: 'btn -white -hollow' %>
+      <%= link_to 'Show More', '#', class: 'btn -white -hollow show-more' %>
+      <%= link_to_next_page @news, 'Next Page', class: 'btn -white -hollow next-page' %>
     </div>
   </div>
 
@@ -52,12 +53,13 @@
       <h3>Our Press</h3>
       <h4>What Other People Are Saying About Us</h4>
     </div>
-    <div class="news-items">
+    <ul class="news-items">
       <%= render partial: "news", :collection => @press %>
-    </div>
+    </ul>
 
     <div class="block-content show-more -center">
-      <%= link_to_next_page @press, 'Show More', class: 'btn -pink -hollow' %>
+      <%= link_to 'Show More', '#', class: 'btn -pink -hollow show-more' %>
+      <%= link_to_next_page @press, 'Next Page', class: 'btn -pink -hollow next-page' %>
     </div>
   </div>
 </div>

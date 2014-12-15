@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
-  paginates_per 5
+  paginates_per 100
 
   default_scope -> {order('post_date DESC')}
   scope :published, -> {where(published: true)}

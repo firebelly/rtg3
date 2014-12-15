@@ -23,8 +23,33 @@ var RTG = (function ($) {
     _newsletterInit();
 
     // About Us page
-    if ($('.about-us').length>0) {
+    if ($('body.about-us').length>0) {
       _googleMap();
+    }
+
+    // News page
+    if ($('body.news').length>0) {
+      // faux show mo
+      $('.news-lists .block').each(function() {
+        var $newsBlock = $(this);
+        // only show first "page" of news items
+        $newsBlock.find('.news-items li:gt(4)').hide();
+        // hide Next Page links
+        $newsBlock.find('.next-page.btn').hide();
+        // on Show More clicks, slide out more posts
+        $newsBlock.find('.show-more.btn').click(function(e) {
+          e.preventDefault();
+          $('.news-items').each(function() {
+            var at = $(this).find('li:visible:last').index();
+            $(this).find('li:lt(' + (at+5) + ')').slideDown();
+          });
+          // if no more hidden posts (in either News or Press), show Next Page buttons
+          if ($('.news-items li:hidden').length==0) {
+            $('.show-more.btn').hide();
+            $('.next-page.btn').show();
+          }
+        });
+      });
     }
 
     // Some general Esc handlers
