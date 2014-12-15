@@ -43,13 +43,10 @@ var RTG = (function ($) {
             var at = $(this).find('li:visible:last').index();
             $(this).find('li:lt(' + (at+5) + ')').slideDown();
           });
-          // if no more hidden posts (in either News or Press), show Next Page buttons
-          if ($('.news-items li:hidden').length==0) {
-            $('.show-more.btn').hide();
-            $('.next-page.btn').show();
-          }
+          _checkNewsBlocks();
         });
       });
+      _checkNewsBlocks();
     }
 
     // Some general Esc handlers
@@ -67,6 +64,14 @@ var RTG = (function ($) {
     }
 
   };
+
+  function _checkNewsBlocks() {
+    // if no more hidden posts (in either News or Press), show Next Page buttons
+    if ($('.news-items li:hidden').length==0) {
+      $('.show-more.btn').hide();
+      $('.next-page.btn').show();
+    }
+  }
 
   function _newsletterInit() {
     // ajaxify all newsletter signup forms
