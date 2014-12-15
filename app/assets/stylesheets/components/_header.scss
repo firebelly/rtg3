@@ -345,14 +345,54 @@
   }
 }
 
+// Active page nav styles
+body.educational-programs .menu .educational-programs,
+body.get-involved .menu .get-involved,
+body.reason .menu .give,
+body.success-stories .menu .success-stories,
+body.apply .menu .apply,
+body.about-us .menu .about-us,
+body.news .menu .news {
+  a {
+    span {
+      border-bottom: 2px solid $white;
+    }
+  }
+  @include min-screen(1064px) {
+    a {
+      background: none;
+      span {
+        border-bottom: 1px dotted rgba(255,255,255,1);
+      }     
+    }
+  }
+}
+// And when nav is sticky
+body.educational-programs .sticky .menu .educational-programs,
+body.get-involved .sticky .menu .get-involved,
+body.give .sticky .menu .give,
+body.success-stories .sticky .menu .success-stories,
+body.apply .sticky .menu .apply,
+body.about-us .sticky .menu .about-us,
+body.news .sticky .menu .news {
+  a {
+    color: $brand-main;
+    span {
+      border-bottom: 1px solid $brand-main;
+    }
+  }
+}
+
 // Page Banners
 .banner-wrap {
   height: 100%;
   padding: 12px;
   max-height: 800px;
+  min-height: 400px;
   @include min-screen($bpMed) {
     padding: 25px;
     max-height: none;
+    min-height: 600px;
   }
   .banner {
     width: 100%;

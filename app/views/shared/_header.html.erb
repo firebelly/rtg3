@@ -11,13 +11,13 @@
           </div>
           <ul class="menu">
             <%= yield :edit_link %>
-            <li><a href="/educational-programs"><span>Educational Programs</span></a></li>
-            <li><a href="/get-involved"><span>Get Involved</span></a></li>
-            <li><a href="/give"><span>Give</span></a></li>
-            <li><a href="/success-stories"><span>Success Stories</span></a></li>
-            <li><a href="/apply"><span>Apply</span></a></li>
-            <li><a href="/about-us"><span>About Us</span></a></li>
-            <li><a href="/news"><span>News</span></a></li>
+            <li class="educational-programs"><a href="/educational-programs"><span>Educational Programs</span></a></li>
+            <li class="get-involved"><a href="/get-involved"><span>Get Involved</span></a></li>
+            <li class="give"><a href="/give"><span>Give</span></a></li>
+            <li class="success-stories"><a href="/success-stories"><span>Success Stories</span></a></li>
+            <li class="apply"><a href="/apply"><span>Apply</span></a></li>
+            <li class="about-us"><a href="/about-us"><span>About Us</span></a></li>
+            <li class="news"><a href="/news"><span>News</span></a></li>
             <li class="shopping-cart">
               <a href="#" class="cart-toggle"><svg class="icon icon-cart" role="img" aria-labelledby="title"><use xlink:href="#icon-cart"></use></svg></a>
               <span class="cart-item-count <%= @cart.count > 0 ? 'active' : '' %>"><%= @cart.count %></span>
