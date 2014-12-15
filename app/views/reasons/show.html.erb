@@ -8,9 +8,9 @@
 <div class="wrap slider-wrap">
   <div class="feature-slider">
     <% if @reason.is_success? %>
-      <%= render partial: "/reasons/success_story", locals: { success_story: @reason } -%>
+      <%= render partial: "/reasons/success_story", locals: { success_story: @reason, is_single: true } -%>
     <% else %>
-      <%= render partial: "/reasons/reason", locals: { reason: @reason } -%>
+      <%= render partial: "/reasons/reason", locals: { reason: @reason, is_single: true } -%>
     <% end %>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>

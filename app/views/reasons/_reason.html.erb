@@ -1,5 +1,5 @@
     <div class="feature">
-      <a href="<%= reason_path(reason) %>">
+      <% unless defined?(is_single).nil? %><a href="<%= reason_path(reason) %>"><% end %>
         <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
         <div class="feature-content-wrap">
           <div class="feature-content">
@@ -11,5 +11,5 @@
             </div>
           </div>
         </div>
-      </a>
+      <% unless defined?(is_single).nil? %></a><% end %>
     </div>
