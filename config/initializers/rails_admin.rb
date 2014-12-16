@@ -191,7 +191,9 @@ RailsAdmin.config do |config|
           !bindings[:object].post_date.nil?
         end
       end
-      # field :recipient_category
+      field :featured_video do
+        help 'Paste in either YouTube normal link (e.g. https://www.youtube.com/watch?v=yYNC5kvihnk), or short share link (e.g. https://youtu.be/yYNC5kvihnk).'
+      end
       field :image
       field :secondary_image
       field :excerpt, :ck_editor do

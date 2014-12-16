@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211212435) do
+ActiveRecord::Schema.define(version: 20141215233219) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20141211212435) do
     t.integer  "secondary_image_file_size"
     t.datetime "secondary_image_updated_at"
     t.string   "donation_prompt"
+    t.string   "featured_video"
   end
 
   add_index "reasons", ["slug"], name: "index_reasons_on_slug", unique: true, using: :btree

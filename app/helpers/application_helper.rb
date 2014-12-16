@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def get_video_embed_url(html)
+    videos = []
+    videos.concat(parse_videos(html, 'youtube_short'))
+    videos.concat(parse_videos(html, 'youtube'))
+    unless videos.blank?
+      return "//www.youtube.com/embed/%s?enablejsapi=1" % videos[0]['id']
+    end
+  end
+
   def get_videos(html)
     videos = []
 

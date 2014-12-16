@@ -13,6 +13,14 @@
       <%= render partial: "/reasons/reason", locals: { reason: @reason, is_single: true } -%>
     <% end %>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+    <% unless @reason.featured_video.blank? %>
+      <div class="feature-video">
+        <div class="feature-video-background"></div>
+        <div class="video-wrap">
+          <iframe id="video" width="100%" height="100%" src="<%= get_video_embed_url(@reason.featured_video) %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <% end %>

@@ -399,6 +399,7 @@ var RTG = (function ($) {
 
   function _featureSlider() {
     $('.feature-slider').slick({
+      slide: 'div.feature',
       autoplay: true,
       autoplaySpeed: 5000,
       onInit: function(slider) {
@@ -443,6 +444,7 @@ var RTG = (function ($) {
   function _reasonsSlider() {
     if ($(window).width() > 600 ) {
       $('.reasons-slider').slick({
+        slide: 'div.feature',
         autoplay: true,
         slidesToShow: 3
       });
@@ -453,6 +455,7 @@ var RTG = (function ($) {
     $(window).resize(function () {
       if ($(window).width() > 600 ) {
         $('.reasons-slider').slick({
+          slide: 'div.feature',
           autoplay: true,
           slidesToShow: 3
         });

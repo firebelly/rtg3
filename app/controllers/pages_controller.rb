@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
   def home
     @body_class = 'home'
-    @reasons = Reason.published.unfulfilled.promoted
+    @reasons = Reason.published.promoted
     @affiliates = ["partners", "sponsors", "featured"]
     @partnered_supporters = SupporterType.friendly.find('partners').supporters
     @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters

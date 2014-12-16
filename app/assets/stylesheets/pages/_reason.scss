@@ -1,12 +1,6 @@
 // Reason page
 
 .reason {
-  &.banner-wrap {
-    .banner {
-      background-image: image-url('RTG_give.jpg');
-    }
-  }
-
   .support {
     p {
       @include font-bold();
