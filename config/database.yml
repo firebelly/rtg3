@@ -19,5 +19,5 @@ test:
 
 production:
   <<: *default
-  username: rtg3_sql
-  password: 
+  username: <%= ENV['SQL_USER'] %>
+  password: <%= ENV['SQL_PASSWORD'] %>
