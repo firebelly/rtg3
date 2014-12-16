@@ -17,7 +17,14 @@ test:
   <<: *default
   database: db/rtg3_test
 
+staging:
+  <<: *default
+  socket: /var/run/mysqld/mysqld.sock
+  username: <%= ENV['SQL_USER'] %>
+  password: <%= ENV['SQL_PASSWORD'] %>
+
 production:
   <<: *default
+  socket: /var/run/mysqld/mysqld.sock
   username: <%= ENV['SQL_USER'] %>
   password: <%= ENV['SQL_PASSWORD'] %>
