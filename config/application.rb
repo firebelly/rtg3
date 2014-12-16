@@ -11,9 +11,6 @@ module Reasontogive
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     config.time_zone = 'Central Time (US & Canada)'
 
-    # all https all the time
-    # config.force_ssl = true
-
     # for URLs in mailers
     config.action_mailer.default_url_options = { host: 'reasontogive.com' }
   end
