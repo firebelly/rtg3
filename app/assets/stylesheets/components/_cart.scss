@@ -238,19 +238,19 @@
     }
   }
 
-  @include min-screen(900px) {
+  @include min-screen(1200px) {
     right: 0;
     bottom: 0;
     left: auto;
-    width: 900px;
+    width: 1200px;
     position: fixed;
     transform: translateX(100%);
     &.active {
       left: auto;
-      transform: translateX(600px);
+      transform: translateX(800px);
     }
     &.checkout-stage {
-      transform: translateX(300px);
+      transform: translateX(400px);
     }
     &.payment-stage {
       transform: translateX(0);
@@ -259,7 +259,7 @@
     .cart-stage {
       float: left;
       height: 100%;
-      width: 300px;
+      width: 400px;
       &.-gray {
         .actions {
           background: $lightGray;
