@@ -21,12 +21,13 @@
   .intern-form {
     .pane-1 {
       .one-half-left {
-        min-height: 400px;
         .btn {
           margin-top: 50px;
         }
+        position: relative;
       }
-      .one-half-right {
+      .one-half-right.full-bleed {
+        min-height: 400px;
         position: absolute;
         background: image-url('RTG_intern.jpg') no-repeat;
         background-size: cover;
@@ -37,12 +38,12 @@
   .volunteer-form {
     .pane-1 {
       .one-half-left {
-        min-height: 400px;
         .btn {
           margin-top: 50px;
         }
       }
-      .one-half-right {
+      .one-half-right.full-bleed {
+        min-height: 400px;
         position: absolute;
         background: image-url('RTG_volunteer.jpg') no-repeat;
         background-size: cover;

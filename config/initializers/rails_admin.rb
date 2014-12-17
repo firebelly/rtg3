@@ -116,6 +116,7 @@ RailsAdmin.config do |config|
       field :phone
       field :email
       field :form
+      field :subject
     end
   end
 
