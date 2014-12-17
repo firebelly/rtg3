@@ -9,7 +9,7 @@
   <%= include_gon %>
   <%= csrf_meta_tags %>
   <link rel="canonical" href="http://reasontogive.com" />
-  <meta name="description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand." />
+  <meta name="description" content="<%= strip_tags(@og_description).strip -%>" />
   <meta name="keywords" content="giving, humboldt park, chicago, donations, programs, education, helping, social justice, neighborhood, community" />
 
   <meta property="og:title" content="Reason to Give<%= content_for?(:title) ? ': %s' % yield(:title) : '' %>">
