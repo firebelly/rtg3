@@ -5,10 +5,8 @@
   </head>
   <body>
     <h1>New applicant for: <%= @applicant.form %></h1>
-    <p><%= @applicant.first_name %> <%= @applicant.last_name %></p>
-    <p><%= @applicant.email %></p>
-    <p><%= @applicant.phone %></p>
-    <p></p>
-    <%= simple_format @applicant.params %>
+    <p>Name: <%= @applicant.first_name %> <%= @applicant.last_name %></p>
+    <p>Email: <%= @applicant.email %></p>
+    <p>Phone: <%= @applicant.phone %></p>
   </body>
 </html>
