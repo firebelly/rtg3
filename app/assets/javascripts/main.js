@@ -258,6 +258,14 @@ var RTG = (function ($) {
       });
     });
 
+    // Scroll to Checkout stage on small-screen view for usability
+    $('.cart-review .stage-submit').on('click', function () {
+        var checkoutTop = $('.cart-review').height();
+        $('.cart').animate({
+          scrollTop: checkoutTop
+        }, 500);
+    });
+
     // Toggle active stage by clicking/touching inactive stage
     $('.cart-accordion-toggle').on('click', function() {
         // determine current stage
