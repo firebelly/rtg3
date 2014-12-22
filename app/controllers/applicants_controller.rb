@@ -1,8 +1,8 @@
 class ApplicantsController < ApplicationController
 
   def create
-    contact_details = params[:contact_me_first].blank? ? "Contact me first. " : ''
-    contact_details += "Preferred contact: %s" % params[:best_contact] 
+    contact_details = params[:contact_first].blank? ? "Contact me first. " : ''
+    contact_details += "Preferred contact: %s" % params[:best_contact]
     
     @applicant = Applicant.create(
       form: params[:form],
