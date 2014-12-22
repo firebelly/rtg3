@@ -303,14 +303,22 @@
     }
   }
 
-  @include max-screen(600px) {
     // Checkout stage toggle on small-screens
+  @include max-screen(600px) {
+    bottom: auto;
+
     &.checkout-stage {
+      bottom: 0;
       .cart-checkout,
       .cart-payment {
         bottom: auto;
+        position: relative;
         transform: translateY(0);
       }
+    }
+
+    form {
+      height: auto;
     }
 
     .cart-review {
@@ -318,11 +326,13 @@
     }
     .cart-checkout {
       bottom: 100%;
+      position: absolute;
       transform: translateY(-100%);
       transition: transform 0.2s ease-out;
     }
     .cart-payment {
       bottom: 100%;
+      position: absolute;
       transform: translateY(-100%);
       transition: transform 0.2s ease-out;
     }
