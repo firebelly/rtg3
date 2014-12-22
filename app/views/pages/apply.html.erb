@@ -43,140 +43,79 @@
         </div>
       </div>
       <div class="accordion-content">
-        <div class="panes">
           <div class="pane pane-1 active">
+          <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+          <%= hidden_field_tag('form', 'Educational Program Application') %>
+
             <div class="one-half-left">
               <p>Reason to Give offers corporations several sponsorship opportunities throughout the year.  We have partnership packages for various levels of support from our Title Sponsor who sponsors an entire class to our Bronze Sponsor which sponsors multiple students. Reason to Give offers our sponsors numerous options to increase exposure, reach unique audiences, and promote corporate responsibility and diversity. Employees are also encouraged to volunteer at any of our community events or participate in our classes.</p>
               <p>Reason to Give also has several event sponsorship opportunities, where corporations receive recognition and employees can join in on the fun.</p>
-              <a href="#" class="pane-advance btn -white -hollow -wider">Apply</a>
-            </div>
-            <div class="one-half-right full-bleed">
-            </div>
-          </div>
-          <div class="pane pane-2">
-            <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
-            <%= hidden_field_tag('form', 'Educational Program Application') %>
-              <div class="one-half-left">
-                <h4>Contact Information</h4>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internFirstName">First Name*</label>
-                    <input type="text" name="first_name" id="internFirstName" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internLastName">Last Name*</label>
-                    <input type="text" name="last_name" id="internLastName" required>
-                  </div>
+
+              <%= image_tag 'RTG_intern.jpg' %>
+
+            </div><!-- END .one-half-left -->
+            <div class="one-half-right">
+
+              <!-- <h4>Contact Information</h4> -->
+              <div class="form-group">
+                <div class="one-half-left">
+                  <label for="educationalFirstName-educational">First Name*</label>
+                  <input type="text" name="first_name" id="educationalFirstName-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internCell">Cell Phone*</label>
-                    <input type="tel" name="phone" id="internCell" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internPhone">Home Phone</label>
-                    <input type="text" name="internPhone" id="internPhone">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="internEmail">Email Address*</label>
-                  <input type="email" name="email" id="internEmail" required>
-                </div>
-                <div class="form-group">
-                  <label for="internAddress">Street Address (Include Apt #)*</label>
-                  <input type="text" name="address" id="internAddress" required>
-                </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internCityState">City &amp; State*</label>
-                    <input type="text" name="city" id="internCityState" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internZipCode">Zip Code*</label>
-                    <input type="text" name="zip_code" id="internZipCode" required>
-                  </div>
+                <div class="one-half-right">
+                  <label for="educationalLastName-educational">Last Name*</label>
+                  <input type="text" name="last_name" id="educationalLastName-educational" required>
                 </div>
               </div>
-              <div class="one-half-right">
-              <h4>Demographic Information</h4>
-              <p class="instructions">All answers will be used for statistical purposes only and will not affect your acceptance into the program</p>
-                <div class="form-group">
-                  <div class="one-fourth-left">
-                    <label for="internAge">Age*</label>
-                    <input type="number" name="age" id="internAge" required>
-                  </div>
-                  <div class="three-fourths-right">
-                    <fieldset>
-                      <legend>Gender*</legend>
-                      <input type="radio" name="gender" id="internGenderMale" value="male" required>
-                      <label class="custom-radio" for="internGenderMale">Male</label>
-                      <input type="radio" name="gender" id="internGenderFemale" value="female" required>
-                      <label class="custom-radio" for="internGenderFemale">Female</label>
-                      <input type="radio" name="gender" id="internGenderNeutral" value="neutral" required>
-                      <label class="custom-radio" for="internGenderNeutral">Gender Neutral</label>
-                    </fieldset>
-                  </div>
+              <div class="form-group">
+                <div class="one-half-left">
+                  <label for="educationalCell-educational">Cell Phone*</label>
+                  <input type="tel" name="phone" id="educationalCell-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internMaritalStatus" class="select-wrapper">
-                      <legend>Marital Status*</legend>
-                      <div class="button custom-select ff-hack">
-                      <select name="marital_status" id="internMaritalStatus">
-                        <option value="null"></option>
-                        <option value="maritalSingle">Single</option>
-                        <option value="maritalMarried">Married</option>
-                      </select>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internEthnicity" class="select-wrapper">
-                      <legend>Ethnicity*</legend>
-                      <div class="button custom-select ff-hack">
-                      <select name="ethnicity" id="internEthnicity">
-                        <option value="null"></option>
-                        <option value="African">African</option>
-                        <option value="Asian">Asian</option>
-                        <option value="European">European</option>
-                        <option value="NativeAmerican">Native American</option>
-                        <option value="Latino">Latino</option>
-                        <option value="Other">Other</option>
-                      </select>
-                      </div>
-                    </label>
-                  </div>
+                <div class="one-half-right">
+                  <label for="educationalEmail-educational">Email*</label>
+                  <input type="email" name="email" id="educationalEmail-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internIncome">Annual Household Income*</label>
-                    <input type="number" name="income" id="internIncome" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internEmploymentStatus">Current Employment Status*</label>
-                    <input type="text" name="employment_status" id="internEmploymentStatus">
-                  </div>
-                </div>
-                <div class="form-group">                            
-                  <label for="internEducation" class="select-wrapper">
-                    <legend>Highest Level of Education Completed*</legend>
-                    <div class="button custom-select ff-hack">
-                    <select name="education" id="internEducation">
-                      <option value="null"></option>
-                      <option value="Primary">Primary School</option>
-                      <option value="HighSchool">High School or GED</option>
-                      <option value="Bachelors">Bachelor's Degree</option>
-                      <option value="Masters">Master's Degree</option>
-                      <option value="Doctorate">Doctorate</option>
-                    </select>
-                    </div>
-                  </label>
-                </div>
-                <input type="submit" value="submit" class="btn -white submit">
               </div>
-            <% end %>
-            <a href="#" class="pane-devance btn -white -hollow">back</a>
-          </div>
+              
+              <div class="form-group">
+                <label for="educationalAddress-educational">Street Address (Include Apt #)*</label>
+                <input type="text" name="address" id="educationalAddress-educational" required>
+              </div>
+              <div class="form-group">
+                <div class="one-third-left">
+                  <label for="educationalCity-educational">City*</label>
+                  <input type="text" name="city" id="educationalCity-educational" required>
+                </div>
+                <div class="one-third-middle">
+                  <label for="educationalState-educational">State*</label>
+                  <input type="text" name="state" id="educationalState-educational" required>
+                </div>
+                <div class="one-third-right">
+                  <label for="educationalZipCode-educational">Zip Code*</label>
+                  <input type="text" name="zip_code" id="educationalZipCode-educational" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <fieldset class="custom-checkbox-wrap">
+                  <input type="checkbox" name="contact-me-first" id="educationalContactMeFirst" value="1">
+                  <label class="custom-checkbox" for="educationalContactMeFirst">Contact me with more info before sending application</label>
+                </fieldset>
+              </div>
+
+              <fieldset>
+                <legend>The best way to contact me is: </legend>
+                <input type="radio" name="best-contact" id="educationalBestContact-phone" value="phone" required>
+                <label class="custom-radio" for="educationalBestContact-phone">Phone</label>
+                <input type="radio" name="best-contact" id="educationalBestContact-email" value="email" required>
+                <label class="custom-radio" for="educationalBestContact-email">Email</label>
+              </fieldset>
+
+              <input type="submit" value="Submit" class="btn -white submit">
+              
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -193,138 +132,78 @@
       <div class="accordion-content">
         <div class="panes">
           <div class="pane pane-1 active">
+          <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+          <%= hidden_field_tag('form', 'Educational Program Application') %>
+
             <div class="one-half-left">
               <p>Reason to Give offers corporations several sponsorship opportunities throughout the year.  We have partnership packages for various levels of support from our Title Sponsor who sponsors an entire class to our Bronze Sponsor which sponsors multiple students. Reason to Give offers our sponsors numerous options to increase exposure, reach unique audiences, and promote corporate responsibility and diversity. Employees are also encouraged to volunteer at any of our community events or participate in our classes.</p>
               <p>Reason to Give also has several event sponsorship opportunities, where corporations receive recognition and employees can join in on the fun.</p>
-              <a href="#" class="pane-advance btn -white -hollow -wider">Apply</a>
-            </div>
-            <div class="one-half-right full-bleed">
-            </div>
-          </div>
-          <div class="pane pane-2">
-            <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
-            <%= hidden_field_tag('form', 'Business, School or Organization') %>
-              <div class="one-half-left">
-                <h4>Contact Information</h4>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="volunteerFirstName">First Name*</label>
-                    <input type="text" name="first_name" id="volunteerFirstName" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="volunteerLastName">Last Name*</label>
-                    <input type="text" name="last_name" id="volunteerLastName" required>
-                  </div>
+
+              <%= image_tag 'RTG_volunteer.jpg' %>
+
+            </div><!-- END .one-half-left -->
+            <div class="one-half-right">
+
+              <!-- <h4>Contact Information</h4> -->
+              <div class="form-group">
+                <div class="one-half-left">
+                  <label for="businessFirstName-educational">First Name*</label>
+                  <input type="text" name="first_name" id="businessFirstName-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="volunteerCell">Cell Phone*</label>
-                    <input type="tel" name="phone" id="volunteerCell" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="volunteerPhone">Home Phone</label>
-                    <input type="text" name="volunteerPhone" id="volunteerPhone">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="volunteerEmail">Email Address*</label>
-                  <input type="email" name="email" id="volunteerEmail" required>
-                </div>
-                <div class="form-group">
-                  <label for="volunteerAddress">Street Address (Include Apt #)*</label>
-                  <input type="text" name="address" id="volunteerAddress" required>
-                </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="volunteerCityState">City &amp; State*</label>
-                    <input type="text" name="city_state" id="volunteerCityState" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="volunteerZipCode">Zip Code*</label>
-                    <input type="text" name="zip_code" id="volunteerZipCode" required>
-                  </div>
+                <div class="one-half-right">
+                  <label for="businessLastName-educational">Last Name*</label>
+                  <input type="text" name="last_name" id="businessLastName-educational" required>
                 </div>
               </div>
-              <div class="one-half-right">
-              <h4>Demographic Information</h4>
-              <p class="instructions">All answers will be used for statistical purposes only and will not affect your acceptance into the program</p>
-                <div class="form-group">
-                  <div class="one-fourth-left">
-                    <label for="volunteerAge">Age*</label>
-                    <input type="number" name="volunteerAge" id="volunteerAge" required>
-                  </div>
-                  <div class="three-fourths-right">
-                    <fieldset>
-                      <legend>Gender*</legend>
-                      <input type="radio" name="gender" id="volunteerGenderMale" value="male" required>
-                      <label class="custom-radio" for="volunteerGenderMale">Male</label>
-                      <input type="radio" name="gender" id="volunteerGenderFemale" value="female" required>
-                      <label class="custom-radio" for="volunteerGenderFemale">Female</label>
-                      <input type="radio" name="gender" id="volunteerGenderNeutral" value="neutral" required>
-                      <label class="custom-radio" for="volunteerGenderNeutral">Gender Neutral</label>
-                    </fieldset>
-                  </div>
+              <div class="form-group">
+                <div class="one-half-left">
+                  <label for="businessCell-educational">Cell Phone*</label>
+                  <input type="tel" name="phone" id="businessCell-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="volunteerMaritalStatus" class="select-wrapper">
-                      <legend>Marital Status*</legend>
-                      <div class="button custom-select ff-hack">
-                      <select name="volunteerMaritalStatus" id="volunteerMaritalStatus">
-                        <option value="null"></option>
-                        <option value="maritalSingle">Single</option>
-                        <option value="maritalMarried">Married</option>
-                      </select>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="volunteerEthnicity" class="select-wrapper">
-                      <legend>Ethnicity*</legend>
-                      <div class="button custom-select ff-hack">
-                      <select name="volunteerEthnicity" id="volunteerEthnicity">
-                        <option value="null"></option>
-                        <option value="ethnicityAfrican">African</option>
-                        <option value="ethnicityAsian">Asian</option>
-                        <option value="ethnicityEuropean">European</option>
-                        <option value="ethnicityNativeAmerican">Native American</option>
-                        <option value="ethnicityLatino">Latino</option>
-                        <option value="ethnicityOther">Other</option>
-                      </select>
-                      </div>
-                    </label>
-                  </div>
+                <div class="one-half-right">
+                  <label for="businessEmail-educational">Email*</label>
+                  <input type="email" name="email" id="businessEmail-educational" required>
                 </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="volunteerIncome">Annual Household Income*</label>
-                    <input type="number" name="volunteerIncome" id="volunteerIncome" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="volunteerEmploymentStatus">Current Employment Status*</label>
-                    <input type="text" name="volunteerEmploymentStatus" id="volunteerEmploymentStatus">
-                  </div>
-                </div>
-                <div class="form-group">                            
-                  <label for="volunteerEducation" class="select-wrapper">
-                    <legend>Highest Level of Education Completed*</legend>
-                    <div class="button custom-select ff-hack">
-                    <select name="volunteerEducation" id="volunteerEducation">
-                      <option value="null"></option>
-                      <option value="educationPrimary">Primary School</option>
-                      <option value="educationHighSchool">High School or GED</option>
-                      <option value="educationBachelors">Bachelor's Degree</option>
-                      <option value="educationMasters">Master's Degree</option>
-                      <option value="educationDoctorate">Doctorate</option>
-                    </select>
-                    </div>
-                  </label>
-                </div>
-                <input type="submit" value="submit" class="btn -white submit">
               </div>
-            <% end %>
-            <a href="#" class="pane-devance btn -white -hollow">back</a>
-          </div>
+              
+              <div class="form-group">
+                <label for="businessAddress-educational">Street Address (Include Apt #)*</label>
+                <input type="text" name="address" id="businessAddress-educational" required>
+              </div>
+              <div class="form-group">
+                <div class="one-third-left">
+                  <label for="businessCity-educational">City*</label>
+                  <input type="text" name="city" id="businessCity-educational" required>
+                </div>
+                <div class="one-third-middle">
+                  <label for="businessState-educational">State*</label>
+                  <input type="text" name="state" id="businessState-educational" required>
+                </div>
+                <div class="one-third-right">
+                  <label for="businessZipCode-educational">Zip Code*</label>
+                  <input type="text" name="zip_code" id="businessZipCode-educational" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <fieldset class="custom-checkbox-wrap">
+                  <input type="checkbox" name="contact-me-first" id="businessContactMeFirst" value="1">
+                  <label class="custom-checkbox" for="businessContactMeFirst">Contact me with more info before sending application</label>
+                </fieldset>
+              </div>
+
+              <fieldset>
+                <legend>The best way to contact me is: </legend>
+                <input type="radio" name="best-contact" id="businessBestContact-phone" value="phone" required>
+                <label class="custom-radio" for="businessBestContact-phone">Phone</label>
+                <input type="radio" name="best-contact" id="businessBestContact-email" value="email" required>
+                <label class="custom-radio" for="businessBestContact-email">Email</label>
+              </fieldset>
+
+              <input type="submit" value="Submit" class="btn -white submit">
+              
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

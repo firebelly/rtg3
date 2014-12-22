@@ -1,12 +1,6 @@
 // Apply Page
 
 .apply {
-  &.banner-wrap {
-    .banner {
-      background-image: image-url('RTG_apply.jpg');
-    }
-  }
-  
   // Page-specific accordion block styles
   .accordion {
     .block-content {
@@ -20,33 +14,34 @@
   
   .intern-form {
     .pane-1 {
+      .btn {
+        margin-top: 50px;
+      }
+
       .one-half-left {
-        min-height: 400px;
-        .btn {
-          margin-top: 50px;
-        }
+        padding-right: 50px;
       }
-      .one-half-right {
-        position: absolute;
-        background: image-url('RTG_intern.jpg') no-repeat;
-        background-size: cover;
-      }
+      // .one-half-right.full-bleed {
+      //   position: absolute;
+      //   background: image-url('RTG_intern.jpg') no-repeat;
+      //   background-size: cover;
+      // }
     }
   }
 
   .volunteer-form {
+    .btn {
+      margin-top: 50px;
+    }
     .pane-1 {
       .one-half-left {
-        min-height: 400px;
-        .btn {
-          margin-top: 50px;
-        }
+        padding-right: 50px;
       }
-      .one-half-right {
-        position: absolute;
-        background: image-url('RTG_volunteer.jpg') no-repeat;
-        background-size: cover;
-      }
+      // .one-half-right.full-bleed {
+      //   position: absolute;
+      //   background: image-url('RTG_volunteer.jpg') no-repeat;
+      //   background-size: cover;
+      // }
     }
   }
 }
