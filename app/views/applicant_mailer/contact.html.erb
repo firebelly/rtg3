@@ -5,10 +5,11 @@
   </head>
   <body>
     <h1>New contact email for: <%= @applicant.form %></h1>
-    <p><%= @applicant.first_name %>
-    <p><%= @applicant.email %></p>
-    <p><%= @applicant.phone %></p>
+    <p>Name: <%= @applicant.first_name %>
+    <p>Email: <%= @applicant.email %></p>
+    <p>Phone: <%= @applicant.phone %></p>
+    <p>Subject: <%= @applicant.subject %></p>
     <p></p>
-    <%= simple_format @applicant.params %>
+    <%= simple_format @applicant.message %>
   </body>
 </html>

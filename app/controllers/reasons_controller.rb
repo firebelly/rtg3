@@ -9,6 +9,7 @@ class ReasonsController < ApplicationController
   end
 
   def success_stories
+    @body_class = 'success-stories'
     @page = Page.friendly.find('success-stories')
     @promoted_success = Reason.published.is_success.promoted.limit(1)
     @successes = Reason.published.is_success - @promoted_success
@@ -16,6 +17,7 @@ class ReasonsController < ApplicationController
   end
 
   def success_story
+    @body_class = 'success-stories'
     @reason = Reason.friendly.find(params[:id])
     @slider_reasons = Reason.published.is_success.where('id != ?', @reason.id)
     @og_description = @reason.success_excerpt || @reason.content

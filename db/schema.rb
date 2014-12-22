@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215233219) do
+ActiveRecord::Schema.define(version: 20141217184026) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141215233219) do
     t.text     "params"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subject"
+    t.text     "message"
   end
 
   create_table "carts", force: true do |t|

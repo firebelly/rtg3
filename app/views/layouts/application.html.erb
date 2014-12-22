@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= include_gon %>
   <%= csrf_meta_tags %>
-  <link rel="canonical" href="http://reasontogive.com" />
-  <meta name="description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand." />
-  <meta name="keywords" content="giving, humboldt park, chicago, donations, programs, education, helping, social justice, neighborhood, community" />
+  <link rel="canonical" href="http://reasontogive.com/">
+  <meta name="description" content="<%= strip_tags(@og_description).strip -%>">
+  <meta name="keywords" content="giving, humboldt park, chicago, donations, programs, education, helping, social justice, neighborhood, community">
 
   <meta property="og:title" content="Reason to Give<%= content_for?(:title) ? ': %s' % yield(:title) : '' %>">
   <meta property="og:description" content="<%= strip_tags(@og_description).strip -%>">
@@ -20,12 +20,13 @@
   <meta name="twitter:creator" content="@reasontogive">
   <meta name="twitter:title" content="Reason to Give">
   <meta name="twitter:description" content="Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand.">
-  <meta name="twitter:image" content="favicon.png">
-  <link rel="shortcut icon" type="image/ico" href="<%= image_url('favicon.png') %>">
+  <meta name="twitter:image" content="/favicon.png">
   <link rel="image_src" href="<%= image_url('reason-to-give_og.jpg') %>">
 
-  <%= javascript_include_tag 'modernizr.custom' %>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
 
+  <%= javascript_include_tag 'modernizr.custom' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <!--[if lt IE 9]>

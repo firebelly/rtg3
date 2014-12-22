@@ -852,27 +852,27 @@
       }
       form {
         .submit {
-          right: 0;
-          bottom: 0;
+          // position: absolute;
+          // right: 0;
+          // bottom: 0;
           width: auto;
           color: $brand-main;
           border: none;
           margin-top: 0;
-          position: absolute;
           background: rgba(253, 239, 246, 1);
           &:hover, &:focus, &:active {
             background: rgba(253, 239, 246, 0.8);
           }
         }
       }
-      .pane {
-        form {
-          .submit {
-            right: -100px;
-            bottom: -100px;
-          }
-        }
-      }
+      // .pane {
+      //   form {
+      //     .submit {
+      //       right: -100px;
+      //       bottom: -100px;
+      //     }
+      //   }
+      // }
     }
   }
 
