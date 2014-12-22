@@ -534,7 +534,7 @@ var RTG = (function ($) {
   function _formFunctions() {
     // only allow digits in money inputs
     $('input[type="number"], input[type="tel"]').numeric({allow: '.'});
-    $('form').validate();
+    $('form').each(function() { $(this).validate(); });
   };
 
   function _radialProgress() {

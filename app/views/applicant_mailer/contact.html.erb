@@ -7,9 +7,8 @@
     <h1>New contact email for: <%= @applicant.form %></h1>
     <p>Name: <%= @applicant.first_name %>
     <p>Email: <%= @applicant.email %></p>
-    <p>Phone: <%= @applicant.phone %></p>
     <p>Subject: <%= @applicant.subject %></p>
-    <p></p>
+    <p>Message:</p>
     <%= simple_format @applicant.message %>
   </body>
 </html>
