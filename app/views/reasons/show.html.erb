@@ -12,7 +12,7 @@
     <% else %>
       <%= render partial: "/reasons/reason", locals: { reason: @reason, is_single: true } -%>
     <% end %>
-    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
+    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg></a>
     <% unless @reason.featured_video.blank? %>
       <div class="feature-video">
         <div class="feature-video-background"></div>
