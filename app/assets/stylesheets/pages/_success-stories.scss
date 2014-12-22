@@ -11,7 +11,7 @@
     }
   }
 
-  @include min-screen($bpMed) {
+  @include min-screen(600px) {
     .reasons-slider {
       .slick-track {
         display: flex;

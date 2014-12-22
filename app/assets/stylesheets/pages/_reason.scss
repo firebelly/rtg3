@@ -16,13 +16,7 @@
     }
   }
 
-  @include min-screen($bpMed) {
-    .support {
-      .share {
-        margin-top: 50px;
-      }
-    }
-
+  @include min-screen(600px) {
     .reasons-slider {
       .slick-track {
         display: flex;
@@ -33,6 +27,14 @@
         a {
           height: auto;
         }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .support {
+      .share {
+        margin-top: 50px;
       }
     }
   }
