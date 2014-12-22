@@ -135,30 +135,33 @@ var RTG = (function ($) {
   function _cartInit() {
     // add to cart links
     $('.cart-form').submit(function(e) {
+      var $amountInput = $(this).find('input[name=amount]'); 
       // make sure a value is present
-      if (!$('input[name=amount]').val() || parseInt($('input[name=amount]').val())<=0) {
+      if (!$amountInput.val() || parseInt($amountInput.val())<=0) {
         _flashAlert('Please enter an amount.');
+        $amountInput.focus();
         e.preventDefault();
         e.stopPropagation();
       }
     });
+    // update cart contents after adding item
     $('.cart-form').on('ajax:success', function(e, data) {
       $('.cart-items-wrap').html(data);
       // hide any flash messages from previous errors
       _hideFlash();
-      var cartCount = $('#cart .cart-item').length;
-      _setCartCount(cartCount);
+      _setCartCount();
       _showCart();
     });
+    
     // update cart item amounts
     $('#cart').on('ajax:success', '.item-amount', function(e, data) {
       $('.cart-items-wrap').html(data);
     }).on('click', 'input.amount', function() {
       this.select();
     });
+    
     // delete cart item links
-    $('#cart').on('ajax:success', '.item-remove', function(e, data) {
-      e.preventDefault();
+    $('#cart').on('click', '.item-remove', function() {
       var thisItem = $(this).closest('li.cart-item');
       thisItem.addClass('-removed');
       setTimeout(function () {
@@ -169,10 +172,11 @@ var RTG = (function ($) {
       }, 250);
       setTimeout(function () {
         thisItem.remove();
-        _setCartCount(data);
+        _setCartCount();
         _setCartTotal();
       }, 400);
     });
+
     // initial cart count (maybe only call this if cookie is set, which is stored when adding to cart? this would allow full caching of page)
     // $.get('/cart/count', function(data) {
     //   _setCartCount(data);
@@ -364,7 +368,8 @@ var RTG = (function ($) {
   };
 
   // Set (cart count)
-  function _setCartCount(cartCount) {
+  function _setCartCount() {
+    var cartCount = $('#cart .cart-item').length;
     $('.cart-item-count').text(cartCount);
     $('.cart-item-count').toggleClass('active', cartCount > 0);
     if (cartCount==0) {
