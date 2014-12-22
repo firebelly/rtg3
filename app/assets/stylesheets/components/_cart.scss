@@ -2,11 +2,13 @@
 
 .cart {
   top: 0;
+  bottom: 0;
   z-index: 4;
   left: 100%;
   width: 100%;
   color: $white;
-  position: absolute;
+  overflow: auto;
+  position: fixed;
   @include clearfix();
   background: $brand-main;
   transition: transform 0.2s ease-out, left 0.2s ease-out;
@@ -70,6 +72,57 @@
     }
   }
 
+  // Cart Accordion Toggle (only usable between 600px - 1200px)
+  .cart-accordion-toggle {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 50px;
+    display: none;
+    cursor: pointer;
+    padding-top: 14px;
+    position: absolute;
+    text-align: center;
+    background: rgba(0,0,0,0);
+    transition: background 0.2s ease-out;
+    &:hover, &:focus {
+      background: rgba(0,0,0,0.1);
+    }
+    .icon {
+      transition: opacity 0.2s ease-out;
+    }
+    .icon-cart {
+      width: 23px;
+      fill: $white;
+      height: 14px;
+      stroke: $white;
+      stroke-width: 0;
+    }
+    .icon-document {
+      width: 22px;
+      height: 18px;
+      fill: $brand-main;
+      stroke: $brand-main;
+    }
+    // back arrow
+    .icon-arrow-left {
+      left: 13px;
+      width: 20px;
+      height: 20px;
+      bottom: 58px;
+      fill: $white;
+      stroke: $white;
+      stroke-width: 4px;
+      position: absolute;
+      stroke-linecap: round;
+      &.-pink {
+        fill: $brand-main;
+        stroke: $brand-main;
+      }
+    }
+  }
+
   // Cart close button
   .cart-close {
     top: 10px;
@@ -95,7 +148,7 @@
       white-space: normal;
     }
     input {
-      padding: 0.25em 0.5em;
+      padding: 0.45em 0.5em;
       &:focus, &:active {
         background: rgba(255,255,255,0.8);
       }
@@ -115,11 +168,8 @@
       &:first-of-type {
         margin-top: 0;
       }
-      .one-half-left {
-        padding-right: 25px;
-      }
-      .one-half-right {
-        padding-left: 25px;
+      div {
+        margin-top: 0;
       }
     }
 
@@ -165,6 +215,7 @@
 
   .actions {
     width: 100%;
+    padding: 0 50px;
     margin-top: 25px;
     text-align: center;
     .btn {
@@ -181,6 +232,26 @@
     p {
       margin: .5em 50px;
       font-size: 0.8125em;
+    }
+    .actions {
+      .stage-submit {
+        display: none;
+      }
+    }
+  }
+  .cart-checkout {
+    padding-bottom: 0;
+    .one-half-right {
+      label {
+        margin-top: 10px;
+        padding-bottom: 0;
+      }
+    }
+    .actions {
+      margin-top: 0;
+      .stage-submit {
+        display: none;
+      }
     }
   }
 
@@ -238,28 +309,54 @@
     }
   }
 
-  @include min-screen(1200px) {
+  @include min-screen(600px) {
     right: 0;
-    bottom: 0;
     left: auto;
     width: 1200px;
     position: fixed;
+    overflow: visible;
     transform: translateX(100%);
     &.active {
       left: auto;
       transform: translateX(800px);
     }
     &.checkout-stage {
-      transform: translateX(400px);
+      .cart-review {
+        transform: translateX(-50px);
+      }
     }
     &.payment-stage {
-      transform: translateX(0);
+      .cart-review {
+        transform: translateX(-100px);
+      }
+      .cart-checkout {
+        transform: translateX(-50px);
+      }
+    }
+
+    .cart-checkout, .cart-payment {
+      box-shadow: -3px 0 0 rgba(0,0,0,0.1);
     }
 
     .cart-stage {
-      float: left;
       height: 100%;
       width: 400px;
+      position: absolute;
+      transform: translateX(400px);
+      transition: left 0.2s ease-out, transform 0.2s ease-out;
+      &.active-stage {
+        transform: translateX(0);
+        .cart-accordion-toggle {
+          display: none;
+        }
+        h3 {
+          top: auto;
+          left: auto;
+          display: block;
+          transform: none;
+          position: relative;
+        }
+      }
       &.-gray {
         .actions {
           background: $lightGray;
@@ -268,6 +365,24 @@
           }
         }
       }
+      
+      .cart-accordion-toggle {
+        display: block;
+        .icon {
+          opacity: 1;
+        }
+      }
+      h3 {
+        top: 50px;
+        z-index: 1;
+        padding: 0;
+        left: -14px;
+        width: auto;
+        position: absolute;
+        display: inline-block;
+        transform-origin: 0 0;
+        transform: rotate(-90deg) translateY(-100%) translateX(-100%);
+      }
 
       &.-pink {
         .actions {
@@ -275,6 +390,28 @@
           &::before {
             @include dots($white, 6px);
           }
+        }
+      }
+    }
+
+    .cart-review {
+      .actions {
+        .stage-submit {
+          display: inline-block;
+        }
+      }
+    }
+    .cart-checkout {
+      padding-bottom: 29px;
+      .one-half-right {
+        label {
+          margin-top: 0;
+        }
+      }
+      .actions {
+        margin-top: 25px;
+        .stage-submit {
+          display: inline-block;
         }
       }
     }
@@ -314,6 +451,64 @@
         &:first-of-type {
           margin-top: 0;
         }
+        .one-half-left {
+          width: 50%;
+          float: left;
+          padding-right: 25px;
+        }
+        .one-half-right {
+          width: 50%;
+          float: left;
+          padding-left: 25px;
+        }
+      }
+    }
+  }
+
+  @include min-screen(1200px) {
+    &.active {
+      left: auto;
+      transform: translateX(800px);
+    }
+    &.checkout-stage {
+      transform: translateX(400px);
+    }
+    &.payment-stage {
+      transform: translateX(0);
+    }
+
+    .cart-stage {
+      float: left;
+      position: relative;
+      transform: translateX(0);
+      .cart-accordion-toggle {
+        display: none;
+      }
+      h3 {
+        top: auto;
+        left: auto;
+        display: block;
+        transform: none;
+        position: relative;
+      }
+    }
+
+
+    .cart-checkout, .cart-payment {
+      box-shadow: none;
+    }
+
+    &.checkout-stage {
+      .cart-review {
+        transform: translateX(0);
+      }
+    }
+    &.payment-stage {
+      .cart-review {
+        transform: translateX(0);
+      }
+      .cart-checkout {
+        transform: translateX(0);
       }
     }
   }

@@ -242,17 +242,38 @@ var RTG = (function ($) {
         var nextStage = stage.next('.cart-stage');
         // this stage is current, let's move on to the next
         if ($('.cart').hasClass(stageClass)) {
+          stage.removeClass('active-stage');
           stage = stage.next('.cart-stage');
           stageClass = stage.data('stage') + '-stage';
         }
         // set stage class for .cart
         $('.cart').attr('class','cart active').addClass(stageClass);
         _resetCartButtons();
+        // set acitve-stage class
+        stage.addClass('active-stage');
         // set all prev stage buttons to "Edit"
         stage.prevAll('.cart-stage').find('.btn').text('Edit');
         // focus first input in next stage
         stage.find('.-first input').focus();
       });
+    });
+
+    // Toggle active stage by clicking/touching inactive stage
+    $('.cart-accordion-toggle').on('click', function() {
+        // determine current stage
+        var stage = $(this).closest('.cart-stage');
+        var stageClass = stage.data('stage') + '-stage';
+        // Remove active stage class
+        $('.cart-stage').not(stage).removeClass('active-stage');
+        // set stage class for .cart
+        $('.cart').attr('class','cart active').addClass(stageClass);
+        _resetCartButtons();
+        // set acitve-stage class
+        stage.addClass('active-stage');
+        // set all prev stage buttons to "Edit"
+        stage.prevAll('.cart-stage').find('.btn').text('Edit');
+        // focus first input in next stage
+        stage.find('.-first input').focus();
     });
 
     // Init Braintree (uses gon gem which injects server-side vars into js, see app.html)
@@ -338,6 +359,7 @@ var RTG = (function ($) {
     $('.menu.active').removeClass('active');
     $('.menu-toggle').removeClass('menu-open');
     $('.cart').addClass('active cart-stage review-stage');
+    $('.cart-review').addClass('active-stage');
     $('.body-wrap').addClass('unfocus');
   };
 
@@ -371,6 +393,7 @@ var RTG = (function ($) {
   function _hideCart() {
     $('.body-wrap').removeClass('unfocus');
     $('.cart').removeClass('active payment-stage checkout-stage');
+    $('.cart-stage').removeClass('active-stage');
     _resetCartButtons();
   };
 

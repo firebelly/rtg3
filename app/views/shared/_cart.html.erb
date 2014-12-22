@@ -4,6 +4,10 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :payment_method_nonce, '' %>
     <div class="cart-review cart-stage -pink" data-stage="review">
+      <span class="cart-accordion-toggle">
+        <svg class="icon icon-cart" role="img" aria-labelledby="title"><use xlink:href="#icon-cart"></use></svg>
+        <svg class="icon icon-arrow-left" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow-left"></use></svg>
+      </span>
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x -white"></a>
       <h3>Your Cart</h3>
       <div class="cart-items-wrap">
@@ -11,11 +15,15 @@
       </div>
       <div class="actions">
         <div id="paypal-button"></div>
-        <a href="#checkout" data-original-text="Checkout" class="btn -white -hollow stage-submit checkout-toggle">Checkout</a>
+        <a href="#checkout" data-original-text="Checkout" data-scroll class="btn -white -hollow stage-submit checkout-toggle">Checkout</a>
       </div>
     </div>
 
-    <div class="cart-checkout cart-stage -gray" data-stage="checkout">
+    <div class="cart-checkout cart-stage -gray" data-stage="checkout" id="checkout">
+      <span class="cart-accordion-toggle">
+        <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
+        <svg class="icon icon-arrow-left -pink" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow-left"></use></svg>
+      </span>
       <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
       <h3>Contact Information</h3>
       <div class="form-content">

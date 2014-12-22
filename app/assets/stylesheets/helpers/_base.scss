@@ -109,6 +109,7 @@ main {
   height: 100%;
   position: relative;
   &.unfocus {
+    overflow: hidden;
     &::before {
       opacity: 1;
       display: block;
