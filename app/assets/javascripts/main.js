@@ -262,6 +262,14 @@ var RTG = (function ($) {
       });
     });
 
+    // Scroll to Checkout stage on small-screen view for usability
+    $('.cart-review .stage-submit').on('click', function () {
+        var checkoutTop = $('.cart-review').height();
+        $('.cart').animate({
+          scrollTop: checkoutTop
+        }, 500);
+    });
+
     // Toggle active stage by clicking/touching inactive stage
     $('.cart-accordion-toggle').on('click', function() {
         // determine current stage
@@ -472,7 +480,7 @@ var RTG = (function ($) {
   function _reasonsSlider() {
     if ($(window).width() > 600 ) {
       $('.reasons-slider').slick({
-        slide: 'div.feature',
+        slide: '.reason-block',
         autoplay: true,
         slidesToShow: 3
       });
@@ -483,7 +491,7 @@ var RTG = (function ($) {
     $(window).resize(function () {
       if ($(window).width() > 600 ) {
         $('.reasons-slider').slick({
-          slide: 'div.feature',
+          slide: '.reason-block',
           autoplay: true,
           slidesToShow: 3
         });

@@ -16,6 +16,21 @@
     }
   }
 
+  @include min-screen(600px) {
+    .reasons-slider {
+      .slick-track {
+        display: flex;
+      }
+      .reason-block {
+        height: auto;
+        display: flex;
+        a {
+          height: auto;
+        }
+      }
+    }
+  }
+
   @include min-screen($bpMed) {
     .support {
       .share {
