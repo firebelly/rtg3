@@ -10,7 +10,6 @@
   overflow: auto;
   position: fixed;
   @include clearfix();
-  background: $brand-main;
   transition: transform 0.2s ease-out, left 0.2s ease-out;
   &.active {
     left: 0;
@@ -233,11 +232,6 @@
       margin: .5em 50px;
       font-size: 0.8125em;
     }
-    .actions {
-      .stage-submit {
-        display: none;
-      }
-    }
   }
   .cart-checkout {
     padding-bottom: 0;
@@ -306,6 +300,41 @@
           color: $brand-main;
         }
       }
+    }
+  }
+
+    // Checkout stage toggle on small-screens
+  @include max-screen(600px) {
+    bottom: auto;
+
+    &.checkout-stage {
+      bottom: 0;
+      .cart-checkout,
+      .cart-payment {
+        bottom: auto;
+        position: relative;
+        transform: translateY(0);
+      }
+    }
+
+    form {
+      height: auto;
+    }
+
+    .cart-review {
+      z-index: 1;
+    }
+    .cart-checkout {
+      bottom: 100%;
+      position: absolute;
+      transform: translateY(-100%);
+      transition: transform 0.2s ease-out;
+    }
+    .cart-payment {
+      bottom: 100%;
+      position: absolute;
+      transform: translateY(-100%);
+      transition: transform 0.2s ease-out;
     }
   }
 
