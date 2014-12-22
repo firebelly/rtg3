@@ -21,7 +21,7 @@
         <div class="affiliates-slider affiliates-slider-w<%= @affiliates.length==2 ? '3' : '2' %>">
         <% unless @sponsored_supporters.blank? %>
           <% for supporter in @sponsored_supporters %>
-            <div class="item"><a href="#"><%= image_tag supporter.logo, alt: supporter.title %></a></div>
+            <div class="item"><a href="#"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
         <% end %>
         </div>
@@ -36,7 +36,7 @@
         <div class="affiliates-slider affiliates-slider-w<%= @affiliates.length==2 ? '3' : '2' %>">
           <% unless @featured_supporters.blank? %>
             <% for supporter in @featured_supporters %>
-              <div class="item"><a href="#"><%= image_tag supporter.logo, alt: supporter.title %></a></div>
+              <div class="item"><a href="#"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
             <% end %>
           <% end %>
         </div>
