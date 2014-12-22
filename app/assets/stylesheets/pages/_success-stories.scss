@@ -10,4 +10,19 @@
       }
     }
   }
+
+  @include min-screen($bpMed) {
+    .reasons-slider {
+      .slick-track {
+        display: flex;
+      }
+      .reason-block {
+        height: auto;
+        display: flex;
+        a {
+          height: auto;
+        }
+      }
+    }
+  }
 }
