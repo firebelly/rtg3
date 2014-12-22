@@ -8,7 +8,7 @@
         <svg class="icon icon-cart" role="img" aria-labelledby="title"><use xlink:href="#icon-cart"></use></svg>
         <svg class="icon icon-arrow-left" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow-left"></use></svg>
       </span>
-      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x -white"></a>
+      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x -white"></span></a>
       <h3>Your Cart</h3>
       <div class="cart-items-wrap">
         <%= render partial: "carts/show" -%>
@@ -19,12 +19,12 @@
       </div>
     </div>
 
-    <div class="cart-checkout cart-stage -gray" data-stage="checkout" id="checkout">
+    <div class="cart-checkout cart-stage -gray" data-stage="checkout">
       <span class="cart-accordion-toggle">
         <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
         <svg class="icon icon-arrow-left -pink" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow-left"></use></svg>
       </span>
-      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
+      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></span></a>
       <h3>Contact Information</h3>
       <div class="form-content">
         <div class="form-group -first">
@@ -41,19 +41,19 @@
         </div>
         <div class="form-group">
           <label for="checkoutAddress">Street Address (Include Apt #)*</label>
-          <input type="text" name="address" id="checkoutAddress" required="true">
+          <input type="text" name="address" id="checkoutAddress" required>
         </div>
         <div class="form-group">
           <div class="one-half-left">
             <label for="checkoutCity">City*</label>
-            <input type="text" name="city" id="checkoutCity" required="true">
+            <input type="text" name="city" id="checkoutCity" required>
           </div>
           <div class="one-half-right">
             <label for="checkoutState" class="select-wrapper">
               <legend>State*</legend>
               <div class="button custom-select ff-hack">
-              <select name="state" id="checkoutState" required="true">
-                <option value="null"></option>
+              <select name="state" id="checkoutState" required>
+                <option value=""></option>
                 <option value="AK">AK</option>
 
                 <option value="AL">AL</option>
@@ -125,14 +125,14 @@
         </div>
         <div class="form-group">
           <label for="checkoutZipCode">Zip/Postal Code*</label>
-          <input type="text" name="zip_code" id="checkoutZipCode" required="true">
+          <input type="text" name="zip_code" id="checkoutZipCode" required>
         </div>
         <div class="form-group">
           <label for="checkoutSource" class="select-wrapper">
             <legend>How did you find out about Reason To Give?</legend>
             <div class="button custom-select ff-hack">
             <select name="checkoutSource" id="checkoutSource">
-              <option value="null"></option>
+              <option value=""></option>
               <option value="checkoutSourceLink">Link From Another Site</option>
               <option value="checkoutSourceBlog">Blog Post</option>
               <option value="checkoutSourceFlyer">Flyer</option>
@@ -160,7 +160,7 @@
     </div>
 
     <div class="cart-payment cart-stage -gray" data-stage="payment">
-      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></a>
+      <a href="#" class="cart-close"><span class="screen-reader">close the shopping cart</span><span class="x"></span></a>
       <h3>Payment</h3>
       <div class="form-content">
         <div class="form-group -first">

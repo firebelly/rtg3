@@ -37,7 +37,7 @@
 
   <%= render partial: "/shared/analytics" if Rails.env.production? -%>
 </head>
-<body class="<%= @body_class -%>" id="<%= @body_id -%>">
+<body <%= raw "class=\"#{@body_class}\"" unless @body_class.blank? -%> <%= raw "id=\"#{@body_id}\"" unless @body_id.blank? -%>>
   <span class="hide defs"><%= render partial: '/shared/svg.defs.txt' -%></span>
   <div class="body-wrap">
 

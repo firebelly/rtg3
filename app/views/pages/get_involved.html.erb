@@ -49,24 +49,24 @@
         </div>
         <div class="one-half-right">
           <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
-          <%= hidden_field_tag('form', 'Corporations') %>
+          <%= hidden_field_tag('form', 'Corporations', id: 'form-corporations') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="businessName">Business Name*</label>
-                <input type="text" name="first_name" id="corporationName" required="true">
+                <input type="text" name="first_name" id="corporationName" required>
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="corporationEmail">Email Address*</label>
-                <input type="email" name="email" id="corporationEmail" required="true">
+                <input type="email" name="email" id="corporationEmail" required>
               </div>
             </div>
             <div class="form-group">
               <label for="corporationSubject">Subject*</label>
-              <input type="text" name="subject" id="corporationSubject" required="true">
+              <input type="text" name="subject" id="corporationSubject" required>
             </div>
             <div class="form-group">
               <label for="corporationMessage">Message*</label>
-              <textarea name="message" id="corporationMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="corporationMessage" cols="30" rows="10" required></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
           <% end %>
@@ -90,24 +90,24 @@
         </div>
         <div class="one-half-right">
         <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
-        <%= hidden_field_tag('form', 'Small Business') %>
+        <%= hidden_field_tag('form', 'Small Business', id: 'form-small-business') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="businessName">Business Name*</label>
-                <input type="text" name="first_name" id="businessName" required="true">
+                <input type="text" name="first_name" id="businessName" required>
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="businessEmail">Email Address*</label>
-                <input type="email" name="email" id="businessEmail" required="true">
+                <input type="email" name="email" id="businessEmail" required>
               </div>
             </div>
             <div class="form-group">
               <label for="businessSubject">Subject*</label>
-              <input type="text" name="subject" id="businessSubject" required="true">
+              <input type="text" name="subject" id="businessSubject" required>
             </div>
             <div class="form-group">
               <label for="businessMessage">Message*</label>
-              <textarea name="message" id="businessMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="businessMessage" cols="30" rows="10" required></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
           <% end %>
@@ -131,24 +131,24 @@
         </div>
         <div class="one-half-right">
           <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
-          <%= hidden_field_tag('form', 'Community Partners') %>
+          <%= hidden_field_tag('form', 'Community Partners', id: 'form-community-partners') %>
             <div class="form-group">
               <div class="one-half-left">
                 <label for="communityPartnerName">Partnership Name*</label>
-                <input type="text" name="first_name" id="communityPartnerName" required="true">
+                <input type="text" name="first_name" id="communityPartnerName" required>
               </div>
               <div class="one-half-right">
                 <label class="one-half-right" for="communityPartnerEmail">Email Address*</label>
-                <input type="email" name="email" id="communityPartnerEmail" required="true">
+                <input type="email" name="email" id="communityPartnerEmail" required>
               </div>
             </div>
             <div class="form-group">
               <label for="communityPartnerSubject">Subject*</label>
-              <input type="text" name="subject" id="communityPartnerSubject" required="true">
+              <input type="text" name="subject" id="communityPartnerSubject" required>
             </div>
             <div class="form-group">
               <label for="communityPartnerMessage">Message*</label>
-              <textarea name="message" id="communityPartnerMessage" cols="30" rows="10" required="true"></textarea>
+              <textarea name="message" id="communityPartnerMessage" cols="30" rows="10" required></textarea>
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
           <% end %>
@@ -176,26 +176,26 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nobis laborum blanditiis odio at aperiam tempora incidunt officiis unde! Error distinctio unde quas quibusdam sapiente necessitatibus accusantium dicta itaque, alias.</p>
 
               <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
-                <%= hidden_field_tag('form', 'Educational Program Application') %>
+                <%= hidden_field_tag('form', 'Intern', id: 'form-intern') %>
 
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="internFirstName">First Name*</label>
-                    <input type="text" name="first_name" id="internFirstName" required="true">
+                    <input type="text" name="first_name" id="internFirstName" required>
                   </div>
                   <div class="one-half-right">
                     <label for="internLastName">Last Name*</label>
-                    <input type="text" name="last_name" id="internLastName" required="true">
+                    <input type="text" name="last_name" id="internLastName" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
                     <label for="internCell">Phone*</label>
-                    <input type="tel" name="phone" id="internCell" required="true">
+                    <input type="tel" name="phone" id="internCell" required>
                   </div>
                   <div class="one-half-right">
                     <label for="internEmail">Email Address*</label>
-                    <input type="email" name="email" id="internEmail" required="true">
+                    <input type="email" name="email" id="internEmail" required>
                   </div>
                 </div>
                 <input type="submit" value="Submit" class="btn -white submit">
@@ -226,26 +226,26 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nobis laborum blanditiis odio at aperiam tempora incidunt officiis unde! Error distinctio unde quas quibusdam sapiente necessitatibus accusantium dicta itaque, alias.</p>
 
               <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
-                <%= hidden_field_tag('form', 'Educational Program Application') %>
+                <%= hidden_field_tag('form', 'Volunteer', id: 'form-volunteer') %>
 
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="internFirstName">First Name*</label>
-                    <input type="text" name="first_name" id="internFirstName" required="true">
+                    <label for="volunteerFirstName">First Name*</label>
+                    <input type="text" name="first_name" id="volunteerFirstName" required>
                   </div>
                   <div class="one-half-right">
-                    <label for="internLastName">Last Name*</label>
-                    <input type="text" name="last_name" id="internLastName" required="true">
+                    <label for="volunteerLastName">Last Name*</label>
+                    <input type="text" name="last_name" id="volunteerLastName" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="one-half-left">
-                    <label for="internCell">Phone*</label>
-                    <input type="tel" name="phone" id="internCell" required="true">
+                    <label for="volunteerCell">Phone*</label>
+                    <input type="tel" name="phone" id="volunteerCell" required>
                   </div>
                   <div class="one-half-right">
-                    <label for="internEmail">Email Address*</label>
-                    <input type="email" name="email" id="internEmail" required="true">
+                    <label for="volunteerEmail">Email Address*</label>
+                    <input type="email" name="email" id="volunteerEmail" required>
                   </div>
                 </div>
                 <input type="submit" value="Submit" class="btn -white submit">
