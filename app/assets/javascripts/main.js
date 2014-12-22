@@ -475,7 +475,7 @@ var RTG = (function ($) {
   function _reasonsSlider() {
     if ($(window).width() > 600 ) {
       $('.reasons-slider').slick({
-        slide: 'div.feature',
+        slide: '.reason-block',
         autoplay: true,
         slidesToShow: 3
       });
@@ -486,7 +486,7 @@ var RTG = (function ($) {
     $(window).resize(function () {
       if ($(window).width() > 600 ) {
         $('.reasons-slider').slick({
-          slide: 'div.feature',
+          slide: '.reason-block',
           autoplay: true,
           slidesToShow: 3
         });
