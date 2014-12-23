@@ -13,6 +13,7 @@
   width: 100%;
   padding: 0 12px;
   position: absolute;
+  transition: background-color 0.2s ease-out;
   .logo {
     width: 192px;
     height: 28px;
@@ -237,19 +238,17 @@
 
   @include min-screen(1064px) {
     padding: 50px 0 25px;
-    &.unsticky {
-      animation-name: upOut;
-      animation-duration: 0.5s;
-    }
     &.sticky {
       padding: 25px 0;
       position: fixed;
       background: $noise;
       animation-name: inDown;
+      background-color: $white;
       transform: translateZ(0);
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
       box-shadow: 0 3px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.2s ease-out;
       .logo {
         .icon {
           fill: $brand-main;

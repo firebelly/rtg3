@@ -418,24 +418,20 @@ var RTG = (function ($) {
   };
 
   function _stickyHeader() {
-    // $('.header_main').waypoint('sticky', {
-    //   offset: -$('.header_main').outerHeight(),
-    //   stuckClass: 'sticky'
-    // });
-
-    var nav = $('.header_main'),
-        offset = nav.outerHeight();
+    var nav = $('.header_main');
 
     nav.waypoint(function(direction) {
       if (direction === 'down') {
         nav.addClass('sticky');
         nav.removeClass('unsticky');
       }
-      else {
-        nav.addClass('unsticky');
+    }, {offset: -80});
+
+    nav.waypoint(function(direction) {
+      if (direction === 'up') {
         nav.removeClass('sticky');
       }
-    }, {offset: -offset});
+    }, {offset: -20});
   };
 
   function _smoothScrolling() {
