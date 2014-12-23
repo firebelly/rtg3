@@ -183,3 +183,12 @@
     clip: rect(auto, auto, auto, auto);
   }
 }
+
+@keyframes upOut {
+  0% {
+    transform: translateY(80%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

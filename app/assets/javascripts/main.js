@@ -418,10 +418,24 @@ var RTG = (function ($) {
   };
 
   function _stickyHeader() {
-    $('.header_main').waypoint('sticky', {
-      offset: -$('.header_main').outerHeight(),
-      stuckClass: 'sticky'
-    });
+    // $('.header_main').waypoint('sticky', {
+    //   offset: -$('.header_main').outerHeight(),
+    //   stuckClass: 'sticky'
+    // });
+
+    var nav = $('.header_main'),
+        offset = nav.outerHeight();
+
+    nav.waypoint(function(direction) {
+      if (direction === 'down') {
+        nav.addClass('sticky');
+        nav.removeClass('unsticky');
+      }
+      else {
+        nav.addClass('unsticky');
+        nav.removeClass('sticky');
+      }
+    }, {offset: -offset});
   };
 
   function _smoothScrolling() {
