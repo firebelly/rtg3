@@ -356,12 +356,9 @@ body.success-stories .menu .success-stories,
 body.apply .menu .apply,
 body.about-us .menu .about-us,
 body.news .menu .news {
-  a {
-    span {
-      border-bottom: 2px solid $white;
-    }
-  }
+  background: $brand-main-lite;
   @include min-screen(1064px) {
+    background: none;
     a {
       background: none;
       span {
