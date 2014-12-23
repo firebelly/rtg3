@@ -237,14 +237,14 @@ form {
     color: $white;
     margin-top: 0;
     padding-bottom: 0.5em;
-    @include dots($white, 6px);
+    @include dots($white);
   }
   .instructions {
     margin-bottom: 2em;
     font-size: 0.8125em;
     padding-bottom: 2em;
     @include font-bold();
-    @include dots($white, 6px);
+    @include dots($white);
   }
 
   fieldset {

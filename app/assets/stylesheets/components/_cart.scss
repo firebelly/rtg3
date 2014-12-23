@@ -31,7 +31,7 @@
   h3 {
     margin: 0 50px 0.5em;
     padding-bottom: 0.25em;
-    @include dots($white, 6px);
+    @include dots($white);
   }
 
   .cart-stage {
@@ -50,7 +50,7 @@
       background: $lightGray;
       color: $brand-main;
       h3 {
-        @include dots($black, 6px);
+        @include dots($black);
       }
     }
   }
@@ -290,7 +290,7 @@
     }
     .item-amount {
       padding-bottom: 0.5em;
-      @include dots($white, 6px);
+      @include dots($white);
       input {
         color: $white;
         max-width: 60px;
@@ -390,7 +390,7 @@
         .actions {
           background: $lightGray;
           &::before {
-            @include dots($black, 6px);
+            @include dots($black);
           }
         }
       }
@@ -417,7 +417,7 @@
         .actions {
           background: $brand-main;
           &::before {
-            @include dots($white, 6px);
+            @include dots($white);
           }
         }
       }

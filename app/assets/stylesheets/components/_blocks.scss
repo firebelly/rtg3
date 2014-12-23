@@ -22,7 +22,7 @@
       font-size: 1.125em;
       margin-bottom: 0.25em;
       padding-bottom: 0.25em;
-      @include dots($black, 6px);
+      @include dots($black);
     }
     ul {
       margin: 0;
@@ -45,7 +45,7 @@
       }
     }
     .social-link {
-      @include dots($white, 6px);
+      @include dots($white);
     }
     .icon {
       height: 1em;
@@ -90,7 +90,7 @@
         @include font-bold();
         display: inline-block;
         padding-bottom: 0.25em;
-        @include dots($white, 6px);
+        @include dots($white);
       }
     }
   }
@@ -344,7 +344,7 @@
     background: $brand-main;
     max-height: 2000px;
     .accordion-trigger {
-      @include dots($white, 6px);
+      @include dots($white);
       &:hover, &:focus, &:active {
         .actions {
           .plus-x {
@@ -393,7 +393,7 @@
     cursor: pointer;
     padding: 25px 0;
     @include clearfix();
-    @include dots($black, 6px);
+    @include dots($black);
     h3 {
       margin: 0;
       padding: 0;
@@ -479,7 +479,7 @@
       background: $brand-main-lite;
     }
     .accordion-trigger {
-      @include dots($white, 6px);
+      @include dots($white);
       .actions {
         .icon-mail {
           stroke: $white;
@@ -555,7 +555,7 @@
         font-size: 1em;
         margin: 1em auto 0;
         display: inline-block;
-        @include dots($white, 6px);
+        @include dots($white);
       }
     }
   }
@@ -625,7 +625,7 @@
           display: flex;
           padding: 12px 0;
           position: relative;
-          @include dots($darkGray, 6px);
+          @include dots($darkGray);
         }
       }
     }
@@ -710,7 +710,7 @@
               background: $lightPink;
             }
             .list-wrap {
-              @include dots($white, 6px);
+              @include dots($white);
             }
           }
           &.last-item {

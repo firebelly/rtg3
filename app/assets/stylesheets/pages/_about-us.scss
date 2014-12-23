@@ -190,7 +190,7 @@
             display: block;
             max-width: 100px;
             margin: 50px auto;
-            @include dots($black, 6px);
+            @include dots($black);
           }
         }
         .quotee {
@@ -224,7 +224,7 @@
         margin: 0 auto;
         display: inline-block;
         padding-bottom: 0.25em;
-        @include dots($white, 6px);
+        @include dots($white);
       }
     }
     .-right {
@@ -236,7 +236,7 @@
         color: $brand-main;
         font-size: 1.125em;
         padding-bottom: 0.5em;
-        @include dots($black, 6px);
+        @include dots($black);
       }
     }
     .ourBoard {
@@ -249,7 +249,7 @@
         font-size: 1.125em;
         @include font-bold();
         padding-bottom: 0.25em;
-        @include dots($white, 6px);
+        @include dots($white);
         &:first-of-type {
           margin-left: 0;
         }

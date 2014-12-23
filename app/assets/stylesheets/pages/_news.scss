@@ -14,7 +14,7 @@
           margin-top: 1em;
           display: inline-block;
           padding-bottom: 0.25em;
-          @include dots($white, 6px);
+          @include dots($white);
         }
       }
     }
@@ -61,7 +61,7 @@
         }
         &.active {
           .accordion-trigger {
-            @include dots($black, 6px);
+            @include dots($black);
             .actions {
               .icon-mail {
                 stroke: $brand-main;
@@ -98,11 +98,11 @@
       }
       .block-title {
         h4 {
-          @include dots($white, 6px);
+          @include dots($white);
         }
       }
       .accordion-content {
-        @include dots($white, 6px);
+        @include dots($white);
       } 
     }
     .-gray {
@@ -114,11 +114,11 @@
       .block-title {
         h4 {
           color: $pink;
-          @include dots($black, 6px);
+          @include dots($black);
         }
       }
       .accordion-content {
-        @include dots($black, 6px);
+        @include dots($black);
       }
     }
   }
@@ -127,7 +127,7 @@
     .news-items {
       >div:first-of-type {
         .block-content {
-          @include dots($white, 6px);
+          @include dots($white);
           background-position: top;
         }
       }
@@ -138,7 +138,7 @@
     .news-items {
       >div:first-of-type {
         .block-content {
-          @include dots($black, 6px);
+          @include dots($black);
           background-position: top;
         }
       }

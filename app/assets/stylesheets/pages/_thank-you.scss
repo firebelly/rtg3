@@ -7,7 +7,7 @@
     }
     .links a {
       padding-bottom: 0.25em;
-      @include dots($white, 6px);
+      @include dots($white);
     }
     .icon {
       fill: $white;
