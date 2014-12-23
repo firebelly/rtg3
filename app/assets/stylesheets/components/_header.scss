@@ -385,11 +385,11 @@ body.news .sticky .menu .news {
 
 // Page Banners
 .banner-wrap {
-  height: 100%;
+  height: auto;
   padding: 12px;
   max-height: 800px;
-  min-height: 400px;
   @include min-screen($bpMed) {
+    height: 50%;
     padding: 25px;
     max-height: none;
     min-height: 600px;
@@ -398,6 +398,7 @@ body.news .sticky .menu .news {
     width: 100%;
     height: 100%;
     display: flex;
+    padding: 100px 0;
     position: relative;
     background-size: cover;
     &::before {
