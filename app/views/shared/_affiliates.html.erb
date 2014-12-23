@@ -6,12 +6,12 @@
         <div class="affiliates-slider affiliates-slider-w<%= @affiliates.length==2 ? '3' : '2' %>">
         <% unless @partnered_supporters.blank? %>
           <% for supporter in @partnered_supporters %>
-            <div class="item"><a href="#"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
+            <div class="item"><a href="supporters#partners"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
         <% end %>
         </div>
       </div>
-    <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+    <a class="affiliates-link" href="supporters#partners"><div class="plus-arrow"></div></a>
   </div>
   <% end %>
   <% if @affiliates.include? 'sponsors' %>
@@ -21,12 +21,12 @@
         <div class="affiliates-slider affiliates-slider-w<%= @affiliates.length==2 ? '3' : '2' %>">
         <% unless @sponsored_supporters.blank? %>
           <% for supporter in @sponsored_supporters %>
-            <div class="item"><a href="#"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
+            <div class="item"><a href="supporters#sponsors"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
         <% end %>
         </div>
       </div>
-    <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+    <a class="affiliates-link" href="supporters#sponsors"><div class="plus-arrow"></div></a>
   </div>
   <% end %>
   <% if @affiliates.include? 'featured' %>
@@ -36,12 +36,12 @@
         <div class="affiliates-slider affiliates-slider-w<%= @affiliates.length==2 ? '3' : '2' %>">
           <% unless @featured_supporters.blank? %>
             <% for supporter in @featured_supporters %>
-              <div class="item"><a href="#"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
+              <div class="item"><a href="supporters#featurers"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
             <% end %>
           <% end %>
         </div>
       </div>
-    <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+    <a class="affiliates-link" href="supporters#featurers"><div class="plus-arrow"></div></a>
   </div>
   <% end %>
 </div>

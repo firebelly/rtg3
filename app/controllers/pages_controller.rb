@@ -22,6 +22,14 @@ class PagesController < ApplicationController
   def about_us
   end
 
+  def supporters
+    @body_class = "supporters"
+    @affiliates = ["sponsors", "partners", "featured"]
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @featured_supporters = SupporterType.friendly.find('featured').supporters
+  end
+
   def success_stories
     @body_class = 'success_stories'
     @successes = Reason.published.is_success.order('post_date DESC')

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get '/get-involved' => 'pages#get_involved', id: 'get-involved'
   get '/apply' => 'pages#apply', id: 'apply'
   get '/about-us' => 'pages#about_us', id: 'about-us'
+  get '/supporters' => 'pages#supporters', id: 'supporters'
   
   # get '/press' => 'posts#press_index', :id => 'press'
   # get '/press/:id' => 'posts#press_show', as: 'press_post'
