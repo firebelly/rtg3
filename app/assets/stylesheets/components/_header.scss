@@ -457,6 +457,7 @@ body.news .sticky .menu .news {
   transform: translateX(-50%) scaleY(1);
   transition: transform 0.2s ease-out, background 0.2s ease-out;
   &:hover, &:focus, &:active {
+    outline: none;
     background: #ED68A8;
     transform: translateX(-50%) scaleY(1.1);
   }
