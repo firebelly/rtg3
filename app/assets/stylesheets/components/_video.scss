@@ -31,6 +31,7 @@
     padding: 12px;
     margin: 0 auto;
     max-width: 800px;
+    height: 300px;
     position: absolute;
     transform: translate(-50%, -50%);
     transition: opacity 1s ease-out;
@@ -47,6 +48,7 @@
 
   @include min-screen($bpMed) {
     .video-wrap {
+      height: 600px;
       padding: 25px;
     }
   }
