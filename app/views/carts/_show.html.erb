@@ -7,7 +7,7 @@
 			<% else %>
 		    <a href="<%= reason_path(donation.reason) %>" class="item-title"><%= donation.reason.title %></a>
 			<% end %>
-	    <div class="item-amount">Amount: $<input data-method="put" data-remote="true" data-url="<%= update_cart_path(donation) %>" name="amount" type="number" class="amount" value="<%= number_with_precision(donation.amount, precision: 0) %>"></div>
+	    <div class="item-amount">Amount: $<input data-method="put" size="4" data-remote="true" data-url="<%= update_cart_path(donation) %>" name="amount" type="number" class="amount" value="<%= number_with_precision(donation.amount, precision: 0) %>"></div>
 	    <%= link_to raw('<span class="screen-reader">Remove Item</span><span class="x -white"></span>'), remove_from_cart_path(donation.id), remote: true, class: 'item-remove' %>
 	  </li>
   <% end -%>

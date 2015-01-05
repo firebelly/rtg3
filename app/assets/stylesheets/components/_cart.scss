@@ -293,10 +293,16 @@
       @include dots($white);
       input {
         color: $white;
-        max-width: 60px;
+        max-width: 40px;
         display: inline-block;
-        padding: 0.25em;
+        padding: 0;
+        border: none;
+        font-size: inherit;
+        font-weight: 700;
+        font-style: normal;
+        @include font-smoothing(antialiased);
         &:focus {
+          padding: .25em;
           color: $brand-main;
         }
       }
