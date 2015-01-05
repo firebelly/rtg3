@@ -4,8 +4,8 @@ class ReasonsController < ApplicationController
 
   def index
     @page = Page.friendly.find('give')
-    @promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
-    @reasons = Reason.published.unfulfilled - @promoted_reason
+    @promoted_reason = Reason.published.not_success.promoted.limit(1)
+    @reasons = Reason.published.not_success - @promoted_reason
   end
 
   def success_stories
@@ -32,7 +32,7 @@ class ReasonsController < ApplicationController
 
   def show
     @reason = Reason.friendly.find(params[:id])
-    @slider_reasons = Reason.published.unfulfilled.where('id != ?', @reason.id)
+    @slider_reasons = Reason.published.not_success.where('id != ?', @reason.id)
     @og_description = @reason.excerpt || @reason.content
     @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
     

@@ -163,7 +163,7 @@ RailsAdmin.config do |config|
       field :total_donated
       field :total_needed
       field :is_success
-      field :fulfilled
+      # field :fulfilled
       field :post_date
       field :promoted
     end

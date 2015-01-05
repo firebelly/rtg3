@@ -21,6 +21,7 @@ class Reason < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
   scope :promoted, -> { where(promoted: true) }
+  scope :not_success, -> { where(is_success: false) }
   scope :is_success, -> { where(is_success: true) }
   scope :fulfilled, -> { where("total_donated >= total_needed") }
   scope :unfulfilled, -> { where("total_donated < total_needed") }
