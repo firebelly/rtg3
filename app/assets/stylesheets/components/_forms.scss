@@ -181,6 +181,7 @@ form {
   }
 
   .custom-checkbox-wrap {
+    margin-top: 25px;
     input {
       &:focus {
         ~ label {
@@ -190,10 +191,10 @@ form {
       }
     }
     label {    
-      padding: 0.5em;
-      margin-top: -1em;
-      margin-left: 0.5em;
-      width: calc(100% + 1em);
+      // padding: 0.5em;
+      // margin-top: -1em;
+      // margin-left: 0.5em;
+      // width: calc(100% + 1em);
     }
   }
 

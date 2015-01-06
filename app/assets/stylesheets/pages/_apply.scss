@@ -15,17 +15,11 @@
   .intern-form {
     .pane-1 {
       .btn {
-        margin-top: 50px;
+        margin-top: 25px;
       }
-
       .one-half-left {
         padding-right: 50px;
       }
-      // .one-half-right.full-bleed {
-      //   position: absolute;
-      //   background: image-url('RTG_intern.jpg') no-repeat;
-      //   background-size: cover;
-      // }
     }
   }
 
@@ -34,14 +28,12 @@
       margin-top: 50px;
     }
     .pane-1 {
+      .btn {
+        margin-top: 25px;
+      }
       .one-half-left {
         padding-right: 50px;
       }
-      // .one-half-right.full-bleed {
-      //   position: absolute;
-      //   background: image-url('RTG_volunteer.jpg') no-repeat;
-      //   background-size: cover;
-      // }
     }
   }
 }
