@@ -26,6 +26,7 @@
       transition: fill 0.2s ease-out;
     }
     a {
+      display: block;
       &:hover, &:focus, &:active {
         .icon {
           fill: $brand-main;
@@ -214,7 +215,12 @@
   @include min-screen($bpMed) {
     padding: 0 25px;
     .logo {
+      width: 302px;
+      height: 42px;
       margin: 50px 0 0;
+      .icon {
+        height: 42px;
+      }
     }
     .nav_main {
       .menu-toggle {
@@ -236,7 +242,7 @@
     }
   }
 
-  @include min-screen(1064px) {
+  @include min-screen(1180px) {
     padding: 50px 0 25px;
     &.sticky {
       padding: 25px 0;
@@ -250,7 +256,10 @@
       box-shadow: 0 3px 4px rgba(0,0,0,0.1);
       transition: background-color 0.2s ease-out;
       .logo {
+        width: 192px;
+        height: 28px;
         .icon {
+          height: 28px;
           fill: $brand-main;
         }
         &:hover, &:focus, &:active {
@@ -285,7 +294,7 @@
       }
     }
     .logo {
-      margin: 0 0 0 50px;
+      margin: -8px 0 0 50px;
       display: inline-block;
     }
     .nav_main {
