@@ -44,6 +44,7 @@
       border-bottom: 3px solid $brand-main;
     }
     .amount-raised {
+      clear: left;
       p.stat-figure {
         margin: 0 0 12px;
       }
@@ -286,6 +287,9 @@
       p.stat-figure {
         float: left;
         font-size: 3.375em;
+      }
+      .individuals-served {
+        padding-right: 20px;
       }
       .amount-raised {
         p.stat-figure {
