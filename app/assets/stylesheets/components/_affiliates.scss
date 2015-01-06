@@ -61,6 +61,13 @@
         margin: 0 auto;
       }
     }
+    .slick-track {
+      display: flex;
+    }
+    .item {
+      padding: 0 5px;
+      margin: auto 0;
+    }
   }
 
   @include min-screen($bpMed) {
