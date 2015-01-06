@@ -3,7 +3,7 @@
     <div class="accordion-trigger">
       <h4><%= news.title %></h4>
       <div class="actions" aria-hidden="true">
-        <svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg>
+        <svg class="icon icon-<%= icon_css(news.icon) %>" role="img"><use xlink:href="#icon-<%= icon_css(news.icon) %>"></use></svg>
         <span class="plus-x -white"></span>
       </div>
     </div>

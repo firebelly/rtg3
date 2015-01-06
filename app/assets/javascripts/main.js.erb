@@ -138,10 +138,11 @@ var RTG = (function ($) {
       var $amountInput = $(this).find('input[name=amount]'); 
       // make sure a value is present
       if (!$amountInput.val() || parseInt($amountInput.val())<=0) {
-        _flashAlert('Please enter an amount.');
-        $amountInput.focus();
-        e.preventDefault();
-        e.stopPropagation();
+        $amountInput.val('25');
+        // _flashAlert('Please enter an amount.');
+        // $amountInput.focus();
+        // e.preventDefault();
+        // e.stopPropagation();
       }
     });
     // update cart contents after adding item

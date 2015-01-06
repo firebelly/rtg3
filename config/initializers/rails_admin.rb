@@ -91,6 +91,7 @@ RailsAdmin.config do |config|
       sort_reverse true
       field :title
       field :post_type
+      field :icon
       field :post_date
       field :published
     end
