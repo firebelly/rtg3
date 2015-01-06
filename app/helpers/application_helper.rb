@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def icon_css(type)
+    case type
+    when 'text'
+      return 'document'
+    when 'audio'
+      return 'bars'
+    when 'video'
+      return 'play'
+    end
+  end
+
   def get_video_embed_url(html)
     videos = []
     videos.concat(parse_videos(html, 'youtube_short'))
