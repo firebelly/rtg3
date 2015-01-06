@@ -1,9 +1,58 @@
 // Supporters
 
-.supporters {
+.supporters-page {
   &.banner-wrap {
     .banner {
-      background-image: image-url('RTG_Feature2.jpg');
+      background-image: url('../images/RTG_Feature2.jpg');
+    }
+  }
+
+  .supporters {
+    .block {
+      &:hover, &:focus, &:active {
+        background: $sheer1;
+      }
+    }
+  }
+
+  .supporter-grid {
+    padding: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: space-around;
+    .supporter {
+      height: 100%;
+      display: flex;
+      padding: 12px;
+      height: 174px;
+      max-width: 324px;
+      margin-bottom: 12px;
+      transition: background 0.2s ease-out;
+      &:hover, &:focus, &:active {
+        background: $sheer2;
+      }
+      a {
+        margin: auto;
+        display: block;
+        img {
+          max-height: 150px;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .supporter-grid {
+      .supporter-row {
+        margin-top: 100px;
+        .supporter {
+          padding: 25px;
+          max-width: 350px;
+          max-height: 200px;
+          margin-bottom: 25px;
+        }
+      }
     }
   }
 }

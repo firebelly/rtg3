@@ -4,29 +4,32 @@
   <%= render :partial => '/shared/edit_bug', :locals => { :obj => @page, :edit_path => rails_admin.edit_path(model_name: 'page', id: @page.id) }%>
 <% end %>
 
-<div class="wrap banner-wrap supporters">
-  <div class="banner">
+<%= content_for :featured do %>
+<div class="wrap banner-wrap">
+  <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:large)) %>')"<% end %>>
     <div class="banner-content">
-      <h2>Thank You To Everyone Who Supports Us</h2>
+      <% unless @page.banner_title.blank? %>
+        <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
+      <% end %>
     </div>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img" aria-labelledby="title"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>
 </div>
+<% end %>
 
 <% if @affiliates.include? 'sponsors' %>
   <div class="blocks supporters" id="sponsors">
     <div class="block -gray -full">
-        <div class="block-content">
-          <h4>Sponsored By</h4>
-          <div class="supporter-grid">
-          <% unless @sponsored_supporters.blank? %>
-            <% for supporter in @sponsored_supporters %>
-              <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
-            <% end %>
+      <div class="block-content">
+        <h4>Sponsored By</h4>
+        <div class="supporter-grid">
+        <% unless @sponsored_supporters.blank? %>
+          <% for supporter in @sponsored_supporters %>
+            <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
-          </div>
+        <% end %>
         </div>
-      <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+      </div>
     </div>
   </div>
 <% end %>
@@ -34,17 +37,16 @@
 <% if @affiliates.include? 'partners' %>
   <div class="blocks supporters" id="partners">
     <div class="block -gray -full">
-        <div class="block-content">
-          <h4>Partnered With</h4>
-          <div class="supporter-grid">
-          <% unless @partnered_supporters.blank? %>
-            <% for supporter in @partnered_supporters %>
-              <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
-            <% end %>
+      <div class="block-content">
+        <h4>Partnered With</h4>
+        <div class="supporter-grid">
+        <% unless @partnered_supporters.blank? %>
+          <% for supporter in @partnered_supporters %>
+            <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
-          </div>
+        <% end %>
         </div>
-      <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+      </div>
     </div>
   </div>
 <% end %>
@@ -52,17 +54,16 @@
 <% if @affiliates.include? 'featured' %>
   <div class="blocks supporters" id="featurers">
     <div class="block -gray -full">
-        <div class="block-content">
-          <h4>Featured On</h4>
-          <div class="suppoert-grid">
-            <% unless @featured_supporters.blank? %>
-              <% for supporter in @featured_supporters %>
-                <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
-              <% end %>
+      <div class="block-content">
+        <h4>Featured On</h4>
+        <div class="supporter-grid">
+          <% unless @featured_supporters.blank? %>
+            <% for supporter in @featured_supporters %>
+              <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
             <% end %>
-          </div>
+          <% end %>
         </div>
-      <a class="affiliates-link" href="#"><div class="plus-arrow"></div></a>
+      </div>
     </div>
   </div>
 <% end %>
