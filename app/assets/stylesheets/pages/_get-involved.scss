@@ -11,6 +11,9 @@
   .accordion {
     .block-content {
       .accordion-content {
+        .btn {
+          margin-top: 25px;
+        }
         p {
           color: $white;
         }
@@ -21,10 +24,6 @@
   .intern-form {
     .pane-1 {
       .one-half-left {
-        .btn {
-          margin-top: 50px;
-        }
-        position: relative;
       }
       .one-half-right.full-bleed {
         min-height: 400px;
@@ -38,9 +37,6 @@
   .volunteer-form {
     .pane-1 {
       .one-half-left {
-        .btn {
-          margin-top: 50px;
-        }
       }
       .one-half-right.full-bleed {
         min-height: 400px;
