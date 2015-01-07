@@ -19,12 +19,17 @@
 
   @include min-screen(600px) {
     .reasons-slider {
+      overflow: hidden;
+      .slick-list {
+        margin: 0 -12.5px;
+      }
       .slick-track {
         display: flex;
       }
       .reason-block {
         height: auto;
         display: flex;
+        margin: 0 12.5px;
         a {
           height: auto;
         }
