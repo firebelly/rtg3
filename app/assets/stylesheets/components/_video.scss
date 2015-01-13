@@ -5,10 +5,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 0;
   opacity: 0;
   display: none;
-  position: fixed;
+  overflow: hidden;
+  position: absolute;
   .feature-video-background {
     top: 0;
     left: 0;
@@ -24,16 +25,15 @@
     }
   }
   .video-wrap {
-    left: 50%;
-    top: -100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
+    padding: 0;
     width: 100%;
-    padding: 12px;
     margin: 0 auto;
-    max-width: 800px;
-    height: 300px;
     position: absolute;
-    transform: translate(-50%, -50%);
     transition: opacity 1s ease-out;
   }
   &.active {
@@ -47,9 +47,6 @@
   }
 
   @include min-screen($bpMed) {
-    .video-wrap {
-      height: 600px;
-      padding: 25px;
-    }
+
   }
 }

@@ -6,12 +6,24 @@
   overflow: hidden;
   max-height: 800px;
   min-height: 400px;
+  transition: height 0.2s ease-out;
   @include min-screen($bpMed) {
     height: auto;
     padding: 25px;
     min-height: 50%;
-    max-height: none;
+    max-height: 100%;
     overflow: hidden;
+    transform-origin: top;
+    &.video-expanded {
+      .scroll-down {
+        .icon {
+          opacity: 0;
+        }
+        .x {
+          opacity: 1
+        }
+      }
+    }
   }
 }
 

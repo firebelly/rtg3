@@ -633,7 +633,8 @@ var RTG = (function ($) {
   function _initVideo() {
     youtubePlayer = new YT.Player('video', {
       events: {
-        'onReady': RTG.onPlayerReady
+        'onReady': RTG.onPlayerReady,
+        'onStateChange': RTG.onPlayerStateChange
       }
     });
   };
@@ -641,15 +642,24 @@ var RTG = (function ($) {
   function _onPlayerReady() {
     $('.video-toggle').on("click", function() {
       // wait for video to drop in
+      $('.slider-wrap').addClass('video-expanded');
+      $('.slider-wrap').velocity(
+        { 
+          height: '100%'
+        }
+      );
       setTimeout(function() {
         youtubePlayer.playVideo();
       }, 250);
     });
-    
-    $('.feature-video-background').on("click", function() {
-      youtubePlayer.pauseVideo();
-    });
   };
+
+  function _onPlayerStateChange(event) {        
+    if(event.data === 0) {
+      console.log('test');     
+      RTG.closeVideo();
+    }
+  }
 
   function _video() {
     $('.video-toggle').on('click', function (e) {
@@ -662,32 +672,28 @@ var RTG = (function ($) {
           display: "block" 
         }
       );
-      $('.video-wrap').velocity(
-        { 
-          top: '50%'
-        },
-        {
-          delay: 50,
-          easing: "easeOut"
-        }
-      );
-    });
-    $('.feature-video-background').on('click', function () {
-      $('.feature-video').velocity(
-        { 
-          opacity: 0
-        },
-        { 
-          display: "none",
-          delay: 100
-        }
-      );
-      $('.video-wrap').velocity('reverse');
     });
 
-    // Fitvids to the rescue!
-    $('.video-wrap').fitVids();
+    $('body').on('click', '.video-expanded .scroll-down', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      youtubePlayer.pauseVideo();
+      RTG.closeVideo();
+    });
   };
+
+  function _closeVideo() {
+    $('.slider-wrap').removeClass('video-expanded');
+    $('.slider-wrap').velocity("reverse");
+    $('.feature-video').velocity(
+      { 
+        opacity: 0
+      },
+      { 
+        display: "none" 
+      }
+    );
+  }
 
   function _googleMap() {
     var map;
@@ -898,7 +904,9 @@ var RTG = (function ($) {
     hideCart: _hideCart,
     initVideo: _initVideo,
     checkoutSubmit: _checkoutSubmit,
-    onPlayerReady: _onPlayerReady
+    onPlayerReady: _onPlayerReady,
+    onPlayerStateChange: _onPlayerStateChange,
+    closeVideo: _closeVideo
   };
 
 })(jQuery);
