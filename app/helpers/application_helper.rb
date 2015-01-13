@@ -15,7 +15,7 @@ module ApplicationHelper
     videos.concat(parse_videos(html, 'youtube_short'))
     videos.concat(parse_videos(html, 'youtube'))
     unless videos.blank?
-      return "//www.youtube.com/embed/%s?enablejsapi=1" % videos[0]['id']
+      return "https://www.youtube.com/embed/%s?enablejsapi=1" % videos[0]['id']
     end
   end
 
