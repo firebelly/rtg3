@@ -1,4 +1,4 @@
-<%= content_for :title, raw(@page.title_override || @page.title) %>
+<%= content_for :title, raw(@page.title_override.blank? ? @page.title : @page.title_override) %>
 
 <% unless @promoted_reason.blank? %>
   <%= content_for :featured do %>
