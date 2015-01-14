@@ -1,0 +1,24 @@
+<%= content_for :title, raw(@post.title) %>
+
+<%= content_for :edit_link do %>
+  <%= render :partial => '/shared/edit_bug', :locals => { :obj => @post, :edit_path => rails_admin.edit_path(model_name: 'post', id: @post.id) }%>
+<% end %>
+
+<%= content_for :featured do %>
+<div class="wrap banner-wrap -pink">
+  <div class="banner">
+    <div class="banner-content">
+      <h2><%=raw @post.title %></h2>
+    </div>
+    <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg></a>
+  </div>
+</div>
+<% end %>
+
+<div class="blocks intro">
+  <div class="block -full">
+    <article class="block-content">
+      <%= raw video_embeds(@post.content) %>
+    </article>
+  </div>
+</div>

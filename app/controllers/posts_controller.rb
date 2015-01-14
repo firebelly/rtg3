@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.friendly.find(params[:id])
   end
 
   private
