@@ -4,7 +4,7 @@
       <h4><%= news.title %></h4>
       <div class="actions" aria-hidden="true">
         <svg class="icon icon-<%= icon_css(news.icon) %>" role="img"><use xlink:href="#icon-<%= icon_css(news.icon) %>"></use></svg>
-        <span class="plus-x -white"></span>
+        <span class="plus-x -<%= news.post_type.slug=="news" ? "white" : "pink" %>"></span>
       </div>
     </div>
     <div class="accordion-content">
