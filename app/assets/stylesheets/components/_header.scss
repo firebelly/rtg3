@@ -169,7 +169,7 @@
           @include font-bold();
           transition: background 0.2s ease-out;
           span {
-            border-bottom: 1px dotted $white;
+            border-bottom: 1px solid $white;
           }
           &:hover, &:focus, &:active, &.current-page {
             background: $lightPink;
@@ -321,12 +321,12 @@
             span {
               padding-bottom: 0.25em;
               transition: border-color 0.2s ease;
-              border-bottom: 1px dotted rgba(255,255,255,0);
+              border-bottom: 1px solid rgba(255,255,255,0);
             }
             &:hover, &:focus, &:active {
               background: none;
               span {
-                border-bottom: 1px dotted rgba(255,255,255,1);
+                border-bottom: 1px solid rgba(255,255,255,1);
               }
             }
           }
@@ -372,7 +372,7 @@ body.news .menu .news {
     a {
       background: none;
       span {
-        border-bottom: 1px dotted rgba(255,255,255,1);
+        border-bottom: 1px solid rgba(255,255,255,1);
       }     
     }
   }
