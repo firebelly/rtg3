@@ -648,9 +648,11 @@ var RTG = (function ($) {
           height: '100%'
         }
       );
-      setTimeout(function() {
-        youtubePlayer.playVideo();
-      }, 250);
+      if (!Modernizr.touch) {
+        setTimeout(function() {
+          youtubePlayer.playVideo();
+        }, 250);
+      }
     });
   };
 
