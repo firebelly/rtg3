@@ -223,6 +223,11 @@
     .block-content-slider {
       position: static;
       padding-bottom: 80px;
+      .slick-slide {
+        ul {
+          font-size: 0.625em;
+        }
+      }
       .slick-dots {
         li {
           &::before {
@@ -803,6 +808,13 @@
     padding-bottom: 0;
     .block-content {
       margin: 0 auto;
+      .block-content-slider {
+        .slick-slide {
+          ul {
+            font-size: 1em;
+          }
+        }
+      }
     }
     .slick-next,
     .slick-prev {
