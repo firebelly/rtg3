@@ -44,7 +44,7 @@
       }
       .accordion-content {
         p {
-          a {
+          a:not(.btn) {
             text-decoration: underline;
           }
         }

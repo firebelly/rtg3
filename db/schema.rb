@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222224437) do
+ActiveRecord::Schema.define(version: 20150114201250) do
 
   create_table "applicants", force: true do |t|
     t.string   "first_name"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20141222224437) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon"
+    t.string   "url"
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree

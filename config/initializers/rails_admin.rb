@@ -106,6 +106,9 @@ RailsAdmin.config do |config|
         default_value 'text'
       end
       field :post_date
+      field :url do
+        help '"View Page" button will link to this instead of single Post page if this is set.'
+      end
       field :content, :ck_editor
     end
   end

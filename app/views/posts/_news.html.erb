@@ -1,15 +1,21 @@
+<% link_color = news.post_type.slug=="news" ? "white" : "pink" %>
 <li class="accordion -<%= news.post_type.slug=="news" ? "pink" : "gray" %>">
   <div class="block-content">
     <div class="accordion-trigger">
       <h4><%= news.title %></h4>
       <div class="actions" aria-hidden="true">
         <svg class="icon icon-<%= icon_css(news.icon) %>" role="img"><use xlink:href="#icon-<%= icon_css(news.icon) %>"></use></svg>
-        <span class="plus-x -<%= news.post_type.slug=="news" ? "white" : "pink" %>"></span>
+        <span class="plus-x -<%= link_color %>"></span>
       </div>
     </div>
     <div class="accordion-content">
       <div>
         <%= raw video_embeds(news.content) %>
+        <% if news.url.blank? %>
+          <p class="more"><%= link_to('View Page', news, class: "btn -#{link_color} -hollow") %></p>
+        <% else %>
+          <p class="more"><%= link_to('View Page', news.url, class: "btn -#{link_color} -hollow", target: '_blank') %></p>
+        <% end %>
       </div>
     </div>
   </div>
