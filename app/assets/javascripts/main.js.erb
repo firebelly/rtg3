@@ -257,7 +257,7 @@ var RTG = (function ($) {
         // set all prev stage buttons to "Edit"
         $('.cart-stage').not(stage).find('.btn').text('Edit');
         // focus first input in next stage
-        stage.find('.-first input').focus();
+        setTimeout(function() { stage.find('.-first input').focus(); }, 250);
       });
     });
 
