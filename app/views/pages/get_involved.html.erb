@@ -1,4 +1,4 @@
-<%= content_for :title, raw(@page.title_override || @page.title) %>
+<%= content_for :title, raw(@page.title_override.blank? ? @page.title : @page.title_override) %>
 
 <%= content_for :edit_link do %>
   <%= render :partial => '/shared/edit_bug', :locals => { :obj => @page, :edit_path => rails_admin.edit_path(model_name: 'page', id: @page.id) }%>
