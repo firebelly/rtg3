@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @body_class = 'news'
     @post = Post.friendly.find(params[:id])
   end
 
