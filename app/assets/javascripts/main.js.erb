@@ -133,16 +133,15 @@ var RTG = (function ($) {
   };
 
   function _cartInit() {
+    // faux <form> wrappers on cart item amounts, only so they get proper CSS styling (kludge-o-rama)
+    $('#cart').on('submit', 'form.item-amount', function(e) { e.preventDefault(); });
+
     // add to cart links
     $('.cart-form').submit(function(e) {
       var $amountInput = $(this).find('input[name=amount]'); 
-      // make sure a value is present
+      // set value to 25 if blank (same as placeholder)
       if (!$amountInput.val() || parseInt($amountInput.val())<=0) {
         $amountInput.val('25');
-        // _flashAlert('Please enter an amount.');
-        // $amountInput.focus();
-        // e.preventDefault();
-        // e.stopPropagation();
       }
     });
     // update cart contents after adding item
@@ -244,20 +243,19 @@ var RTG = (function ($) {
         // determine current stage
         var stage = $(this).closest('.cart-stage');
         var stageClass = stage.data('stage') + '-stage';
-        var nextStage = stage.next('.cart-stage');
         // this stage is current, let's move on to the next
         if ($('.cart').hasClass(stageClass)) {
           stage.removeClass('active-stage');
-          stage = stage.next('.cart-stage');
+          stage = $(_findNextCartStage(stage[0]));
           stageClass = stage.data('stage') + '-stage';
         }
         // set stage class for .cart
         $('.cart').attr('class','cart active').addClass(stageClass);
         _resetCartButtons();
-        // set acitve-stage class
+        // set active-stage class
         stage.addClass('active-stage');
         // set all prev stage buttons to "Edit"
-        stage.prevAll('.cart-stage').find('.btn').text('Edit');
+        $('.cart-stage').not(stage).find('.btn').text('Edit');
         // focus first input in next stage
         stage.find('.-first input').focus();
       });
@@ -331,6 +329,16 @@ var RTG = (function ($) {
 
   }; // end _cartInit()
 
+  // finds the next .cart-stage since they're not DOM siblings now (not my most beautiful work)
+  function _findNextCartStage(stage) {
+    var found,nextStage;
+    $('.cart-stage').each(function(){
+      if (!nextStage && found) nextStage = this;
+      if (this==stage) found = true;
+    });
+    return nextStage;
+  }
+
   function _checkoutSubmit() {
     // if using paypal, just submit form
     if ($('#braintree-paypal-loggedin').is(':visible')) {
@@ -382,9 +390,10 @@ var RTG = (function ($) {
     $('.cart-item-count').text(cartCount);
     $('.cart-item-count').toggleClass('active', cartCount > 0);
     if (cartCount==0) {
-      var emptyCartTxt = $('<p>Your cart is currently empty</p>').hide().appendTo('.cart-items-wrap');
+      var emptyCartTxt = $('<p>Your cart is currently empty</p>').hide().prependTo('.cart-items-wrap');
       setTimeout(function() {emptyCartTxt.fadeIn()}, 250);
       $('.cart').attr('class', 'cart active review-stage empty');
+      _resetCartButtons();
     } else {
       $('.cart').removeClass('empty');
     }
@@ -665,7 +674,6 @@ var RTG = (function ($) {
 
   function _onPlayerStateChange(event) {        
     if(event.data === 0) {
-      console.log('test');     
       RTG.closeVideo();
     }
   }
