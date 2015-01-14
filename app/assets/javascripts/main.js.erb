@@ -499,7 +499,14 @@ var RTG = (function ($) {
       $('.reasons-slider').unslick();
     }
 
-    $(window).resize(function () {
+    var r;
+
+    $(window).resize(function() {
+        clearTimeout(r);
+        r = setTimeout(doneResizing, 500);
+    });
+
+    function doneResizing() {
       if ($(window).width() > 600 ) {
         $('.reasons-slider').slick({
           slide: '.reason-block',
@@ -509,7 +516,7 @@ var RTG = (function ($) {
       } else {
         $('.reasons-slider').unslick();
       }
-    });
+    }
   };
 
   function _blockSliders() {
