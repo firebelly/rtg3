@@ -257,16 +257,8 @@ var RTG = (function ($) {
         // set all prev stage buttons to "Edit"
         $('.cart-stage').not(stage).find('.btn').text('Edit');
         // focus first input in next stage
-        setTimeout(function() { stage.find('.-first input').focus(); }, 450);
+        stage.find('.-first input').focus();
       });
-    });
-
-    // Scroll to Checkout stage on small-screen view for usability
-    $('.cart-review .stage-submit').on('click', function () {
-        var checkoutTop = $('.cart-review').height();
-        $('.cart').animate({
-          scrollTop: checkoutTop
-        }, 500);
     });
 
     // Toggle active stage by clicking/touching inactive stage
