@@ -59,8 +59,30 @@
     padding: 0 50px 1em;
   }
 
-  &.empty .cart-review .actions {
+  // donation form inside the cart, shows when cart is empty
+  .general-donation-form {
+    margin: 2em 50px;
     display: none;
+    input {
+      max-width: 70px;
+      @include min-screen($bpBig) {
+        max-width: 150px;
+      }
+    }
+    p {
+      margin: 0 0 .5em !important;
+    }
+  }
+
+
+  // empty cart!
+  &.empty {
+    .general-donation-form {
+      display: block;
+    }
+    .cart-review .actions {
+      display: none;
+    }
   }
 
   &.review-stage .cart-review,
@@ -563,4 +585,5 @@
   button#bt-pp-cancel {
     color: $black !important;
   }
+
 }

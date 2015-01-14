@@ -20,8 +20,9 @@ class CartsController < ApplicationController
   
   def update
     donation = Donation.find(params[:donation_id])
+    amount = params[:amount].gsub(/[^\d\.]/,'').to_f
     if donation
-      donation.update(amount: params[:amount].to_f)
+      donation.update(amount: amount)
     end
     render partial: 'carts/show'
   end

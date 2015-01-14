@@ -1,8 +1,5 @@
 <div class="cart <%= @cart.count == 0 ? 'empty' : '' %>" id="cart">
 
-  <%= form_tag(orders_path, method: 'post', class: 'checkout -pink', id: 'checkout') do %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= hidden_field_tag :payment_method_nonce, '' %>
     <div class="cart-review cart-stage -pink" data-stage="review">
       <span class="cart-accordion-toggle">
         <svg class="icon icon-cart" role="img"><use xlink:href="#icon-cart"></use></svg>
@@ -13,11 +10,22 @@
       <div class="cart-items-wrap">
         <%= render partial: "carts/show" -%>
       </div>
+
+      <div class="general-donation-form">
+        <p>Why not support what we do
+            by giving whatever you can:</p>
+        <%= render partial: "/shared/donation_form" -%>
+      </div>
+
       <div class="actions">
         <div id="paypal-button"></div>
         <a href="#checkout" data-original-text="Checkout" class="btn -white -hollow stage-submit checkout-toggle">Checkout</a>
       </div>
     </div>
+
+    <%= form_tag(orders_path, method: 'post', class: 'checkout -pink', id: 'checkout') do %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :payment_method_nonce, '' %>
 
     <div class="cart-checkout cart-stage -gray" data-stage="checkout">
       <span class="cart-accordion-toggle">
