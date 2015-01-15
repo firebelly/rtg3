@@ -7,6 +7,16 @@
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
   <div class="feature-slider">
+    <div class="feature intro-slide">      
+      <div class="feature-image"><img src="<%= image_url('RTG_Feature.jpg') %>" alt="Reason To Give"></div>
+      <div class="feature-content-wrap">
+        <div class="feature-content">
+          <h2>Welcome to Reason to Give</h2>
+          <div class="description"><p>Giving should be simplified. Donating should be quicker. Helping should be personalized.</p></div>
+          <div><%= render partial: "/shared/donation_form" -%></div>
+        </div>
+      </div>
+    </div>
     <%= render @reasons %>
     <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg></a>
   </div>

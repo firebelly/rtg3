@@ -445,16 +445,24 @@ var RTG = (function ($) {
   };
 
   function _featureSlider() {
-    $('.feature-slider').slick({
+    var featureSlider = $('.feature-slider').slick({
       slide: 'div.feature',
       autoplay: true,
       autoplaySpeed: 5000,
+      pauseOnHover: false,
       onInit: function(slider) {
         animateBar();
       },
       onAfterChange: function(slider) {
         animateBar();
+        $('.feature .text-input:focus').blur();
+        $('.feature .focused').removeClass('focused');
+        $('.feature .initial-actions.inactive').removeClass('inactive');
       }
+    });
+
+    $('.feature-slider input').on('focus', function () {
+      featureSlider.slickPause();
     }); 
 
     // Animate the slide's progress bar
@@ -464,6 +472,37 @@ var RTG = (function ($) {
     }
     // Animate reason's progress bars too
     $('.banner-content.feature .progress-bar .bar').hide().delay(250).animate({width:'toggle'}, 1000, 'easeInOutCubic');
+
+    $('.feature-slider .feature').each(function () {
+      var $slide = $(this),
+          $slideBG = $slide.find('.feature-image'),
+          $actions = $slide.find('.initial-actions'),
+          $form = $slide.find('.donate'),
+          $input = $form.find('input#amount'),
+          $toggle = $actions.find('.donation-toggle');
+
+      $toggle.on('click', function (e) {
+        e.preventDefault();
+        $form.toggleClass('focused');
+        $actions.toggleClass('inactive');
+        $input.focus();
+      });
+
+      $slideBG.on('click', function () {
+        if ($form.is('.focused')) {
+          $form.removeClass('focused');
+          $actions.removeClass('inactive');
+        }
+      });
+
+      $form.on('submit', function () { 
+        setTimeout(function () {
+          $form.removeClass('focused');
+          $actions.removeClass('inactive');
+        }, 500);
+      });
+
+    });
   };
 
   function _affiliatesSlider() {

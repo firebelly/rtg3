@@ -89,8 +89,8 @@
         position: relative;
         @include font-bold();
         display: inline-block;
-        padding-bottom: 0.25em;
         @include dots($white);
+        padding-bottom: 0.25em;
       }
     }
   }

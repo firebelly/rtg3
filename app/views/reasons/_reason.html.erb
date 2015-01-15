@@ -1,18 +1,33 @@
     <div class="feature">
-      <% unless local_assigns.has_key? :is_single %><a href="<%= reason_path(reason) %>"><% end %>
-        <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
-        <div class="feature-content-wrap">
-          <div class="feature-content">
-            <h2><%= reason.title %></h2>
-            <div class="description"><%= raw reason.excerpt %></div>
-            <% if !reason.featured_video.blank? and local_assigns.has_key? :is_single %>
-              <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
-            <% end %>
-            <div class="progress-bar">
-              <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
-              <div class="bar" style="max-width: <%= reason.percent_fulfilled %>%"></div>
+      <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
+      <div class="feature-content-wrap">
+        <div class="feature-content">
+          <h2><a href="<%= reason_path(reason) %>"><%= reason.title %></a></h2>
+          <div class="description"><%= raw reason.excerpt %> <a class="learn-more" href="<%= reason_path(reason) %>">Learn More</a></div>
+          <% if !reason.featured_video.blank? and local_assigns.has_key? :is_single %>
+            <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
+          <% end %>
+          <div class="feature-action">
+            <div class="initial-actions">
+              <div class="progress-bar">
+                <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+                <div class="bar" style="max-width: <%= reason.percent_fulfilled %>%"></div>
+              </div>
+              <% if !local_assigns.has_key? :is_single %>
+                <a class="donation-toggle btn -white" href="#">Donate Now!</a>
+              <% end %>
             </div>
+
+            <% if !local_assigns.has_key? :is_single %>
+              <%= form_tag(add_to_cart_path, remote: true, class: 'donate cart-form') do %>
+                <%= number_field_tag 'amount', nil, placeholder: 'Add Donation Amount', class: 'text-input' %>
+                <% if defined?(reason) %>
+                  <%= hidden_field_tag 'reason_id', reason.id %>
+                <% end %>
+                <%= submit_tag 'Add to Cart', class: 'submit btn -pink' %>
+              <% end %>
+            <% end %>
           </div>
         </div>
-      <% unless local_assigns.has_key? :is_single %></a><% end %>
+      </div>
     </div>
