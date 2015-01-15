@@ -323,6 +323,14 @@
           margin: 0 0 0 -2px;
         }
 
+        .initial-actions {
+          &.single-reason {
+            .progress-bar {
+              float: none;
+            }
+          }
+        }
+
         .donate {
           width: 458px;
           max-width: none;
