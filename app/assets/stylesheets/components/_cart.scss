@@ -1,10 +1,14 @@
 // Cart Module
 
-.touch .cart {
-  height: auto;
-  position: absolute;
-  &.checkout-stage {
-    bottom: auto;
+.touch {
+  @inlcude max-screen(600px) {
+    .cart {
+      height: auto;
+      position: absolute;
+      &.checkout-stage {
+        bottom: auto;
+      }
+    }
   }
 }
 
