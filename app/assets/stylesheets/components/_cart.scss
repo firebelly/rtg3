@@ -1,5 +1,17 @@
 // Cart Module
 
+.touch {
+  @inlcude max-screen(600px) {
+    .cart {
+      height: auto;
+      position: absolute;
+      &.checkout-stage {
+        bottom: auto;
+      }
+    }
+  }
+}
+
 .cart {
   top: 0;
   bottom: 0;
@@ -587,3 +599,10 @@
   }
 
 }
+
+// // Switch to Absolute for touch devices
+// .touch {
+//   .cart {
+//     position: absolute;
+//   }
+// }

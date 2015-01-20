@@ -150,6 +150,9 @@ var RTG = (function ($) {
       // hide any flash messages from previous errors
       _hideFlash();
       _setCartCount();
+      if (Modernizr.touch) {
+        $(window).scrollTop(0);
+      }
       _showCart();
     });
     
@@ -184,6 +187,9 @@ var RTG = (function ($) {
     $('.cart-toggle').on('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      if (Modernizr.touch) {
+        $(window).scrollTop(0);
+      }
       _showCart();
     });
 
@@ -262,11 +268,14 @@ var RTG = (function ($) {
     });
 
     // Scroll to Checkout stage on small-screen view for usability
+
     $('.cart-review .stage-submit').on('click', function () {
         var checkoutTop = $('.cart-review').height();
-        $('.cart').animate({
-          scrollTop: checkoutTop
-        }, 500);
+        if (!Modernizr.touch) {
+          $('.cart').animate({
+            scrollTop: checkoutTop
+          }, 500);
+        }
     });
 
     // Toggle active stage by clicking/touching inactive stage
