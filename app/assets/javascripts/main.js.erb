@@ -270,12 +270,14 @@ var RTG = (function ($) {
     // Scroll to Checkout stage on small-screen view for usability
     $('.cart-review .stage-submit').on('click', function () {
         var checkoutTop = $('.cart-review').height();
-        if (!Modernizr.touch) {
+        if (Modernizr.touch) {
+          if ($(window).width() < 600) {
+            $(window).scrollTop(checkoutTop);
+          }
+        } else {
           $('.cart').animate({
             scrollTop: checkoutTop
           }, 500);
-        } else {
-          $(window).scrollTop(checkoutTop);
         }
     });
 
