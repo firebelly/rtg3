@@ -2,11 +2,7 @@
       <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
-          <% if local_assigns.has_key? :is_single %>
-            <h2><%= reason.title %></h2>
-          <% else %>
-            <h2><a href="<%= reason_path(reason) %>"><%= reason.title %></a></h2>
-          <% end %>          
+          <h2><%= local_assigns.has_key?(:is_single) ? reason.title : link_to(reason.title, reason) %></h2>
           <div class="description"><%= raw reason.excerpt %><% if !local_assigns.has_key? :is_single %> <a class="learn-more" href="<%= reason_path(reason) %>">Learn More</a><% end %></div>
           <% if !reason.featured_video.blank? and local_assigns.has_key? :is_single %>
             <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
