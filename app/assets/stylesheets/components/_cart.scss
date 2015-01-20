@@ -31,6 +31,13 @@
     opacity: .5;
   }
 
+  &.working {
+    ul.cart-items {
+      transition: opacity 1s;
+      opacity: .5;
+    }
+  }
+
   #checkout.working {
     input,
     .stage-submit,
