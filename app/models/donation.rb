@@ -1,6 +1,6 @@
 class Donation < ActiveRecord::Base
   has_many :payment_records
-  has_many :donation_items
+  has_many :donation_items, dependent: :destroy
 
   # payment went through, adjust each reason's donated amount
   def finalize_order_items
