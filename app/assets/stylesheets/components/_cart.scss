@@ -1,7 +1,7 @@
 // Cart Module
 
 .touch {
-  @inlcude max-screen(600px) {
+  @include max-screen(600px) {
     .cart {
       height: auto;
       position: absolute;
