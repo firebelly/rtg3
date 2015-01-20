@@ -3,7 +3,7 @@
       <div class="feature-content-wrap">
         <div class="feature-content">
           <h2>Thank You So Much For Your Contribution!</h2>
-          <p class="description"><%= reason.title %></p>
+          <p class="description"><%= link_to reason.title, reason %></p>
           <div class="progress-bar">
             <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
             <div class="bar" style="max-width: <%= reason.percent_fulfilled %>%"></div>
