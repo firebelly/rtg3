@@ -145,21 +145,15 @@ var RTG = (function ($) {
       }
     });
     // update cart contents after adding item
-    $('.cart-form').on('ajax:send', function(e) {
+    $('.cart-form').on('ajax:success', function(e, data) {
+      $('.cart-items-wrap').html(data);
       // hide any flash messages from previous errors
       _hideFlash();
-      // scroll to top on mobile
+      _setCartCount();
       if (Modernizr.touch) {
         $(window).scrollTop(0);
       }
-      // show cart right away
       _showCart();
-      $('#cart').addClass('working');
-    }).on('ajax:success', function(e, data) {
-      // when request actually finishes, update cart with new data
-      $('.cart-items-wrap').html(data);
-      _setCartCount();
-      $('#cart').removeClass('working');
     });
     
     // update cart item amounts
@@ -280,6 +274,8 @@ var RTG = (function ($) {
           $('.cart').animate({
             scrollTop: checkoutTop
           }, 500);
+        } else {
+          $(window).scrollTop(checkoutTop);
         }
     });
 
