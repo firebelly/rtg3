@@ -109,7 +109,6 @@ main {
   height: 100%;
   position: relative;
   &.unfocus {
-    // overflow: hidden;
     &::before {
       opacity: 1;
       display: block;
@@ -127,6 +126,13 @@ main {
     position: fixed;
     background: $sheer3;
     transition: opacity 0.2s ease-out;
+  }
+}
+
+// Disable scrolling on body when cart is open for touch devices
+.touch {
+  .body-wrap.unfocus{
+    overflow: hidden;
   }
 }
 
