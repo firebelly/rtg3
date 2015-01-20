@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def get_cart
-    @cart = Cart.where(session_id: session.id, order_id: nil).first_or_create
+    @cart = Cart.where(session_id: session.id).first_or_create
   end
 
   def init_common_values 

@@ -46,9 +46,9 @@ class ReasonsController < ApplicationController
   end
 
   def thanks
-    @order = Order.find(params[:order_id])
-    @reasons = Reason.where(id: @order.cart.donations.select(:reason_id))
-    @general_donation = @order.cart.donations.where(reason_id: nil).first
+    @donation = Donation.find(params[:donation_id])
+    @reasons = Reason.where(id: @donation.donation_items.select(:reason_id))
+    @general_donation = @donation.donation_items.where(reason_id: nil).first
   end
 
   private

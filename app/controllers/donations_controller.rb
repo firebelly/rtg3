@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class DonationsController < ApplicationController
 
   def create
     if @cart.total == 0
@@ -14,8 +14,7 @@ class OrdersController < ApplicationController
               payment_method_nonce: params[:payment_method_nonce])
 
     if result.success?
-      @order = Order.create(
-        cart: @cart,
+      @donation = Donation.create(
         total: @cart.total,
         found: params[:checkoutSource],
         found_other: params[:checkoutSourceOtherSource],
@@ -26,7 +25,12 @@ class OrdersController < ApplicationController
         payment_type: result.transaction.payment_instrument_type,
         payment_status: result.transaction.status
       )
-      # user wants to subscribe to newsletter?
+
+      # associate donation_items to donation and remove from cart
+      @donation.donation_items << @cart.donation_items
+      @cart.donation_items.delete_all
+
+      # does user want to subscribe to newsletter?
       unless params[:checkoutNewsletter].blank?
         mailchimp = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
         begin
@@ -42,10 +46,10 @@ class OrdersController < ApplicationController
         end
       end
       # @payment = PaymentRecord.create(
-      #   order_id: @order.id,
+      #   donation_id: @donation.id,
       #   params: result.params
       # )
-      redirect_to thanks_path(@order)
+      redirect_to thanks_path(@donation)
     else
       flash[:alert] = "There was a transaction error: %s" % result.message
       redirect_to :back

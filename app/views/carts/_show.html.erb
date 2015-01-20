@@ -1,14 +1,14 @@
-<% unless @cart.donations.empty? %>
+<% unless @cart.donation_items.empty? %>
   <ul class="cart-items">
-  <% @cart.donations.each do |donation| %>
-	  <li class="cart-item">
-	  	<% if donation.reason.nil? %>
+  <% @cart.donation_items.each do |donation_item| %>
+	  <li class="cart-item" data-id="<%= donation_item.id %>">
+	  	<% if donation_item.reason.nil? %>
 		    <span class="item-title">General Donation</span>
 			<% else %>
-		    <a href="<%= reason_path(donation.reason) %>" class="item-title"><%= donation.reason.title %></a>
+		    <a href="<%= reason_path(donation_item.reason) %>" class="item-title"><%= donation_item.reason.title %></a>
 			<% end %>
-	    <form class="item-amount">Amount: $<input data-method="put" size="4" data-remote="true" data-url="<%= update_cart_path(donation) %>" name="amount" type="number" class="amount" value="<%= number_with_precision(donation.amount, precision: 0) %>"></form>
-	    <%= link_to raw('<span class="screen-reader">Remove Item</span><span class="x -white"></span>'), remove_from_cart_path(donation.id), remote: true, class: 'item-remove' %>
+	    <form class="item-amount">Amount: $<input data-method="put" size="4" data-remote="true" data-url="<%= update_cart_path(donation_item) %>" name="amount" type="number" class="amount" value="<%= number_with_precision(donation_item.amount, precision: 0) %>"></form>
+	    <%= link_to raw('<span class="screen-reader">Remove Item</span><span class="x -white"></span>'), remove_from_cart_path(donation_item.id), remote: true, class: 'item-remove' %>
 	  </li>
   <% end -%>
   	<li class="cart-total">Total: $<strong><%= number_with_precision(@cart.total, precision: 0) %></strong></li>

@@ -2,7 +2,7 @@ class Reason < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :history]
   has_many :reason_images
-  has_many :donations
+  has_many :donation_items
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
   before_create :set_post_date_to_now
 

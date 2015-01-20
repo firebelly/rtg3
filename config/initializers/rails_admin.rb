@@ -24,7 +24,7 @@ RailsAdmin.config do |config|
   end
 
   # Hide these models from the navigation:
-  [Cart, Donation, PostType, SupporterType, PaymentRecord].each do |klass|
+  [Cart, DonationItem, PostType, SupporterType, PaymentRecord].each do |klass|
     config.model klass do
       visible false
     end
@@ -124,7 +124,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model Order do
+  config.model Donation do
     list do
       field :first_name
       field :last_name

@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show] do
     post 'add', to: 'carts#add', as: :add_to
-    put 'update/:donation_id', to: 'carts#update', as: :update
-    get 'remove/:donation_id', to: 'carts#remove', as: :remove_from
+    put 'update/:donation_item_id', to: 'carts#update', as: :update
+    get 'remove/:donation_item_id', to: 'carts#remove', as: :remove_from
     get 'count', to: 'carts#count', as: :count
     get 'total', to: 'carts#total', as: :total
   end
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   resources :applicants, :only => [ :create, :show ]
   post '/applicants/contact', to: 'applicants#contact', as: :applicants_contact
 
-  resources :orders, :only => [ :create ]
+  resources :donations, :only => [ :create ]
   resources :payment_records, only: [ :create ]
 
   # custom pages
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   # get '/press/:id' => 'posts#press_show', as: 'press_post'
 
   get '/give' => 'reasons#index'
-  get '/thanks/:order_id' => 'reasons#thanks', as: 'thanks'
+  get '/thanks/:donation_id' => 'reasons#thanks', as: 'thanks'
 
   get '/success-stories' => 'reasons#success_stories'
   get '/success-stories/:id' => 'reasons#success_story', :as =>'success_story'
