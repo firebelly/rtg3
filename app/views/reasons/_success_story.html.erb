@@ -8,9 +8,13 @@
             <% if !success_story.featured_video.blank? and local_assigns.has_key? :is_single %>
               <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
             <% end %>
-            <div class="progress-bar">
-              <p class="progress-text"><%= number_to_currency(success_story.total_donated, precision: 0) %> Raised</p>
-              <div class="bar" style="max-width: 100%"></div>
+            <div class="feature-action">
+              <div class="initial-actions single-reason">
+                <div class="progress-bar">
+                  <p class="progress-text"><%= number_to_currency(success_story.total_donated, precision: 0) %> Raised</p>
+                  <div class="bar" style="max-width: 100%"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
