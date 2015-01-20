@@ -13,7 +13,7 @@
   }
 }
 
-// Clearfix - just inlcude "@include clearfix();" on any containers that need to clear floats
+// Clearfix - just include "@include clearfix();" on any containers that need to clear floats
 @mixin clearfix {
   *zoom: 1;
   &:before, &:after {
