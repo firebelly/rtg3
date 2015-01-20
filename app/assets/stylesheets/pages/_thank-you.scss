@@ -36,6 +36,8 @@
       &.slick-active {
         .feature-content {
           .progress-bar {
+            float: none;
+            margin: 20px auto;
             .bar {
               &::after {
                 left: 100%;
