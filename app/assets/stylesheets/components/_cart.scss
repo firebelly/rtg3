@@ -32,7 +32,8 @@
   }
 
   &.working {
-    ul.cart-items {
+    .cart-items-wrap,
+    .general-donation-form {
       transition: opacity 1s;
       opacity: .5;
     }
