@@ -34,7 +34,6 @@ gem 'mailchimp-api', require: 'mailchimp'
 gem 'randumb'
 gem 'braintree', '~> 2.33.1'
 gem 'figaro'
-gem 'gon', '~> 5.1.2'
 gem 'kaminari'
 gem 'whenever', :require => false
 gem 'rack-cache'

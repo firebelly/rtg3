@@ -15,6 +15,9 @@ class CartsController < ApplicationController
         )
       @cart.donation_items << donation_item
     end
+    # use this cookie if we ever want to do full page caching
+    # cookies[:cart_count] = @cart.count
+
     render partial: 'carts/show'
   end
   
@@ -30,6 +33,12 @@ class CartsController < ApplicationController
   def remove
     donation_item = DonationItem.find(params[:donation_item_id])
     @cart.donation_items.delete(donation_item)
+    # if @cart.count > 0
+    #   cookies[:cart_count] = @cart.count
+    # else
+    #   cookies.delete :cart_count
+    # end
+
     render text: @cart.donation_items.count, status: 200
   end
 
@@ -39,6 +48,15 @@ class CartsController < ApplicationController
 
   def total
     render text: @cart.total, status: 200
+  end
+
+  def ajax_cart
+    render partial: 'carts/show'
+  end
+
+  def ajax_token
+    token = Braintree::ClientToken.generate
+    render text: token, status: 200
   end
 
 end

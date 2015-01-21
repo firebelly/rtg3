@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     post 'add', to: 'carts#add', as: :add_to
     put 'update/:donation_item_id', to: 'carts#update', as: :update
     get 'remove/:donation_item_id', to: 'carts#remove', as: :remove_from
+    get 'ajax_cart', to: 'carts#ajax_cart'
+    get 'ajax_token', to: 'carts#ajax_token'
     get 'count', to: 'carts#count', as: :count
     get 'total', to: 'carts#total', as: :total
   end

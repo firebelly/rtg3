@@ -1,5 +1,6 @@
 var RTG = (function ($) {
   var braintreeClient,
+      braintreeToken,
       youtubePlayer;
 
   function _init() {
@@ -168,7 +169,7 @@ var RTG = (function ($) {
     }).on('click', 'input.amount', function() {
       this.select();
     });
-    
+
     // delete cart item links
     $('#cart').on('click', '.item-remove', function() {
       var thisItem = $(this).closest('li.cart-item');
@@ -186,10 +187,15 @@ var RTG = (function ($) {
       }, 400);
     });
 
-    // initial cart count (maybe only call this if cookie is set, which is stored when adding to cart? this would allow full caching of page)
-    // $.get('/cart/count', function(data) {
-    //   _setCartCount(data);
-    // });
+    // use this if/when we want to do full page caching
+    // cart_count = $.cookie('cart_count');
+    // if (cart_count) {
+    //   $.get('/cart/ajax_cart', function(data) {
+    //     $('.cart-items-wrap').html(data);
+    //     _setCartCount();
+    //   });
+    // }
+
     $('.cart-toggle').on('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -305,47 +311,47 @@ var RTG = (function ($) {
         stage.find('.-first input').focus();
     });
 
-    // Init Braintree (uses gon gem which injects server-side vars into js, see app.html)
-    if (typeof gon !== 'undefined') {
-      braintreeClient = new braintree.api.Client({clientToken: gon.client_token});
-      braintree.setup(gon.client_token, "paypal", {
-        container: "paypal-button",
-        enableShippingAddress: true,
-        paymentMethodNonceInputField: 'payment_method_nonce',
-        onSuccess: function(nonce, email, shippingObject) {
-          // hide CC fields
-          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
-          $('.payment-toggle').hide().prop('disabled', true);
-          $('.paypal-submit').show().prop('disabled', false);
-
-          $('#checkoutEmail').val(email);
-          // fill out address fields if available
-          if (shippingObject) {
-            var fullName = shippingObject.recipient_name.split(' '),
-                firstName = fullName[0],
-                lastName = fullName[fullName.length - 1];
-            $('#checkoutFirstName').val(firstName);
-            $('#checkoutLastName').val(lastName);
-            $('#checkoutAddress').val(shippingObject.street_address);
-            $('#checkoutCity').val(shippingObject.locality);
-            $('#checkoutState').val(shippingObject.region);
-            $('#checkoutZipCode').val(shippingObject.postal_code);
-            $('.cart').removeClass('payment-stage').addClass('checkout-stage');
-          }
-        },
-        onCancelled: function() {
-          // show CC fields
-          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
-          $('.payment-toggle').show().prop('disabled', false);
-          $('.paypal-submit').hide().prop('disabled', true);
-        }
-      });
-    }
-
     // add name attributes for jquery.validate
     $.each(['cc-num','cc-cvc','cc-exp'], function(i,k) { $('.'+k).attr('name', k) });
 
   }; // end _cartInit()
+
+  // Init Braintree
+  function _initBraintree() {
+    braintreeClient = new braintree.api.Client({clientToken: braintreeToken});
+    braintree.setup(braintreeToken, "paypal", {
+      container: "paypal-button",
+      enableShippingAddress: true,
+      paymentMethodNonceInputField: 'payment_method_nonce',
+      onSuccess: function(nonce, email, shippingObject) {
+        // hide CC fields
+        $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
+        $('.payment-toggle').hide().prop('disabled', true);
+        $('.paypal-submit').show().prop('disabled', false);
+
+        $('#checkoutEmail').val(email);
+        // fill out address fields if available
+        if (shippingObject) {
+          var fullName = shippingObject.recipient_name.split(' '),
+              firstName = fullName[0],
+              lastName = fullName[fullName.length - 1];
+          $('#checkoutFirstName').val(firstName);
+          $('#checkoutLastName').val(lastName);
+          $('#checkoutAddress').val(shippingObject.street_address);
+          $('#checkoutCity').val(shippingObject.locality);
+          $('#checkoutState').val(shippingObject.region);
+          $('#checkoutZipCode').val(shippingObject.postal_code);
+          $('.cart').removeClass('payment-stage').addClass('checkout-stage');
+        }
+      },
+      onCancelled: function() {
+        // show CC fields
+        $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
+        $('.payment-toggle').show().prop('disabled', false);
+        $('.paypal-submit').hide().prop('disabled', true);
+      }
+    });
+  }
 
   // finds the next .cart-stage since they're not DOM siblings now (not my most beautiful work)
   function _findNextCartStage(stage) {
@@ -395,6 +401,13 @@ var RTG = (function ($) {
 
   // Here, cart!
   function _showCart() {
+    // init braintree if necessary
+    if (!braintreeClient) {
+      $.get('/cart/ajax_token', function(data) {
+        braintreeToken = data;
+        _initBraintree();
+      });
+    }
     $('.menu.active').removeClass('active');
     $('.menu-toggle').removeClass('menu-open');
     $('.cart').addClass('active cart-stage review-stage');

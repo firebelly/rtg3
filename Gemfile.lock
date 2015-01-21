@@ -82,11 +82,6 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
-    gon (5.1.2)
-      actionpack (>= 2.3.0)
-      json
-      multi_json
-      request_store (>= 1.0.5)
     haml (4.0.6)
       tilt
     hike (1.2.3)
@@ -174,7 +169,6 @@ GEM
       activesupport (>= 3.0.0)
       rake
     remotipart (1.2.1)
-    request_store (1.1.0)
     responders (2.0.2)
       railties (>= 4.2.0.alpha, < 5)
     safe_yaml (1.0.4)
@@ -227,7 +221,6 @@ DEPENDENCIES
   devise
   figaro
   friendly_id (~> 5.0.0)
-  gon (~> 5.1.2)
   jquery-rails
   kaminari
   mailchimp-api
