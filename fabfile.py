@@ -18,6 +18,7 @@ def production():
 
 def deploy():
     update()
+    bundle()
     migrate()
     compile_assets()
     restart()
@@ -37,3 +38,7 @@ def compile_assets():
 def restart():
     with cd(env.path):
         run('touch tmp/restart.txt')
+
+def bundle():
+    with cd(env.path):
+        run('bundle install')
