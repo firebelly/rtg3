@@ -1,3 +1,4 @@
+<% cache news do %>
 <% link_color = news.post_type.slug=="news" ? "white" : "pink" %>
 <li class="accordion -<%= news.post_type.slug=="news" ? "pink" : "gray" %>">
   <div class="block-content">
@@ -20,3 +21,4 @@
     </div>
   </div>
 </li>
+<% end %>

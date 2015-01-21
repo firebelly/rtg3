@@ -24,7 +24,6 @@ class PagesController < ApplicationController
 
   def supporters
     @body_class = "supporters-page"
-    @affiliates = ["sponsors", "partners", "featured"]
     @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
     @partnered_supporters = SupporterType.friendly.find('partners').supporters
     @featured_supporters = SupporterType.friendly.find('featured').supporters

@@ -17,53 +17,47 @@
 </div>
 <% end %>
 
-<% if @affiliates.include? 'sponsors' %>
-  <div class="blocks supporters" id="sponsors">
-    <div class="block -gray -full">
-      <div class="block-content">
-        <h4>Sponsored By</h4>
-        <div class="supporter-grid">
-        <% unless @sponsored_supporters.blank? %>
-          <% for supporter in @sponsored_supporters %>
+<div class="blocks supporters" id="sponsors">
+  <div class="block -gray -full">
+    <div class="block-content">
+      <h4>Sponsored By</h4>
+      <div class="supporter-grid">
+      <% unless @sponsored_supporters.blank? %>
+        <% for supporter in @sponsored_supporters %>
+          <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blocks supporters" id="partners">
+  <div class="block -gray -full">
+    <div class="block-content">
+      <h4>Partnered With</h4>
+      <div class="supporter-grid">
+      <% unless @partnered_supporters.blank? %>
+        <% for supporter in @partnered_supporters %>
+          <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="blocks supporters" id="featurers">
+  <div class="block -gray -full">
+    <div class="block-content">
+      <h4>Featured On</h4>
+      <div class="supporter-grid">
+        <% unless @featured_supporters.blank? %>
+          <% for supporter in @featured_supporters %>
             <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
           <% end %>
         <% end %>
-        </div>
       </div>
     </div>
   </div>
-<% end %>
-
-<% if @affiliates.include? 'partners' %>
-  <div class="blocks supporters" id="partners">
-    <div class="block -gray -full">
-      <div class="block-content">
-        <h4>Partnered With</h4>
-        <div class="supporter-grid">
-        <% unless @partnered_supporters.blank? %>
-          <% for supporter in @partnered_supporters %>
-            <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
-          <% end %>
-        <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<% if @affiliates.include? 'featured' %>
-  <div class="blocks supporters" id="featurers">
-    <div class="block -gray -full">
-      <div class="block-content">
-        <h4>Featured On</h4>
-        <div class="supporter-grid">
-          <% unless @featured_supporters.blank? %>
-            <% for supporter in @featured_supporters %>
-              <div class="supporter"><a href="<%= supporter.url %>" target="_blank"><%= image_tag supporter.logo.url(:thumb), alt: supporter.title %></a></div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+</div>

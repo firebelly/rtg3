@@ -17,6 +17,7 @@
 </div>
 <% end %>
 
+<% cache @page do %>
 <div class="blocks how-we-help">
   <div class="block -left -pink -callout">
     <div class="block-content -center">
@@ -261,6 +262,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <%= content_for :javascripts do %>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp' %>
