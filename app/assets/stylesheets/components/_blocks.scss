@@ -15,6 +15,37 @@
   &.-noflex {
     display: block;
   }
+  &.related-block {
+    position: relative;
+    @include min-screen($bpMed) {
+      &.-left {
+        &::after {
+          top: 50%;
+          left: 100%;
+          z-index: 1;
+          content: '';
+          position: absolute;
+          transform: translateY(-50%);
+          border-left: 11px solid #f6f6f6;
+          border-top: 11px solid transparent;
+          border-bottom: 11px solid transparent;
+        }
+      }
+      &.-right {
+        &::before {
+          top: 50%;
+          z-index: 1;
+          right: 100%;
+          content: '';
+          position: absolute;
+          transform: translateY(-50%);
+          border-right: 11px solid #f6f6f6;
+          border-top: 11px solid transparent;
+          border-bottom: 11px solid transparent;        
+        }
+      }
+    }
+  }
   .block-content {
     width: 100%;
     h3 {
