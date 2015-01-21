@@ -5,7 +5,6 @@
 
 html {
   height: 100%;
-  overflow-x: hidden;
   background: $noise;
 }
 
@@ -15,7 +14,6 @@ body {
 	font-size: 16px; //Em base unit
 	font-size: 100%;
   overflow-x: hidden;
-  position: relative;
   @include font-reg();
 	@include font-smoothing(antialiased);
   transition: margin-top .5s;
