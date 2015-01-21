@@ -1,3 +1,4 @@
+<% cache reason do %>
   <div class="block reason-block">
     <%= image_tag reason.image.url(:thumb) unless reason.image.nil? %>
     <a href="<%= reason.is_success? ? success_story_path(reason) : reason_path(reason) %>">
@@ -11,3 +12,4 @@
       </div>
     </a>
   </div>
+<% end %>

@@ -1,3 +1,4 @@
+<% cache reason do %>
     <div class="feature">
       <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
       <div class="feature-content-wrap">
@@ -31,3 +32,4 @@
         </div>
       </div>
     </div>
+<% end %>
