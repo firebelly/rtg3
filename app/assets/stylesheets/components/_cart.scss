@@ -274,6 +274,17 @@
       margin: .5em 50px;
       font-size: 0.8125em;
     }
+
+    .cart-form {
+      input {
+        &:focus, &:active {
+          background: rgba(255,255,255,0.3);
+        }
+        @include placeholder {
+          color: rgba(255,255,255,0.7);
+        }
+      }
+    }
   }
   .cart-checkout {
     padding-bottom: 0;
