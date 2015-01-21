@@ -6,6 +6,8 @@
       max-width: 360px;
     }
     .links a {
+      width: auto;
+      display: inline-block;
       padding-bottom: 0.25em;
       @include dots($white);
     }
