@@ -29,6 +29,7 @@
 
 .feature-slider {
   height: 100%;
+  overflow: hidden;
   position: relative;
   .slick-list,
   .slick-track {
