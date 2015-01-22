@@ -8,6 +8,7 @@ html {
   background: $noise;
 }
 
+// Overflow-x bug fix for small touch devices
 @include max-screen(600px) {
   .touch {
     height: auto;
