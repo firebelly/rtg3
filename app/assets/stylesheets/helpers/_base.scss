@@ -8,6 +8,17 @@ html {
   background: $noise;
 }
 
+@include max-screen(600px) {
+  .touch {
+    height: auto;
+    overflow-x: hidden;
+    body {
+      height: auto;
+      position: relative;
+    }
+  }
+}
+
 body {
   height: 100%;
   color: $black;
