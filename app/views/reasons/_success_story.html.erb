@@ -4,7 +4,7 @@
       <div class="feature-content-wrap">
         <div class="feature-content">
           <h2><%= link_to(success_story.title, success_story) %></h2>
-          <div class="description"><%= raw success_story.success_excerpt %></div>
+          <div class="description"><%= raw success_story.success_excerpt %> <%= link_to 'Learn More', success_story, class: "learn-more" %></div>
           <div class="feature-action">
             <div class="initial-actions single-reason">
               <div class="progress-bar">
