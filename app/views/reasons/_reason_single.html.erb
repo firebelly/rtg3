@@ -1,4 +1,4 @@
-<% cache @reason do %>
+<% cache [@reason, @reason.is_success?] do %>
     <div class="feature">
       <div class="feature-image"><%= image_tag @reason.image.url(:large) unless @reason.image.nil? %></div>
       <div class="feature-content-wrap">
