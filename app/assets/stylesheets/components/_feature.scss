@@ -213,17 +213,19 @@
         vertical-align: middle;
         transition: transform 0.2s ease-out;
       }
+      .thanks-bar,
       .bar {
         top: 0;
         left: 0;
         z-index: 0;
-        width: 100%;
-        max-width: 0;
+        width: 0;
         height: 100%;
         color: $white;
         background: $brand-main;
         position: absolute;
-        transition: max-width 1.5s cubic-bezier(1,0.5,0.5,1), transform 0.2s ease-out;
+      }
+      .thanks-bar {
+        background: $brand-main-lite;
       }
     }  
     .feature-action {

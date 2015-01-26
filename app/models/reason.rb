@@ -39,8 +39,8 @@ class Reason < ActiveRecord::Base
     end
   end
 
-  def percent_fulfilled
-    (total_donated / total_needed * 100).round(2)
+  def percent_fulfilled(thanks_amount = 0)
+    [((total_donated - thanks_amount) / total_needed * 100).round(2), 100].min
   end
 
   def fulfilled
