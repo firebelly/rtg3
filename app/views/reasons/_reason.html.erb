@@ -21,7 +21,7 @@
 
             <% if !local_assigns.has_key? :is_single %>
               <%= form_tag(add_to_cart_path, remote: true, class: 'donate cart-form') do %>
-                <%= number_field_tag 'amount', nil, placeholder: 'Add Donation Amount', class: 'text-input' %>
+                <%= number_field_tag 'amount', nil, placeholder: 'Add Donation Amount', class: 'text-input', autocomplete: :off %>
                 <% if defined?(reason) %>
                   <%= hidden_field_tag 'reason_id', reason.id %>
                 <% end %>
