@@ -3,10 +3,11 @@ class Donation < ActiveRecord::Base
   has_many :donation_items, dependent: :destroy
 
   # payment went through, adjust each reason's donated amount
-  def finalize_order_items
-    cart.donation_items.each do |donation_item|
+  def finalize_donation_items
+    donation_items.each do |donation_item|
       unless donation_item.reason.nil?
-        donation_item.reason.update_attributes(:total_donated => donation_item.reason.total_donated + donation_item.price)
+        new_total_donated = donation_item.reason.total_donated + donation_item.amount
+        donation_item.reason.update_attributes(:total_donated => new_total_donated)
       end
     end
   end
