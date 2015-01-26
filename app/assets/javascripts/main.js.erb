@@ -244,7 +244,7 @@ var RTG = (function ($) {
     $("#checkoutSourceOtherSource").hide();
     // Add text input if "Other" selected as option to how you found out Q
     $('#checkoutSource').change(function() {
-      if ($(this).find('option:selected').val() == "checkoutSourceOther") {
+      if ($(this).find('option:selected').val() == "Other") {
         $("#checkoutSourceOtherSource").show().focus();
       } else {
         $("#checkoutSourceOtherSource").hide();
