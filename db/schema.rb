@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150126190702) do
 
   add_index "donation_items", ["cart_id", "reason_id"], name: "index_donation_items_on_cart_id_and_reason_id", using: :btree
   add_index "donation_items", ["cart_id"], name: "index_donation_items_on_cart_id", using: :btree
-  add_index "donation_items", ["donation_id"], name: "donation_id", using: :btree
+  add_index "donation_items", ["donation_id"], name: "index_donation_items_on_donation_id", using: :btree
   add_index "donation_items", ["reason_id"], name: "index_donation_items_on_reason_id", using: :btree
 
   create_table "donations", force: :cascade do |t|

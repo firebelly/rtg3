@@ -1,14 +1,10 @@
 // Feature slider
 
 .slider-wrap {
-  height: 100%;
+  height: auto;
   padding: 12px;
-  overflow: hidden;
-  max-height: 800px;
-  min-height: 400px;
   transition: height 0.2s ease-out;
   @include min-screen($bpMed) {
-    height: auto;
     padding: 25px;
     min-height: 50%;
     max-height: 100%;
@@ -28,12 +24,12 @@
 }
 
 .feature-slider {
-  height: 100%;
+  height: auto;
   overflow: hidden;
   position: relative;
   .slick-list,
   .slick-track {
-    height: 100%;
+    height: auto;
   }
   .feature {
     a {
@@ -96,6 +92,38 @@
       background: asset-url('arrow-right.svg');       
     }
   }
+
+  .slick-dots {
+    bottom: 60px;
+    li {
+      button {
+        &::before {
+          color: $white;
+          font-size: 40px;
+        }
+        &:hover {
+          &::before {
+            opacity: 0.75;
+          }
+        }
+      }
+      &.slick-active {
+        button {
+          &::before {
+            color: $brand-main;
+          }
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpMed) {
+    height: 100%;
+    .slick-list,
+    .slick-track {
+      height: 100%;
+    }
+  }
 }
 
 .feature {
@@ -111,13 +139,13 @@
     background: $brand-main;
     img {
       top: 0;
+      right: 0;
       bottom: 0;
       z-index: 0;
-      right: -25%;
       width: auto;
-      height: 100%;
       min-width: 50%;
       max-width: none;
+      min-height: 100%;
       max-height: 800px;
       position: absolute;
     }
@@ -139,10 +167,9 @@
   .feature-content {
     z-index: 1;
     margin: auto;
-    min-height: 440px;
     position: relative;
     text-align: center;
-    padding: 100px 12px;
+    padding: 100px 12px 160px;
     transition: opacity 1s ease-out;
     h2 {
       width: 100%;
@@ -304,6 +331,7 @@
       }
     }
     .feature-content {
+      min-height: 440px;
       h2 {
         font-size: 4.5em;
       }

@@ -489,10 +489,8 @@ var RTG = (function ($) {
   function _featureSlider() {
     var featureSlider = $('.feature-slider').slick({
       slide: 'div.feature',
-      autoplay: true,
-      autoplaySpeed: 5000,
-      pauseOnHover: false,
-      adaptiveHeight: true,
+      dots: true,
+      adaptiveHeight: false,
       onInit: function(slider) {
         _animateBars();
       },
@@ -501,7 +499,15 @@ var RTG = (function ($) {
         $('.feature .text-input:focus').blur();
         $('.feature .focused').removeClass('focused');
         $('.feature .initial-actions.inactive').removeClass('inactive');
-      }
+      },
+      responsive: [
+        {
+          breakpoint: 860,
+          settings: {
+            adaptiveHeight: true
+          }
+        }
+      ]
     });
 
     $('.feature-slider input').on('focus', function () {
