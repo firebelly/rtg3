@@ -3,6 +3,9 @@
 .success-stories,
 .reason {
   .support {
+    .-top-half {
+      flex-grow: 0;
+    }
     p {
       @include font-bold();
     }
@@ -14,6 +17,12 @@
     }
     .block-content.-image-cover {
       max-height: none;
+    }
+  }
+
+  .reason-content {
+    .block-content {
+      margin: 0 auto;
     }
   }
 
