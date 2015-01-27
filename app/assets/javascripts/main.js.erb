@@ -184,12 +184,17 @@ var RTG = (function ($) {
       }, 400);
     });
 
-    cart_count = $.cookie('cart_count');
     // if user has anything in cart, load it in and update (X) cart count
+    cart_count = $.cookie('cart_count');
     if (cart_count) {
       $.get('/cart/ajax_cart', function(data) {
-        $('.cart-items-wrap').html(data);
-        _setCartCount();
+        // cart_count cookie is out of sync with actual cart, delete it
+        if (data.match('cart is currently empty')) {
+          $.removeCookie('cart_count');
+        } else {
+          $('.cart-items-wrap').html(data);
+          _setCartCount();
+        }
       });
     }
 
