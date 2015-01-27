@@ -8,10 +8,6 @@
 <div class="wrap slider-wrap">
   <div class="feature-slider">
     <%= render partial: "/reasons/reason_single" -%>
-    <a data-scroll href="#content" class="scroll-down">
-      <svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg>
-      <span class="x -white"></span>
-    </a>
     <% unless @reason.featured_video.blank? %>
       <div class="feature-video">
         <div class="feature-video-background"></div>
@@ -21,6 +17,10 @@
       </div>
     <% end %>
   </div>
+  <a data-scroll href="#content" class="scroll-down">
+    <svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg>
+    <span class="x -white"></span>
+  </a>
 </div>
 <% end %>
 
