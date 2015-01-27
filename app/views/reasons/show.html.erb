@@ -7,11 +7,7 @@
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
   <div class="feature-slider">
-    <% if @reason.is_success? %>
-      <%= render partial: "/reasons/success_story", locals: { success_story: @reason, is_single: true } -%>
-    <% else %>
-      <%= render partial: "/reasons/reason", locals: { reason: @reason, is_single: true } -%>
-    <% end %>
+    <%= render partial: "/reasons/reason_single" -%>
     <a data-scroll href="#content" class="scroll-down">
       <svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg>
       <span class="x -white"></span>

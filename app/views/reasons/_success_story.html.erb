@@ -1,22 +1,19 @@
+<% cache success_story do %>
     <div class="feature">
-      <% unless local_assigns.has_key? :is_single %><a href="<%= success_story_path(success_story) %>"><% end %>
-        <div class="feature-image"><%= image_tag success_story.image.url(:large) unless success_story.image.nil? %></div>
-        <div class="feature-content-wrap">
-          <div class="feature-content">
-            <h2><%= success_story.title %></h2>
-            <div class="description"><%= raw success_story.success_excerpt %></div>
-            <% if !success_story.featured_video.blank? and local_assigns.has_key? :is_single %>
-              <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
-            <% end %>
-            <div class="feature-action">
-              <div class="initial-actions single-reason">
-                <div class="progress-bar">
-                  <p class="progress-text"><%= number_to_currency(success_story.total_donated, precision: 0) %> Raised</p>
-                  <div class="bar" style="max-width: 100%"></div>
-                </div>
+      <div class="feature-image"><%= image_tag success_story.image.url(:large) unless success_story.image.nil? %></div>
+      <div class="feature-content-wrap">
+        <div class="feature-content">
+          <h2><%= link_to(success_story.title, success_story) %></h2>
+          <div class="description"><%= raw success_story.success_excerpt %> <%= link_to 'Learn More', success_story, class: "learn-more" %></div>
+          <div class="feature-action">
+            <div class="initial-actions single-reason">
+              <div class="progress-bar">
+                <p class="progress-text"><%= number_to_currency(success_story.total_donated, precision: 0) %> Raised</p>
+                <div class="bar" style="max-width: 100%"></div>
               </div>
             </div>
           </div>
         </div>
-      <% unless local_assigns.has_key? :is_single %></a><% end %>
+      </div>
     </div>
+<% end %>
