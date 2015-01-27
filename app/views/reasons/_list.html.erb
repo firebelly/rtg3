@@ -7,6 +7,7 @@
           <% if reason.is_success? %>
             <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
           <% else %>
+            <div class="btn -white donate">Donate</div>
             <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
           <% end %>
       </div>
