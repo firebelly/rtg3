@@ -125,14 +125,30 @@ RailsAdmin.config do |config|
   end
 
   config.model Donation do
+    show do
+      field :full_address
+      field :found_text
+      field :newsletter
+      field :donation_items
+      field :total do
+        formatted_value do
+          "$%.2f" % bindings[:object].total
+        end
+      end
+    end
     list do
+      filters [:reasons]
       field :first_name
       field :last_name
       field :email
-      field :found_text do
-        label 'Found via'
+      field :found do
+        pretty_value do
+          bindings[:object].found == 'Other' ? bindings[:object].found_other : bindings[:object].found
+        end
       end
-      field :donated_to
+      field :reasons do
+        searchable ["title"]
+      end
     end
   end
 

@@ -3,7 +3,8 @@ class DonationItem < ActiveRecord::Base
   belongs_to :reason
   belongs_to :donation
 
-  def to_s
-  	reason.nil? ? 'General Donation' : reason.title
+  def name
+    title = reason.nil? ? 'General Donation' : reason.title
+    "title: $%.2f" % amount
   end
 end

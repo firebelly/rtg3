@@ -1,6 +1,7 @@
 class Donation < ActiveRecord::Base
   has_many :payment_records
-  has_many :donation_items, dependent: :destroy
+  has_many :donation_items, -> { includes :reason }, dependent: :destroy
+  has_many :reasons, through: :donation_items
 
   # payment went through, adjust each reason's donated amount
   def finalize_donation_items
@@ -16,8 +17,14 @@ class Donation < ActiveRecord::Base
     found == 'other' ? found_other : found
   end
 
-  def donated_to
-    donation_items.collect{|d| d }.join(', ')
+  def full_address
+    "#{first_name} #{last_name} (#{email})<br>
+    #{address}<br>
+    #{city}, #{state}  #{zip}".html_safe
+  end
+
+  def total
+    donation_items.sum(:amount)
   end
 
 end
