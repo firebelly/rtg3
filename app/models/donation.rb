@@ -18,7 +18,7 @@ class Donation < ActiveRecord::Base
   end
 
   def full_address
-    "#{first_name} #{last_name} (#{email})<br>
+    "#{first_name} #{last_name}<br>
     #{address}<br>
     #{city}, #{state}  #{zip}".html_safe
   end

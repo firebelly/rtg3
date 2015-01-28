@@ -127,6 +127,7 @@ RailsAdmin.config do |config|
   config.model Donation do
     show do
       field :full_address
+      field :email
       field :found_text
       field :newsletter
       field :donation_items
