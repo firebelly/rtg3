@@ -34,6 +34,9 @@ RailsAdmin.config do |config|
     configure :banner_title, :text
     list do
       field :title
+      field :title_override
+      field :banner_title
+      field :description
       field :published
     end
     edit do
@@ -73,6 +76,7 @@ RailsAdmin.config do |config|
       field :title
       field :supporter_type
       field :url
+      field :logo_file_name
     end
     edit do
       field :title
@@ -92,6 +96,7 @@ RailsAdmin.config do |config|
       field :title
       field :post_type
       field :icon
+      field :url
       field :post_date
       field :published
     end
@@ -150,6 +155,12 @@ RailsAdmin.config do |config|
       field :reasons do
         searchable ["title"]
       end
+      field :total do
+        formatted_value do
+          "$%g" % bindings[:object].total
+        end
+      end
+
     end
   end
 
@@ -181,8 +192,16 @@ RailsAdmin.config do |config|
     list do
       sort_by :post_date
       field :title
-      field :total_donated
-      field :total_needed
+      field :total_donated do
+        formatted_value do
+          "$%g" % bindings[:object].total_donated
+        end
+      end
+      field :total_needed do
+        formatted_value do
+          "$%g" % bindings[:object].total_needed
+        end
+      end
       field :is_success
       # field :fulfilled
       field :post_date
