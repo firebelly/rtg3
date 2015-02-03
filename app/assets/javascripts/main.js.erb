@@ -162,7 +162,7 @@ var RTG = (function ($) {
     
     // update cart item amounts
     $('#cart').on('ajax:success', '.item-amount', function(e, data) {
-      $('.cart-items-wrap').html(data);
+      _setCartTotal();
     }).on('click', 'input.amount', function() {
       this.select();
     });
