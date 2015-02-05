@@ -17,9 +17,6 @@
       .btn {
         margin-top: 25px;
       }
-      .one-half-left {
-        padding-right: 50px;
-      }
     }
   }
 
@@ -31,8 +28,15 @@
       .btn {
         margin-top: 25px;
       }
-      .one-half-left {
-        padding-right: 50px;
+    }
+  }
+
+  @include min-screen($bpMed) {
+    .intern-form, .volunteer-form {
+      .pane-1 {
+        .one-half-left {
+          padding-right: 50px;
+        }
       }
     }
   }
