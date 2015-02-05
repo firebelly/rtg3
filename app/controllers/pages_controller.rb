@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   before_filter :get_page
 
-  def educational_programs
+  def what_we_do
   end
 
   def get_involved

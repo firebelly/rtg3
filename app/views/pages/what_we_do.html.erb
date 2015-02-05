@@ -5,7 +5,7 @@
 <% end %>
 
 <%= content_for :featured do %>
-<div class="wrap banner-wrap educational-programs">
+<div class="wrap banner-wrap what-we-do">
   <div class="banner"<% unless @page.image.blank? %> style="background-image: url('<%= image_path(@page.image.url(:large)) %>')"<% end %>>
     <div class="banner-content">
       <% unless @page.banner_title.blank? %>
