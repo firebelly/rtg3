@@ -54,7 +54,8 @@ var RTG = (function ($) {
     $(document).keyup(function(e) {
       if (e.keyCode == 27) {
         _hideFlash();
-        if ($('#cart').hasClass('review-stage')) _hideCart();
+        if ($('#cart.review-stage').length>0) _hideCart();
+        if ($('.slider-wrap.video-expanded').length>0) _closeVideo();
       }
     });
 
@@ -85,7 +86,7 @@ var RTG = (function ($) {
         } else {
           $.getJSON($form.attr('action'), $form.serialize())
             .done(function(data) {
-              if (data.result != "success") {
+              if (data.result != 'success') {
                 if (data.msg.match(/already subscribed/)) {
                   _flashAlert('You are already subscribed to our newsletter.');
                 } else {
@@ -162,7 +163,7 @@ var RTG = (function ($) {
     
     // update cart item amounts
     $('#cart').on('ajax:success', '.item-amount', function(e, data) {
-      $('.cart-items-wrap').html(data);
+      _setCartTotal();
     }).on('click', 'input.amount', function() {
       this.select();
     });
@@ -222,37 +223,37 @@ var RTG = (function ($) {
     $('#checkoutZipCode').payment('restrictNumeric');
 
     // Custom jquery.validate rules for credit card validating (using Stripe's js library)
-    jQuery.validator.addMethod("cardNumber", $.payment.validateCardNumber, "Please enter a valid card number");
-    jQuery.validator.addMethod("cardCVC", $.payment.validateCardCVC, "Please enter a valid security code");
-    jQuery.validator.addMethod("cardExpiry", function() {
+    jQuery.validator.addMethod('cardNumber', $.payment.validateCardNumber, 'Please enter a valid card number');
+    jQuery.validator.addMethod('cardCVC', $.payment.validateCardCVC, 'Please enter a valid security code');
+    jQuery.validator.addMethod('cardExpiry', function() {
       var expiry = $('.cc-exp').payment('cardExpiryVal');
       return $.payment.validateCardExpiry(expiry.month,expiry.year)
-    }, "Please enter a valid expiration");
+    }, 'Please enter a valid expiration');
 
     // Custom jquery.validate for checkout form
-    $("#checkout").unbind('submit').validate({
+    $('#checkout').unbind('submit').validate({
         submitHandler: RTG.checkoutSubmit,
         rules: {
-            "cc-cvc" : {
+            'cc-cvc' : {
                 cardCVC: true,
                 required: true
             },
-            "cc-num" : {
+            'cc-num' : {
                 cardNumber: true,
                 required: true
             },
-            "cc-exp" : "cardExpiry" // we don't validate month separately
+            'cc-exp' : 'cardExpiry' // we don't validate month separately
         }
     });
 
     // Initially hide the "Other" input
-    $("#checkoutSourceOtherSource").hide();
+    $('#checkoutSourceOtherSource').hide();
     // Add text input if "Other" selected as option to how you found out Q
     $('#checkoutSource').change(function() {
-      if ($(this).find('option:selected').val() == "Other") {
-        $("#checkoutSourceOtherSource").show().focus();
+      if ($(this).find('option:selected').val() == 'Other') {
+        $('#checkoutSourceOtherSource').show().focus();
       } else {
-        $("#checkoutSourceOtherSource").hide();
+        $('#checkoutSourceOtherSource').hide();
       }
     });
 
@@ -321,8 +322,8 @@ var RTG = (function ($) {
   // Init Braintree
   function _initBraintree() {
     braintreeClient = new braintree.api.Client({clientToken: braintreeToken});
-    braintree.setup(braintreeToken, "paypal", {
-      container: "paypal-button",
+    braintree.setup(braintreeToken, 'paypal', {
+      container: 'paypal-button',
       enableShippingAddress: true,
       paymentMethodNonceInputField: 'payment_method_nonce',
       onSuccess: function(nonce, email, shippingObject) {
@@ -403,6 +404,7 @@ var RTG = (function ($) {
 
   // Here, cart!
   function _showCart() {
+    _closeVideo();
     // init braintree if necessary
     if (!braintreeClient) {
       $.get('/cart/ajax_token', function(data) {
@@ -553,7 +555,7 @@ var RTG = (function ($) {
       var widthTo = $(this).data('percent');
       $(this).velocity(
         { width: widthTo + '%' }, 
-        { duration: 1500, delay: 250, easing: "easeInOutCubic" }
+        { duration: 1500, delay: 250, easing: 'easeInOutCubic' }
       );
     });
   }
@@ -741,51 +743,60 @@ var RTG = (function ($) {
   };
 
   function _onPlayerReady() {
-    $('.video-toggle').on("click", function() {
+    $('.video-toggle').on('click', function(e) {
+      e.preventDefault();
+      $('.feature-video').velocity(
+        { opacity: 1 },
+        { display: 'block' }
+      );
       // wait for video to drop in
-      $('.slider-wrap').addClass('video-expanded');
-      $('.slider-wrap').velocity({ height: '100%' });
+      $('.slider-wrap').addClass('video-expanded').velocity({ height: '100%' });
       if (!Modernizr.touch) {
         setTimeout(function() {
           youtubePlayer.playVideo();
         }, 250);
       }
     });
-  };
-
-  function _onPlayerStateChange(event) {        
-    if(event.data === 0) {
-      RTG.closeVideo();
-    }
-  }
-
-  function _video() {
-    $('.video-toggle').on('click', function (e) {
-      e.preventDefault();
-      $('.feature-video').velocity(
-        { opacity: 1 },
-        { display: "block" }
-      );
-    });
 
     $('body').on('click', '.video-expanded .scroll-down', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      youtubePlayer.pauseVideo();
-      RTG.closeVideo();
+      _closeVideo();
     });
+
+  };
+
+  function _onPlayerStateChange(event) {
+    // video ended?
+    if(event.data === 0) {
+      _closeVideo();
+    }
+  }
+
+  function _video() {
+    if ($('.feature-video').length>0) {
+      // Inject YouTube API script
+      var tag = document.createElement('script');
+      tag.src = '//www.youtube.com/player_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      // when ready this fires onYouTubePlayerAPIReady() which fires _initVideo()
+    }
 
     // Fitvids to the rescue!
     $('.video-wrap').fitVids();
   };
 
   function _closeVideo() {
-    $('.slider-wrap').removeClass('video-expanded');
-    $('.slider-wrap').velocity("reverse");
-    $('.feature-video').velocity(
-      {  opacity: 0 },
-      { display: "none" }
-    );
+    if ($('.slider-wrap.video-expanded').length>0) {
+      youtubePlayer.pauseVideo();
+      $('.slider-wrap').removeClass('video-expanded');
+      $('.slider-wrap').velocity('reverse');
+      $('.feature-video').velocity(
+        {  opacity: 0 },
+        { display: 'none' }
+      );
+    }
   }
 
   function _googleMap() {
@@ -797,91 +808,91 @@ var RTG = (function ($) {
 
       var styles = [
         {
-          featureType: "landscape.man_made",
+          featureType: 'landscape.man_made',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         },{
-          featureType: "landscape.natural",
+          featureType: 'landscape.natural',
           stylers: [
-            { color: "#E54C97" }
+            { color: '#E54C97' }
           ]
         },{
-          featureType: "road",
-          elementType: "geometry.fill",
+          featureType: 'road',
+          elementType: 'geometry.fill',
           stylers: [
-            { color: "#E54C97" }
+            { color: '#E54C97' }
           ]
         },{
-          featureType: "road",
-          elementType: "labels.text",
+          featureType: 'road',
+          elementType: 'labels.text',
           stylers: [
-            { color: "#ffffff" },
+            { color: '#ffffff' },
           ]
         },{
-          featureType: "road",
-          elementType: "geometry.stroke",
+          featureType: 'road',
+          elementType: 'geometry.stroke',
           stylers: [
-            { color: "#eb91bc" }
+            { color: '#eb91bc' }
           ]
         },{
-          featureType: "road",
-          elementType: "labels",
+          featureType: 'road',
+          elementType: 'labels',
           stylers: [
-            { visibility: "simplified" }
+            { visibility: 'simplified' }
           ]
         },{
-          featureType: "poi.business",
+          featureType: 'poi.business',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         },{
-          featureType: "poi",
+          featureType: 'poi',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         },{
-          featureType: "transit.station.bus",
+          featureType: 'transit.station.bus',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         },{
-          featureType: "poi.park",
-          elementType: "geometry.fill",
+          featureType: 'poi.park',
+          elementType: 'geometry.fill',
           stylers: [
-            { color: "#eb91bc" },
-            { visibility: "on" }
+            { color: '#eb91bc' },
+            { visibility: 'on' }
           ]
         },{
-          featureType: "poi.park",
-          elementType: "labels",
+          featureType: 'poi.park',
+          elementType: 'labels',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         },{
-          featureType: "administrative",
-          elementType: "all",
+          featureType: 'administrative',
+          elementType: 'all',
           stylers: [
-            { visibility: "simplified" }
+            { visibility: 'simplified' }
           ]
         },{
-          featureType: "administrative",
-          elementType: "labels",
+          featureType: 'administrative',
+          elementType: 'labels',
           stylers: [
-            { color: "#ffffff" }
+            { color: '#ffffff' }
           ]
         },{
-          featureType: "water",
-          elementType: "all",
+          featureType: 'water',
+          elementType: 'all',
           stylers: [
-            { visibility: "simplified" },
-            { color: "#E54C97"}
+            { visibility: 'simplified' },
+            { color: '#E54C97'}
           ]
         },{
-          featureType: "transit.station.rail",
-          elementType: "all",
+          featureType: 'transit.station.rail',
+          elementType: 'all',
           stylers: [
-            { visibility: "off" }
+            { visibility: 'off' }
           ]
         }
       ]
@@ -910,7 +921,7 @@ var RTG = (function ($) {
       });
 
       var image = {
-        url: "<%= asset_path 'marker.svg' %>"
+        url: '<%= asset_path "marker.svg" %>'
       };
       var link = 'https://www.google.com/maps/place/Reason+to+Give/@41.900868,-87.694523,15z/data=!4m2!3m1!1s0x0:0xee5c8496d8160eec?sa=X&ei=SS9mVMn4JMSfyATb44DYBQ&ved=0CHEQ_BIwDQ'
       var marker = new google.maps.Marker({
@@ -939,22 +950,24 @@ var RTG = (function ($) {
   };
 
   function _tweetIt() {
-    window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+    if ($('a.tweet-it').length>0) {
+      window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
 
-    function popitup(url, title, w, h) {
-      var left = (screen.width/2)-(500/2);
-      var top = (screen.height/2)-(200/2);
-      newwindow=window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=500, height=240, top='+top+', left='+left);
-      if (window.focus) {newwindow.focus()}
-      return false;
+      $('a.tweet-it').on('click', function (e) {
+        e.preventDefault();
+        var turl = $(this).attr('href');
+        _popitup(turl);
+      });
     }
-
-    $('.tweet-it').on('click', function (e) {
-      e.preventDefault();
-      var turl = $(this).attr('href');
-      popitup(turl);
-    });
   };
+
+  function _popitup(url, title, w, h) {
+    var left = (screen.width/2)-(500/2);
+    var top = (screen.height/2)-(200/2);
+    newwindow=window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=500, height=240, top='+top+', left='+left);
+    if (window.focus) {newwindow.focus()}
+    return false;
+  }
 
   function _animatedCharts() {
     $('.charts-slider').slick({
@@ -1008,8 +1021,7 @@ var RTG = (function ($) {
     initVideo: _initVideo,
     checkoutSubmit: _checkoutSubmit,
     onPlayerReady: _onPlayerReady,
-    onPlayerStateChange: _onPlayerStateChange,
-    closeVideo: _closeVideo
+    onPlayerStateChange: _onPlayerStateChange
   };
 
 })(jQuery);
@@ -1024,9 +1036,3 @@ $(window).resize(RTG.resize);
 function onYouTubePlayerAPIReady() {
   RTG.initVideo();
 }
-
-// Inject YouTube API script
-var tag = document.createElement('script');
-tag.src = "//www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

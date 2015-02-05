@@ -40,6 +40,7 @@ class Reason < ActiveRecord::Base
   end
 
   def percent_fulfilled(thanks_amount = 0)
+    return 0 if total_needed == 0
     [((total_donated - thanks_amount) / total_needed * 100).round(2), 100].min
   end
 
