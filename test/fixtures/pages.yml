@@ -7,9 +7,9 @@ one:
   published: true
 
 two:
-  title: Educational Programs
-  slug: educational-programs
-  content: Educational Programs!
+  title: What We Do
+  slug: what-we-do
+  content: What We Do!
   published: true
 
 three:

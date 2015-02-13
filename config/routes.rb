@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :payment_records, only: [ :create ]
 
   # custom pages
-  get '/educational-programs' => 'pages#educational_programs', id: 'educational-programs'
+  get '/what-we-do' => 'pages#what_we_do', id: 'what-we-do'
   get '/get-involved' => 'pages#get_involved', id: 'get-involved'
   get '/apply' => 'pages#apply', id: 'apply'
   get '/about-us' => 'pages#about_us', id: 'about-us'

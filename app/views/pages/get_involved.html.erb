@@ -37,7 +37,7 @@
   <div class="block accordion -full -gray">
     <div class="block-content">
       <div class="accordion-trigger">
-        <h3>Corporations</h3>
+        <h3>Corporate Partners</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
           <span class="plus-x"></span>
@@ -45,8 +45,10 @@
       </div>
       <div class="accordion-content">
         <div class="one-half-left">
-          <p>Reason to Give offers small businesses an exciting opportunity to give back to the community and get your employees involved. Small business partners sponsor a student for each class and receive personal thank yous and updates on each students progress. Employees can then serve as a mentor to the sponsored student or facilitate one of our classes.</p>
-          <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
+          <p>Looking to make a big impact and engage your employees directly with the community?  Reason to Give offers corporate partners several sponsorship opportunities throughout the year. We have partnership packages for every level of support.  Sponsor an entire group of students as our “Reach Your Dreams Sponsor.” Or sponsor a class that’s right up your alley and send your employees in to share their knowledge. </p>
+          <p>Partners increase exposure, reach unique audiences, and promote corporate responsibility and diversity. Employees are always encouraged to volunteer at any of our community events and pass on their expertise by teaching a class or mentoring a student. </p>
+          <p>Reason to Give also has several event sponsorship opportunities. Your corporation will receive recognition, and employees can join in on the fun.</p>
+          <p>For more information or to customize your own sponsorship package, please fill out this form and we will get back to you quickly. </p>
         </div>
         <div class="one-half-right">
           <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
@@ -78,7 +80,7 @@
   <div class="block accordion -full -gray">
     <div class="block-content">
       <div class="accordion-trigger">
-        <h3>Small Business</h3>
+        <h3>Small Business Partners</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
           <span class="plus-x"></span>
@@ -86,8 +88,9 @@
       </div>
       <div class="accordion-content">
         <div class="one-half-left">
-          <p>Reason to Give offers small businesses an exciting opportunity to give back to the community and get your employees involved. Small business partners sponsor a student for each class and receive personal thank yous and updates on each students progress. Employees can then serve as a mentor to the sponsored student or facilitate one of our classes.</p>
-          <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
+          <p>Looking for an exciting, affordable opportunity to give back to the community and engage your employees? We have several ways for our small business partners to get involved.</p>
+          <p>Sponsor a student. Sponsor a dream. Each term you and your employees can listen to their stories and choose a student to sponsor. You’ll receive personal thank you’s and updates on your student’s progress. Employees can then serve as a mentor to the student or help out in our classes. Find a class that fits in with what you do? Sponsor it and send in your employees to share their expertise. </p>
+          <p>Partners increase exposure, reach unique audiences, and promote responsibility and diversity. Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement. To get involved, fill out this form and we will be in touch shortly.</p>
         </div>
         <div class="one-half-right">
         <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
@@ -119,6 +122,47 @@
   <div class="block accordion -full -gray">
     <div class="block-content">
       <div class="accordion-trigger">
+        <h3>Foundations</h3>
+        <div class="actions" aria-hidden="true">
+          <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
+          <span class="plus-x"></span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <div class="one-half-left">
+          <p>You want to know that your support directly impacts the community. You want your support to go a long way and make the biggest impact possible. So do we.</p>
+          <p>Reason to Give has worked with several reputable foundations over the years to develop our programming, expand our reach within Chicago, and carry out innovative projects in the community.  We offer simplicity and transparency in giving and several ways to see the direct impact grants make on our community. For more information, please complete this form and we will get back to you quickly.</p>
+        </div>
+        <div class="one-half-right">
+        <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
+        <%= hidden_field_tag('form', 'Foundations', id: 'form-foundations') %>
+            <div class="form-group">
+              <div class="one-half-left">
+                <label for="foundationName">Foundation Name*</label>
+                <input type="text" name="first_name" id="foundationName" required>
+              </div>
+              <div class="one-half-right">
+                <label class="one-half-right" for="foundationEmail">Email Address*</label>
+                <input type="email" name="email" id="foundationEmail" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="foundationSubject">Subject*</label>
+              <input type="text" name="subject" id="foundationSubject" required>
+            </div>
+            <div class="form-group">
+              <label for="foundationMessage">Message*</label>
+              <textarea name="message" id="foundationMessage" cols="30" rows="10" required></textarea>
+            </div>
+            <input type="submit" class="btn -white -hollow submit" value="Send">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block accordion -full -gray">
+    <div class="block-content">
+      <div class="accordion-trigger">
         <h3>Community Partners</h3>
         <div class="actions" aria-hidden="true">
           <svg class="icon icon-mail" role="img"><use xlink:href="#icon-mail"></use></svg>
@@ -127,8 +171,9 @@
       </div>
       <div class="accordion-content">
         <div class="one-half-left">
-          <p>Reason to Give offers small businesses an exciting opportunity to give back to the community and get your employees involved. Small business partners sponsor a student for each class and receive personal thank yous and updates on each students progress. Employees can then serve as a mentor to the sponsored student or facilitate one of our classes.</p>
-          <p>Small businesses can also get involved in our annual community events and fundraisers. We have several affordable sponsorship options and opportunities for employee involvement.</p>
+          <p>You are our outlet into the community. We rely on community partners for referrals, time, and space. There are many ways that we can work together. When a school or organization partners with Reason to Give, we can come to you to run our program at your facility, helping your families achieve their goals. In return, Reason to Give will host a community project to help you and/or the people you serve. </p>
+          <p>Community partners can also share their experience and raise awareness of their programs by facilitating one of our classes or mentoring a student. To refer a student to our program, please go to the Apply page.</p>
+          <p>Let’s change our community together. For more information on becoming a community partner or hosting the Reason to Give program at your facility, please complete the form and we’ll be in touch shortly.</p>
         </div>
         <div class="one-half-right">
           <%= form_tag(applicants_contact_path, method: 'post', class: '-full') do %>
@@ -160,56 +205,6 @@
 </div>
 
 <div class="blocks -column">
-  <div class="block intern-form accordion -full -gray">
-    <div class="block-content">
-      <div class="accordion-trigger">
-        <h3>Intern</h3>
-        <div class="actions" aria-hidden="true">
-          <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
-          <span class="plus-x"></span>
-        </div>
-      </div>
-      <div class="accordion-content">
-        <div class="panes">
-          <div class="pane pane-1 active">
-            <div class="one-half-left">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus dicta dignissimos ab beatae quod harum! Eos ipsam animi autem tenetur quo voluptas, cumque, molestias sit hic ex dolorum repellendus soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At maxime, odit beatae natus odio porro explicabo voluptatem excepturi pariatur, saepe officia ab commodi. Illum odit veritatis repudiandae, quo eveniet dolorem?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nobis laborum blanditiis odio at aperiam tempora incidunt officiis unde! Error distinctio unde quas quibusdam sapiente necessitatibus accusantium dicta itaque, alias.</p>
-
-              <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
-                <%= hidden_field_tag('form', 'Intern', id: 'form-intern') %>
-
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internFirstName">First Name*</label>
-                    <input type="text" name="first_name" id="internFirstName" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internLastName">Last Name*</label>
-                    <input type="text" name="last_name" id="internLastName" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="one-half-left">
-                    <label for="internCell">Phone*</label>
-                    <input type="tel" name="phone" id="internCell" required>
-                  </div>
-                  <div class="one-half-right">
-                    <label for="internEmail">Email Address*</label>
-                    <input type="email" name="email" id="internEmail" required>
-                  </div>
-                </div>
-                <input type="submit" value="Submit" class="btn -white submit">
-            <% end %>
-            </div>
-            <div class="one-half-right full-bleed">
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="block volunteer-form accordion -last -full -gray">
     <div class="block-content">
       <div class="accordion-trigger">
@@ -223,8 +218,10 @@
         <div class="panes">
           <div class="pane pane-1 active">
             <div class="one-half-left">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus dicta dignissimos ab beatae quod harum! Eos ipsam animi autem tenetur quo voluptas, cumque, molestias sit hic ex dolorum repellendus soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At maxime, odit beatae natus odio porro explicabo voluptatem excepturi pariatur, saepe officia ab commodi. Illum odit veritatis repudiandae, quo eveniet dolorem?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate nobis laborum blanditiis odio at aperiam tempora incidunt officiis unde! Error distinctio unde quas quibusdam sapiente necessitatibus accusantium dicta itaque, alias.</p>
+              <p>Since the very beginning, Reason to Give’s success has been predicated on the generosity of do-gooders like yourselves. </p>
+              <p>Have a couple extra bucks? Give what you can to sponsor a student, every little bit counts. Have a little extra patience?  Help grow young minds through our educational childcare. </p>
+              <p>Have some wisdom to share? Volunteer to facilitate one of our classes or mentor a student through the program. Have some time to spare? Reason to Give is always looking for volunteers to help with our community projects and events.</p> 
+              <p>However you want to get involved, we are grateful for your help. Fill out this form, and we will get right back to you.</p>
 
               <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
                 <%= hidden_field_tag('form', 'Volunteer', id: 'form-volunteer') %>
@@ -247,6 +244,57 @@
                   <div class="one-half-right">
                     <label for="volunteerEmail">Email Address*</label>
                     <input type="email" name="email" id="volunteerEmail" required>
+                  </div>
+                </div>
+                <input type="submit" value="Submit" class="btn -white submit">
+            <% end %>
+            </div>
+            <div class="one-half-right full-bleed">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block intern-form accordion -full -gray">
+    <div class="block-content">
+      <div class="accordion-trigger">
+        <h3>Intern</h3>
+        <div class="actions" aria-hidden="true">
+          <svg class="icon icon-document" role="img"><use xlink:href="#icon-document"></use></svg>
+          <span class="plus-x"></span>
+        </div>
+      </div>
+      <div class="accordion-content">
+        <div class="panes">
+          <div class="pane pane-1 active">
+            <div class="one-half-left">
+              <p>Looking for a rewarding internship where you can work directly with the community and learn more than you ever wanted to about the ins and outs of nonprofits? Then apply for an internship with Reason to Give. </p>
+              <p>So much of what we have accomplished can be attributed to having awesome, dedicated interns over the years. We won’t ask you to make coffee or file papers. You will be doing real work, making a real impact on a community that you will come to know well. </p>
+              <p>Our internships runs year round and generally coordinate with school semesters. We will work with your school or company to make sure you get the most out of your experience. Everything short of a paycheck that is. Sorry, all internships are currently unpaid, but the experience you’ll gain is priceless! Still interested? Fill out this form, and we will send you an online application. </p>
+
+              <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+                <%= hidden_field_tag('form', 'Intern', id: 'form-intern') %>
+
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internFirstName">First Name*</label>
+                    <input type="text" name="first_name" id="internFirstName" required>
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internLastName">Last Name*</label>
+                    <input type="text" name="last_name" id="internLastName" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="one-half-left">
+                    <label for="internCell">Phone*</label>
+                    <input type="tel" name="phone" id="internCell" required>
+                  </div>
+                  <div class="one-half-right">
+                    <label for="internEmail">Email Address*</label>
+                    <input type="email" name="email" id="internEmail" required>
                   </div>
                 </div>
                 <input type="submit" value="Submit" class="btn -white submit">
