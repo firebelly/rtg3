@@ -203,7 +203,7 @@ RailsAdmin.config do |config|
         end
       end
       field :is_success
-      # field :fulfilled
+      field :fulfilled
       field :post_date
       field :promoted
     end
