@@ -3,7 +3,10 @@ class Quote < ActiveRecord::Base
 
   default_scope { order('position ASC') }
 
+  validates :quote, presence: true
+  validates :quotee, presence: true
+
   def quote_short
-    "%s (%s)" % [quote.gsub(/^(.{25,}?).*$/m,'\1...'), quotee]
+    quote.blank? ?  '' : "%s (%s)" % [quote.gsub(/^(.{25,}?).*$/m,'\1...'), quotee]
   end
 end
