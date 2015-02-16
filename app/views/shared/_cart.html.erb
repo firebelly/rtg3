@@ -74,7 +74,7 @@
           <label for="checkoutSource" class="select-wrapper">
             <legend>How did you find out about Reason To Give?</legend>
             <div class="button custom-select ff-hack">
-            <%= select_tag :checkoutSource, options_for_select(Donation.found_options), include_blank: true %>
+            <%= select_tag :checkoutSource, options_for_select(Donation.found_options), include_blank: true, required: true %>
             </div>
           </label>
           <label for="checkoutSourceOtherSource" class="hide">What was the other source?</label>
