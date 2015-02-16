@@ -67,6 +67,15 @@ RailsAdmin.config do |config|
           label 'Slideshow Images'
           help 'Only used on select pages. Drag images into desired order.'
         end
+        field :quotes do
+          active true
+          associated_collection_scope do
+            Proc.new { |scope|
+              scope = scope.order('position ASC')
+            }
+          end
+          help 'Only used on select pages. Drag quotes into desired order.'
+        end
       end
     end
   end
@@ -85,6 +94,22 @@ RailsAdmin.config do |config|
       field :supporter_type do
         inline_add false
         inline_edit false
+      end
+    end
+  end
+
+  config.model Quote do
+    # visible false
+    object_label_method do
+      :quote_short
+    end
+    edit do
+      field :quote
+      field :quotee
+      field :title
+      field :location
+      field :position, :hidden do
+        help '' # no caption
       end
     end
   end
