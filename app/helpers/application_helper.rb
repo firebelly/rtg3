@@ -60,11 +60,11 @@ module ApplicationHelper
 
     case type
     when 'youtube_short'
-      regex = /\s*(https?:\/\/youtu.be\/([a-zA-Z0-9\-_]+))/i
+      regex = /\s*<p>(https?:\/\/youtu.be\/([a-zA-Z0-9\-_]+))<\/p>/i
     when 'youtube'
-      regex = /\s*(https?:\/\/www.youtube.com\/watch\?v=([a-zA-Z0-9\-_]+))/i
+      regex = /\s*<p>(https?:\/\/www.youtube.com\/watch\?v=([a-zA-Z0-9\-_]+))<\/p>/i
     when 'vimeo'
-      regex = /\s*(https?:\/\/vimeo.com\/([a-zA-Z0-9\-_]+))/i
+      regex = /\s*<p>(https?:\/\/vimeo.com\/([a-zA-Z0-9\-_]+))<\/p>/i
     end
 
     if regex
