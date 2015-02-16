@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   validates :content, presence: true
   validates :post_type_id, presence: true
 
-  before_create :set_post_date_to_now
+  before_save :set_post_date_to_now
 
   def should_generate_new_friendly_id?
     title_changed?
@@ -34,6 +34,6 @@ class Post < ActiveRecord::Base
   private
 
   def set_post_date_to_now
-    post_date = Time.now if post_date.nil?
+    self.post_date = Time.now if self.post_date.blank?
   end
 end

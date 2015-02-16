@@ -135,7 +135,12 @@ RailsAdmin.config do |config|
       field :icon, :enum do
         default_value 'text'
       end
-      field :post_date
+      field :post_date do
+        help 'Posts are sorted by this field'
+        visible do
+          !bindings[:object].post_date.nil?
+        end
+      end
       field :url do
         help '"View Page" button will link to this instead of single Post page if this is set.'
       end
@@ -227,9 +232,10 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total_needed
         end
       end
+      field :post_date
+      field :published
       field :is_success
       field :fulfilled
-      field :post_date
       field :promoted
     end
     edit do

@@ -4,7 +4,8 @@ class Reason < ActiveRecord::Base
   has_many :reason_images
   has_many :donation_items
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
-  before_create :set_post_date_to_now
+  before_save :set_post_date_to_now
+  default_scope -> {order('post_date DESC')}
 
   has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
   has_attached_file :secondary_image, styles: { medium: "900x570#" }
@@ -47,7 +48,7 @@ class Reason < ActiveRecord::Base
   private
 
   def set_post_date_to_now
-    self.post_date = Time.now if self.post_date.nil?
+    self.post_date = Time.now if self.post_date.blank?
   end
 
 end
