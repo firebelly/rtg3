@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216222738) do
+ActiveRecord::Schema.define(version: 20150216223551) do
 
   create_table "applicants", force: :cascade do |t|
     t.string   "first_name",      limit: 255
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20150216222738) do
     t.boolean  "published",                    limit: 1
     t.boolean  "promoted",                     limit: 1
     t.boolean  "is_success",                   limit: 1
+    t.boolean  "fulfilled",                    limit: 1,                             default: false
     t.text     "success_excerpt",              limit: 65535
     t.text     "success_content",              limit: 65535
     t.datetime "created_at"

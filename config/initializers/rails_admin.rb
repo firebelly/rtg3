@@ -248,6 +248,9 @@ RailsAdmin.config do |config|
         # help "e.g. Why not support Madeline by giving whatever you can"
       end
       field :published
+      field :fulfilled do
+        help 'Will hide Reason from /give page'
+      end
       field :promoted do
         help 'Will stick Reason to top of homepage'
       end

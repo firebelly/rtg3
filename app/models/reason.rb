@@ -23,8 +23,8 @@ class Reason < ActiveRecord::Base
   scope :promoted, -> { where(promoted: true) }
   scope :not_success, -> { where(is_success: false) }
   scope :is_success, -> { where(is_success: true) }
-  scope :fulfilled, -> { where("total_donated >= total_needed") }
-  scope :unfulfilled, -> { where("total_donated < total_needed") }
+  scope :unfulfilled, -> { where(fulfilled: false) }
+  scope :fulfilled, -> { where(fulfilled: true) }
 
   def should_generate_new_friendly_id?
     title_changed?
@@ -42,10 +42,6 @@ class Reason < ActiveRecord::Base
   def percent_fulfilled(thanks_amount = 0)
     return 0 if total_needed == 0
     [((total_donated - thanks_amount) / total_needed * 100).round(2), 100].min
-  end
-
-  def fulfilled
-    total_donated >= total_needed
   end
 
   private

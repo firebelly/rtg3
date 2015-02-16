@@ -4,9 +4,9 @@ class ReasonsController < ApplicationController
 
   def index
     @page = Page.friendly.find('give')
-    if stale?(etag: [@page, Reason.published.not_success.maximum(:updated_at)])
-      @promoted_reason = Reason.published.not_success.promoted.limit(1)
-      @reasons = Reason.published.not_success - @promoted_reason
+    if stale?(etag: [@page, Reason.published.not_success.unfulfilled.maximum(:updated_at)])
+      @promoted_reason = Reason.published.not_success.unfulfilled.promoted.limit(1)
+      @reasons = Reason.published.not_success.unfulfilled - @promoted_reason
     end
   end
 
@@ -43,7 +43,7 @@ class ReasonsController < ApplicationController
       @og_description = @reason.excerpt || @reason.content
       @og_image = view_context.image_url(@reason.image.url(:thumb)) unless @reason.image.blank?
       
-      if @reason.is_success?
+      if @reason.is_success? and @reason.fulfilled?
         # is this now a success? redirect to proper URL
         redirect_to success_story_path(@reason), status: :moved_permanently
       elsif request.path != reason_path(@reason)
