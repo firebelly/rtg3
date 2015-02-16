@@ -99,7 +99,7 @@ RailsAdmin.config do |config|
   end
 
   config.model Quote do
-    # visible false
+    visible false
     object_label_method do
       :quote_short
     end
