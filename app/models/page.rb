@@ -12,6 +12,10 @@ class Page < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
+
   attr_accessor :delete_image
   before_validation { self.image.clear if self.delete_image == '1' }
 end
