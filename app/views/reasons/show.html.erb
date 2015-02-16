@@ -27,7 +27,11 @@
 <div class="blocks">
   <div class="support block -left -pink -column">
     <div class="block-content -top-half -center">
-      <p><strong><%= @reason.donation_prompt %></strong></p>
+      <% if @reason.is_success? and !@reason.success_donation_prompt.blank? %>
+        <p><strong><%= @reason.success_donation_prompt %></strong></p>
+      <% else %>
+        <p><strong><%= @reason.donation_prompt %></strong></p>
+      <% end %>
       <%= render partial: "/shared/donation_form", locals: { reason: @reason } -%>
       <div class="share">
         <p>Help us spread the word by sharing this cause:</p>

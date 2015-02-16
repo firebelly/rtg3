@@ -278,7 +278,9 @@ RailsAdmin.config do |config|
         end
         label 'Success Story'
         field :is_success
-       
+        field :success_donation_prompt do
+          help 'Prompt for donations once Reason is a Success'
+        end
         field :reason_images do
           active true
           associated_collection_scope do

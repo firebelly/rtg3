@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216203245) do
+ActiveRecord::Schema.define(version: 20150216222738) do
 
   create_table "applicants", force: :cascade do |t|
     t.string   "first_name",      limit: 255
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20150216203245) do
     t.datetime "secondary_image_updated_at"
     t.string   "donation_prompt",              limit: 255
     t.string   "featured_video",               limit: 255
+    t.string   "success_donation_prompt",      limit: 255
   end
 
   add_index "reasons", ["published", "is_success", "promoted"], name: "index_reasons_on_published_and_is_success_and_promoted", using: :btree
