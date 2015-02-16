@@ -8,10 +8,20 @@
 <div class="wrap slider-wrap">
   <div class="feature-slider">
     <div class="feature intro-slide">      
-      <div class="feature-image"><%= image_tag('RTG_Feature.jpg', alt: 'Reason To Give') %></div>
+      <div class="feature-image">
+        <% if @page.image.blank? %> 
+          <%= image_tag('RTG_Feature.jpg', alt: 'Reason To Give') %>
+        <% else %>
+          <%= image_tag(@page.image.url(:large), alt: 'Reason To Give') %>
+        <% end %>
+      </div>
       <div class="feature-content-wrap">
         <div class="feature-content">
-          <h2>Welcome to Reason to Give</h2>
+          <% if @page.banner_title.blank? %>
+            <h2>Welcome to Reason to Give</h2>
+          <% else %>
+            <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
+          <% end %>
           <div class="description"><p>Giving should be simplified. Donating should be quicker. Helping should be personalized.</p></div>
         </div>
       </div>
@@ -25,10 +35,7 @@
 <div class="blocks intro">
   <div class="block -left -gray">
     <div class="block-content">
-      <h3>What We Do</h3>
-      <p><strong>Reason to Give</strong> empowers people to transform their lives and set their own paths to success. With education, guidance, and the right resources, we can break the cycle of poverty in our communities and give everyone the opportunity to become self-sufficient.</p>
-      <p><strong>Our goal</strong>: to give motivated people everything they need to achieve their goals, both in their homes and in their professional lives.</p>
-      <a href="what-we-do" class="btn -pink -hollow">More Information</a>
+      <%= raw @page.content %>
     </div>
   </div>
   <div class="block -right -column -pink support-us">
