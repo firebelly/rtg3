@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :history]
   paginates_per 100
 
   default_scope -> {order('post_date DESC')}
@@ -13,6 +13,10 @@ class Post < ActiveRecord::Base
   validates :post_type_id, presence: true
 
   before_create :set_post_date_to_now
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 
   # default to News post type for new records
   after_initialize do
