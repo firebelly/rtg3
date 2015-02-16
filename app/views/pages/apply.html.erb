@@ -91,7 +91,9 @@
                 </div>
                 <div class="one-third-middle">
                   <label for="educationalState-educational">State*</label>
-                  <input type="text" name="state" id="educationalState-educational" required>
+                  <div class="button custom-select ff-hack">
+                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "educationalState-educational"%>
+                  </div>
                 </div>
                 <div class="one-third-right">
                   <label for="educationalZipCode-educational">Zip Code*</label>
@@ -179,7 +181,9 @@
                 </div>
                 <div class="one-third-middle">
                   <label for="businessState-educational">State*</label>
-                  <input type="text" name="state" id="businessState-educational" required>
+                  <div class="button custom-select ff-hack">
+                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "businessState-educational"%>
+                  </div>
                 </div>
                 <div class="one-third-right">
                   <label for="businessZipCode-educational">Zip Code*</label>
