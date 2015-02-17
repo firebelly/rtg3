@@ -141,9 +141,9 @@ var RTG = (function ($) {
     // add to cart links
     $('.cart-form').submit(function(e) {
       var $amountInput = $(this).find('input[name=amount]'); 
-      // set value to 25 if blank (same as placeholder)
+      // set value to default value if blank (since placeholder often shows an amount, set data-default-value)
       if (!$amountInput.val() || parseInt($amountInput.val())<=0) {
-        $amountInput.val('25');
+        $amountInput.val($amountInput.data('default-value'));
       }
     });
     // update cart contents after adding item

@@ -11,7 +11,7 @@
     </div>
     <div class="accordion-content">
       <div>
-        <%= raw video_embeds(news.content) %>
+        <%= raw news.content %>
         <% if news.url.blank? %>
           <p class="more"><%= link_to('View Page', news, class: "btn -#{link_color} -hollow") %></p>
         <% else %>

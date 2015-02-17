@@ -21,9 +21,8 @@ module ApplicationHelper
 
   def get_videos(html)
     videos = []
-
     videos.concat(parse_videos(html, 'youtube_short'))
-    # videos.concat(parse_videos(html, 'youtube')) # need to make sure this isn't in a <a href="youtube.com/blah"> link
+    videos.concat(parse_videos(html, 'youtube'))
     videos.concat(parse_videos(html, 'vimeo'))
   end
 

@@ -1,7 +1,7 @@
 <% cache reason do %>
   <div class="block reason-block">
     <%= image_tag reason.image.url(:thumb) unless reason.image.nil? %>
-    <a href="<%= reason.is_success? ? success_story_path(reason) : reason_path(reason) %>">
+    <a href="<%= (reason.is_success? and use_success_links) ? success_story_path(reason) : reason_path(reason) %>">
       <div class="block-content">
           <h3><%= reason.title %></h3>
           <% if reason.is_success? %>

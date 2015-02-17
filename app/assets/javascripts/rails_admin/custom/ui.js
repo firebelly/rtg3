@@ -11,7 +11,7 @@ function admin_rtg_events() {
 
   // Make draggable, sortable nested items
   // see: https://github.com/firebelly/firebellydev/wiki/Rails-Admin
-  var sortable_models       = ['reason_reason_images', 'page_page_images'];
+  var sortable_models       = ['reason_reason_images', 'page_page_images', 'page_quotes'];
   var sortable_input_field  = 'input[name*="position"]';
   var sortable_items        = 'ul.nav-tabs li';
   $.each(sortable_models, function() {

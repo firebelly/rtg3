@@ -17,7 +17,7 @@ class ApplicantsController < ApplicationController
       contact_details: contact_details
       )
     ApplicantMailer.new_applicant(@applicant).deliver
-    flash[:notice] = 'Your application was received. You should receive an email shortly.'
+    flash[:notice] = 'Your request for information was received.'
     redirect_to :back
   end
 
@@ -30,7 +30,7 @@ class ApplicantsController < ApplicationController
       message: params[:message]
       )
     ApplicantMailer.contact(@applicant).deliver
-    flash[:notice] = 'Your email has been sent.'
+    flash[:notice] = 'Your request for information was received'
     redirect_to :back
   end
 
