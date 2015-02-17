@@ -68,7 +68,9 @@
 </div>
 
 <% unless @slider_reasons.blank? %>
+  <div class="reasons-slider blocks reason-blocks">
   <% @slider_reasons.each do |reason| %>
     <%= render partial: 'reasons/list', locals: { reason: reason, use_success_links: @reason.is_success? } %>
   <% end %>
+  </div>
 <% end %>
