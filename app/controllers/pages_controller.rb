@@ -6,11 +6,9 @@ class PagesController < ApplicationController
   end
 
   def get_involved
-    if stale?(etag: [@page, Supporter.maximum(:updated_at)])
-      @affiliates = ["partners", "sponsors"]
-      @partnered_supporters = SupporterType.friendly.find('partners').supporters
-      @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
-    end
+    @affiliates = ["partners", "sponsors"]
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
   end
 
   def apply
@@ -20,12 +18,10 @@ class PagesController < ApplicationController
   end
 
   def supporters
-    if stale?(etag: [@page, Supporter.maximum(:updated_at)])
-      @body_class = "supporters-page"
-      @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
-      @partnered_supporters = SupporterType.friendly.find('partners').supporters
-      @featured_supporters = SupporterType.friendly.find('featured').supporters
-    end
+    @body_class = "supporters-page"
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @featured_supporters = SupporterType.friendly.find('featured').supporters
   end
 
   def success_stories
@@ -34,14 +30,12 @@ class PagesController < ApplicationController
   end
 
   def home
-    if stale?(etag: [@page, Reason.published.promoted.maximum(:updated_at)])
-      @body_class = 'home'
-      @reasons = Reason.published.promoted
-      @affiliates = ["partners", "sponsors", "featured"]
-      @partnered_supporters = SupporterType.friendly.find('partners').supporters
-      @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
-      @featured_supporters = SupporterType.friendly.find('featured').supporters
-    end
+    @body_class = 'home'
+    @reasons = Reason.published.promoted
+    @affiliates = ["partners", "sponsors", "featured"]
+    @partnered_supporters = SupporterType.friendly.find('partners').supporters
+    @sponsored_supporters = SupporterType.friendly.find('sponsors').supporters
+    @featured_supporters = SupporterType.friendly.find('featured').supporters
   end
 
   def show
