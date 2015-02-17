@@ -32,10 +32,14 @@ class Donation < ActiveRecord::Base
     found == 'other' ? found_other : found
   end
 
+  def full_name
+    [first_name,last_name].reject{ |e| e.empty? }.join ' '
+  end
+
   def full_address
-    "#{first_name} #{last_name}<br>
-    #{address}<br>
-    #{city}, #{state}  #{zip}".html_safe
+    "#{full_name}
+    #{address}
+    #{city}, #{state} #{zip}"
   end
 
   def total

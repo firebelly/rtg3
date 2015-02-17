@@ -1,0 +1,11 @@
+<%= simple_format @donation.full_address %>
+
+<h3>Donation items:</h3>
+
+<ul>
+<% for donation_item in @donation.donation_items %>
+ <li><%= donation_item.name %></li>
+<% end %>
+</ul>
+
+<p><strong>Donation total:</strong> <%= "$%.2f" % @donation.total %></p>

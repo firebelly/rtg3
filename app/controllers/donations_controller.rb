@@ -59,6 +59,11 @@ class DonationsController < ApplicationController
       #   donation_id: @donation.id,
       #   params: result.params
       # )
+      
+      # email user and admin
+      DonationMailer.new_donation(@donation).deliver_now
+      DonationMailer.new_donation_for_admin(@donation).deliver_now
+
       redirect_to thanks_path(@donation)
     else
       flash[:alert] = "There was a transaction error: %s" % result.message

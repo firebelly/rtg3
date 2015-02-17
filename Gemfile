@@ -36,4 +36,5 @@ gem 'braintree', '~> 2.33.1'
 gem 'figaro'
 gem 'kaminari'
 gem 'whenever', :require => false
-gem 'rack-cache'
+gem 'premailer-rails'
+gem 'nokogiri' #required for premailer

@@ -161,7 +161,11 @@ RailsAdmin.config do |config|
 
   config.model Donation do
     show do
-      field :full_address
+      field :full_address do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].full_address
+        end
+      end        
       field :email
       field :found_text
       field :newsletter

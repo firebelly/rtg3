@@ -16,7 +16,7 @@ class ApplicantsController < ApplicationController
       zip_code: params[:zip_code],
       contact_details: contact_details
       )
-    ApplicantMailer.new_applicant(@applicant).deliver
+    ApplicantMailer.new_applicant(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received.'
     redirect_to :back
   end
@@ -29,7 +29,7 @@ class ApplicantsController < ApplicationController
       subject: params[:subject],
       message: params[:message]
       )
-    ApplicantMailer.contact(@applicant).deliver
+    ApplicantMailer.contact(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received'
     redirect_to :back
   end
