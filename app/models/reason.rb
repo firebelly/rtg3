@@ -33,11 +33,11 @@ class Reason < ActiveRecord::Base
   end
 
   def reason_or_success_title
-    (is_success? and !success_title.blank?) ? success_title : title
+    (is_success? && !success_title.blank?) ? success_title : title
   end
 
   def should_generate_new_friendly_id?
-    title_changed? or success_title_changed? or fulfilled_changed? or is_success_changed?
+    title_changed? || success_title_changed? || fulfilled_changed? || is_success_changed?
   end
 
   # default values for new records
