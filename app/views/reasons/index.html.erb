@@ -12,5 +12,7 @@
 <% end %>
 
 <div class="blocks reason-blocks">
-  <%= render partial: "reasons/list", collection: @reasons, as: :reason %>
+	<% @reasons.each do |reason| %>
+		<%= render partial: 'reasons/list', locals: { reason: reason, use_success_links: false } %>
+	<% end %>
 </div>

@@ -4,9 +4,9 @@ class ReasonsController < ApplicationController
 
   def index
     @page = Page.friendly.find('give')
-    if stale?(etag: [@page, Reason.published.not_success.unfulfilled.maximum(:updated_at)])
-      @promoted_reason = Reason.published.not_success.unfulfilled.promoted.limit(1)
-      @reasons = Reason.published.not_success.unfulfilled - @promoted_reason
+    if stale?(etag: [@page, Reason.published.unfulfilled.maximum(:updated_at)])
+      @promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
+      @reasons = Reason.published.unfulfilled - @promoted_reason
     end
   end
 

@@ -1,4 +1,4 @@
-<%= content_for :title, raw(@reason.title) %>
+<%= content_for :title, raw(@reason.reason_or_success_title) %>
 
 <%= content_for :edit_link do %>
   <%= render :partial => '/shared/edit_bug', :locals => { :obj => @reason, :edit_path => rails_admin.edit_path(model_name: 'reason', id: @reason.id) }%>
@@ -68,7 +68,7 @@
 </div>
 
 <% unless @slider_reasons.blank? %>
-  <div class="reasons-slider blocks reason-blocks">
-    <%= render partial: "reasons/list", collection: @slider_reasons, as: :reason %>
-  </div>
+  <% @slider_reasons.each do |reason| %>
+    <%= render partial: 'reasons/list', locals: { reason: reason, use_success_links: @reason.is_success? } %>
+  <% end %>
 <% end %>

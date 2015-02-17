@@ -286,9 +286,14 @@ RailsAdmin.config do |config|
           bindings[:object].is_success == true
         end
         label 'Success Story'
-        field :is_success
+        field :is_success do
+          help 'Will show Reason on /success-stories page'
+        end
+        field :success_title do
+          help 'Used for page title if Is Success is checked'
+        end
         field :success_donation_prompt do
-          help 'Prompt for donations once Reason is a Success'
+          help 'Prompt for donations if Is Success is checked'
         end
         field :reason_images do
           active true

@@ -1,6 +1,7 @@
 class Reason < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :reason_slug, use: [:slugged, :history]
+
   has_many :reason_images
   has_many :donation_items
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
@@ -27,8 +28,16 @@ class Reason < ActiveRecord::Base
   scope :unfulfilled, -> { where(fulfilled: false) }
   scope :fulfilled, -> { where(fulfilled: true) }
 
+  def reason_slug
+    fulfilled? ? reason_or_success_title : title
+  end
+
+  def reason_or_success_title
+    is_success? and !success_title.blank? ? success_title : title
+  end
+
   def should_generate_new_friendly_id?
-    title_changed?
+    title_changed? or success_title_changed? or fulfilled_changed? or is_success_changed?
   end
 
   # default values for new records
