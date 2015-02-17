@@ -61,6 +61,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = { :arguments => "-i" }
   config.action_mailer.default_options = {to: ENV['EMAILS_TO'], from: ENV['EMAILS_FROM']}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
