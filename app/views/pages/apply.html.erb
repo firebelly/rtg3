@@ -53,6 +53,8 @@
               <p>Please complete this form to receive more information and/or an application for Reason to Give. We ask that you read our program page first for a complete overview of the program and list of classes.</p> 
               <p>Applicants must be at least 17 years of age, able to participate in weekly classes and progress meetings, and willing to give video interviews. Classes are currently being held in Humboldt Park. This program requires a 1 year commitment and is entirely free to students. Free educational childcare will also be offered during all classes.</p> 
 
+              <p>If you have any questions, please contact us at 773-489-3439 or <%= mail_to "info@reasontogive.com" %></p>
+
               <%= image_tag 'RTG_intern.jpg' %>
 
             </div><!-- END .one-half-left -->
@@ -109,14 +111,9 @@
                   <input type="radio" name="best-contact" id="educationalBestContact-email" value="email" required>
                   <label class="custom-radio" for="educationalBestContact-email">Email</label>
                 </fieldset>
-
-                <fieldset class="custom-checkbox-wrap">
-                  <input type="checkbox" name="contact-me-first" id="educationalContactMeFirst" value="1">
-                  <label class="custom-checkbox" for="educationalContactMeFirst">Contact me with more info before sending application</label>
-                </fieldset>
               </div>
 
-              <input type="submit" value="Submit" class="btn -white submit">
+              <input type="submit" value="Continue to Application" class="btn -white submit">
               
             </div>
           <% end %>

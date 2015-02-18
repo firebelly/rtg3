@@ -1,6 +1,10 @@
 <h1>New contact email for: <%= @applicant.form %></h1>
-<p>Name: <%= @applicant.first_name %>
+
+<p>Business/Foundation/Partnership Name: <%= @applicant.first_name %>
 <p>Email: <%= @applicant.email %></p>
-<p>Subject: <%= @applicant.subject %></p>
-<p>Message:</p>
+
+<h3>Subject:</h3>
+<p><%= @applicant.subject %></p>
+
+<h3>Message:</h3>
 <%= simple_format @applicant.message %>

@@ -18,7 +18,7 @@ class ApplicantsController < ApplicationController
       )
     ApplicantMailer.new_applicant(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received.'
-    redirect_to :back
+    redirect_to 'https://docs.google.com/a/firebellydesign.com/forms/d/1PuuCyLCfiE0y13xChbn4vcTg4r4UPyaZMNGz2BbqxZk/viewform'
   end
 
   def contact
