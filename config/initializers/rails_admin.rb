@@ -194,7 +194,20 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total
         end
       end
-
+    end
+    export do
+      field :id
+      field :created_at
+      field :first_name
+      field :last_name
+      field :email
+      field :address
+      field :city
+      field :state
+      field :zip
+      field :total
+      field :found
+      field :found_other
     end
   end
 
