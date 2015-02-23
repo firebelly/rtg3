@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216233842) do
+ActiveRecord::Schema.define(version: 20150223175628) do
 
   create_table "applicants", force: :cascade do |t|
-    t.string   "first_name",      limit: 255
-    t.string   "last_name",       limit: 255
-    t.string   "phone",           limit: 255
-    t.string   "email",           limit: 255
-    t.string   "form",            limit: 255
-    t.text     "params",          limit: 65535
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "phone",              limit: 255
+    t.string   "email",              limit: 255
+    t.string   "form",               limit: 255
+    t.text     "params",             limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "subject",         limit: 255
-    t.text     "message",         limit: 65535
-    t.string   "address",         limit: 255
-    t.string   "city",            limit: 255
-    t.string   "state",           limit: 255
-    t.string   "zip_code",        limit: 255
-    t.string   "contact_details", limit: 255
+    t.string   "subject",            limit: 255
+    t.text     "message",            limit: 65535
+    t.string   "address",            limit: 255
+    t.string   "city",               limit: 255
+    t.string   "state",              limit: 255
+    t.string   "zip_code",           limit: 255
+    t.string   "contact_preference", limit: 255
   end
 
   create_table "carts", force: :cascade do |t|

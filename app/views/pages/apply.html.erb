@@ -63,52 +63,52 @@
               <!-- <h4>Contact Information</h4> -->
               <div class="form-group">
                 <div class="one-half-left">
-                  <label for="educationalFirstName-educational">First Name*</label>
-                  <input type="text" name="first_name" id="educationalFirstName-educational" required>
+                  <label for="educationalFirstName">First Name*</label>
+                  <input type="text" name="first_name" id="educationalFirstName" required>
                 </div>
                 <div class="one-half-right">
-                  <label for="educationalLastName-educational">Last Name*</label>
-                  <input type="text" name="last_name" id="educationalLastName-educational" required>
+                  <label for="educationalLastName">Last Name*</label>
+                  <input type="text" name="last_name" id="educationalLastName" required>
                 </div>
               </div>
               <div class="form-group">
                 <div class="one-half-left">
-                  <label for="educationalCell-educational">Cell Phone*</label>
-                  <input type="tel" name="phone" id="educationalCell-educational" required>
+                  <label for="educationalCell">Cell Phone*</label>
+                  <input type="tel" name="phone" id="educationalCell" required>
                 </div>
                 <div class="one-half-right">
-                  <label for="educationalEmail-educational">Email*</label>
-                  <input type="email" name="email" id="educationalEmail-educational" required>
+                  <label for="educationalEmail">Email*</label>
+                  <input type="email" name="email" id="educationalEmail" required>
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="educationalAddress-educational">Street Address (Include Apt #)*</label>
-                <input type="text" name="address" id="educationalAddress-educational" required>
+                <label for="educationalAddress">Street Address (Include Apt #)*</label>
+                <input type="text" name="address" id="educationalAddress" required>
               </div>
               <div class="form-group">
                 <div class="one-third-left">
-                  <label for="educationalCity-educational">City*</label>
-                  <input type="text" name="city" id="educationalCity-educational" required>
+                  <label for="educationalCity">City*</label>
+                  <input type="text" name="city" id="educationalCity" required>
                 </div>
                 <div class="one-third-middle">
-                  <label for="educationalState-educational">State*</label>
+                  <label for="educationalState">State*</label>
                   <div class="button custom-select ff-hack">
-                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "educationalState-educational"%>
+                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "educationalState"%>
                   </div>
                 </div>
                 <div class="one-third-right">
-                  <label for="educationalZipCode-educational">Zip Code*</label>
-                  <input type="text" name="zip_code" id="educationalZipCode-educational" required>
+                  <label for="educationalZipCode">Zip Code*</label>
+                  <input type="text" name="zip_code" id="educationalZipCode" required>
                 </div>
               </div>
 
               <div class="form-group">
                 <fieldset>
                   <legend>The best way to contact me is: </legend>
-                  <input type="radio" name="best-contact" id="educationalBestContact-phone" value="phone" required>
+                  <input type="radio" name="contact_preference" id="educationalBestContact-phone" value="phone" required>
                   <label class="custom-radio" for="educationalBestContact-phone">Phone</label>
-                  <input type="radio" name="best-contact" id="educationalBestContact-email" value="email" required>
+                  <input type="radio" name="contact_preference" id="educationalBestContact-email" value="email" required>
                   <label class="custom-radio" for="educationalBestContact-email">Email</label>
                 </fieldset>
               </div>
@@ -148,43 +148,43 @@
 
               <div class="form-group">
                 <div class="one-half-left">
-                  <label for="businessFirstName-educational">First Name*</label>
-                  <input type="text" name="first_name" id="businessFirstName-educational" required>
+                  <label for="businessFirstName">First Name*</label>
+                  <input type="text" name="first_name" id="businessFirstName" required>
                 </div>
                 <div class="one-half-right">
-                  <label for="businessLastName-educational">Last Name*</label>
-                  <input type="text" name="last_name" id="businessLastName-educational" required>
+                  <label for="businessLastName">Last Name*</label>
+                  <input type="text" name="last_name" id="businessLastName" required>
                 </div>
               </div>
               <div class="form-group">
                 <div class="one-half-left">
-                  <label for="businessCell-educational">Cell Phone*</label>
-                  <input type="tel" name="phone" id="businessCell-educational" required>
+                  <label for="businessCell">Cell Phone*</label>
+                  <input type="tel" name="phone" id="businessCell" required>
                 </div>
                 <div class="one-half-right">
-                  <label for="businessEmail-educational">Email*</label>
-                  <input type="email" name="email" id="businessEmail-educational" required>
+                  <label for="businessEmail">Email*</label>
+                  <input type="email" name="email" id="businessEmail" required>
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="businessAddress-educational">Street Address (Include Apt #)*</label>
-                <input type="text" name="address" id="businessAddress-educational" required>
+                <label for="businessAddress">Street Address (Include Apt #)*</label>
+                <input type="text" name="address" id="businessAddress" required>
               </div>
               <div class="form-group">
                 <div class="one-third-left">
-                  <label for="businessCity-educational">City*</label>
-                  <input type="text" name="city" id="businessCity-educational" required>
+                  <label for="businessCity">City*</label>
+                  <input type="text" name="city" id="businessCity" required>
                 </div>
                 <div class="one-third-middle">
-                  <label for="businessState-educational">State*</label>
+                  <label for="businessState">State*</label>
                   <div class="button custom-select ff-hack">
-                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "businessState-educational"%>
+                  <%= select_tag :state, options_for_select(us_states), include_blank: true, id: "businessState"%>
                   </div>
                 </div>
                 <div class="one-third-right">
-                  <label for="businessZipCode-educational">Zip Code*</label>
-                  <input type="text" name="zip_code" id="businessZipCode-educational" required>
+                  <label for="businessZipCode">Zip Code*</label>
+                  <input type="text" name="zip_code" id="businessZipCode" required>
                 </div>
               </div>
 

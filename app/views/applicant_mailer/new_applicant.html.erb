@@ -1,4 +1,7 @@
 <h1>New applicant for: <%= @applicant.form %></h1>
-<p>Name: <%= @applicant.first_name %> <%= @applicant.last_name %></p>
+
+<%= simple_format @donation.full_address %>
+
 <p>Email: <%= @applicant.email %></p>
-<p>Phone: <%= @applicant.phone %></p>
+<p>Cell phone: <%= @applicant.phone %></p>
+<p>Contact preference: <%= @applicant.contact_preference %></p>
