@@ -465,20 +465,9 @@ var RTG = (function ($) {
   };
 
   function _stickyHeader() {
-    var nav = $('.header_main');
-
-    nav.waypoint(function(direction) {
-      if (direction === 'down') {
-        nav.addClass('sticky');
-        nav.removeClass('unsticky');
-      }
+    $('body').waypoint(function(direction) {
+      $('header.header_main').toggleClass('sticky', direction === 'down');
     }, {offset: -80});
-
-    nav.waypoint(function(direction) {
-      if (direction === 'up') {
-        nav.removeClass('sticky');
-      }
-    }, {offset: -20});
   };
 
   function _smoothScrolling() {
