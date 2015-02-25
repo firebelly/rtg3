@@ -154,14 +154,30 @@ RailsAdmin.config do |config|
       field :last_name
       field :phone
       field :email
+      field :contact_preference
       field :form
-      field :subject
     end
+    show do
+      field :form
+      field :full_address do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].full_address
+        end
+      end        
+      field :email
+      field :phone
+      field :contact_preference
+    end
+
   end
 
   config.model Donation do
     show do
-      field :full_address
+      field :full_address do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].full_address
+        end
+      end        
       field :email
       field :found_text
       field :newsletter
@@ -195,7 +211,20 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total
         end
       end
-
+    end
+    export do
+      field :id
+      field :created_at
+      field :first_name
+      field :last_name
+      field :email
+      field :address
+      field :city
+      field :state
+      field :zip
+      field :total
+      field :found
+      field :found_other
     end
   end
 
@@ -232,16 +261,16 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total_donated
         end
       end
-      field :total_needed do
-        formatted_value do
-          "$%g" % bindings[:object].total_needed
-        end
-      end
-      field :post_date
+      # field :total_needed do
+      #   formatted_value do
+      #     "$%g" % bindings[:object].total_needed
+      #   end
+      # end
+      # field :post_date
       field :published
+      field :promoted
       field :is_success
       field :fulfilled
-      field :promoted
     end
     edit do
       field :title do

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'total', to: 'carts#total', as: :total
   end
 
-  resources :applicants, :only => [ :create, :show ]
+  resources :applicants, :only => [ :create ]
   post '/applicants/contact', to: 'applicants#contact', as: :applicants_contact
 
   resources :donations, :only => [ :create ]

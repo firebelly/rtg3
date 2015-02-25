@@ -5,6 +5,6 @@ class DonationItem < ActiveRecord::Base
 
   def name
     title = reason.nil? ? 'General Donation' : reason.title
-    "title: $%.2f" % amount
+    "%s: $%.2f" % [title, amount]
   end
 end

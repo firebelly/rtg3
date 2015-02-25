@@ -69,10 +69,12 @@ var RTG = (function ($) {
 
   function _checkNewsBlocks() {
     // if no more hidden posts (in either News or Press), show Next Page buttons
-    if ($('.news-items li:hidden').length==0) {
-      $('.show-more.btn').hide();
-      $('.next-page.btn').show();
-    }
+    $('.news-list,.press-list').each(function() {
+      if ($(this).find('.news-items li:hidden').length==0) {
+        $(this).find('.show-more.btn').hide();
+        $(this).find('.next-page.btn').show();
+      }
+    });
   }
 
   function _newsletterInit() {
@@ -463,20 +465,9 @@ var RTG = (function ($) {
   };
 
   function _stickyHeader() {
-    var nav = $('.header_main');
-
-    nav.waypoint(function(direction) {
-      if (direction === 'down') {
-        nav.addClass('sticky');
-        nav.removeClass('unsticky');
-      }
+    $('body').waypoint(function(direction) {
+      $('header.header_main').toggleClass('sticky', direction === 'down');
     }, {offset: -80});
-
-    nav.waypoint(function(direction) {
-      if (direction === 'up') {
-        nav.removeClass('sticky');
-      }
-    }, {offset: -20});
   };
 
   function _smoothScrolling() {
@@ -961,10 +952,10 @@ var RTG = (function ($) {
     }
   };
 
-  function _popitup(url, title, w, h) {
+  function _popitup(url) {
     var left = (screen.width/2)-(500/2);
     var top = (screen.height/2)-(200/2);
-    newwindow=window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=500, height=240, top='+top+', left='+left);
+    newwindow = window.open(url, 'RTG popup', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=500, height=240, top='+top+', left='+left);
     if (window.focus) {newwindow.focus()}
     return false;
   }

@@ -1,9 +1,6 @@
 class ApplicantsController < ApplicationController
 
   def create
-    contact_details = params[:contact_first].blank? ? "Contact me first. " : ''
-    contact_details += "Preferred contact: %s" % params[:best_contact]
-    
     @applicant = Applicant.create(
       form: params[:form],
       first_name: params[:first_name],
@@ -14,11 +11,18 @@ class ApplicantsController < ApplicationController
       city: params[:city],
       state: params[:state],
       zip_code: params[:zip_code],
-      contact_details: contact_details
+      contact_preference: params[:contact_preference]
       )
-    ApplicantMailer.new_applicant(@applicant).deliver
+    ApplicantMailer.new_applicant(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received.'
-    redirect_to :back
+    google_form_params = {
+      'entry.2055828340' => @applicant.full_name, 
+      'entry.1250369102' => @applicant.phone,
+      'entry.1544329668' => @applicant.email,
+      'entry.782633025' => @applicant.address,
+      'entry.1935881909' => @applicant.zip_code
+    }.to_query
+    redirect_to "https://docs.google.com/a/firebellydesign.com/forms/d/1PuuCyLCfiE0y13xChbn4vcTg4r4UPyaZMNGz2BbqxZk/viewform?%s" % google_form_params
   end
 
   def contact
@@ -29,7 +33,7 @@ class ApplicantsController < ApplicationController
       subject: params[:subject],
       message: params[:message]
       )
-    ApplicantMailer.contact(@applicant).deliver
+    ApplicantMailer.contact(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received'
     redirect_to :back
   end
