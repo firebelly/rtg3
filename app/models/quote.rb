@@ -1,5 +1,5 @@
 class Quote < ActiveRecord::Base
-  belongs_to :page
+  belongs_to :page, touch: true
 
   default_scope { order('position ASC') }
 
