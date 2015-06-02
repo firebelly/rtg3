@@ -15,7 +15,7 @@
             </div>
 
             <%= form_tag(add_to_cart_path, remote: true, class: 'donate cart-form') do %>
-              <%= number_field_tag 'amount', nil, placeholder: 'Add Donation Amount', class: 'text-input', autocomplete: :off %>
+              <%= number_field_tag 'amount', nil, placeholder: 'Add Donation Amount', class: 'text-input', autocomplete: :off, data: { default_value: '50' } %>
               <%= hidden_field_tag 'reason_id', reason.id %>
               <%= submit_tag 'Add to Cart', class: 'submit btn -pink' %>
             <% end %>

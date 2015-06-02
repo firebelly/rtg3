@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>New applicant for: <%= @applicant.form %></h1>
-    <p>Name: <%= @applicant.first_name %> <%= @applicant.last_name %></p>
-    <p>Email: <%= @applicant.email %></p>
-    <p>Phone: <%= @applicant.phone %></p>
-  </body>
-</html>
+<h1>New applicant for: <%= @applicant.form %></h1>
+
+<%= simple_format @donation.full_address %>
+
+<p>Email: <%= @applicant.email %></p>
+<p>Cell phone: <%= @applicant.phone %></p>
+<p>Contact preference: <%= @applicant.contact_preference %></p>

@@ -154,46 +154,20 @@
   </div>
   <div class="block -right -gray block-slider">
     <div class="block-content-slider block-content-slider1">
-      <div class="praise">
-        <p class="quote">“Thank You for all the amazing work the foundation is doing. You are bringing the community so much good and that is inspiring!”</p>
-        <p class="quotee">Lisa Hammershaimb</p>
-        <p class="title">Reason To Give Graduate</p>
-        <p class="location">Wheaton, IL</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“I think [Reason To Give] is amazing.... I am a big supporter!”</p>
-        <p class="quotee">Irina B.</p>
-        <p class="location">Chicago, IL</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“We think Reason to Give is cool and would love to spotlight it!”</p>
-        <p class="quotee">Gordon Mayer</p>
-        <p class="title">Vice President, Community Media Workshop</p>
-        <p class="location">Chicago, IL</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“I just wanted to say what a fabulous idea and inspiration your [organization] is.”</p>
-        <p class="quotee">Mariah M.</p>
-        <p class="location">Madison, WI</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“...Firebelly Foundation is good for us and our needs. Thank you so much for the [Reason To Give] website. It's really nice of you guys!”</p>
-        <p class="quotee">Maggy R.</p>
-        <p class="title">Reason To Give participant</p>
-        <p class="location">Humboldt Park, Chicago, IL</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“I tell a lot of people about you guys all the time. I just love love love what you all are doing! PLEASE keep up the good work!”</p>
-        <p class="quotee">Joe Wright</p>
-        <p class="title">Director of Development New Moms</p>
-        <p class="location">Chicago, IL</p>
-      </div>
-      <div class="praise">
-        <p class="quote">“Your organization sounds wonderful! Keep up the good fight and best of luck to you!”</p>
-        <p class="quotee">Jennifer</p>
-        <p class="title">Committee on Institutional Cooperation, University of Illinois Urbana-Champaign</p>
-        <p class="location">Urbana-Champaign, IL</p>
-      </div>
+      <% if !@page.quotes.blank? %>
+        <% for quote in @page.quotes %>
+          <div class="praise">
+            <p class="quote">&ldquo;<%= quote.quote %>&rdquo;</p>
+            <p class="quotee"><%= quote.quotee %></p>
+            <% unless quote.title.blank? %>
+              <p class="title"><%= quote.title %></p> 
+            <% end %>
+            <% unless quote.location.blank? %>
+              <p class="location"><%= quote.location %></p> 
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

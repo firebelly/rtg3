@@ -1,5 +1,5 @@
 class ReasonImage < ActiveRecord::Base
-  belongs_to :reason
+  belongs_to :reason, touch: true
   has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
 
   default_scope { order('position ASC') }

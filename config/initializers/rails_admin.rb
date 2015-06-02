@@ -67,6 +67,15 @@ RailsAdmin.config do |config|
           label 'Slideshow Images'
           help 'Only used on select pages. Drag images into desired order.'
         end
+        field :quotes do
+          active true
+          associated_collection_scope do
+            Proc.new { |scope|
+              scope = scope.order('position ASC')
+            }
+          end
+          help 'Only used on select pages. Drag quotes into desired order.'
+        end
       end
     end
   end
@@ -85,6 +94,22 @@ RailsAdmin.config do |config|
       field :supporter_type do
         inline_add false
         inline_edit false
+      end
+    end
+  end
+
+  config.model Quote do
+    visible false
+    object_label_method do
+      :quote_short
+    end
+    edit do
+      field :quote
+      field :quotee
+      field :title
+      field :location
+      field :position, :hidden do
+        help '' # no caption
       end
     end
   end
@@ -110,7 +135,12 @@ RailsAdmin.config do |config|
       field :icon, :enum do
         default_value 'text'
       end
-      field :post_date
+      field :post_date do
+        help 'Posts are sorted by this field'
+        visible do
+          !bindings[:object].post_date.nil?
+        end
+      end
       field :url do
         help '"View Page" button will link to this instead of single Post page if this is set.'
       end
@@ -124,14 +154,30 @@ RailsAdmin.config do |config|
       field :last_name
       field :phone
       field :email
+      field :contact_preference
       field :form
-      field :subject
     end
+    show do
+      field :form
+      field :full_address do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].full_address
+        end
+      end        
+      field :email
+      field :phone
+      field :contact_preference
+    end
+
   end
 
   config.model Donation do
     show do
-      field :full_address
+      field :full_address do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].full_address
+        end
+      end        
       field :email
       field :found_text
       field :newsletter
@@ -160,7 +206,20 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total
         end
       end
-
+    end
+    export do
+      field :id
+      field :created_at
+      field :first_name
+      field :last_name
+      field :email
+      field :address
+      field :city
+      field :state
+      field :zip
+      field :total
+      field :found
+      field :found_other
     end
   end
 
@@ -197,15 +256,16 @@ RailsAdmin.config do |config|
           "$%g" % bindings[:object].total_donated
         end
       end
-      field :total_needed do
-        formatted_value do
-          "$%g" % bindings[:object].total_needed
-        end
-      end
-      field :is_success
-      # field :fulfilled
-      field :post_date
+      # field :total_needed do
+      #   formatted_value do
+      #     "$%g" % bindings[:object].total_needed
+      #   end
+      # end
+      # field :post_date
+      field :published
       field :promoted
+      field :is_success
+      field :fulfilled
     end
     edit do
       field :title do
@@ -223,6 +283,9 @@ RailsAdmin.config do |config|
         # help "e.g. Why not support Madeline by giving whatever you can"
       end
       field :published
+      field :fulfilled do
+        help 'Will hide Reason from /give page'
+      end
       field :promoted do
         help 'Will stick Reason to top of homepage'
       end
@@ -252,8 +315,15 @@ RailsAdmin.config do |config|
           bindings[:object].is_success == true
         end
         label 'Success Story'
-        field :is_success
-       
+        field :is_success do
+          help 'Will show Reason on /success-stories page'
+        end
+        field :success_title do
+          help 'Used for page title if Is Success is checked'
+        end
+        field :success_donation_prompt do
+          help 'Prompt for donations if Is Success is checked'
+        end
         field :reason_images do
           active true
           associated_collection_scope do

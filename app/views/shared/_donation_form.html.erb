@@ -1,5 +1,5 @@
       <%= form_tag(add_to_cart_path, remote: true, class: 'donate cart-form') do %>
-        <%= number_field_tag 'amount', nil, placeholder: '$25', class: 'text-input' %>
+        <%= number_field_tag 'amount', nil, placeholder: '$50', class: 'text-input', data: { default_value: '50' } %>
         <% if defined?(reason) %>
           <%= hidden_field_tag 'reason_id', reason.id %>
         <% end %>

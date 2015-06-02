@@ -20,10 +20,10 @@ class DonationsController < ApplicationController
         found_other: params[:checkoutSourceOtherSource],
         first_name: params[:checkoutFirstName],
         last_name: params[:checkoutLastName],
-        address: params[:address],
-        city: params[:city],
-        state: params[:state],
-        zip: params[:zip_code],
+        address: params[:checkoutAddress],
+        city: params[:checkoutCity],
+        state: params[:checkoutState],
+        zip: params[:checkoutZipCode],
         email: params[:checkoutEmail],
         newsletter: params[:checkoutNewsletter],
         payment_id: result.transaction.id,
@@ -59,6 +59,11 @@ class DonationsController < ApplicationController
       #   donation_id: @donation.id,
       #   params: result.params
       # )
+      
+      # email user and admin
+      DonationMailer.new_donation(@donation).deliver_now
+      DonationMailer.new_donation_for_admin(@donation).deliver_now
+
       redirect_to thanks_path(@donation)
     else
       flash[:alert] = "There was a transaction error: %s" % result.message

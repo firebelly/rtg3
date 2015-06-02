@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126190702) do
+ActiveRecord::Schema.define(version: 20150223175628) do
 
   create_table "applicants", force: :cascade do |t|
-    t.string   "first_name",      limit: 255
-    t.string   "last_name",       limit: 255
-    t.string   "phone",           limit: 255
-    t.string   "email",           limit: 255
-    t.string   "form",            limit: 255
-    t.text     "params",          limit: 65535
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "phone",              limit: 255
+    t.string   "email",              limit: 255
+    t.string   "form",               limit: 255
+    t.text     "params",             limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "subject",         limit: 255
-    t.text     "message",         limit: 65535
-    t.string   "address",         limit: 255
-    t.string   "city",            limit: 255
-    t.string   "state",           limit: 255
-    t.string   "zip_code",        limit: 255
-    t.string   "contact_details", limit: 255
+    t.string   "subject",            limit: 255
+    t.text     "message",            limit: 65535
+    t.string   "address",            limit: 255
+    t.string   "city",               limit: 255
+    t.string   "state",              limit: 255
+    t.string   "zip_code",           limit: 255
+    t.string   "contact_preference", limit: 255
   end
 
   create_table "carts", force: :cascade do |t|
@@ -148,6 +148,19 @@ ActiveRecord::Schema.define(version: 20150126190702) do
   add_index "posts", ["post_type_id", "published"], name: "index_posts_on_post_type_id_and_published", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
+  create_table "quotes", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4
+    t.text     "quote",      limit: 65535
+    t.string   "quotee",     limit: 255
+    t.string   "title",      limit: 255
+    t.string   "location",   limit: 255
+    t.integer  "position",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "quotes", ["page_id"], name: "index_quotes_on_page_id", using: :btree
+
   create_table "reason_images", force: :cascade do |t|
     t.integer  "reason_id",          limit: 4
     t.string   "image_file_name",    limit: 255
@@ -171,6 +184,7 @@ ActiveRecord::Schema.define(version: 20150126190702) do
     t.boolean  "published",                    limit: 1
     t.boolean  "promoted",                     limit: 1
     t.boolean  "is_success",                   limit: 1
+    t.boolean  "fulfilled",                    limit: 1,                             default: false
     t.text     "success_excerpt",              limit: 65535
     t.text     "success_content",              limit: 65535
     t.datetime "created_at"
@@ -185,6 +199,8 @@ ActiveRecord::Schema.define(version: 20150126190702) do
     t.datetime "secondary_image_updated_at"
     t.string   "donation_prompt",              limit: 255
     t.string   "featured_video",               limit: 255
+    t.string   "success_donation_prompt",      limit: 255
+    t.string   "success_title",                limit: 255
   end
 
   add_index "reasons", ["published", "is_success", "promoted"], name: "index_reasons_on_published_and_is_success_and_promoted", using: :btree

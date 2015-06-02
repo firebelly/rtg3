@@ -1,4 +1,4 @@
-<%= content_for :title, raw(@reason.title) %>
+<%= content_for :title, raw(@reason.reason_or_success_title) %>
 
 <%= content_for :edit_link do %>
   <%= render :partial => '/shared/edit_bug', :locals => { :obj => @reason, :edit_path => rails_admin.edit_path(model_name: 'reason', id: @reason.id) }%>
@@ -27,7 +27,11 @@
 <div class="blocks">
   <div class="support block -left -pink -column">
     <div class="block-content -top-half -center">
-      <p><strong><%= @reason.donation_prompt %></strong></p>
+      <% if @reason.is_success? and !@reason.success_donation_prompt.blank? %>
+        <p><strong><%= @reason.success_donation_prompt %></strong></p>
+      <% else %>
+        <p><strong><%= @reason.donation_prompt %></strong></p>
+      <% end %>
       <%= render partial: "/shared/donation_form", locals: { reason: @reason } -%>
       <div class="share">
         <p>Help us spread the word by sharing this cause:</p>
@@ -55,9 +59,9 @@
   <div class="reason-content block -right -gray">
     <div class="block-content">
     <% if @reason.is_success? %>
-      <%= raw @reason.success_content %>
+      <%= raw video_embeds(@reason.success_content) %>
     <% else %>
-      <%= raw @reason.content %>
+      <%= raw video_embeds(@reason.content) %>
     <% end %>
     </div>
   </div>
@@ -65,6 +69,8 @@
 
 <% unless @slider_reasons.blank? %>
   <div class="reasons-slider blocks reason-blocks">
-    <%= render partial: "reasons/list", collection: @slider_reasons, as: :reason %>
+  <% @slider_reasons.each do |reason| %>
+    <%= render partial: 'reasons/list', locals: { reason: reason, use_success_links: @reason.is_success? } %>
+  <% end %>
   </div>
 <% end %>

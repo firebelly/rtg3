@@ -1,5 +1,5 @@
 class PageImage < ActiveRecord::Base
-  belongs_to :page
+  belongs_to :page, touch: true
   has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
 
   default_scope { order('position ASC') }

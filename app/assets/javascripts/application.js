@@ -12,6 +12,5 @@
 //
 //= require jquery-1.11.1
 //= require jquery_ujs
-//# require turbolinks
 //= require_tree ./libs/
 //= require main

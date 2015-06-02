@@ -1,10 +1,12 @@
 class Reason < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :reason_slug, use: [:slugged, :history]
+
   has_many :reason_images
   has_many :donation_items
   accepts_nested_attributes_for :reason_images, :allow_destroy => true 
-  before_create :set_post_date_to_now
+  before_save :set_post_date_to_now
+  default_scope -> {order('post_date DESC')}
 
   has_attached_file :image, styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
   has_attached_file :secondary_image, styles: { medium: "900x570#" }
@@ -23,11 +25,19 @@ class Reason < ActiveRecord::Base
   scope :promoted, -> { where(promoted: true) }
   scope :not_success, -> { where(is_success: false) }
   scope :is_success, -> { where(is_success: true) }
-  scope :fulfilled, -> { where("total_donated >= total_needed") }
-  scope :unfulfilled, -> { where("total_donated < total_needed") }
+  scope :unfulfilled, -> { where(fulfilled: false) }
+  scope :fulfilled, -> { where(fulfilled: true) }
+
+  def reason_slug
+    fulfilled? ? reason_or_success_title : title
+  end
+
+  def reason_or_success_title
+    (is_success? && !success_title.blank?) ? success_title : title
+  end
 
   def should_generate_new_friendly_id?
-    title_changed?
+    title_changed? || success_title_changed? || fulfilled_changed? || is_success_changed?
   end
 
   # default values for new records
@@ -44,14 +54,10 @@ class Reason < ActiveRecord::Base
     [((total_donated - thanks_amount) / total_needed * 100).round(2), 100].min
   end
 
-  def fulfilled
-    total_donated >= total_needed
-  end
-
   private
 
   def set_post_date_to_now
-    self.post_date = Time.now if self.post_date.nil?
+    self.post_date = Time.now if self.post_date.blank?
   end
 
 end

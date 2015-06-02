@@ -13,14 +13,33 @@ class Donation < ActiveRecord::Base
     end
   end
 
+  def self.found_options
+    [
+      "I've donated before",
+      "I know Firebelly Design",
+      "I am/was a volunteer",
+      "Word of mouth",
+      "Through social media",
+      "A link from another site",
+      "I was searching the web",
+      "At an event I attended",
+      "In the news",
+      "Other"
+    ]
+  end
+
   def found_text
     found == 'other' ? found_other : found
   end
 
+  def full_name
+    [first_name,last_name].reject{ |e| e.empty? }.join ' '
+  end
+
   def full_address
-    "#{first_name} #{last_name}<br>
-    #{address}<br>
-    #{city}, #{state}  #{zip}".html_safe
+    "#{full_name}
+    #{address}
+    #{city}, #{state} #{zip}"
   end
 
   def total
