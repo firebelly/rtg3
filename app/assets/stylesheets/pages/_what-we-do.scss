@@ -44,6 +44,14 @@
     }
   }
 
+  // Section Sliders
+  .slick-slide {
+    img {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
   .materialNeeds {
     .-right {
       .block-content {
