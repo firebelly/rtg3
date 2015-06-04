@@ -5,13 +5,22 @@ class ReasonsController < ApplicationController
   def index
     @page = Page.friendly.find('give')
     @promoted_reason = Reason.published.unfulfilled.promoted.limit(1)
+    if @promoted_reason.empty?
+      @promoted_reason = Reason.published.unfulfilled.limit(1)
+    end
     @reasons = Reason.published.unfulfilled - @promoted_reason
+    if @reasons.length < 2
+      @body_class = 'reason one-reason'
+    end
   end
 
   def success_stories
     @body_class = 'success-stories'
     @page = Page.friendly.find('success-stories')
     @promoted_success = Reason.published.is_success.promoted.limit(1)
+    if @promoted_success.empty?
+      @promoted_success = Reason.published.is_success.limit(1)
+    end
     @successes = Reason.published.is_success - @promoted_success
     render 'reasons/success_stories'
   end

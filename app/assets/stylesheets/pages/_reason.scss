@@ -26,6 +26,19 @@
     }
   }
 
+  // When there is only one reason
+  &.one-reason {
+    .feature-slider .slick-list, .feature-slider .slick-track {
+      height: 100% !important;
+    }
+    .feature-slider, .slider-wrap {
+      height: 100%;
+    }
+    .scroll-down {
+      display: none;
+    }
+  }
+
   @include min-screen(600px) {
     .reasons-slider {
       overflow: hidden;
