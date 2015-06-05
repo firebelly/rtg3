@@ -546,7 +546,7 @@
     position: relative;
     &:hover, &:focus, &:active {
       img {
-        transform: scale(1);
+        transform: scale(1) translateX(-50%);
       }
       a {
         background: rgba(229, 76, 151, 0.75);
@@ -566,7 +566,7 @@
     }
     img {
       top: 0;
-      left: 0;
+      left: 50%;
       bottom: 0;
       z-index: 0;
       width: auto;
@@ -575,7 +575,7 @@
       min-height: 100%;
       position: absolute;
       transition: transform 4.5s ease-out;
-      transform: scale(1.1) translate(-2.5%);
+      transform: scale(1.1) translate(-50%);
       transform-origin: top left;
     }
     .block-content {

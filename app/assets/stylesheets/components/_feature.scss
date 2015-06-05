@@ -131,7 +131,7 @@
   position: relative;
   .feature-image {
     top: 0;
-    left: -25%;
+    left: 0;
     z-index: 0;
     width: 150%;
     height: 150%;
@@ -139,7 +139,7 @@
     background: $brand-main;
     img {
       top: 0;
-      right: 0;
+      left: 50%;
       bottom: 0;
       z-index: 0;
       width: auto;
@@ -148,6 +148,7 @@
       min-height: 100%;
       max-height: 800px;
       position: absolute;
+      transform: translateX(-50%);
     }
     &::before {
       top: 0;
@@ -324,7 +325,6 @@
   .feature {
     .feature-image {
       img {
-        left: 0;
         height: auto;
         min-height: 50%;
         max-height: none;
