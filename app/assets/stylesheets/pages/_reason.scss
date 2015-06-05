@@ -26,6 +26,16 @@
     }
   }
 
+  .reasons-slider {
+    .reason-block {
+      img {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
   // When there is only one reason
   &.one-reason {
     .feature-slider .slick-list, .feature-slider .slick-track {
