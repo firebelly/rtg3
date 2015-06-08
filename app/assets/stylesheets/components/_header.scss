@@ -457,10 +457,10 @@ body.news .sticky .menu .news {
 // Scroll down button
 .scroll-down {
   left: 50%;
-  bottom: 0;
   z-index: 1;
   width: 40px;
   height: 50px;
+  bottom: -12px;
   position: absolute;
   background: $brand-main;
   transform-origin: bottom center;
@@ -492,5 +492,14 @@ body.news .sticky .menu .news {
   @include min-screen($bpMed) {
     height: 75px;
     bottom: -25px;
+  }
+}
+
+// Offset Scroll down button for home and reasons pages
+.home, 
+.reason,
+.success-stories {
+  .scroll-down {
+    bottom: 0;
   }
 }
