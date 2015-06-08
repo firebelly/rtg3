@@ -233,10 +233,20 @@
         z-index: 1;
         width: 100%;
         padding: 0 12px;
-        background: $brand-main;
         position: absolute;
+        background: $brand-main;
         p {
           text-align: center;
+        }
+      }
+    }
+  }
+
+  @include min-screen($bpSmall) {
+    .block-content {
+      &.image-slide {
+        .slider-caption {
+          padding: 0 62px;
         }
       }
     }
