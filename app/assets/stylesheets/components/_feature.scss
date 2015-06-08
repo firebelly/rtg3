@@ -4,21 +4,23 @@
   height: auto;
   padding: 12px;
   transition: height 0.2s ease-out;
-  @include min-screen($bpMed) {
-    padding: 25px;
-    max-height: 100%;
-    overflow: hidden;
-    transform-origin: top;
-    &.video-expanded {
-      .scroll-down {
-        .icon {
-          opacity: 0;
-        }
-        .x {
-          opacity: 1
-        }
+  &.video-expanded {
+    .feature-slider {
+       height: 100%;
+    }
+    .scroll-down {
+      .icon {
+        opacity: 0;
+      }
+      .x {
+        opacity: 1
       }
     }
+  }
+  @include min-screen($bpMed) {
+    padding: 25px;
+    overflow: hidden;
+    transform-origin: top;
   }
 }
 
@@ -26,6 +28,7 @@
   height: auto;
   overflow: hidden;
   position: relative;
+  transition: height .2s ease-out;
   .slick-list,
   .slick-track {
     height: auto;
@@ -130,7 +133,7 @@
   position: relative;
   .feature-image {
     top: 0;
-    left: 0;
+    left: -25%;
     z-index: 0;
     width: 150%;
     height: 150%;
