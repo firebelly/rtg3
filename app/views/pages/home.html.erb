@@ -23,12 +23,22 @@
             <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
           <% end %>
           <div class="description"><p>Meaningful donations<br> Transforming lives<br> Empowering communities</p></div>
+          <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
         </div>
       </div>
     </div>
     <%= render @reasons %>
+    <div class="feature-video">
+      <div class="feature-video-background"></div>
+      <div class="feature-video-wrap">
+        <iframe type="text/html" id="video" width="100%" height="100%" src="https://www.youtube.com/embed/bQ21981s0D8?version=3&enablejsapi=1&modestbranding=1&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
-  <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg></a>
+  <a data-scroll href="#content" class="scroll-down">
+    <svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg>
+    <span class="x -white"></span>
+  </a>
 </div>
 <% end %>
 
