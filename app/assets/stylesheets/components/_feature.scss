@@ -169,7 +169,7 @@
     margin: auto;
     position: relative;
     text-align: center;
-    padding: 160px 12px 160px;
+    padding: 100px 12px 100px;
     transition: opacity 1s ease-out;
     h2 {
       width: 100%;
@@ -331,6 +331,7 @@
     }
     .feature-content {
       min-height: 440px;
+      padding: 160px 12px 160px;
       h2 {
         font-size: 4.5em;
       }
