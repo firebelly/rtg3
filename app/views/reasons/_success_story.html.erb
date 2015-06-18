@@ -1,6 +1,6 @@
 <% cache success_story do %>
     <div class="feature">
-      <div class="feature-image"><%= image_tag success_story.image.url(:large) unless success_story.image.nil? %></div>
+      <div class="feature-image" <% unless success_story.image.blank? %> style="background-image: url('<%= image_path(success_story.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
           <h2><%= link_to(success_story.reason_or_success_title, success_story_path(success_story)) %></h2>

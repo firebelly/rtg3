@@ -1,6 +1,6 @@
 <% cache [@reason, @reason.is_success?] do %>
     <div class="feature">
-      <div class="feature-image"><%= image_tag @reason.image.url(:large) unless @reason.image.nil? %></div>
+      <div class="feature-image" <% unless @reason.image.blank? %> style="background-image: url('<%= image_path(@reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
           <h2><%= @reason.reason_or_success_title %></h2>

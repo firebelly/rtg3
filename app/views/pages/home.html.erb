@@ -8,12 +8,7 @@
 <div class="wrap slider-wrap">
   <div class="feature-slider">
     <div class="feature intro-slide">      
-      <div class="feature-image">
-        <% if @page.image.blank? %> 
-          <%= image_tag('RTG_Feature.jpg', alt: 'Reason To Give') %>
-        <% else %>
-          <%= image_tag(@page.image.url(:large), alt: 'Reason To Give') %>
-        <% end %>
+      <div class="feature-image" style="background-image:url('<%= image_url('RTG_Feature.jpg') %>');background-size:cover;">
       </div>
       <div class="feature-content-wrap">
         <div class="feature-content">
