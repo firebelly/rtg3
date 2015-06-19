@@ -217,17 +217,15 @@
 
   .theTeam {
     .-left {
-      h3 {
-        background: none;
-        font-size: 3.375em;
+      .meet-the-team {
+        flex-grow: 0;
       }
-      h4 {
-        margin: 0 auto;
-        display: inline-block;
-        padding-bottom: 0.25em;
-        @include dots($white);
+      .-image-cover {
+        flex-grow: 1;
+        background-position: top center;
       }
     }
+
     .-right {
       h3 {
         margin-bottom: 0;
@@ -240,15 +238,39 @@
         @include dots($black);
       }
     }
+
+    .meet-the-team,
     .ourBoard {
-      top: 100%;
-      margin-top: -12px;
-      position: absolute;
+      h3 {
+        color: $white;
+        background: none;
+        font-size: 3.375em;
+      }
+      h4 {
+        margin: 0;
+        color: $white;
+        display: inline-block;
+        padding-bottom: 0.5em;
+        @include dots($white);
+      }
+    }
+
+    .ourBoard {
+      padding: 24px;
       background: $brand-main;
+      h3 {
+        color: $white;
+        background: none;
+        font-size: 3.375em;
+      }
       span {
+        color: $white;
         margin-left: 1em;
+        margin-bottom: 1em;
         font-size: 1.125em;
+        white-space: nowrap;
         @include font-bold();
+        display: inline-block;
         padding-bottom: 0.25em;
         @include dots($white);
         &:first-of-type {
@@ -259,7 +281,12 @@
 
     &.-bottom {
       position: relative;
-      margin-bottom: 200px;
+      .bio {
+        padding: 0;
+        .block-content {
+          padding: 24px;
+        }
+      }
     }
 
     .block.-column .block-content.-image-cover {
@@ -327,14 +354,43 @@
     }
   
     .theTeam {
+      &::after {
+        top: 50%;
+        z-index: 1;
+        left: 50%;
+        content: '';
+        position: absolute;
+        border-right: 11px solid #f6f6f6;
+        transform: translate(-100%, -50%);
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent; 
+      }
       .ourBoard {
-        top: auto;
-        margin: 0;
-        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 50%;
+        position: absolute;
+      }
+
+      .-left {
+        .-image-cover {
+          background-position: center center;
+        }
       }
 
       &.-bottom {
-        margin-bottom: 0;
+        .block.related-block {
+          position: static;
+        }
+        .bio {
+          padding: 0;
+          .block-content {
+            padding: 100px;
+            &.ourBoard {
+              padding: 50px;
+            }
+          }
+        }
       }
     }
   }
