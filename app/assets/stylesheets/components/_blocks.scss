@@ -366,11 +366,14 @@
 
 // Blocks that are also accordions
 .accordion {
-  padding: 0 50px;
+  padding: 0 24px;
   max-height: 86px;
   overflow: hidden;
   position: relative;
   transition: background 0.4s ease-out, max-height 0.4s cubic-bezier(1, 0.5, 0, 1);
+  @include min-screen($bpSmall) {
+    padding: 0 50px;
+  }
   &.-last {
     .accordion-trigger {
       background: none;
@@ -438,18 +441,22 @@
   .accordion-trigger {
     cursor: pointer;
     padding: 25px 0;
+    position: relative;
     @include clearfix();
     @include dots($black);
     h3 {
       margin: 0;
       padding: 0;
-      float: left;
       line-height: 1em;
       background: none;
+      padding-right: 60px;
       transition: color 0.2s ease-out;
     }
     .actions {
-      float: right;
+      top: 50%;
+      right: 0;
+      position: absolute;
+      transform: translateY(-50%);
       .icon-mail {
         width: 18px;
         height: 15px;
