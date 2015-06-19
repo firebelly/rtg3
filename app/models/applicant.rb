@@ -1,6 +1,6 @@
 class Applicant < ActiveRecord::Base
 	def full_name
-	  [first_name,last_name].reject{ |e| e.empty? }.join ' '
+	  [first_name,last_name].reject{ |e| e.blank? }.join ' '
 	end
 
 	def full_address
