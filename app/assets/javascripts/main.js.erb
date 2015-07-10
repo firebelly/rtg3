@@ -793,7 +793,7 @@ var RTG = (function ($) {
   function _googleMap() {
     var map;
     var MY_MAPTYPE_ID = 'custom_style';
-    var firebelly = new google.maps.LatLng(41.900866,-87.694542);
+    var RTG = new google.maps.LatLng(41.900866,-87.694542);
 
     function initialize() {
 
@@ -897,7 +897,7 @@ var RTG = (function ($) {
 
       var mapOptions = {
         zoom: 17,
-        center: firebelly,
+        center: RTG,
         disableDefaultUI: true,
         draggable: dragstate,
         mapTypeControlOptions: {
@@ -908,18 +908,18 @@ var RTG = (function ($) {
       var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
       google.maps.event.addDomListener(window, 'resize', function() {
-          map.setCenter(firebelly);
+          map.setCenter(RTG);
       });
 
       var image = {
-        url: '<%= asset_path "marker.svg" %>'
+        url: '<%= asset_path "marker.png" %>'
       };
       var link = 'https://www.google.com/maps/place/Reason+to+Give/@41.900868,-87.694523,15z/data=!4m2!3m1!1s0x0:0xee5c8496d8160eec?sa=X&ei=SS9mVMn4JMSfyATb44DYBQ&ved=0CHEQ_BIwDQ'
       var marker = new google.maps.Marker({
-          position: firebelly,
+          position: RTG,
           map: map,
           animation: google.maps.Animation.DROP,
-          title: 'Firebelly Design',
+          title: 'Reason To Give',
           icon: image,
           url: link
       });
