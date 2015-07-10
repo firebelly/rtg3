@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/reasons/search', to: redirect('/give')
   get '/success_stories', to: redirect('/success-stories')
   get '/success_stories/:id', to: redirect('/success-stories/%{id}')
+  get '/cart', to: redirect('/')
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
