@@ -9,7 +9,7 @@
           <% else %>
             <h2><%= link_to(reason.title, reason) %></h2>
           <% end %>
-          <div class="description"><%= raw reason.excerpt %> <%= link_to 'Learn More', reason, class: "learn-more" %></div>
+          <div class="description"><%= raw reason.excerpt %> <%= link_to('Learn More', reason, class: "learn-more") unless reason.title=='Reason to Give' %></div>
           <div class="feature-action">
             <div class="initial-actions">
               <div class="progress-bar">
