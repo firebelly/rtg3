@@ -1,3 +1,5 @@
 <h1>A new donation was received:</h1>
 
 <%= render "donation_details" -%>
+
+<p><%= link_to 'View in admin', rails_admin.show_url(model_name: 'donation', id: @donation.id, protocol: 'https') %></p>

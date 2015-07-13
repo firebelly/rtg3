@@ -182,6 +182,11 @@ RailsAdmin.config do |config|
       field :found_text
       field :newsletter
       field :donation_items
+      field :payment_info do
+        formatted_value do
+          bindings[:view].simple_format bindings[:object].payment_info
+        end
+      end
       field :total do
         formatted_value do
           "$%.2f" % bindings[:object].total

@@ -4,8 +4,16 @@
 
 <ul>
 <% for donation_item in @donation.donation_items %>
- <li><%= donation_item.name %></li>
+  <li><%= donation_item.name %></li>
 <% end %>
 </ul>
 
 <p><strong>Donation total:</strong> <%= "$%.2f" % @donation.total %></p>
+
+<h3>Payment info:</h3>
+
+<ul>
+  <li><strong>Type:</strong> <%= @donation.payment_type_pretty %></li>
+  <li><strong>ID:</strong> <%= @donation.payment_id %></li>
+  <li><strong>Status:</strong> <%= @donation.payment_status %></li>
+</ul>
