@@ -3,16 +3,17 @@
       <div class="feature-image" <% unless reason.image.blank? %> style="background-image: url('<%= image_path(reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
-          <h2><%= link_to(reason.title, reason) %></h2>
+          <%# Temporary generic reason needs no single page link %>
+          <% if reason.title == 'Reason to Give' %>
+            <h2><%= reason.title %></h2>
+          <% else %>
+            <h2><%= link_to(reason.title, reason) %></h2>
+          <% end %>
           <div class="description"><%= raw reason.excerpt %> <%= link_to 'Learn More', reason, class: "learn-more" %></div>
           <div class="feature-action">
             <div class="initial-actions">
               <div class="progress-bar">
-                <% if reason.total_needed > 0 %>
-                  <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
-                <% else %>
-                  <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
-                <% end %>
+                <%= render partial: "/reasons/progress_text", locals: { reason: reason } -%>
                 <div class="bar" data-percent="<%= reason.percent_fulfilled %>"></div>
               </div>
               <a class="donation-toggle btn -white" href="#">Donate Now!</a>
