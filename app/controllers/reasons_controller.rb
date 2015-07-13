@@ -10,7 +10,7 @@ class ReasonsController < ApplicationController
     end
     @reasons = Reason.published.unfulfilled - @promoted_reason
     if @reasons.length < 2
-      @body_class = 'reason one-reason'
+      @body_class += ' one-reason'
     end
   end
 

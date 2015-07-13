@@ -1,0 +1,5 @@
+<% if reason.total_needed > 0 %>
+  <p class="progress-text"><?= reason.total_raised_text ?><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+<% else %>
+  <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
+<% end %>

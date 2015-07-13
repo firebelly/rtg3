@@ -5,11 +5,13 @@
       <div class="block-content">
         <% if reason.is_success? %>
         <h3><%= reason.reason_or_success_title %></h3>
-          <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
+          <% if reason.total_donated > 0 %>
+            <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
+          <% end %>
         <% else %>
         <h3><%= reason.title %></h3>
           <div class="btn -white donate">Donate</div>
-          <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+          <%= render partial: "/reasons/progress_text", locals: { reason: reason } -%>
         <% end %>
       </div>
     </a>
