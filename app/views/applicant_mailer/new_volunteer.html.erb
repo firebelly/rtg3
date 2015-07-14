@@ -1,9 +1,7 @@
 <h1>New application for: <%= @applicant.form %></h1>
 
-<%= simple_format @applicant.full_address %>
-
+<p>Name: <%= @applicant.full_name %>
 <p>Email: <%= @applicant.email %></p>
-<p>Cell phone: <%= @applicant.phone %></p>
-<p>Contact preference: <%= @applicant.contact_preference %></p>
+<p>Phone: <%= @applicant.phone %></p>
 
 <p><%= link_to 'View in admin', rails_admin.show_url(model_name: 'applicant', id: @applicant.id, protocol: 'https') %></p>

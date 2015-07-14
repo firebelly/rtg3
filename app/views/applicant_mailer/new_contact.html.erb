@@ -8,3 +8,5 @@
 
 <h3>Message:</h3>
 <%= simple_format @applicant.message %>
+
+<p><%= link_to 'View in admin', rails_admin.show_url(model_name: 'applicant', id: @applicant.id, protocol: 'https') %></p>

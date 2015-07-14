@@ -33,9 +33,27 @@ class ApplicantsController < ApplicationController
       subject: params[:subject],
       message: params[:message]
       )
-    ApplicantMailer.contact(@applicant).deliver_now
+    ApplicantMailer.new_contact(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received'
     redirect_to :back
+  end
+
+  def volunteer
+    @applicant = Applicant.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      phone: params[:phone],
+      form: params[:form]
+      )
+    ApplicantMailer.new_volunteer(@applicant).deliver_now
+    flash[:notice] = 'Your request for information was received'
+    google_form_params = {
+      'entry.1803540405' => @applicant.full_name, 
+      'entry.194360264' => @applicant.phone,
+      'entry.218243436' => @applicant.email
+    }.to_query
+    redirect_to "https://docs.google.com/a/firebellydesign.com/forms/d/1TbAFDoOZJJs34db9jhSCJgwuIrwSd5ypbxiX9xMqpZg/viewform?%s" % google_form_params
   end
 
   def show

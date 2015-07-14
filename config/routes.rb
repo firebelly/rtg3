@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   resources :applicants, :only => [ :create ]
   post '/applicants/contact', to: 'applicants#contact', as: :applicants_contact
+  post '/applicants/volunteer', to: 'applicants#volunteer', as: :applicants_volunteer
 
   resources :donations, :only => [ :create ]
   resources :payment_records, only: [ :create ]
