@@ -167,6 +167,8 @@ RailsAdmin.config do |config|
       field :email
       field :phone
       field :contact_preference
+      field :subject
+      field :message
     end
 
   end
