@@ -10,8 +10,12 @@ class DonationsController < ApplicationController
     end
 
     result = Braintree::Transaction.sale(
-              amount: @cart.total,
-              payment_method_nonce: params[:payment_method_nonce])
+      amount: @cart.total,
+      payment_method_nonce: params[:payment_method_nonce],
+      options: {
+        submit_for_settlement: true
+      }
+    )
 
     if result.success?
       @donation = Donation.create(
