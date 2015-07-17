@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   get '/success-stories' => 'reasons#success_stories'
   get '/success-stories/:id' => 'reasons#success_story', :as =>'success_story'
 
+  # old IPN addresses
+  post '/paypal/ipn' => 'donations#paypal_ipn'
+
   resources :posts, :only => [ :show ]
   get '/news' => 'posts#index', as: 'news'
   # get '/news/:id' => 'posts#news_show', as:'news_post'
