@@ -46,4 +46,21 @@ class Donation < ActiveRecord::Base
     donation_items.sum(:amount)
   end
 
+  def payment_type_pretty
+    case payment_type
+    when 'paypal_account'
+      'PayPal'
+    when 'credit_card'
+      'Credit Card'
+    else
+      'Other'
+    end
+  end
+
+  def payment_info
+    "Type: #{payment_type_pretty}
+    ID: #{payment_id}
+    Status: #{payment_status}"
+  end
+
 end

@@ -12,9 +12,7 @@ env.git_branch = 'master'
 
 def production():
     env.hosts = ['www.reasontogive.com']
-    env.git_branch = 'production'
     env.stage = 'production'
-    env.path = '/var/www/%s' % env.project_name
 
 def deploy():
     update()

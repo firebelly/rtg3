@@ -494,3 +494,12 @@ body.news .sticky .menu .news {
     bottom: -25px;
   }
 }
+
+// Offset Scroll down button for home and reasons pages
+.home, 
+.reason,
+.success-stories {
+  .scroll-down {
+    bottom: 0;
+  }
+}

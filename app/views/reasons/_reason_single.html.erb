@@ -1,6 +1,6 @@
 <% cache [@reason, @reason.is_success?] do %>
     <div class="feature">
-      <div class="feature-image"><%= image_tag @reason.image.url(:large) unless @reason.image.nil? %></div>
+      <div class="feature-image" <% unless @reason.image.blank? %> style="background-image: url('<%= image_path(@reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
           <h2><%= @reason.reason_or_success_title %></h2>
@@ -8,19 +8,21 @@
           <% if !@reason.featured_video.blank? %>
             <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
           <% end %>
-          <div class="feature-action">
-            <div class="initial-actions single-reason">
-              <div class="progress-bar">
-              <% if @reason.is_success? %>
-                <p class="progress-text"><%= number_to_currency(@reason.total_donated, precision: 0) %> Raised</p>
-                <div class="bar" data-percent="100"></div>
-              <% else %>
-                <p class="progress-text"><%= number_to_currency(@reason.total_donated, precision: 0) %> of <%= number_to_currency(@reason.total_needed, precision: 0) %> Raised</p>
-                <div class="bar" data-percent="<%= @reason.percent_fulfilled %>"></div>
-              <% end %>
+          <% unless @reason.is_success? && @reason.total_donated==0 %>
+            <div class="feature-action">
+              <div class="initial-actions single-reason">
+                <div class="progress-bar">
+                <% if @reason.is_success? %>
+                  <p class="progress-text"><%= number_to_currency(@reason.total_donated, precision: 0) %> Raised</p>
+                  <div class="bar" data-percent="100"></div>
+                <% else %>
+                  <%= render partial: "/reasons/progress_text", locals: { reason: @reason } -%>
+                  <div class="bar" data-percent="<%= @reason.percent_fulfilled %>"></div>
+                <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

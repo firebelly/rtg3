@@ -17,6 +17,8 @@
 /tmp
 /.gems
 public/system
+public/assets
+.DS_Store
 
 # Ignore application configuration
 /config/application.yml

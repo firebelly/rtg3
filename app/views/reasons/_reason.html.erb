@@ -1,14 +1,19 @@
 <% cache reason do %>
     <div class="feature">
-      <div class="feature-image"><%= image_tag reason.image.url(:large) unless reason.image.nil? %></div>
+      <div class="feature-image" <% unless reason.image.blank? %> style="background-image: url('<%= image_path(reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
-          <h2><%= link_to(reason.title, reason) %></h2>
-          <div class="description"><%= raw reason.excerpt %> <%= link_to 'Learn More', reason, class: "learn-more" %></div>
+          <%# Temporary generic reason needs no single page link %>
+          <% if reason.title == 'Reason to Give' %>
+            <h2><%= reason.title %></h2>
+          <% else %>
+            <h2><%= link_to(reason.title, reason) %></h2>
+          <% end %>
+          <div class="description"><%= raw reason.excerpt %> <%= link_to('Learn More', reason, class: "learn-more") unless reason.title=='Reason to Give' %></div>
           <div class="feature-action">
             <div class="initial-actions">
               <div class="progress-bar">
-                <p class="progress-text"><%= number_to_currency(reason.total_donated, precision: 0) %> of <%= number_to_currency(reason.total_needed, precision: 0) %> Raised</p>
+                <%= render partial: "/reasons/progress_text", locals: { reason: reason } -%>
                 <div class="bar" data-percent="<%= reason.percent_fulfilled %>"></div>
               </div>
               <a class="donation-toggle btn -white" href="#">Donate Now!</a>

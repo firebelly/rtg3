@@ -8,27 +8,32 @@
 <div class="wrap slider-wrap">
   <div class="feature-slider">
     <div class="feature intro-slide">      
-      <div class="feature-image">
-        <% if @page.image.blank? %> 
-          <%= image_tag('RTG_Feature.jpg', alt: 'Reason To Give') %>
-        <% else %>
-          <%= image_tag(@page.image.url(:large), alt: 'Reason To Give') %>
-        <% end %>
+      <div class="feature-image" style="background-image:url('<%= image_url('RTG_Feature.jpg') %>');background-size:cover;">
       </div>
       <div class="feature-content-wrap">
         <div class="feature-content">
           <% if @page.banner_title.blank? %>
-            <h2>Welcome to Reason to Give</h2>
+            <h2>What is your reason?</h2>
           <% else %>
             <h2><%=raw @page.banner_title.gsub("\n","<br>") %></h2>
           <% end %>
-          <div class="description"><p>Giving should be simplified. Donating should be quicker. Helping should be personalized.</p></div>
+          <div class="description"><p>Meaningful donations<br> Transforming lives<br> Empowering communities</p></div>
+          <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
         </div>
       </div>
     </div>
     <%= render @reasons %>
+    <div class="feature-video">
+      <div class="feature-video-background"></div>
+      <div class="feature-video-wrap">
+        <iframe type="text/html" id="video" width="100%" height="100%" src="https://www.youtube.com/embed/kzV0lyrnb4s?version=3&enablejsapi=1&modestbranding=1&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
-  <a data-scroll href="#content" class="scroll-down"><svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg></a>
+  <a data-scroll href="#content" class="scroll-down">
+    <svg class="icon icon-arrow" role="img"><use xlink:href="#icon-arrow"></use></svg>
+    <span class="x -white"></span>
+  </a>
 </div>
 <% end %>
 
@@ -76,7 +81,7 @@
               <div class="list-number">2</div>
               <div class="list-text">
                 <h4>Teach A Class</h4>
-                <p>Pass along your experience and expertise to our students.</p>  
+                <p>Pass along your experience and expertise with students.</p>  
               </div>
               <div class="list-icon"><div class="plus-arrow"></div></div>
             </div>
@@ -88,7 +93,7 @@
               <div class="list-number">3</div>
               <div class="list-text">
                 <h4>Mentor A Student</h4>
-                <p>Mentor a student and help them pave the way to success.</p>  
+                <p>Guide and support a student on their path to success.</p>  
               </div>
               <div class="list-icon"><div class="plus-arrow"></div></div>
             </div>
@@ -100,7 +105,7 @@
               <div class="list-number">4</div>
               <div class="list-text">
                 <h4>Become A Partner</h4>
-                <p>Support our good work. Make an impact. Engage with the community.</p>  
+                <p>Contribute your resources to make an impact in the community.</p>  
               </div>
               <div class="list-icon"><div class="plus-arrow"></div></div>
             </div>
@@ -112,7 +117,7 @@
               <div class="list-number">5</div>
               <div class="list-text">
                 <h4>Join Our Program</h4>
-                <p>Apply to Our Program or Refer Someone that we can help.</p>  
+                <p>Apply to the program or refer someone in need.</p>  
               </div>
               <div class="list-icon"><div class="plus-arrow"></div></div>
             </div>
@@ -124,7 +129,7 @@
               <div class="list-number">6</div>
               <div class="list-text">
                 <h4>Volunteer Or Intern</h4>
-                <p>We always need volunteers and interns to help with our program, community events, and childcare.</p>  
+                <p>Give your talents and time to our programs, events, and childcare.</p>  
               </div>
               <div class="list-icon"><div class="plus-arrow"></div></div>
             </div>

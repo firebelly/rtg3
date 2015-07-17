@@ -223,7 +223,7 @@
               <p>Have some wisdom to share? Volunteer to facilitate one of our classes or mentor a student through the program. Have some time to spare? Reason to Give is always looking for volunteers to help with our community projects and events.</p> 
               <p>However you want to get involved, we are grateful for your help. Fill out this form, and we will get right back to you.</p>
 
-              <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+              <%= form_tag(applicants_volunteer_path, method: 'post', class: '-full pane-form') do %>
                 <%= hidden_field_tag('form', 'Volunteer', id: 'form-volunteer') %>
 
                 <div class="form-group">
@@ -274,7 +274,7 @@
               <p>So much of what we have accomplished can be attributed to having awesome, dedicated interns over the years. We won’t ask you to make coffee or file papers. You will be doing real work, making a real impact on a community that you will come to know well. </p>
               <p>Our internships runs year round and generally coordinate with school semesters. We will work with your school or company to make sure you get the most out of your experience. Everything short of a paycheck that is. Sorry, all internships are currently unpaid, but the experience you’ll gain is priceless! Still interested? Fill out this form, and we will send you an online application. </p>
 
-              <%= form_tag(applicants_path, method: 'post', class: '-full pane-form') do %>
+              <%= form_tag(applicants_volunteer_path, method: 'post', class: '-full pane-form') do %>
                 <%= hidden_field_tag('form', 'Intern', id: 'form-intern') %>
 
                 <div class="form-group">
