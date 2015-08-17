@@ -7,6 +7,15 @@
     }
   }
 
+  // single post styles
+  &.single-post .block-content {
+    p {
+      a:not(.btn) {
+        text-decoration: underline;
+      }
+    }
+  }
+
   .mediaInquiries {
     .-right {
       h4 {
@@ -93,7 +102,7 @@
       }
     }
 
-    // Pink/gray variantions
+    // Pink/gray variations
     .-pink {
       &.active {
         &:hover, &:focus, &:active {
