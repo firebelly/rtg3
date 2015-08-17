@@ -58,6 +58,10 @@ Rails.application.routes.draw do
   resources :posts, :only => [ :show ]
   get '/news' => 'posts#index', as: 'news'
 
+  get '/404' => 'errors#error_404'
+  get '/422' => 'errors#error_422'
+  get '/500' => 'errors#error_500'
+
   # fall-through to pages
   get '/:id(/:child_id)' => 'pages#show', as: 'page'
 
