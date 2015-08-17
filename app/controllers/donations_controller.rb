@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, only: :paypal_ipn
 
   def create
     if @cart.total == 0
@@ -73,6 +74,12 @@ class DonationsController < ApplicationController
       flash[:alert] = "There was a transaction error: %s" % result.message
       redirect_to :back
     end
+  end
+
+  # legacy IPN requests -- may use in future to update payment_status on Donations
+  def paypal_ipn
+    PaymentRecord.create(params: params)
+    render :text => "OK"
   end
 
 end

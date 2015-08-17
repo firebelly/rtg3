@@ -194,6 +194,11 @@ RailsAdmin.config do |config|
           "$%.2f" % bindings[:object].total
         end
       end
+      field :payment_type
+      field :payment_id do
+        label 'Payment ID'
+      end
+      field :payment_status
     end
     list do
       filters [:reasons]
