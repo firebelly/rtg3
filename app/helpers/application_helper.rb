@@ -45,11 +45,11 @@ module ApplicationHelper
     html
   end
 
-  # remove URLs for listing views
+  # remove video URLs alone on a paragraph for listing views
   def strip_videos(html)
     videos = get_videos(html)
     videos.each do |v|
-      html.sub!(v['url'], '')
+      html.sub!("<p>#{v['url']}</p>", '')
     end
     html
   end
