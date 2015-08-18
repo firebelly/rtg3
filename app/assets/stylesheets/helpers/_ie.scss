@@ -28,3 +28,13 @@
     }
   }
 }
+
+.lt-ie9 {
+  .cart {
+    left: auto;
+    right: -100%;
+    &.-active {
+      right: 0;
+    }
+  }
+}
