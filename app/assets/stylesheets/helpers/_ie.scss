@@ -6,40 +6,25 @@
     display: table;
   }
   .block,
-  .block.-noflex {
+  .block.-unflex {
     display: table-cell;
   }
 
-  // What We Do Page
-  .what-we-do {
-    #educationalNeeds, 
-    #success {
+  .-noflex {
+    display: block;
+    .block {
+      float: left;
       display: block;
-      .block {
-        float: left;
-        display: block;
-      }
     }
   }
 
-  // About Us Page
-  .about-us {
-    .how-we-help,
-    .praises {
-      display: block;
-      .block {
-        float: left;
-        display: block;
-      }
-    }
-  }
 
   @include max-screen($bpMed) {
     .blocks {
-      display: block;
+      display: block !important;
     }
     .block {
-      display: block;
+      display: block !important;
     }
   }
 }

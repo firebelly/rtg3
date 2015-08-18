@@ -12,7 +12,7 @@
   width: 100%;
   padding: 24px;
   // Abort Flex!
-  &.-noflex {
+  &.-unflex {
     display: block;
   }
   &.related-block {
