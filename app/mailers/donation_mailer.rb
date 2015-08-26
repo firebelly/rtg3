@@ -3,7 +3,7 @@ class DonationMailer < ActionMailer::Base
 
   def new_donation(donation)
     @donation = donation
-    mail(to: @donation.email, from: 'info@reasontogive.com', subject: "Thank you for giving")
+    mail(to: @donation.email, subject: "Thank you for giving")
   end
 
   def new_donation_for_admin(donation)
