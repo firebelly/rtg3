@@ -38,4 +38,4 @@ gem 'kaminari'
 gem 'whenever', :require => false
 gem 'premailer-rails'
 gem 'rack-cache'
-gem 'nokogiri' #required for premailer
+gem 'nokogiri'

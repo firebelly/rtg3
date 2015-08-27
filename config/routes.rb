@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #legacy URLs
+  # legacy URLs
   get '/news-and-events', to: redirect('/news')
   get '/news-and-events/:id', to: redirect('/news/%{id}')
   get '/apply-spanish', to: redirect('/apply')
@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   get '/success_stories', to: redirect('/success-stories')
   get '/success_stories/:id', to: redirect('/success-stories/%{id}')
   get '/cart', to: redirect('/')
+
+  # redirect get requests to post-only url
+  get '/donations', to: redirect('/')
+
+  # custom shortcode set 8/26/15
+  get '/backtoschool', to: redirect('/reasons/it-s-back-to-school-time-again')
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
