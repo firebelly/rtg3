@@ -38,6 +38,7 @@ $slick-opacity-not-active: .25 !default;
 /* Slider */
 
 .slick-slider {
+    max-width: 100%;
     position: relative;
     display: block;
     box-sizing: border-box;
