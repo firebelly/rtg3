@@ -8,7 +8,7 @@ class DonationMailer < ActionMailer::Base
 
   def new_donation_for_admin(donation)
     @donation = donation
-    mail(subject: "A donation of $%.2f was received from %s" % [@donation.total, @donation.full_name])
+    mail(to: "#{ENV['EMAILS_TO']},dawn@firebellydesign.com", subject: "A donation of $%.2f was received from %s" % [@donation.total, @donation.full_name])
   end
 
 end
