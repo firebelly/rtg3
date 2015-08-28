@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   # custom shortcode set 8/26/15
   get '/backtoschool', to: redirect('/reasons/it-s-back-to-school-time-again')
+  get '/BackToSchool', to: redirect('/reasons/it-s-back-to-school-time-again')
 
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
