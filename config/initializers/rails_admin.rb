@@ -205,11 +205,12 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :email
-      field :found do
-        pretty_value do
-          bindings[:object].found == 'Other' ? bindings[:object].found_other : bindings[:object].found
-        end
-      end
+      field :created_at
+      # field :found do
+      #   pretty_value do
+      #     bindings[:object].found == 'Other' ? bindings[:object].found_other : bindings[:object].found
+      #   end
+      # end
       field :reasons do
         searchable ["title"]
       end
