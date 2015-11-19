@@ -7,6 +7,7 @@
 <%= content_for :featured do %>
 <div class="wrap slider-wrap">
   <div class="feature-slider">
+    <%= render @reasons %>
     <div class="feature intro-slide">      
       <div class="feature-image" style="background-image:url('<%= image_url('RTG_Feature.jpg') %>');background-size:cover;">
       </div>
@@ -22,7 +23,6 @@
         </div>
       </div>
     </div>
-    <%= render @reasons %>
     <div class="feature-video">
       <div class="feature-video-background"></div>
       <div class="feature-video-wrap">
