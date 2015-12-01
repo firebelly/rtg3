@@ -2,4 +2,6 @@
 
 <%= render "donation_details" -%>
 
+<p>Email: <%= @donation.email %></p>
+
 <p><%= link_to 'View in admin', rails_admin.show_url(model_name: 'donation', id: @donation.id, protocol: 'https') %></p>
