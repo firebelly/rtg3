@@ -2,12 +2,17 @@
     <div class="feature">
       <div class="feature-image" <% unless @reason.image.blank? %> style="background-image: url('<%= image_path(@reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
+        <% if !@reason.featured_video.blank? %>
+          <a href="#" class="video-toggle -desktop-only"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
+        <% end %>
         <div class="feature-content">
-          <h2><%= @reason.reason_or_success_title %></h2>
-          <div class="description"><%= raw @reason.is_success? ? @reason.success_excerpt : @reason.excerpt %></div>
-          <% if !@reason.featured_video.blank? %>
-            <a href="#" class="video-toggle"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
-          <% end %>
+          <div class="feature-text">          
+            <h2><%= @reason.reason_or_success_title %></h2>
+            <% if !@reason.featured_video.blank? %>
+              <a href="#" class="video-toggle -mobile-only"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
+            <% end %>
+            <div class="description"><%= raw @reason.is_success? ? @reason.success_excerpt : @reason.excerpt %></div>
+          </div>
           <% unless @reason.is_success? && @reason.total_donated==0 %>
             <div class="feature-action">
               <div class="initial-actions single-reason">
