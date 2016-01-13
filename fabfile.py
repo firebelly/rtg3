@@ -8,7 +8,7 @@ env.group = 'staff'
 env.shell = '/bin/bash -lic' # interactive shell to source .bashrc to init rbenv
 env.path = '/var/www/%s' % env.project_name
 env.stage = 'staging'
-env.git_branch = 'master'
+env.git_branch = 'modified-feature-layout'
 
 def production():
     env.hosts = ['www.reasontogive.com']
