@@ -4,12 +4,12 @@
     <a href="<%= (reason.is_success? and use_success_links) ? success_story_path(reason) : reason_path(reason) %>">
       <div class="block-content">
         <% if reason.is_success? %>
-        <h3><%= reason.reason_or_success_title %></h3>
+        <h3><%= reason.reason_or_success_title.gsub(/Reason to Give/,'') %></h3>
           <% if reason.total_donated > 0 %>
             <p class="reason-block-progress"><%= number_to_currency(reason.total_donated, precision: 0) %> Raised</p>
           <% end %>
         <% else %>
-        <h3><%= reason.title %></h3>
+        <h3><%= reason.title.gsub(/Reason to Give/,'') %></h3>
           <div class="btn -white donate">Donate</div>
           <%= render partial: "/reasons/progress_text", locals: { reason: reason } -%>
         <% end %>

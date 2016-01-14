@@ -8,7 +8,7 @@
             <% if reason.title == 'Reason to Give' %>
               <h2><%= reason.title %></h2>
             <% else %>
-              <h2><%= link_to(reason.title, reason) %></h2>
+              <h2><%= link_to(reason.title.gsub(/Reason to Give/,''), reason) %></h2>
             <% end %>
             <div class="description"><%= raw reason.excerpt %> <%= link_to('Learn More', reason, class: "learn-more") unless reason.title=='Reason to Give' %></div>
           </div>

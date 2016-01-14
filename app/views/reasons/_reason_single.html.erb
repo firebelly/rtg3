@@ -7,7 +7,7 @@
         <% end %>
         <div class="feature-content">
           <div class="feature-text">          
-            <h2><%= @reason.reason_or_success_title %></h2>
+            <h2><%= @reason.reason_or_success_title.gsub(/Reason to Give/,'') %></h2>
             <% if !@reason.featured_video.blank? %>
               <a href="#" class="video-toggle -mobile-only"><svg class="icon icon-play" role="img"><use xlink:href="#icon-play"></use></svg></a>
             <% end %>
