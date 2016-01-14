@@ -387,9 +387,26 @@
         .initial-actions {
           float: right;
         }
-      }
+
+        .donate {
+          right: 0;
+          left: auto;
+          width: 320px;
+        }
+      } 
     }
   }
+}
+
+@include min-screen(1180px) {
+
+  .feature {
+    .feature-content {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+
 }
 
 @include min-screen($bpBig) {
