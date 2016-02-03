@@ -3,15 +3,17 @@
       <div class="feature-image" <% unless reason.image.blank? %> style="background-image: url('<%= image_path(reason.image.url(:large)) %>');background-size:cover;"<% end %>></div>
       <div class="feature-content-wrap">
         <div class="feature-content">
-          <%# Temporary generic reason needs no single page link %>
-          <% if reason.title == 'Reason to Give' %>
-            <h2><%= reason.title %></h2>
-          <% else %>
-            <h2><%= link_to(reason.title, reason) %></h2>
-          <% end %>
-          <div class="description"><%= raw reason.excerpt %> <%= link_to('Learn More', reason, class: "learn-more") unless reason.title=='Reason to Give' %></div>
+          <div class="feature-text">
+            <%# Temporary generic reason needs no single page link %>
+            <% if reason.title == 'Reason to Give' %>
+              <h2><%= reason.title %></h2>
+            <% else %>
+              <h2><%= link_to(reason.title, reason) %></h2>
+            <% end %>
+            <div class="description"><%= raw reason.excerpt %> <%= link_to('Learn More', reason, class: "learn-more") unless reason.title=='Reason to Give' %></div>
+          </div>
           <div class="feature-action">
-            <div class="initial-actions">
+            <div class="initial-actions clearfix">
               <div class="progress-bar">
                 <%= render partial: "/reasons/progress_text", locals: { reason: reason } -%>
                 <div class="bar" data-percent="<%= reason.percent_fulfilled %>"></div>

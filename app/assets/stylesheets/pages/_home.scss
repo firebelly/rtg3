@@ -1,9 +1,36 @@
 // Home
 
 .home {
-  .intro-slide {
-    .donate {
-      margin-top: 2em;
+
+  .feature-slider {
+    .feature {
+      .feature-content {
+        padding-bottom: 116px;
+      }
+    }
+    .feature.intro-slide {
+      .feature-content-wrap {
+        display: flex;
+      }
+      .feature-content {
+        height: auto;
+        display: block;
+        text-align: center;
+        h2 {
+          margin: 0 auto;
+        }
+        .video-toggle {
+          top: auto;
+          left: auto;
+          transform: none;
+          margin-top: 2em;
+          position: relative;
+          display: inline-block;
+        }
+      }
+      .donate {
+        margin-top: 2em;
+      }
     }
   }
 
@@ -39,6 +66,25 @@
   @include min-screen($bpMed) {
     .slider-wrap {
       height: 100%;
+    }
+
+    .feature-slider {
+      min-height: 600px;
+      .feature {
+        .feature-content {
+          height: 100%;
+          padding: 160px 100px 140px;
+          .feature-action {
+            .initial-actions {
+              float: right;
+            }
+            .donate {
+              right: 0;
+              left: auto;
+            }
+          }
+        }
+      }
     }
 
     .intro {

@@ -70,6 +70,10 @@ h1, h2, h3, h4 {
 }
 
 // Utilities
+.clearfix {
+  @include clearfix();
+}
+
 .hide {
   display: none;
 }
@@ -81,6 +85,19 @@ h1, h2, h3, h4 {
   left: -999999px;
   overflow: hidden;
   position: absolute;
+}
+
+.mobile-only {
+  @include min-screen($bpMed) {
+    display: none;
+  }
+}
+
+.-desktop-only {
+  display: none;
+  @include min-screen($bpMed) {
+    display: block;
+  }
 }
 
 .flash {
