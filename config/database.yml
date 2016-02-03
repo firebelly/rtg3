@@ -27,6 +27,7 @@ staging:
 
 production:
   <<: *default
+  database: rtg3_production
   socket: /var/run/mysqld/mysqld.sock
   username: <%= ENV['SQL_USER'] %>
   password: <%= ENV['SQL_PASSWORD'] %>
