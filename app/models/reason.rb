@@ -9,9 +9,9 @@ class Reason < ActiveRecord::Base
   default_scope -> {order('post_date DESC')}
 
   has_attached_file :image, 
-    styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" }
+    styles: { large: "1800x", medium: "900x570#", thumb: "600x380#" },
     convert_options: { large: "-quality 60", medium: "-quality 65", thumb: "-quality 65" }
-  has_attached_file :secondary_image, styles: { medium: "900x570#" }
+  has_attached_file :secondary_image, styles: { medium: "900x570#" },
     convert_options: { medium: "-quality 60" }
 
   validates_attachment_content_type [:image,:secondary_image], :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
