@@ -41,7 +41,7 @@
           transform: translateY(-50%);
           border-right: 11px solid #f6f6f6;
           border-top: 11px solid transparent;
-          border-bottom: 11px solid transparent;        
+          border-bottom: 11px solid transparent;
         }
       }
     }
@@ -161,7 +161,7 @@
           background: $brand-main;
         }
       }
-      &.image-slide { 
+      &.image-slide {
         padding: 0;
         max-height: 350px;
       }
@@ -196,7 +196,7 @@
   &.-pink {
     background: $brand-main;
     .block-content {
-      h3, h4, p {
+      h3, h4, p, ul, ol {
         color: $white;
       }
       .icon {
@@ -549,7 +549,7 @@
           fill: $white;
           stroke: $white;
         }
-      }   
+      }
     }
   }
 }
@@ -607,7 +607,7 @@
       }
       .donate {
         margin: 1em 0;
-        display: block; 
+        display: block;
       }
       p {
         font-size: 1em;
@@ -719,8 +719,8 @@
     display: inline-block;
     transform: translateY(-50%);
   }
-  .last-item {     
-    .list-item { 
+  .last-item {
+    .list-item {
       .list-wrap {
         background: none;
       }
@@ -793,12 +793,12 @@
     }
   }
 }
-  
+
 @include min-screen($bpMed) {
   .blocks {
     display: flex;
     margin-bottom: 25px;
-    flex-direction: row; 
+    flex-direction: row;
   }
   .block {
     width: 50%;
