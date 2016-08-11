@@ -195,7 +195,7 @@
           }
         }
       }
-    }              
+    }
     .cart-item-count {
       width: 12px;
       height: 12px;
@@ -373,7 +373,7 @@ body.news .menu .news {
       background: none;
       span {
         border-bottom: 1px solid rgba(255,255,255,1);
-      }     
+      }
     }
   }
 }
@@ -402,7 +402,6 @@ body.news .sticky .menu .news {
     height: 50%;
     padding: 25px;
     max-height: none;
-    min-height: 600px;
   }
   .banner {
     width: 100%;
@@ -496,7 +495,7 @@ body.news .sticky .menu .news {
 }
 
 // Offset Scroll down button for home and reasons pages
-.home, 
+.home,
 .reason,
 .success-stories {
   .scroll-down {

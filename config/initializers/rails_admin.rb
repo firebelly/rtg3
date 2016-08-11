@@ -4,6 +4,7 @@ RailsAdmin.config do |config|
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
+  config.total_columns_width = 1000
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
@@ -154,6 +155,7 @@ RailsAdmin.config do |config|
       field :last_name
       field :phone
       field :email
+      field :created_at
       field :contact_preference
       field :form
     end
@@ -163,7 +165,7 @@ RailsAdmin.config do |config|
         formatted_value do
           bindings[:view].simple_format bindings[:object].full_address
         end
-      end        
+      end
       field :email
       field :phone
       field :contact_preference
@@ -179,7 +181,7 @@ RailsAdmin.config do |config|
         formatted_value do
           bindings[:view].simple_format bindings[:object].full_address
         end
-      end        
+      end
       field :email
       field :found_text
       field :newsletter
@@ -347,7 +349,7 @@ RailsAdmin.config do |config|
           label 'Slideshow Images'
           help 'Drag images into desired order.'
         end
-       
+
        field :success_excerpt, :ck_editor do
          help do
            help + ' This is the text shown in the listing view.'

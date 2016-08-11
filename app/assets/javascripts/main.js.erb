@@ -34,15 +34,15 @@ var RTG = (function ($) {
       $('.news-lists .block').each(function() {
         var $newsBlock = $(this);
         // only show first "page" of news items
-        $newsBlock.find('.news-items li:gt(4)').hide();
+        $newsBlock.find('.news-items>li:gt(4)').hide();
         // hide Next Page links
         $newsBlock.find('.next-page.btn').hide();
         // on Show More clicks, slide out more posts
         $newsBlock.find('.show-more.btn').click(function(e) {
           e.preventDefault();
           $('.news-items').each(function() {
-            var at = $(this).find('li:visible:last').index();
-            $(this).find('li:lt(' + (at+5) + ')').slideDown();
+            var at = $(this).find('>li:visible:last').index();
+            $(this).find('>li:lt(' + (at+5) + ')').slideDown();
           });
           _checkNewsBlocks();
         });
@@ -142,7 +142,7 @@ var RTG = (function ($) {
 
     // add to cart links
     $('.cart-form').submit(function(e) {
-      var $amountInput = $(this).find('input[name=amount]'); 
+      var $amountInput = $(this).find('input[name=amount]');
       // set value to default value if blank (since placeholder often shows an amount, set data-default-value)
       if (!$amountInput.val() || parseInt($amountInput.val())<=0) {
         $amountInput.val($amountInput.data('default-value'));
@@ -162,7 +162,7 @@ var RTG = (function ($) {
       _setCartCount();
       _showCart();
     });
-    
+
     // update cart item amounts
     $('#cart').on('ajax:success', '.item-amount', function(e, data) {
       _setCartTotal();
@@ -376,7 +376,7 @@ var RTG = (function ($) {
     } else {
       // tokenize CC card info and put payment_method_nonce in form
       braintreeClient.tokenizeCard({
-        number: $('.cc-num').val().replace(/ /g,''), 
+        number: $('.cc-num').val().replace(/ /g,''),
         expirationDate: $('.cc-exp').val().replace(/ /g,''),
         cvv: $('.cc-cvc').val(),
         billingAddress: {
@@ -505,7 +505,7 @@ var RTG = (function ($) {
 
     $('.feature-slider input').on('focus', function () {
       featureSlider.slickPause();
-    }); 
+    });
 
     $('.feature-slider .feature').each(function () {
       var $slide = $(this),
@@ -529,7 +529,7 @@ var RTG = (function ($) {
         }
       });
 
-      $form.on('submit', function () { 
+      $form.on('submit', function () {
         setTimeout(function () {
           $form.removeClass('focused');
           $actions.removeClass('inactive');
@@ -545,7 +545,7 @@ var RTG = (function ($) {
     $('.slick-active .progress-bar').find('.bar,.thanks-bar').each(function() {
       var widthTo = $(this).data('percent');
       $(this).velocity(
-        { width: widthTo + '%' }, 
+        { width: widthTo + '%' },
         { duration: 1500, delay: 250, easing: 'easeInOutCubic' }
       );
     });
@@ -678,7 +678,7 @@ var RTG = (function ($) {
           + x + ' '
           + y + ' z';
 
-      var bar = document.getElementsByClassName ('progress-radial-bar')[0]; 
+      var bar = document.getElementsByClassName ('progress-radial-bar')[0];
       bar.setAttribute( 'd', pathData );
     };
 
@@ -695,7 +695,7 @@ var RTG = (function ($) {
           window.clearInterval(interval);
         }
         drawProgress(progress);
-      }, 10);        
+      }, 10);
     }, { offset: '50%', triggerOnce: true });
   };
 
@@ -889,11 +889,11 @@ var RTG = (function ($) {
       ]
 
       // Test for touch and disable if true
-      if (Modernizr.touch) {   
+      if (Modernizr.touch) {
           var dragstate = false
-      } else {   
+      } else {
           var dragstate = true
-      } 
+      }
 
       var mapOptions = {
         zoom: 17,
