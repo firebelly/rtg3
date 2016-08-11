@@ -6,13 +6,15 @@
   <title>Reason to Give<%= content_for?(:title) ? ': %s' % yield(:title) : ": A storefront of Humboldt Park's basic needs" %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= csrf_meta_tags %>
-  <link rel="canonical" href="http://reasontogive.com/">
+
   <meta name="description" content="<%= strip_tags(@og_description).strip -%>">
   <meta name="keywords" content="giving, humboldt park, chicago, donations, programs, education, helping, social justice, neighborhood, community">
 
   <meta property="og:title" content="Reason to Give<%= content_for?(:title) ? ': %s' % yield(:title) : '' %>">
   <meta property="og:description" content="<%= strip_tags(@og_description).strip -%>">
   <meta property="og:image" content="<%= image_url(@og_image) %>">
+  <meta property="og:url" content="<%= request.original_url %>">
+
   <meta name="twitter:card" content="Reason To Give is a nonprofit started by @dawnhancock + connects people who give a damn with people who need a hand. 7 years strong!">
   <meta name="twitter:site" content="@reasontogive">
   <meta name="twitter:creator" content="@reasontogive">
