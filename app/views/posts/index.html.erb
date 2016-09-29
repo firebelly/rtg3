@@ -18,7 +18,6 @@
 <% end %>
 
 
-<% cache @news do %>
 <div class="blocks mediaInquiries">
   <div class="block -gray -left">
     <div class="block-content">
@@ -27,12 +26,13 @@
   </div>
   <div class="block -pink -right">
     <div class="block-content -center">
-      <h4>For more information please download our PDF and feel free to email us at:<br><a href="mailto:press@firebellydesign.com">press@firebellydesign.com</a></h4>                
+      <h4>For more information please download our PDF and feel free to email us at:<br><a href="mailto:press@firebellydesign.com">press@firebellydesign.com</a></h4>
       <a href="what-we-do" class="btn -white -hollow -wider">Download Full PDF</a>
     </div>
   </div>
 </div>
 
+<% cache [@news,@press] do %>
 <div class="blocks news-lists">
   <div class="block -left -pink -column news-list -unflex">
     <div class="block-content block-title -center">
