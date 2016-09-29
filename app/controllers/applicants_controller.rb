@@ -16,13 +16,13 @@ class ApplicantsController < ApplicationController
     ApplicantMailer.new_applicant(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received.'
     google_form_params = {
-      'entry.2055828340' => @applicant.full_name, 
+      'entry.2055828340' => @applicant.full_name,
       'entry.1250369102' => @applicant.phone,
       'entry.1544329668' => @applicant.email,
       'entry.782633025' => @applicant.address,
       'entry.1935881909' => @applicant.zip_code
     }.to_query
-    redirect_to "https://docs.google.com/a/firebellydesign.com/forms/d/1PuuCyLCfiE0y13xChbn4vcTg4r4UPyaZMNGz2BbqxZk/viewform?%s" % google_form_params
+    redirect_to "https://docs.google.com/forms/d/e/1FAIpQLScoZQXkDMb7cY3JT261Hlby1pI63gA4IKQFnsThlHdVj-7FnA/viewform?%s" % google_form_params
   end
 
   def contact
@@ -49,7 +49,7 @@ class ApplicantsController < ApplicationController
     ApplicantMailer.new_volunteer(@applicant).deliver_now
     flash[:notice] = 'Your request for information was received'
     google_form_params = {
-      'entry.1803540405' => @applicant.full_name, 
+      'entry.1803540405' => @applicant.full_name,
       'entry.194360264' => @applicant.phone,
       'entry.218243436' => @applicant.email
     }.to_query
