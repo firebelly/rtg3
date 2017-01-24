@@ -1,3 +1,10 @@
+module RailsAdmin
+  class CSVConverter
+    remove_const(:UTF8_ENCODINGS) if (defined?(UTF8_ENCODINGS))
+    UTF8_ENCODINGS = [nil, '', 'utf8', 'utf-8', 'unicode', 'UTF8', 'UTF-8', 'UNICODE', 'utf8mb4', 'latin1']
+  end
+end
+
 RailsAdmin.config do |config|
 
   config.authenticate_with do
