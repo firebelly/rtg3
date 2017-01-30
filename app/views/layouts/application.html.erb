@@ -61,7 +61,8 @@
   </div><!-- END .body-wrap -->
 
   <%= yield :javascripts -%>
-  <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js' %>
+  <%= javascript_include_tag 'https://js.braintreegateway.com/js/braintree-2.30.0.min.js' %>
+
   <%= javascript_include_tag 'application' %>
 
   <%= render partial: "/shared/cart" -%>

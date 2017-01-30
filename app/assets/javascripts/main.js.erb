@@ -337,7 +337,6 @@ var RTG = (function ($) {
         }
       },
       onPaymentMethodReceived: function(obj) {
-        console.log(obj);
         // hide CC fields
         $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
         $('.payment-toggle').hide().prop('disabled', true);
@@ -346,13 +345,19 @@ var RTG = (function ($) {
         $('#checkoutEmail').val(obj.details.email);
         // fill out address fields if available
         if (obj.details.shippingAddress) {
-          var fullName = obj.details.shippingAddress.recipientName.split(' '),
-              firstName = fullName[0],
-              lastName = fullName[fullName.length - 1];
-          $('#checkoutFirstName').val(firstName);
-          $('#checkoutLastName').val(lastName);
+          // sometimes we get firstName + lastName and no shippingAddress.recipientName (?!)
+          if (obj.details.firstName && obj.details.lastName) {
+            $('#checkoutFirstName').val(obj.details.firstName);
+            $('#checkoutLastName').val(obj.details.lastName);
+          } else if (obj.details.shippingAddress.recipientName) {
+            var fullName = obj.details.shippingAddress.recipientName.split(' '),
+                firstName = fullName[0],
+                lastName = fullName[fullName.length - 1];
+                $('#checkoutFirstName').val(firstName);
+                $('#checkoutLastName').val(lastName);
+          }
           $('#checkoutAddress').val(obj.details.shippingAddress.streetAddress);
-          if (obj.details.shippingAddress.extendedAddress != '') {
+          if (typeof obj.details.shippingAddress.extendedAddress !== 'undefined') {
             $('#checkoutAddress').val($('#checkoutAddress').val() + ' ' + obj.details.shippingAddress.extendedAddress);
           }
           $('#checkoutCity').val(obj.details.shippingAddress.locality);
