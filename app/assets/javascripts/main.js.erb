@@ -324,36 +324,42 @@ var RTG = (function ($) {
   // Init Braintree
   function _initBraintree() {
     braintreeClient = new braintree.api.Client({clientToken: braintreeToken});
-    braintree.setup(braintreeToken, 'paypal', {
-      container: 'paypal-button',
-      enableShippingAddress: true,
-      paymentMethodNonceInputField: 'payment_method_nonce',
-      onSuccess: function(nonce, email, shippingObject) {
+    braintree.setup(braintreeToken, 'custom', {
+      paypal: {
+        container: 'paypal-button',
+        enableShippingAddress: true,
+        paymentMethodNonceInputField: 'payment_method_nonce',
+        onCancelled: function() {
+          console.log('cancelled');
+          // show CC fields
+          $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
+          $('.payment-toggle').show().prop('disabled', false);
+          $('.paypal-submit').hide().prop('disabled', true);
+        }
+      },
+      onPaymentMethodReceived: function(obj) {
         // hide CC fields
         $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
         $('.payment-toggle').hide().prop('disabled', true);
         $('.paypal-submit').show().prop('disabled', false);
 
-        $('#checkoutEmail').val(email);
+        $('#checkoutEmail').val(obj.details.email);
         // fill out address fields if available
-        if (shippingObject) {
-          var fullName = shippingObject.recipient_name.split(' '),
+        if (obj.details.shippingAddress) {
+          var fullName = obj.details.shippingAddress.recipientName.split(' '),
               firstName = fullName[0],
               lastName = fullName[fullName.length - 1];
           $('#checkoutFirstName').val(firstName);
           $('#checkoutLastName').val(lastName);
-          $('#checkoutAddress').val(shippingObject.street_address);
-          $('#checkoutCity').val(shippingObject.locality);
-          $('#checkoutState').val(shippingObject.region);
-          $('#checkoutZipCode').val(shippingObject.postal_code);
+          $('#checkoutAddress').val(obj.details.shippingAddress.streetAddress);
+          if (obj.details.shippingAddress.extendedAddress != '') {
+            $('#checkoutAddress').val($('#checkoutAddress').val() + ' ' + obj.details.shippingAddress.extendedAddress);
+          }
+          $('#checkoutCity').val(obj.details.shippingAddress.locality);
+          $('#checkoutState').val(obj.details.shippingAddress.region);
+          $('#checkoutZipCode').val(obj.details.shippingAddress.postalCode);
           $('.cart').removeClass('payment-stage').addClass('checkout-stage');
         }
-      },
-      onCancelled: function() {
-        // show CC fields
-        $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
-        $('.payment-toggle').show().prop('disabled', false);
-        $('.paypal-submit').hide().prop('disabled', true);
       }
     });
   }
