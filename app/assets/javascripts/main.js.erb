@@ -330,7 +330,6 @@ var RTG = (function ($) {
         enableShippingAddress: true,
         paymentMethodNonceInputField: 'payment_method_nonce',
         onCancelled: function() {
-          console.log('cancelled');
           // show CC fields
           $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', false);
           $('.payment-toggle').show().prop('disabled', false);
@@ -338,6 +337,7 @@ var RTG = (function ($) {
         }
       },
       onPaymentMethodReceived: function(obj) {
+        console.log(obj);
         // hide CC fields
         $('.cc-num,.cc-cvc,.cc-exp,.cc-zip').prop('disabled', true);
         $('.payment-toggle').hide().prop('disabled', true);
