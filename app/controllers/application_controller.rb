@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
     @cart = Cart.where(session_id: session.id).first_or_create
   end
 
-  def init_common_values 
+  def init_common_values
     @body_class = request.path.gsub(/\/?(en\/|es\/)?([^\/]+)(.*)/,'\\2')
     @og_image = view_context.image_url('RTG_Feature.jpg')
-    @og_description = "Reason To Give provides a shopping/giving experience that's simple, quick, and personal. We connect people who give a damn with people who need a hand."
+    @og_description = "Reason to Give empowers people to transform their lives and set their own paths to success."
   end
 
 end
