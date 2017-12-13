@@ -20,7 +20,7 @@
 <% cache @page do %>
 <div class="blocks -noflex">
   <div class="block -left -gray related-block">
-    <div class="block-content">
+    <div class="block-content user-content">
 	    <%= raw @page.content %>
     </div>
   </div>
@@ -50,8 +50,8 @@
 
             <div class="one-half-left">
               <p>Congrats on taking the first step towards a better future! </p>
-              <p>Please complete this form to receive more information and/or an application for Reason to Give. We ask that you read our program page first for a complete overview of the program and list of classes.</p> 
-              <p>Applicants must be at least 17 years of age, able to participate in weekly classes and progress meetings, and willing to give video interviews. Classes are currently being held in Humboldt Park. This program requires a 1 year commitment and is entirely free to students. Free educational childcare will also be offered during all classes.</p> 
+              <p>Please complete this form to receive more information and/or an application for Reason to Give. We ask that you read our program page first for a complete overview of the program and list of classes.</p>
+              <p>Applicants must be at least 17 years of age, able to participate in weekly classes and progress meetings, and willing to give video interviews. Classes are currently being held in Humboldt Park. This program requires a 1 year commitment and is entirely free to students. Free educational childcare will also be offered during all classes.</p>
 
               <p>If you have any questions, please contact us at 773-489-3439 or <%= mail_to "info@reasontogive.com" %></p>
 
@@ -81,7 +81,7 @@
                   <input type="email" name="email" id="educationalEmail" required>
                 </div>
               </div>
-              
+
               <div class="form-group">
                 <label for="educationalAddress">Street Address (Include Apt #)*</label>
                 <input type="text" name="address" id="educationalAddress" required>
@@ -114,7 +114,7 @@
               </div>
 
               <input type="submit" value="Continue to Application" class="btn -white submit">
-              
+
             </div>
           <% end %>
         </div>
@@ -166,7 +166,7 @@
                   <input type="email" name="email" id="businessEmail" required>
                 </div>
               </div>
-              
+
               <div class="form-group">
                 <label for="businessAddress">Street Address (Include Apt #)*</label>
                 <input type="text" name="address" id="businessAddress" required>
@@ -204,7 +204,7 @@
               </div>
 
               <input type="submit" value="Submit" class="btn -white submit">
-              
+
             </div>
           <% end %>
         </div>

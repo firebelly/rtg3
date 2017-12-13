@@ -20,7 +20,7 @@
 <% cache @page do %>
 <div class="blocks -noflex">
   <div class="block -left -gray related-block">
-    <div class="block-content">
+    <div class="block-content user-content">
       <%= raw @page.content %>
     </div>
   </div>
@@ -198,7 +198,7 @@
             </div>
             <input type="submit" class="btn -white -hollow submit" value="Send">
           <% end %>
-        </div>                  
+        </div>
       </div>
     </div>
   </div>
@@ -220,7 +220,7 @@
             <div class="one-half-left">
               <p>Since the very beginning, Reason to Give’s success has been predicated on the generosity of do-gooders like yourselves. </p>
               <p>Have a couple extra bucks? Give what you can to sponsor a student, every little bit counts. Have a little extra patience?  Help grow young minds through our educational childcare. </p>
-              <p>Have some wisdom to share? Volunteer to facilitate one of our classes or mentor a student through the program. Have some time to spare? Reason to Give is always looking for volunteers to help with our community projects and events.</p> 
+              <p>Have some wisdom to share? Volunteer to facilitate one of our classes or mentor a student through the program. Have some time to spare? Reason to Give is always looking for volunteers to help with our community projects and events.</p>
               <p>However you want to get involved, we are grateful for your help. Fill out this form, and we will get right back to you.</p>
 
               <%= form_tag(applicants_volunteer_path, method: 'post', class: '-full pane-form') do %>

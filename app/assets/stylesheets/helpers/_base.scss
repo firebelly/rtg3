@@ -39,6 +39,13 @@ a {
   text-decoration: none;
 }
 
+.user-content {
+  // Give links underline in editable content
+  a:not(.btn) {
+    text-decoration: underline;
+  }
+}
+
 img {
   height: auto;
 	max-width: 100%;
