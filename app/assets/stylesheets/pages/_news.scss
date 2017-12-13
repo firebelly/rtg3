@@ -13,13 +13,6 @@
       height: auto;
       min-height: 50%;
     }
-    .block-content {
-      p {
-        a:not(.btn) {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 
   .mediaInquiries {
@@ -56,13 +49,6 @@
         margin: 0;
         width: 75%;
         float: left;
-      }
-      .accordion-content {
-        p {
-          a:not(.btn) {
-            text-decoration: underline;
-          }
-        }
       }
       &.active {
         background: none;
