@@ -26,9 +26,9 @@ gem 'web-console', '~> 2.0', 	group: :development
 gem 'friendly_id', '~> 5.0.0'
 gem 'devise'
 
-gem 'rails_admin'
+gem 'rails_admin', '~> 1.3.0'
 gem 'ckeditor'
-gem 'paperclip', '~> 4.2'
+gem 'paperclip', '~> 5.2.0'
 
 gem 'mailchimp-api', require: 'mailchimp'
 gem 'randumb'
@@ -38,4 +38,4 @@ gem 'kaminari'
 gem 'whenever', :require => false
 gem 'premailer-rails'
 gem 'rack-cache'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.8.1'
