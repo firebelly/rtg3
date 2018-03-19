@@ -26,9 +26,9 @@ gem 'web-console', '~> 2.0', 	group: :development
 gem 'friendly_id', '~> 5.0.0'
 gem 'devise'
 
-gem 'rails_admin', '~> 1.3.0'
+gem 'rails_admin'
 gem 'ckeditor'
-gem 'paperclip', '~> 5.2.0'
+gem 'paperclip', '~> 5.3.0'
 
 gem 'mailchimp-api', require: 'mailchimp'
 gem 'randumb'
