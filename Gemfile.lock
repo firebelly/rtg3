@@ -110,6 +110,7 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    libv8 (3.16.14.19)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -193,6 +194,7 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       rake
+    ref (2.0.0)
     remotipart (1.3.1)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
@@ -215,6 +217,9 @@ GEM
     temple (0.8.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thin (1.7.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -260,6 +265,7 @@ DEPENDENCIES
   randumb
   sass-rails (~> 4.0.3)
   spring
+  therubyracer
   thin
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
@@ -269,4 +275,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.16.1
+   1.16.3
