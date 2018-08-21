@@ -2,11 +2,10 @@ from fabric.api import env, run, local, put, cd
 
 env.project_name = 'rtg3'
 env.hosts = ['dev.reasontogive.com']
-env.user = 'deployer'
-env.group = 'staff'
+env.user = 'firebelly'
 
 env.shell = '/bin/bash -lic' # interactive shell to source .bashrc to init rbenv
-env.path = '/var/www/%s' % env.project_name
+env.path = '/home/firebelly/webapps/rtg3/%s' % env.project_name
 env.stage = 'staging'
 env.git_branch = 'master'
 
@@ -14,11 +13,14 @@ def production():
     env.hosts = ['www.reasontogive.com']
     env.stage = 'production'
 
-def deploy():
+def deploy(migrate='no',assets='no'):
     update()
     bundle()
-    migrate()
-    compile_assets()
+    if migrate != 'no':
+        migrate()
+    if assets != 'no':
+        compile_assets()
+    clear_rails_cache()
     restart()
 
 def update():
@@ -32,6 +34,10 @@ def migrate():
 def compile_assets():
     with cd(env.path):
         run('RAILS_ENV=%s bin/rake assets:precompile' % env.stage)
+
+def clear_rails_cache():
+    with cd(env.path):
+        run('RAILS_ENV=%s rake tmp:cache:clear' % env.stage)
 
 def restart():
     with cd(env.path):
