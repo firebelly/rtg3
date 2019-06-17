@@ -42,7 +42,7 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    braintree (2.33.1)
+    braintree (2.96.0)
       builder (>= 2.0.0)
     builder (3.2.3)
     chronic (0.10.2)
@@ -246,7 +246,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  braintree (~> 2.33.1)
+  braintree (~> 2.9)
   ckeditor
   dalli
   devise

@@ -33,7 +33,7 @@ gem 'paperclip', '~> 5.3.0'
 
 gem 'mailchimp-api', require: 'mailchimp'
 gem 'randumb'
-gem 'braintree', '~> 2.33.1'
+gem 'braintree', '~> 2.9'
 gem 'figaro'
 gem 'kaminari'
 gem 'whenever', :require => false
