@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.6.3'
 
 gem 'rails', '~> 4.2'
 gem 'therubyracer'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.5.2'
 gem 'dalli'
 
 gem 'sass-rails', '~> 4.0.3'
