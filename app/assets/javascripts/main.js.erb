@@ -419,12 +419,12 @@ var RTG = (function ($) {
   function _showCart() {
     _closeVideo();
     // init braintree if necessary
-    if (!braintreeClient) {
-      $.get('/cart/ajax_token', function(data) {
-        braintreeToken = data;
-        _initBraintree();
-      });
-    }
+    // if (!braintreeClient) {
+    //   $.get('/cart/ajax_token', function(data) {
+    //     braintreeToken = data;
+    //     _initBraintree();
+    //   });
+    // }
     $('.menu.active').removeClass('active');
     $('.menu-toggle').removeClass('menu-open');
     $('.cart').addClass('active cart-stage review-stage');
