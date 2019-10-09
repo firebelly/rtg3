@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 ruby '2.6.3'
 
 gem 'rails', '~> 4.2'
-gem 'therubyracer'
+# gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 
 gem 'mysql2', '~> 0.5.2'
 gem 'dalli'
